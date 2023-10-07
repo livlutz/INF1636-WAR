@@ -2,9 +2,15 @@ package Model;
 
 public class Cartas {
 
-		String formato;
-		
-		public Cartas(String formato) {
-			this.formato = formato;
-		}
+	public enum Formato{
+		Quadrado,ciruclo,retangulo;
+	}
+	
+	private Formato f;
+	
+	public Cartas() {
+		Random r = new Random ();
+		f = Formato.values() [r.nextInt(Forma.values().length)];
+	}
+
 }
