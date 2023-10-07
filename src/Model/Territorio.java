@@ -1,8 +1,7 @@
 package Model;
 import java.util.ArrayList;
 
-
-public class Territorio {
+class Territorio {
 
 		Jogador jogador;
 		// Posição posicao;
