@@ -1,6 +1,6 @@
 package Model;
 
-public class Cartas {
+class Cartas {
 
 	public enum Formato{
 		Quadrado,ciruclo,retangulo;
