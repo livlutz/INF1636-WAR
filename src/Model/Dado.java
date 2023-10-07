@@ -1,7 +1,7 @@
 package Model;
 import java.util.Random;
 
-public class Dado {
+class Dado {
 	public Dado() {}
 	
 	public int rodarDado() {
