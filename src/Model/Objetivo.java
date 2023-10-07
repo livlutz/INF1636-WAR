@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Objetivo {
+class Objetivo {
   private ArrayList <String> descricao = new ArrayList <String>();
 	
 	public Objetivo() {
