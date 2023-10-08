@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 class Objetivo {
-  private ArrayList <String> descricao = new ArrayList <String>();
+  public static ArrayList <String> descricao = new ArrayList <String>();
 	
-	public Objetivo() {
+	public static Objetivo() {
 		descricao.add("Dominar a Ásia");
 		descricao.add("Dominar a África");
 		descricao.add("Dominar a Oceania");
@@ -15,14 +15,10 @@ class Objetivo {
 		descricao.add("Dominar a Europa");
 	}
 	
-	public String getObjetivo() {
+	public String getObjetivoAleatorio() {
 		Random r = new Random();
 		return descricao.get(r.nextInt(descricao.size()));
 	}
 	
-	public Objetivo exibeObjetivo() {
-		return this;
-		
-	}
 	
 }
