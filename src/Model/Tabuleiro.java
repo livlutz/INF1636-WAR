@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.HashMap;
 
 class Tabuleiro{
@@ -11,6 +13,7 @@ class Tabuleiro{
 		map.put(t.nome, t);
 		t = new Territorio("Alaska");
 		map.put(t.nome, t);
+		Objetivo.criaObjetivos();
 	}
 	public boolean VerificarAtaque(Territorio atacante, Territorio defensor) {
 		if (atacante.verificaAdjacencia(defensor)) {
@@ -24,7 +27,10 @@ class Tabuleiro{
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		//TODO
 	}
-	
+	public void inicializarContinente()	{
+		Continente continente = new Continente("America do Sul", 2);
+		continente.territorios.add(null);
+	}
 	public void MoverExercitos(int qntExercitos,Territorio origem,Territorio destino) {
 		
 		if (origem.qntExercitos > qntExercitos) {
@@ -37,7 +43,7 @@ class Tabuleiro{
 	}
 	
 	public boolean VerificarObjetivoConcluido() {//TODO
-		
+		return false;//TODO remover
 	}
 	
 	public void VerificarExercitosASeremAdicionados() {//TODO

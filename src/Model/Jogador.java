@@ -17,15 +17,12 @@ class Jogador {
 	private int qtdTerritorios = 0;
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();
 	private String obj;
-	
+
 	public Jogador(String nome, Cor cor) {
 		this.nome = nome;
 		this.cor = cor;
 	}
 	
-	public void VerObjetivo() {
-		o.exibeObjetivo();
-	}
 
 	public void verCartas() {
 		for(Cartas c : cartas) {
@@ -36,9 +33,9 @@ class Jogador {
 	protected boolean alterarQtdTerritorios (int qtd) {
 			// se tentar subtrair mais territorios do que tem 
 			if (qtd < 0)
-				if ((qtd * (-1)) > this.qntExercitos)
+				if ((qtd * (-1)) > this.qtdTerritorios)
 					return false;
-			this.qntTerritorios += qtd;
+			this.qtdTerritorios += qtd;
 			return true;
 		}
 

@@ -6,7 +6,7 @@ class Continente {
 	private String nome;
 	private int qtdExercitoConquista;
 	
-	private ArrayList <Territorio> territorios = new ArrayList <Territorio>();
+	protected ArrayList <Territorio> territorios = new ArrayList <Territorio>();
 	
 	public Continente(String nome,int execConquista) {
 		this.nome = nome;
