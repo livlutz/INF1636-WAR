@@ -5,14 +5,16 @@ class Territorio {
 
 	
 		Jogador jogador;
+		String nome;
 		// Posição posicao;
 		int qntExercitos;
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
 		
-		protected Territorio(){
+		protected Territorio(String nome){
 			// inicializa para se chamar getters não ter problema
 			this.jogador = null;
 			this.qntExercitos = 0;
+			this.nome = nome;
 		}
 			
 		// Adicionar território adjacente para inicialização
