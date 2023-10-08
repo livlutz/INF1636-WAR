@@ -12,19 +12,15 @@ class Jogador {
 	
 	private Cor cor;
 	private String nome;
-	private int numExercitoPosic;
+	private int qtdExercitoPosic;
 	private static int qtdTrocaCartas = 0;
+	private int qtdTerritorios = 0;
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();
-	Objetivo o = new Objetivo();
+	private String obj;
 	
-	public void setCor() {
-		Random random = new Random();
-		cor = Cor.values()[random.nextInt(Cor.values().length)];
-	}
-	
-	public Jogador(String nome) {
+	public Jogador(String nome, Cor cor) {
 		this.nome = nome;
-		setCor();
+		this.cor = cor;
 	}
 	
 	public void VerObjetivo() {
@@ -37,16 +33,65 @@ class Jogador {
 		}
 	}
 
+	protected boolean alterarQtdTerritorios (int qtd) {
+			// se tentar subtrair mais territorios do que tem 
+			if (qtd < 0)
+				if ((qtd * (-1)) > this.qntExercitos)
+					return false;
+			this.qntTerritorios += qtd;
+			return true;
+		}
+
+	// getters e setters padrão
 	public int getQtdExecPos() {
-		return numExercitoPosic;
+		return qtdExercitoPosic;
 	}
 
 	public static void trocarCartas (Cartas a, Cartas b, Cartas c) {
 		qtdTrocaCartas++;
 	}
 
+	public Cor getCor() {
+		return cor;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public int getQtdExercitoPosic() {
+		return qtdExercitoPosic;
+	}
+
+	public void setQtdExercitoPosic(int qtdExercitoPosic) {
+		this.qtdExercitoPosic = qtdExercitoPosic;
+	}
+
+	public int getQtdTerritorios(){
+		return qtdTerritorios;
+	}
+
+	public void setQtdTerritorios(int qtd){
+		qtdTerritorios = qtd;
+	}
+	
+	public String getObj() {
+		return obj;
+	}
+
+	public void setObj(String obj) {
+		this.obj = obj;
+	}
+
+	public static int getQtdTrocaCartas() {
+		return qtdTrocaCartas;
+	}
+
+	public ArrayList<Cartas> getCartas() {
+		return cartas;
+	}
+
 	/*Faltando: 
- 		Public Getters e setters
    		Adiconar cartas no array
      		Territorios e ver qtd de territorios
  		*/

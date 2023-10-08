@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 class Objetivo {
   public static ArrayList <String> descricao = new ArrayList <String>();
@@ -16,8 +17,8 @@ class Objetivo {
 	}
 	
 	public String getObjetivoAleatorio() {
-		Random r = new Random();
-		return descricao.get(r.nextInt(descricao.size()));
+		Collections.shuffle(descricao, new Random());
+		return descricao.pop();
 	}
 	
 	
