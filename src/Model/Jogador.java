@@ -32,7 +32,7 @@ class Jogador {
 	}
 
 	public void verCartas() {
-		for(Carta c : cartas) {
+		for(Cartas c : cartas) {
 			System.out.println(c);
 		}
 	}

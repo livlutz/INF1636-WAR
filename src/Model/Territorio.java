@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 class Territorio {
 
+	
 		Jogador jogador;
 		// Posição posicao;
 		int qntExercitos;
@@ -10,7 +11,7 @@ class Territorio {
 		
 		protected Territorio(){
 			// inicializa para se chamar getters não ter problema
-			this.jogador = NULL;
+			this.jogador = null;
 			this.qntExercitos = 0;
 		}
 			
@@ -34,6 +35,7 @@ class Territorio {
 				if ((qtd * (-1)) >= this.qntExercitos)
 					return false;
 			this.qntExercitos += qtd;
+			return true;
 		}
 		
 		// getters e setters padrão

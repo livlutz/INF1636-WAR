@@ -20,4 +20,9 @@ class Objetivo {
 		return descricao.get(r.nextInt(descricao.size()));
 	}
 	
+	public Objetivo exibeObjetivo() {
+		return this;
+		
+	}
+	
 }

@@ -1,2 +1,5 @@
 
-class Tabuleiro{}
+class Tabuleiro{
+	
+	public Tabuleiro() {}
+}
