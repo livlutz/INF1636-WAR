@@ -6,11 +6,11 @@ import java.util.Random;
 class Jogador {
 
 	// enum com as cores que um jogador pode escolher
-	public enum Cor {
+	public static enum Cor {
 		branco,preto,vermelho,azul,amarelo,verde;
 	}
 	
-	private Cor cor;
+	private int cor;
 	private String nome;
 	private int qtdExercitoPosic;
 	private static int qtdTrocaCartas = 0;
@@ -18,7 +18,7 @@ class Jogador {
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();
 	private String obj;
 
-	public Jogador(String nome, Cor cor) {
+	public Jogador(String nome, int cor) {
 		this.nome = nome;
 		this.cor = cor;
 	}
@@ -86,6 +86,11 @@ class Jogador {
 
 	public ArrayList<Cartas> getCartas() {
 		return cartas;
+	}
+
+
+	public static Cor Cor(int i) {
+		return Cor(i);
 	}
 
 	/*Faltando: 

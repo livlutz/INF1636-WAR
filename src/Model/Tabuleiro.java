@@ -1,9 +1,14 @@
 package Model;
 
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Tabuleiro{
 	HashMap<String,Territorio> map = new HashMap<String,Territorio>();
+	int numJogadores = 5;
+	ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+	Objetivo objetivo = new Objetivo();
 	public Tabuleiro() {
 		Territorio t = new Territorio("Brasil");
 		map.put(t.nome, t);
@@ -14,6 +19,7 @@ class Tabuleiro{
 		t = new Territorio("Alaska");
 		map.put(t.nome, t);
 		Objetivo.criaObjetivos();
+		InstanciaJogadores();
 	}
 	public boolean VerificarAtaque(Territorio atacante, Territorio defensor) {
 		if (atacante.verificaAdjacencia(defensor)) {
@@ -50,7 +56,17 @@ class Tabuleiro{
 		
 	}
 	
-	
+	public void InstanciaJogadores() {
+		
+		for (int i = 0;i<numJogadores;i++) {
+			Jogador jogador = new Jogador("jogador",i);
+			String obj = objetivo.getObjetivoAleatorio();
+			jogador.setObj(obj);
+			jogadores.add(jogador);
+		}
+		Collections.shuffle(jogadores);
+	}
+
 	
 	
 }
