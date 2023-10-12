@@ -3,11 +3,16 @@ package Model;
 import java.util.ArrayList;
 
 class Continente {
-	private String nome;
-	private int qtdExercitoConquista;
+	//Guarda o nome do continente
+	private String nome; 
 	
+	//Guarda a quantidade de exércitos obtidos pela sua conquista
+	private int qtdExercitoConquista; 
+	
+	//Guarda os territórios presentes no continente
 	protected ArrayList <Territorio> territorios = new ArrayList <Territorio>();
 	
+	//Construtor
 	public Continente(String nome,int execConquista) {
 		this.nome = nome;
 		qtdExercitoConquista = execConquista;

@@ -2,14 +2,21 @@ package Model;
 import java.util.ArrayList;
 
 class Territorio {
-
-	
+	 	//Guarda o jogador que domina o território
 		Jogador jogador;
+		
+		//Guarda o nome do território
 		String nome;
+		
 		// Posição posicao;
+		
+		//Guarda a quantidade de Exércitos no território
 		int qntExercitos;
+		
+		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
 		
+		//Construtor
 		protected Territorio(String nome){
 			// inicializa para se chamar getters não ter problema
 			this.jogador = null;
@@ -22,6 +29,7 @@ class Territorio {
 			this.adjacentes.add(adj);
 		}
 		
+		//Verifica se um território é adjacente a outro
 		protected boolean verificaAdjacencia (Territorio ter) {
 			for (Territorio t: adjacentes)
 				if (ter == t)

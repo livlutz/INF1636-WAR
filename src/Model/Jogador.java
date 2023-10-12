@@ -15,28 +15,36 @@ class Jogador {
 		branco,preto,vermelho,azul,amarelo,verde;
 	}
 	
-	private int cor;
-	private String nome;
-	private int qtdExercitoPosic;
-	private static int qtdTrocaCartas = 0;
-	private int qtdTerritorios = 0;
-	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();
-	private String obj;
-
+	private int cor; //Guarda a cor do jogador
+	
+	private String nome; //Guarda o nome do jogador
+	
+	private int qtdExercitoPosic; //Guarda a quantidade de Exércitos que pode posicionar
+	
+	private static int qtdTrocaCartas = 0; //Guarda a quantidade de cartas que pode trocar
+	
+	private int qtdTerritorios = 0;  //Guarda a quantidade de territórios em sua posse
+	
+	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  //Guarda as cartas que possui
+	
+	private String obj;  //Guarda seu objetivo no jogo
+	
+	//Construtor da classe
 	public Jogador(String nome, int cor) {
 		this.nome = nome;
 		this.cor = cor;
 	}
 	
-
+	//Permite ver todas as cartas na posse do jogador
 	public void verCartas() {
 		for(Cartas c : cartas) {
 			System.out.println(c);
 		}
 	}
-
+	
+	//Altera a quantidade de territórios 
 	protected boolean alterarQtdTerritorios (int qtd) {
-			// se tentar subtrair mais territorios do que tem 
+			// se tentar subtrair mais territórios do que tem 
 			if (qtd < 0)
 				if ((qtd * (-1)) > this.qtdTerritorios)
 					return false;
