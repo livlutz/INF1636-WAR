@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 class Jogador {
+	
+	/*Faltando: 
+		Adiconar cartas no array
+ 		Territorios e ver qtd de territorios
+	*/
 
 	// enum com as cores que um jogador pode escolher
 	public static enum Cor {
@@ -48,7 +53,7 @@ class Jogador {
 		qtdTrocaCartas++;
 	}
 
-	public Cor getCor() {
+	public int getCor() {
 		return cor;
 	}
 
@@ -93,8 +98,4 @@ class Jogador {
 		return Cor(i);
 	}
 
-	/*Faltando: 
-   		Adiconar cartas no array
-     		Territorios e ver qtd de territorios
- 		*/
 }

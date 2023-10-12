@@ -1,5 +1,7 @@
 package Model;
 
+// nao vamos precisar de uma main
+
 import java.util.ArrayList;
 public class Main {
 
