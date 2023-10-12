@@ -16,9 +16,16 @@ class Continente {
 	public Continente(String nome,int execConquista) {
 		this.nome = nome;
 		qtdExercitoConquista = execConquista;
-		//colocar todos os territorios que um certo continente possui
-		
 	}
 	
-	//falta o metodo de se e inteiramente dominado por algm
+	//verifica se o continente é inteiramente dominado por 1 jogador
+	public boolean continenteDominado(Jogador j) {
+		int contaMesmoJogador = 0;
+		for(Territorio t:territorios) {
+			if(t.getJogador() == j) {
+				contaMesmoJogador++;
+			}
+		}
+		return contaMesmoJogador == territorios.size();
+	}
 }
