@@ -6,7 +6,8 @@ import java.util.Collections;
 
 class Tabuleiro{
 	//Mapa do tabuleiro
-	HashMap<String,Territorio> map = new HashMap<String,Territorio>();
+	HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
+	HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	
 	//Guarda a quantidade de jogadores
 	int numJogadores = 5;
@@ -19,21 +20,7 @@ class Tabuleiro{
 	
 	//Construtor
 	public Tabuleiro() {
-		Territorio t = new Territorio("Brasil");
-		
-		map.put(t.nome, t);
-		
-		t = new Territorio("EUA");
-		
-		map.put(t.nome, t);
-		
-		t = new Territorio("Angola");
-		
-		map.put(t.nome, t);
-		
-		t = new Territorio("Alaska");
-		
-		map.put(t.nome, t);
+		InstanciaTerritorios();
 		
 		Objetivo.criaObjetivos();
 		
@@ -95,7 +82,34 @@ class Tabuleiro{
 		}
 		Collections.shuffle(jogadores);
 	}
-
+	void InstanciaTerritorios() {
+		Territorio t = new Territorio("Brasil");
+		
+		mapTerritorios.put(t.getNome(), t);
+		
+		t = new Territorio("EUA");
+		
+		mapTerritorios.put(t.getNome(), t);
+		
+		t = new Territorio("Angola");
+		
+		mapTerritorios.put(t.getNome(), t);
+		
+		t = new Territorio("Alaska");
+		
+		mapTerritorios.put(t.getNome(), t);
+		
+	}
+	
+	void InstanciaContinente() {
+		
+		Continente c = new Continente("America do Sul", 2);
+		mapContinente.put(c.getNome(), c);
+		
+		
+		
+	}
+	
 	
 	
 }

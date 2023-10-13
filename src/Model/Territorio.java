@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 class Territorio {
 	 	//Guarda o jogador que domina o território
-		Jogador jogador;
+		private Jogador jogador;
 		
 		//Guarda o nome do território
-		String nome;
+		private String nome;
 		
 		// Posição posicao;
 		
@@ -63,6 +63,10 @@ class Territorio {
 
 		public void setQntExercitos(int qntExercitos) {
 			this.qntExercitos = qntExercitos;
+		}
+		
+		public String getNome() {
+			return nome;
 		}
 
 		public ArrayList<Territorio> getAdjacentes() {
