@@ -52,7 +52,7 @@ class Tabuleiro{
 		
 		if (origem.getQntExercitos() > qntExercitos) {
 			origem.setQntExercitos(origem.getQntExercitos() - qntExercitos);
-			destino.setQntExercitos(destino.getQntExercitos() - qntExercitos);
+			destino.setQntExercitos(destino.getQntExercitos() + qntExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
@@ -90,7 +90,7 @@ class Tabuleiro{
 		for (int i = 0; i < qtdTerritorios; i++) {
 			Territorio t = cartasTerritorios.get(i);
 			Jogador j = jogadores.get(i % qtdJogadores);
-			System.out.println("Jogador " + j.getNome() + " recebeu territorio" + t.getNome());
+			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
 			t.setQntExercitos(1);
 		}

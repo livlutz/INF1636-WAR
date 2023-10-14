@@ -18,10 +18,12 @@ public class TesteTerritorio {
 	public void TestaAddAdjacente() {
 		Territorio a = new Territorio("Territorio teste A");
 		Territorio b = new Territorio ("Territorio teste B");
+		ArrayList <Territorio> list = new ArrayList <Territorio>();
+		list.add(b);
 		
 		a.AddAdjacente(b);
 		
-		assertEquals(a.getAdjacentes(),b);
+		assertEquals(a.getAdjacentes(),list);
 	}
 	
 	@Test

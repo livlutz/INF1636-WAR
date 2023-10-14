@@ -19,9 +19,12 @@ public class TesteTabuleiro {
 		Territorio b = new Territorio("B");
 		Territorio c = new Territorio("C");
 		
-		Jogador j = new Jogador(null, 3);
+		Jogador j = new Jogador(null, 20);
 		Jogador k = new Jogador(null, 1);
 		
+		a.setJogador(j);
+		b.setJogador(k);
+		c.setJogador(k);
 		a.setQntExercitos(10);
 		b.setQntExercitos(7);
 		c.setQntExercitos(1);
