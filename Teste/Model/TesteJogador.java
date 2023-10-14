@@ -73,8 +73,8 @@ public class TesteJogador {
 	@Test
 	public void testaTrocarEGetCartas() {
 		Jogador j = new Jogador ("Jooj",1);
-		Jogador.trocarCartas(null, null, null);
-		assertEquals(Jogador.getQtdTrocaCartas(),1);
+		j.trocarCartas(null, null, null);
+		assertEquals(j.getQtdTrocaCartas(),1);
 	}
 	
 	@Test

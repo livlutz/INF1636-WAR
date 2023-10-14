@@ -15,7 +15,7 @@ class Jogador {
 	
 	private int qtdExercitoPosic; //Guarda a quantidade de Exércitos que pode posicionar
 	
-	private static int qtdTrocaCartas = 0; //Guarda a quantidade de cartas que pode trocar
+	private int qtdTrocaCartas = 0; //Guarda a quantidade de cartas que pode trocar
 	
 	private int qtdTerritorios = 0;  //Guarda a quantidade de territórios em sua posse
 	
@@ -51,7 +51,7 @@ class Jogador {
 		return qtdExercitoPosic;
 	}
 
-	public static void trocarCartas (Cartas a, Cartas b, Cartas c) {
+	public void trocarCartas (Cartas a, Cartas b, Cartas c) {
 		qtdTrocaCartas++;
 	}
 
@@ -87,7 +87,7 @@ class Jogador {
 		this.obj = obj;
 	}
 
-	public static int getQtdTrocaCartas() {
+	public int getQtdTrocaCartas() {
 		return qtdTrocaCartas;
 	}
 	
