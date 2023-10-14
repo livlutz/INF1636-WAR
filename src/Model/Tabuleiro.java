@@ -21,6 +21,7 @@ class Tabuleiro{
 	//Construtor
 	public Tabuleiro() {
 		InstanciaTerritorios();
+		InstanciaContinente();
 		
 		Objetivo.criaObjetivos();
 		
@@ -28,12 +29,12 @@ class Tabuleiro{
 	}
 	
 	//Valida um ataque
-	public boolean VerificarAtaque(Territorio atacante, Territorio defensor) {
-		if (atacante.verificaAdjacencia(defensor)) {
-			if(atacante.getQntExercitos() > 1) {
-				return true;
-			}
-		}
+	public boolean VerificarAtaque(Jogador atacante, Territorio tAtacante, Territorio tDefensor) {
+		if(tAtacante.getJogador() == atacante)
+			if (atacante != tDefensor.getJogador()) 
+				if (tAtacante.verificaAdjacencia(tDefensor))
+					if(tAtacante.getQntExercitos() > 1)
+						return true;	
 		return false;
 	}
 	
