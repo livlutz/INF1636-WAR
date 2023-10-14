@@ -37,10 +37,10 @@ class Continente {
 
 	// Verifica se o continente está inteiramente dominado por algum jogador
 	public Jogador dominado(){
-		Jogador jogador = territorios[0].getJogador();
+		Jogador jogador = territorios.get(0).getJogador();
 		for (Territorio t: territorios){
 			if (t.getJogador() != jogador)
-				return NULL;
+				return null;
 		}
 		return jogador;
 	}
