@@ -7,7 +7,6 @@ class Jogador {
 	
 	/*Faltando: 
 		Adiconar cartas no array
- 		Territorios e ver qtd de territorios
 	*/
 
 	// enum com as cores que um jogador pode escolher
@@ -38,7 +37,7 @@ class Jogador {
 	//Permite ver todas as cartas na posse do jogador
 	public void verCartas() {
 		for(Cartas c : cartas) {
-			System.out.println(c);
+			System.out.println(c.f);
 		}
 	}
 	
@@ -96,12 +95,13 @@ class Jogador {
 	public static int getQtdTrocaCartas() {
 		return qtdTrocaCartas;
 	}
-
+	
+	//pra testar precisamos do metodo de add cartas no array
 	public ArrayList<Cartas> getCartas() {
 		return cartas;
 	}
 
-
+	//vamos pensar se precisamos desse metodo
 	public static Cor Cor(int i) {
 		return Cor(i);
 	}

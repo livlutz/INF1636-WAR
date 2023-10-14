@@ -9,7 +9,7 @@ class Cartas {
 	}
 	
 	//Guarda o formato presente na carta
-	private Formato f;
+	protected Formato f;
 	
 	//Construtor
 	public Cartas() {
