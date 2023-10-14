@@ -19,14 +19,17 @@ public class TesteTabuleiro {
 		Territorio b = new Territorio("B");
 		Territorio c = new Territorio("C");
 		
+		Jogador j = new Jogador(null, 3);
+		Jogador k = new Jogador(null, 1);
+		
 		a.setQntExercitos(10);
 		b.setQntExercitos(7);
 		c.setQntExercitos(1);
 		a.AddAdjacente(b);
 		c.AddAdjacente(a);
 		
-		assertTrue(t.VerificarAtaque(a, b));
-		assertFalse(t.VerificarAtaque(c, a));
+		assertTrue(t.VerificarAtaque(j, a, b));
+		assertFalse(t.VerificarAtaque(k, c, a));
 	}
 	
 	//falta implementar na classe Tabuleiro

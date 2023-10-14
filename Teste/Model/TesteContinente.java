@@ -56,7 +56,7 @@ public class TesteContinente {
 		a.setJogador(j);
 		c.addTerritorio(t);
 		c.addTerritorio(a);
-		assertEquals(c.dominado(),j);
+		assertTrue(c.dominado(j));
 	}
 
 }
