@@ -2,6 +2,8 @@ package Model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class TesteJogador {
@@ -87,7 +89,15 @@ public class TesteJogador {
 		assertEquals(j.getNome(),"Jooj");
 	}
 	
-	//falta 2 testes de metodos ainda nao implementados
+	@Test
+	public void testaAddCarta() {
+		Jogador j = new Jogador ("Jooj",1);
+		j.addCarta();
+		ArrayList <Cartas> c = new ArrayList <Cartas>();
+		c.add(new Cartas());
+		assertEquals(j.getCartas().size(),c.size());
+		
+	}
 	
 	
 }
