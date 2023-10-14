@@ -24,13 +24,12 @@ class Objetivo {
 		descricao.add("Conquistar na totalidade a AMÉRICA DO NORTE e a ÁFRICA");
 		descricao.add("Conquistar 24 TERRITÓRIOS à sua escolha");
 		descricao.add("Conquistar na totalidade a AMÉRICA DO NORTE e a OCEANIA");
-		/*descricao.add("Destruir totalmente OS EXÉRCITOS AZUIS");
+		descricao.add("Destruir totalmente OS EXÉRCITOS AZUIS");
 		descricao.add("Destruir totalmente OS EXÉRCITOS AMARELOS");
 		descricao.add("Destruir totalmente OS EXÉRCITOS VERMELHOS");
 		descricao.add("Destruir totalmente OS EXÉRCITOS PRETOS");
 		descricao.add("Destruir totalmente OS EXÉRCITOS BRANCOS");
 		descricao.add("Destruir totalmente OS EXÉRCITOS VERDES");
-		Temos que adaptar isso para as cores de cada jogador*/
 	}
 	
 	//Obtém um objetivo aleatório do array

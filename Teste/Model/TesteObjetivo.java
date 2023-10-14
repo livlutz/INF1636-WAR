@@ -12,13 +12,11 @@ public class TesteObjetivo {
 		assertNotNull(o);
 	}
 	
-	//tem q ver se e assim q testa 
 	@Test
 	public void testeGetObjAleatorio() {
 		Objetivo o = new Objetivo();
 		Objetivo.criaObjetivos();
-		String s = Objetivo.descricao.get(0);
-		assertEquals(o.getObjetivoAleatorio(),s);
+		assertNotNull(o.getObjetivoAleatorio());
 	}
 
 }

@@ -9,7 +9,7 @@ class Continente {
 	//Guarda a quantidade de exércitos obtidos pela sua conquista
 	private int qtdExercitoConquista; 
 	
-//Guarda os territórios presentes no continente
+	//Guarda os territórios presentes no continente
 	protected ArrayList <Territorio> territorios = new ArrayList <Territorio>();
 	
 	//Construtor

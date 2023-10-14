@@ -100,10 +100,12 @@ class Jogador {
 	public ArrayList<Cartas> getCartas() {
 		return cartas;
 	}
-
-	//vamos pensar se precisamos desse metodo
-	public static Cor Cor(int i) {
-		return Cor(i);
+	
+	public void addCarta() {
+		//condicao add carta -> connquistar territorios em cada jogada
+		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
+			cartas.add(new Cartas());
+		}
 	}
 
 }
