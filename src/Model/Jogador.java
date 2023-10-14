@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 class Jogador {
 
@@ -98,7 +97,7 @@ class Jogador {
 	}
 	
 	public void addCarta() {
-		//condicao add carta -> connquistar territorios em cada jogada
+		//condicao add carta -> conquistar territorios em cada jogada
 		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
 			cartas.add(new Cartas());
 		}
