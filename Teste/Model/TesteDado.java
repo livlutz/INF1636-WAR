@@ -18,8 +18,12 @@ public class TesteDado {
 				assertEquals(face,i);
 			}
 		}
-		
-		
+	}
+	
+	@Test
+	public void testaConstrutorDado() {
+		Dado a = new Dado();
+		assertNotNull(a);
 	}
 	
 

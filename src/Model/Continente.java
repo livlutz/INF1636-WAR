@@ -10,7 +10,7 @@ class Continente {
 	private int qtdExercitoConquista; 
 	
 //Guarda os territórios presentes no continente
-	ArrayList <Territorio> territorios = new ArrayList <Territorio>();
+	protected ArrayList <Territorio> territorios = new ArrayList <Territorio>();
 	
 	//Construtor
 	public Continente(String nome,int execConquista) {
