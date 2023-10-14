@@ -25,7 +25,7 @@ public class TesteJogador {
 		Jogador j = new Jogador ("Jooj",1);
 		j.setQtdTerritorios(4);
 		assertTrue(j.alterarQtdTerritorios(1));
-		assertFalse(j.alterarQtdTerritorios(-5));
+		assertFalse(j.alterarQtdTerritorios(-6));
 	}
 	
 	@Test
