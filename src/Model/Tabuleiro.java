@@ -82,6 +82,7 @@ class Tabuleiro{
 		}
 		Collections.shuffle(jogadores);
 	}
+	
 	void InstanciaTerritorios() {
 		Territorio t = new Territorio("Brasil");
 		
@@ -102,12 +103,8 @@ class Tabuleiro{
 	}
 	
 	void InstanciaContinente() {
-		
 		Continente c = new Continente("America do Sul", 2);
 		mapContinente.put(c.getNome(), c);
-		
-		
-		
 	}
 	
 	
