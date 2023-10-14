@@ -16,11 +16,9 @@ class Territorio {
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
 		
-		//Construtor
-		protected Territorio(String nome){
+		public Territorio(String nome){
 			// inicializa para se chamar getters não ter problema
 			this.jogador = null;
-			this.qntExercitos = 0;
 			this.nome = nome;
 		}
 			

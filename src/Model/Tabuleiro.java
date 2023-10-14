@@ -84,27 +84,156 @@ class Tabuleiro{
 	}
 	
 	void InstanciaTerritorios() {
-		Territorio t = new Territorio("Brasil");
+		Territorio t;
 		
+		// territorios América do Sul
+		t = new Territorio("Brasil");
 		mapTerritorios.put(t.getNome(), t);
-		
-		t = new Territorio("EUA");
-		
+
+		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
-		
-		t = new Territorio("Angola");
-		
+
+		t = new Territorio("Peru");
 		mapTerritorios.put(t.getNome(), t);
-		
-		t = new Territorio("Alaska");
-		
+
+		t = new Territorio("Venezuela");
 		mapTerritorios.put(t.getNome(), t);
-		
+
+
+		// territorios América do Norte
+		t = new Territorio("Nova Iorque");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Mexico");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("California");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Groelandia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Ottawa");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Alasca");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Labrador");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Vancouver");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Mackenzie");
+		mapTerritorios.put(t.getNome(), t);
+
+		// territorios Europa
+
+		t = new Territorio("Moscou");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Islandia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Inglaterra");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Alemanha");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Polonia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Franca");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Suecia");
+		mapTerritorios.put(t.getNome(), t);
+
+
+		// territorios Africa
+		t = new Territorio("Egito");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Congo");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Africa do Sul");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Madagascar");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Argelia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Sudao");
+		mapTerritorios.put(t.getNome(), t);
+
+
+		// territorios Asia
+		t = new Territorio("Oriente Medio");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("India");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Siberia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("China");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Mongolia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Japao");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Aral");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Omsk");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Tchita");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Vladivostok");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Dudinka");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Vietna");
+		mapTerritorios.put(t.getNome(), t);
+
+
+		// territorios Oceania
+		t = new Territorio("Australia");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Nova Guine");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Sumatra");
+		mapTerritorios.put(t.getNome(), t);
+
+		t = new Territorio("Borneo");
+		mapTerritorios.put(t.getNome(), t);
+
 	}
 	
 	void InstanciaContinente() {
 		Continente c = new Continente("America do Sul", 2);
+		Territorio t;
+		t = mapTerritorios.get("Brasil");
+		c.territorios.add(t);
+
 		mapContinente.put(c.getNome(), c);
+
+
 	}
 	
 	
