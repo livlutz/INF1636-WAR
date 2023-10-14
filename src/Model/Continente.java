@@ -3,6 +3,12 @@ package Model;
 import java.util.ArrayList;
 
 class Continente {
+
+	// enum com as cores que um jogador pode escolher
+	public static enum CorCont {
+		verde, laranja, azul, rosa, amarelo, vermelho;
+	}
+
 	//Guarda o nome do continente
 	private String nome; 
 	
@@ -11,11 +17,16 @@ class Continente {
 	
 	//Guarda os territórios presentes no continente
 	protected ArrayList <Territorio> territorios = new ArrayList <Territorio>();
-	
+
+	//Guarda a cor do continente
+	private CorCont cor;
+
+
 	//Construtor
-	public Continente(String nome,int execConquista) {
+	public Continente(String nome,int execConquista, CorCont corCont) {
 		this.nome = nome;
 		qtdExercitoConquista = execConquista;
+		this.cor = corCont;
 	}
 
 	public ArrayList <Territorio> getTerritorios(){
