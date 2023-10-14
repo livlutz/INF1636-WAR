@@ -11,7 +11,7 @@ class Territorio {
 		// Posição posicao;
 		
 		//Guarda a quantidade de Exércitos no território
-		int qntExercitos;
+		private int qntExercitos;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();

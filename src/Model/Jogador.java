@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 class Jogador {
-	
-	/*Faltando: 
-		Adiconar cartas no array
-	*/
 
 	// enum com as cores que um jogador pode escolher
 	public static enum Cor {

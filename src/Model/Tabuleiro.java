@@ -30,7 +30,7 @@ class Tabuleiro{
 	//Valida um ataque
 	public boolean VerificarAtaque(Territorio atacante, Territorio defensor) {
 		if (atacante.verificaAdjacencia(defensor)) {
-			if(atacante.qntExercitos > 1) {
+			if(atacante.getQntExercitos() > 1) {
 				return true;
 			}
 		}
@@ -52,9 +52,9 @@ class Tabuleiro{
 	//Move exercitos por territórios
 	public void MoverExercitos(int qntExercitos,Territorio origem,Territorio destino) {
 		
-		if (origem.qntExercitos > qntExercitos) {
-			origem.qntExercitos -= qntExercitos;
-			destino.qntExercitos += qntExercitos;
+		if (origem.getQntExercitos() > qntExercitos) {
+			origem.setQntExercitos(origem.getQntExercitos() - qntExercitos);
+			destino.setQntExercitos(destino.getQntExercitos() - qntExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
