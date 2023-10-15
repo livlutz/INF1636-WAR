@@ -102,6 +102,11 @@ class Tabuleiro{
 		return mapTerritorios.get(nomeTerritorio);
 	}
 
+	// Retorna hashmap de continentes
+	public static HashMap<String, Continente> getContinentes(){
+		return mapContinente;
+	}
+
 	//Inicializa os territórios
 	void InstanciaTerritorios() {
 		Territorio t;

@@ -1,7 +1,11 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
+
+import javax.print.attribute.HashAttributeSet;
 
 class Jogador {
 
@@ -91,6 +95,63 @@ class Jogador {
 	
 		t.alterarQtdExercitos(qtdExercitos);
 
+	}
+
+	// Executa todos os passos para a rodada de posicionamento de um jogador
+	public void rodadaDePosicionamento(){
+		HashMap <String, Continente> continentes = Tabuleiro.getContinentes();
+		
+		// para cada continente, se o jogador dominar, posiciona os exércitos
+		for (Map.Entry<String, Continente> e: continentes.entrySet()){
+			if (e.getValue().dominado(this))
+				this.posicionarExercCont(e.getValue());
+		}
+
+		this.qtdExercitoPosic = this.qtdTerritorios/2;
+
+		// objeto para pegar input de nome
+		Scanner input = new Scanner(System.in);
+
+		// posiciona os exércitos em territórios do jogador
+		while (this.qtdExercitoPosic > 0){
+			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar.");
+			
+			// pede ao usuário o nome do território
+			System.out.println("Digite o nome do território: ");
+			String nomeTerritorio = input.nextLine();
+
+			// procura o território no hashmap do tabuleiro 
+			Territorio t = Tabuleiro.getTerritorio(nomeTerritorio);
+			
+			// verifica se o território existe
+			if (t == null){
+				System.out.println("Território não encontrado.");
+				continue;
+			}
+
+			// verifica se o território pertence ao jogador
+			if (t.getJogador() == this){
+
+				// pede ao usuário a quantidade de exércitos a serem posicionados
+				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
+				int qtdExercitos = input.nextInt();
+				input.nextLine();
+
+				// verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
+				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
+
+					// posiciona os exércitos no território
+					this.posicionarExercitos(t, qtdExercitos);
+
+					// subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
+					this.qtdExercitoPosic -= qtdExercitos;
+				}
+				else
+					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
+				
+			}
+		}
+		input.close();
 	}
 	
 	//Altera a quantidade de territórios 
