@@ -109,8 +109,26 @@ class Jogador {
 
 		this.qtdExercitoPosic = this.qtdTerritorios/2;
 
-		// objeto para pegar input de nome
+		// objeto para pegar input
 		Scanner input = new Scanner(System.in);
+
+		if (this.temTroca()){
+			this.verCartas();
+			System.out.println("Você quer trocar cartas? (S/N)");
+			String resp = input.nextLine();
+			if (resp.equals("S") || resp.equals("s")){
+				System.out.println("Digite os três formatos das cartas que deseja trocar (C/Q/T): ");
+				String a = input.nextLine();
+				String b = input.nextLine();
+				String c = input.nextLine();
+
+
+				// implementar achar as cartas para usar no método trocarCartas
+
+				
+			}
+		}
+		
 
 		// posiciona os exércitos em territórios do jogador
 		while (this.qtdExercitoPosic > 0){
@@ -162,9 +180,25 @@ class Jogador {
 					return false;
 			this.qtdTerritorios += qtd;
 			return true;
-		}
+	}
 	
-//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
+	//
+	public boolean temTroca(){
+		int circulos = 0, quadrados = 0, retangulos = 0;
+		for (Cartas c: cartas){
+			if (c.f == Cartas.Formato.ciruclo)
+				circulos++;
+			else if (c.f == Cartas.Formato.Quadrado)
+				quadrados++;
+			else
+				retangulos++;
+		}
+		if (circulos >= 3 || quadrados >= 3 || retangulos >= 3 || (circulos >= 1 && quadrados >= 1 && retangulos >= 1))
+			return true;
+		return false;
+	}
+
+	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
 	public void trocarCartas (Cartas a, Cartas b, Cartas c) {
 		int primTrocaExerc = 4;
 		
