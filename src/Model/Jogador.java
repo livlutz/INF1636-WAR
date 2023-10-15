@@ -108,11 +108,11 @@ class Jogador {
 		int primTrocaExerc = 4;
 		
 		if(qtdTrocaCartas == 0) {
-			qtdExercitoPosic+=primTrocaExerc;
+			qtdExercitoPosic += primTrocaExerc;
 		}
 		
 		else {
-			qtdExercitoPosic+= (primTrocaExerc+2*qtdTrocaCartas);
+			qtdExercitoPosic += (primTrocaExerc+2*qtdTrocaCartas);
 		}
 		
 		qtdTrocaCartas++;
