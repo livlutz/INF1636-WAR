@@ -62,10 +62,13 @@ public class TesteContinente {
 	@Test
 	public void testeNoContinente() {
 		Continente c = new Continente(null, 0, null);
-		c.territorios.add(new Territorio("A"));
+		Territorio t = new Territorio("A");
+		c.territorios.add(t);
 		
-		assertTrue(c.noContinente("A"));
-		assertFalse(c.noContinente("B"));
+		assertTrue(c.noContinente(t));
+		
+		t = new Territorio("B");
+		assertFalse(c.noContinente(t));
 		
 	}
 
