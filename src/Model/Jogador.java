@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Jogador {
 
@@ -35,6 +36,62 @@ class Jogador {
 			System.out.println(c.f);
 		}
 	}
+
+	// Posicionar exércitos em continente dominado
+	// Deve ser chamado no início da jogada se o jogador dominar um continente
+	public void posicionarExercCont(Continente cont){
+		// objeto para pegar input de nome
+		Scanner input = new Scanner(System.in);
+
+		this.qtdExercitoPosic = cont.getQtdExerc();
+		while (this.qtdExercitoPosic > 0){
+			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar em " + cont.getNome() + ".");
+			
+			// pede ao usuário o nome do território
+			System.out.println("Digite o nome do território: ");
+			String nomeTerritorio = input.nextLine();
+
+			// procura o território no hashmap do tabuleiro 
+			Territorio t = Tabuleiro.getTerritorio(nomeTerritorio);
+			
+			// verifica se o território existe
+			if (t == null){
+				System.out.println("Território não encontrado.");
+				continue;
+			}
+
+			// verifica se o território pertence ao continente
+			if (cont.noContinente(t)){
+
+				// pede ao usuário a quantidade de exércitos a serem posicionados
+				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
+				int qtdExercitos = input.nextInt();
+				input.nextLine();
+
+				// verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
+				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
+
+					// posiciona os exércitos no território
+					this.posicionarExercitos(t, qtdExercitos);
+
+					// subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
+					this.qtdExercitoPosic -= qtdExercitos;
+				}
+				else
+					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
+				
+			}
+		}
+		input.close();
+	}
+
+	// Posicionar exércitos em território do jogador
+	// Cabe a função que chamou verificar se pode
+	public void posicionarExercitos(Territorio t, int qtdExercitos){
+	
+		t.alterarQtdExercitos(qtdExercitos);
+
+	}
 	
 	//Altera a quantidade de territórios 
 	protected boolean alterarQtdTerritorios (int qtd) {
@@ -45,10 +102,8 @@ class Jogador {
 			this.qtdTerritorios += qtd;
 			return true;
 		}
-
-	// getters e setters padrão
 	
-	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
+//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
 	public void trocarCartas (Cartas a, Cartas b, Cartas c) {
 		int primTrocaExerc = 4;
 		

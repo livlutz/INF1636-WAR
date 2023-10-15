@@ -6,8 +6,8 @@ import java.util.Collections;
 
 class Tabuleiro{
 	//Mapa do tabuleiro
-	HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
-	HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
+	static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
+	static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 
 	ArrayList<Territorio> cartasTerritorios = new ArrayList<Territorio>();
 	
@@ -95,6 +95,11 @@ class Tabuleiro{
 			t.setQntExercitos(1);
 		}
 
+	}
+
+	// Retorna objeto territorio a partir do nome
+	public static Territorio getTerritorio(String nomeTerritorio){
+		return mapTerritorios.get(nomeTerritorio);
 	}
 
 	//Inicializa os territórios

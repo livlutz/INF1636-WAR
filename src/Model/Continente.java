@@ -55,10 +55,10 @@ class Continente {
 		return true;
 	}
 
-	// Verifica por nome se determinado território pertence ao continente
-	public boolean noContinente(String ter){
+	// Verifica se determinado território pertence ao continente
+	public boolean noContinente(Territorio ter){
 		for (Territorio t: territorios){
-			if (t.getNome() == ter)
+			if (t == ter)
 				return true;
 		}
 		return false;
