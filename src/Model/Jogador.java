@@ -47,11 +47,19 @@ class Jogador {
 		}
 
 	// getters e setters padrão
-	public int getQtdExecPos() {
-		return qtdExercitoPosic;
-	}
-
+	
+	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
 	public void trocarCartas (Cartas a, Cartas b, Cartas c) {
+		int primTrocaExerc = 4;
+		
+		if(qtdTrocaCartas == 0) {
+			qtdExercitoPosic+=primTrocaExerc;
+		}
+		
+		else {
+			qtdExercitoPosic+= (primTrocaExerc+2*qtdTrocaCartas);
+		}
+		
 		qtdTrocaCartas++;
 	}
 

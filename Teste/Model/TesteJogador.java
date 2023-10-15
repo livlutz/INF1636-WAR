@@ -32,14 +32,14 @@ public class TesteJogador {
 	public void testaGetQtdExecPos() {
 		Jogador j = new Jogador ("Jooj",1);
 		j.setQtdExercitoPosic(4);
-		assertEquals(j.getQtdExecPos(),4);
+		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
 	@Test
 	public void testaSetQtdExecPosic() {
 		Jogador j = new Jogador ("Jooj",1);
 		j.setQtdExercitoPosic(4);
-		assertEquals(j.getQtdExecPos(),4);
+		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
 	@Test
@@ -71,10 +71,11 @@ public class TesteJogador {
 	}
 	
 	@Test
-	public void testaTrocarEGetCartas() {
+	public void testaTrocarEGetQtdDeCartas() {
 		Jogador j = new Jogador ("Jooj",1);
 		j.trocarCartas(null, null, null);
 		assertEquals(j.getQtdTrocaCartas(),1);
+		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
 	@Test
