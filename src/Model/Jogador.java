@@ -164,9 +164,10 @@ class Jogador {
 					// subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
 					this.qtdExercitoPosic -= qtdExercitos;
 				}
-				else
-					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
 				
+				else {
+					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
+				}
 			}
 		}
 		input.close();
@@ -175,9 +176,11 @@ class Jogador {
 	//Altera a quantidade de territórios 
 	protected boolean alterarQtdTerritorios (int qtd) {
 			// se tentar subtrair mais territórios do que tem 
-			if (qtd < 0)
-				if ((qtd * (-1)) > this.qtdTerritorios)
+			if (qtd < 0) {
+				if ((qtd * (-1)) > this.qtdTerritorios) {
 					return false;
+				}
+			}
 			this.qtdTerritorios += qtd;
 			return true;
 	}
