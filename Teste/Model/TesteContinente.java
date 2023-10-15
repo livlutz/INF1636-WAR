@@ -58,5 +58,15 @@ public class TesteContinente {
 		c.addTerritorio(a);
 		assertTrue(c.dominado(j));
 	}
+	
+	@Test
+	public void testeNoContinente() {
+		Continente c = new Continente(null, 0, null);
+		c.territorios.add(new Territorio("A"));
+		
+		assertTrue(c.noContinente("A"));
+		assertFalse(c.noContinente("B"));
+		
+	}
 
 }
