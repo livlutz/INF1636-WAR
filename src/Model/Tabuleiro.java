@@ -108,7 +108,7 @@ class Tabuleiro{
 	}
 
 	//Inicializa os territórios
-	void InstanciaTerritorios() {
+	private void InstanciaTerritorios() {
 		Territorio t;
 		
 		// territorios América do Sul
@@ -291,11 +291,10 @@ class Tabuleiro{
 
 	}
 	
-	void InstanciaContinente() {
+	private void InstanciaContinente() {
 		Territorio t;
 		Continente c; 
 		
-
 		c = new Continente("America do Sul", 2, Continente.CorCont.verde);
 		
 		t = mapTerritorios.get("Brasil");
@@ -311,7 +310,6 @@ class Tabuleiro{
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
-
 
 		c = new Continente("America do Norte", 5, Continente.CorCont.laranja);
 
@@ -344,7 +342,6 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-
 		c = new Continente("Europa", 5, Continente.CorCont.azul);
 
 		t = mapTerritorios.get("Moscou");
@@ -370,7 +367,6 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-
 		c = new Continente("Africa", 3, Continente.CorCont.rosa);
 
 		t = mapTerritorios.get("Egito");
@@ -392,7 +388,6 @@ class Tabuleiro{
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
-
 
 		c = new Continente("Asia", 7, Continente.CorCont.amarelo);
 
@@ -434,7 +429,6 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-
 		c = new Continente("Oceania", 2, Continente.CorCont.vermelho);
 
 		t = mapTerritorios.get("Australia");
@@ -450,7 +444,6 @@ class Tabuleiro{
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
-
 	}
 	
 	
