@@ -185,7 +185,7 @@ class Jogador {
 			return true;
 	}
 	
-	//
+	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, retangulos = 0;
 		for (Cartas c: cartas){

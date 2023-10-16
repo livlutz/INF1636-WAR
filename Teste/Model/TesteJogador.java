@@ -97,8 +97,16 @@ public class TesteJogador {
 		ArrayList <Cartas> c = new ArrayList <Cartas>();
 		c.add(new Cartas());
 		assertEquals(j.getCartas().size(),c.size());
-		
 	}
 	
+	@Test
+	public void testaTrocaCartas() {
+		Jogador j = new Jogador(null, 0);
+		for(int i =0; i<5;i++) {
+			j.addCarta();
+		}
+		assertTrue(j.temTroca());
+		
+	}
 	
 }
