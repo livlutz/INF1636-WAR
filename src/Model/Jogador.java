@@ -121,15 +121,10 @@ class Jogador {
 				String a = input.nextLine();
 				String b = input.nextLine();
 				String c = input.nextLine();
-
-
 				// implementar achar as cartas para usar no método trocarCartas
-
-				
 			}
 		}
 		
-
 		// posiciona os exércitos em territórios do jogador
 		while (this.qtdExercitoPosic > 0){
 			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar.");
