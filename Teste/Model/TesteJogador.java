@@ -106,7 +106,11 @@ public class TesteJogador {
 			j.addCarta();
 		}
 		assertTrue(j.temTroca());
-		
+	}
+	
+	@Test
+	public void testeRodadaDePosicionamento() {
+		//TODO
 	}
 	
 }

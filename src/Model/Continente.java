@@ -21,7 +21,6 @@ class Continente {
 	//Guarda a cor do continente
 	private CorCont cor;
 
-
 	//Construtor
 	public Continente(String nome,int execConquista, CorCont corCont) {
 		this.nome = nome;

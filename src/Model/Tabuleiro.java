@@ -6,19 +6,19 @@ import java.util.Collections;
 
 class Tabuleiro{
 	//Mapa do tabuleiro
-	static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
-	static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
+	private static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
+	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 
-	ArrayList<Territorio> cartasTerritorios = new ArrayList<Territorio>();
+	private ArrayList<Territorio> cartasTerritorios = new ArrayList<Territorio>();
 	
 	//Guarda a quantidade de jogadores
-	int numJogadores = 5;
+	private int numJogadores = 5;
 	
 	//Guarda cada jogador
-	ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	
 	//Inicializa os objetivos
-	Objetivo objetivo = new Objetivo();
+	private Objetivo objetivo = new Objetivo();
 	
 	//Construtor
 	public Tabuleiro() {
@@ -445,6 +445,67 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 	}
+
+	
+	public static HashMap<String, Territorio> getMapTerritorios() {
+		return mapTerritorios;
+	}
+	
+
+	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
+		Tabuleiro.mapTerritorios = mapTerritorios;
+	}
+	
+
+	public static HashMap<String, Continente> getMapContinente() {
+		return mapContinente;
+	}
+	
+
+	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
+		Tabuleiro.mapContinente = mapContinente;
+	}
+	
+
+	public ArrayList<Territorio> getCartasTerritorios() {
+		return cartasTerritorios;
+	}
+	
+
+	public void setCartasTerritorios(ArrayList<Territorio> cartasTerritorios) {
+		this.cartasTerritorios = cartasTerritorios;
+	}
+	
+
+	public int getNumJogadores() {
+		return numJogadores;
+	}
+	
+
+	public void setNumJogadores(int numJogadores) {
+		this.numJogadores = numJogadores;
+	}
+	
+
+	public ArrayList<Jogador> getJogadores() {
+		return jogadores;
+	}
+	
+
+	public void setJogadores(ArrayList<Jogador> jogadores) {
+		this.jogadores = jogadores;
+	}
+	
+
+	public Objetivo getObjetivo() {
+		return objetivo;
+	}
+	
+
+	public void setObjetivo(Objetivo objetivo) {
+		this.objetivo = objetivo;
+	}
+	
 	
 	
 }

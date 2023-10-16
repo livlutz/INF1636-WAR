@@ -2,10 +2,13 @@ package Model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.junit.Test;
 
 public class TesteTabuleiro {
-
+	
 	@Test
 	public void testaConstrutor() {
 		Tabuleiro t = new Tabuleiro();
@@ -35,16 +38,6 @@ public class TesteTabuleiro {
 		assertFalse(t.VerificarAtaque(k, c, a));
 	}
 	
-	//falta implementar na classe Tabuleiro
-	@Test
-	public void testeRealizaAtque() {
-		
-	}
-	
-	//falta implementar o metodo incializaContinente na classe Tabuleiro
-	@Test
-	public void testeInicializaContinente() {}
-	
 	@Test
 	public void testeMoverExercitos() {
 		Tabuleiro t = new Tabuleiro();
@@ -65,18 +58,37 @@ public class TesteTabuleiro {
 		assertEquals(d.getQntExercitos(),1);
 	}
 	
-	//falta implementar na classe tabuleiro
 	@Test
-	public void testeVerificarObjetivoConcluido() {
+	public void testaGetTerritorio() {
+		Tabuleiro t = new Tabuleiro();
+		Territorio terr = new Territorio("Teste");
+		t.getMapTerritorios().put("Teste", terr);
+		assertEquals(Tabuleiro.getTerritorio("Teste"),terr);
+	}
+	
+	@Test
+	public void testaGetContinente() {
+		Tabuleiro t = new Tabuleiro();
+		Continente c = new Continente("A", 0, null);
+		HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
+		t.setMapContinente(mapContinente);
+		assertEquals(Tabuleiro.getContinentes(),mapContinente);
+	}
+	
+	//TODO
+	@Test
+	public void testeVerificarObjetivoConcluido() {}
+	
+	//TODO
+	@Test
+	public void testeVerificarExercitosASeremPosicionados() {}
+	
+	//TODO
+	@Test
+	public void testeRealizaAtque() {}
 		
-	}
 	
-	//falta implementar na classe tabuleiro
-	@Test
-	public void testeVerificarExercitosASeremPosicionados() {
-			
-	}
 	
-	//discutir como vamos implementar os testes das outras funoes
+	
 
 }
