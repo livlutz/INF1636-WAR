@@ -6,12 +6,20 @@ import javax.swing.*;
 
 public class CharacterSelectionPanel extends JPanel {
 
-		JTextField textFields = new JTextField();
-		JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo"});
-		
-		public CharacterSelectionPanel() {
-			add(textFields);
-			add(comboBox);
-		}
+	int numJogadores = 4;
+	SelectionComponent sc = new SelectionComponent();
+	SelectionComponent sc1 = new SelectionComponent();
+	SelectionComponent sc2 = new SelectionComponent();
+	SelectionComponent sc3 = new SelectionComponent();
+	JButton btn = new JButton("Iniciar Jogo");
+	public CharacterSelectionPanel() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		add(sc);
+		add(sc1);
+		add(sc2);
+		add(sc3);
+		add(btn);
+			
+	}
 		
 }

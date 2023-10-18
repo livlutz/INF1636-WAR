@@ -8,7 +8,7 @@ class Tabuleiro{
 	//Mapa do tabuleiro
 	private static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
-
+	private static Tabuleiro tabuleiro = null;
 	private ArrayList<Territorio> cartasTerritorios = new ArrayList<Territorio>();
 	
 	//Guarda a quantidade de jogadores
@@ -21,7 +21,7 @@ class Tabuleiro{
 	private Objetivo objetivo = new Objetivo();
 	
 	//Construtor
-	public Tabuleiro() {
+	private Tabuleiro() {
 		InstanciaTerritorios();
 		InstanciaContinente();
 		
@@ -30,6 +30,11 @@ class Tabuleiro{
 		InstanciaJogadores();
 
 		distribuiTerritorios();
+	}
+	public Tabuleiro getTabuleiro() {
+		if (tabuleiro == null)
+			return new Tabuleiro();
+		return tabuleiro;
 	}
 	
 	//Valida um ataque

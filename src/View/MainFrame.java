@@ -16,8 +16,9 @@ public class MainFrame extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setTitle("War");
 			setVisible(true);
-			//getContentPane().add(startingPanel);
-			getContentPane().add(csPanel);
+			getContentPane().add(startingPanel);
+			//getContentPane().add(gamePanel);
+			//getContentPane().add(csPanel);
 			
 		}
 		public static MainFrame getInstance() {
