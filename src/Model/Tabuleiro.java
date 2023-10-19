@@ -163,7 +163,6 @@ class Tabuleiro{
 		cartasTerritorios.add(t);
 
 		// territorios Europa
-
 		t = new Territorio("Moscou");
 		mapTerritorios.put(t.getNome(), t);
 		cartasTerritorios.add(t);
@@ -191,8 +190,7 @@ class Tabuleiro{
 		t = new Territorio("Suecia");
 		mapTerritorios.put(t.getNome(), t);
 		cartasTerritorios.add(t);
-
-
+		
 		// territorios Africa
 		t = new Territorio("Egito");
 		mapTerritorios.put(t.getNome(), t);
@@ -217,7 +215,6 @@ class Tabuleiro{
 		t = new Territorio("Sudao");
 		mapTerritorios.put(t.getNome(), t);
 		cartasTerritorios.add(t);
-
 
 		// territorios Asia
 		t = new Territorio("Oriente Medio");
@@ -267,7 +264,6 @@ class Tabuleiro{
 		t = new Territorio("Vietna");
 		mapTerritorios.put(t.getNome(), t);
 		cartasTerritorios.add(t);
-
 
 		// territorios Oceania
 		t = new Territorio("Australia");
