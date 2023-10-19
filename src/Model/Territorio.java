@@ -71,5 +71,72 @@ class Territorio {
 			return adjacentes;
 		}
 
+		private void instanciaAdjacentes(Territorio t){
+    			switch(t.nome){
+        		//América do sul
+        		case "Brasil":
+            			Territorio a = new Territorio("Argentina");
+            			Territorio b = new Territorio("Peru").
+            			Territorio c = new Territorio("Venezuela");
+            			//Falta 1 da áfrica q eu não sei qual é - acho q é Argélia 
+			            Territorio d = new Territorio();
+			            t.AddAdjacente(a);
+			            t.AddAdjacente(b);
+			            t.AddAdjacente(c);
+			            t.AddAdjacente(d);
+		        case "Argentina":
+		            Territorio a = new Territorio("Brasil");
+		            Territorio b = new Territorio("Peru").
+		            Territorio c = new Territorio("Venezuela");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		            t.AddAdjacente(c);
+		        case "Peru":
+		            Territorio a = new Territorio("Argentina");
+		            Territorio b = new Territorio("Brasi").
+		            Territorio c = new Territorio("Venezuela");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		            t.AddAdjacente(c);
+		        case "Venezuela":
+		            Territorio a = new Territorio("Brasil");
+		            Territorio b = new Territorio("Peru").
+		            Territorio c = new Territorio("Argentina");
+		            Territorio c = new Territorio("México");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		            t.AddAdjacente(c);
+		            t.AddAdjacente(d);
+		
+		        //Territórios Oceania
+		        case "Australia":
+		            Territorio a = new Territorio("Nova Guine");
+		            Territorio b = new Territorio("Sumatra");
+		            Territorio c = new Territorio("Borneo");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		            t.AddAdjacente(c);
+		        case "Borneo":
+		            Territorio a = new Territorio("Australia");
+		            t.AddAdjacente(a);
+		        case "Nova Guine":
+		            Territorio a = new Territorio("Australia");
+		            Territorio b = new Territorio("Sumatra");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		        case "Sumatra":
+		            Territorio a = new Territorio("Australia");
+		            Territorio b = new Territorio("Nova Guine").
+		            Territorio c = new Territorio("India");
+		            //Agum país da ásia q eu n
+		            Territorio d = new Territorio("México");
+		            t.AddAdjacente(a);
+		            t.AddAdjacente(b);
+		            t.AddAdjacente(c);
+		            t.AddAdjacente(d);
+		
+		    }
+}
+
 	
 }
