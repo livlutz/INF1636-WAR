@@ -197,18 +197,26 @@ class Jogador {
 	}
 
 	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
-	public void trocarCartas (Cartas a, Cartas b, Cartas c) {
-		int primTrocaExerc = 4;
+	public boolean trocarCartas (Cartas a, Cartas b, Cartas c) {
+		if(temTroca()) {
+			int primTrocaExerc = 4;
 		
-		if(qtdTrocaCartas == 0) {
-			qtdExercitoPosic += primTrocaExerc;
+			if(qtdTrocaCartas == 0) {
+				qtdExercitoPosic += primTrocaExerc;
+			}
+		
+			else {
+				qtdExercitoPosic += (primTrocaExerc + 2 * qtdTrocaCartas);
+			}
+		
+			qtdTrocaCartas++;
+			return true;
 		}
 		
 		else {
-			qtdExercitoPosic += (primTrocaExerc+2*qtdTrocaCartas);
+			return false;
 		}
 		
-		qtdTrocaCartas++;
 	}
 
 	public int getCor() {
@@ -247,7 +255,6 @@ class Jogador {
 		return qtdTrocaCartas;
 	}
 	
-	//pra testar precisamos do metodo de add cartas no array
 	public ArrayList<Cartas> getCartas() {
 		return cartas;
 	}
