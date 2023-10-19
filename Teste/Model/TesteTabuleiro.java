@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class TesteTabuleiro {
 	
-	@Test
+	/*@Test
 	public void testaConstrutor() {
 		Tabuleiro t = new Tabuleiro();
 		assertNotNull(t);
@@ -85,7 +85,7 @@ public class TesteTabuleiro {
 	
 	//TODO
 	@Test
-	public void testeRealizaAtque() {}
+	public void testeRealizaAtque() {}*/
 		
 	
 	

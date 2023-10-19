@@ -47,7 +47,7 @@ class Tabuleiro{
 		return false;
 	}
 	
-	//Realiza um ataque
+	//Realiza um ataque colocar na API jogo
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		//TODO
 	}
@@ -62,14 +62,6 @@ class Tabuleiro{
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
 		}
-	}
-	
-	public boolean VerificarObjetivoConcluido() {//TODO
-		return false;//TODO remover
-	}
-	
-	public void VerificarExercitosASeremAdicionados() {//TODO
-		
 	}
 	
 	 //Inicializa cada jogador

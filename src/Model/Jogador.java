@@ -184,7 +184,7 @@ class Jogador {
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, retangulos = 0;
 		for (Cartas c: cartas){
-			if (c.f == Cartas.Formato.ciruclo)
+			if (c.f == Cartas.Formato.circulo)
 				circulos++;
 			else if (c.f == Cartas.Formato.Quadrado)
 				quadrados++;
