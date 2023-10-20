@@ -8,14 +8,13 @@ class Territorio {
 		//Guarda o nome do território
 		private String nome;
 		
-		// Posição posicao;
-		
 		//Guarda a quantidade de Exércitos no território
 		private int qntExercitos;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
 		
+		//Construtor
 		public Territorio(String nome){
 			// inicializa para se chamar getters não ter problema
 			this.jogador = null;
@@ -45,32 +44,8 @@ class Territorio {
 			this.qntExercitos += qtd;
 			return true;
 		}
-		
-		// getters e setters padrão
-		public Jogador getJogador() {
-			return jogador;
-		}
 
-		public void setJogador(Jogador jogador) {
-			this.jogador = jogador;
-		}
-
-		public int getQntExercitos() {
-			return qntExercitos;
-		}
-
-		public void setQntExercitos(int qntExercitos) {
-			this.qntExercitos = qntExercitos;
-		}
-		
-		public String getNome() {
-			return nome;
-		}
-
-		public ArrayList<Territorio> getAdjacentes() {
-			return adjacentes;
-		}
-
+		//Instancia os territórios adjacentes
 		protected void instanciaAdjacentes(Territorio t){
 			switch(t.nome){
 				//América do sul
@@ -410,5 +385,38 @@ class Territorio {
 				break;
 			}
 		}
+		
+		// ---------------------- getters & setters ----------------------
+		//Retorna o jogador
+		public Jogador getJogador() {
+			return jogador;
+		}
+
+		//Altera o jogador
+		public void setJogador(Jogador jogador) {
+			this.jogador = jogador;
+		}
+
+		//Retorna a quantidade de exércitos
+		public int getQntExercitos() {
+			return qntExercitos;
+		}
+
+		//Altera a quantidade de exércitos
+		public void setQntExercitos(int qntExercitos) {
+			this.qntExercitos = qntExercitos;
+		}
+		
+		//Retorna o nome do território
+		public String getNome() {
+			return nome;
+		}
+
+		//Retorna os territórios adjacentes (o ArrayList de territórios adjacentes)
+		public ArrayList<Territorio> getAdjacentes() {
+			return adjacentes;
+		}
+
+		
 
 }
