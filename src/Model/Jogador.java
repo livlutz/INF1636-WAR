@@ -27,6 +27,8 @@ class Jogador {
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  //Guarda as cartas que possui
 	
 	private String obj;  //Guarda seu objetivo no jogo
+
+	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
 	
 	//Construtor da classe
 	public Jogador(String nome, int cor) {
@@ -116,6 +118,7 @@ class Jogador {
 			this.verCartas();
 			System.out.println("Você quer trocar cartas? (S/N)");
 			String resp = input.nextLine();
+			
 			if (resp.equals("S") || resp.equals("s")){
 				System.out.println("Digite os três formatos das cartas que deseja trocar (C/Q/T): ");
 				String a = input.nextLine();
@@ -264,6 +267,18 @@ class Jogador {
 		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
 			cartas.add(new Cartas());
 		}
+	}
+
+	public ArrayList<Territorio> getTerritorios() {
+		return territorios;
+	}
+
+	public void addTerritorio(Territorio t) {
+		territorios.add(t);
+	}
+
+	public void removeTerritorio(Territorio t) {
+		territorios.remove(t);
 	}
 
 }
