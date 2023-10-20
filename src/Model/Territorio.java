@@ -119,6 +119,17 @@ class Territorio {
 				t.AddAdjacente(new Territorio("Reio Unido"));
 				break;
 
+				case "Nova York":
+				t.AddAdjacente(new Territorio("Texas"));
+				t.AddAdjacente(new Territorio("Quebec"));
+				break;
+
+				case "Quebec":
+				t.AddAdjacente(new Territorio("Nova York"));
+				t.AddAdjacente(new Territorio("Vancouver"));
+				t.AddAdjacente(new Territorio("Groelandia"));
+				break;
+
 				//África
 				case "Nigeria":	
 				t.AddAdjacente(new Territorio("Brasil"));

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Tabuleiro{
+
 	//Mapa do tabuleiro
 	private static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
@@ -24,17 +25,9 @@ class Tabuleiro{
 	private Tabuleiro() {
 		InstanciaTerritorios();
 		InstanciaContinente();
-		
 		Objetivo.criaObjetivos();
-		
 		InstanciaJogadores();
-
 		distribuiTerritorios();
-	}
-	public Tabuleiro getTabuleiro() {
-		if (tabuleiro == null)
-			return new Tabuleiro();
-		return tabuleiro;
 	}
 	
 	//Valida um ataque
@@ -47,7 +40,7 @@ class Tabuleiro{
 		return false;
 	}
 	
-	//Realiza um ataque colocar na API jogo
+	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		//TODO
 	}
@@ -91,12 +84,6 @@ class Tabuleiro{
 			t.setJogador(j);
 			t.setQntExercitos(1);
 		}
-
-	}
-
-	// Retorna objeto territorio a partir do nome
-	public static Territorio getTerritorio(String nomeTerritorio){
-		return mapTerritorios.get(nomeTerritorio);
 	}
 
 	// Retorna hashmap de continentes
@@ -108,87 +95,87 @@ class Tabuleiro{
 	private void InstanciaTerritorios() {
 		Territorio t;
 		
-		// territorios América do Sul
+		// Territórios América do Sul
 		t = new Territorio("Brasil");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Peru");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Venezuela");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// territorios América do Norte
-		t = new Territorio("Nova Iorque");
+		// Territórios América do Norte
+		t = new Territorio("Nova York");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Mexico");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("California");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Groelandia");
 		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Ottawa");
-		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Alasca");
 		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Labrador");
-		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Vancouver");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Mackenzie");
+		t = new Territorio("Calgary");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// territorios Europa
-		t = new Territorio("Moscou");
+		t = new Territorio("Quebec");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Islandia");
+		t = new Territorio("Texas");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Inglaterra");
-		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Alemanha");
-		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
+		// Territórios Europa
 		t = new Territorio("Polonia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Franca");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Suecia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 		
 		// territorios Africa
@@ -284,6 +271,7 @@ class Tabuleiro{
 
 	}
 	
+	//Inicializa os continentes
 	private void InstanciaContinente() {
 		Territorio t;
 		Continente c; 
@@ -439,36 +427,44 @@ class Tabuleiro{
 		mapContinente.put(c.getNome(), c);
 	}
 
+	// ----------------- Getters & Setters -----------------
 	
+	// Retorna objeto territorio a partir do nome
+	public static Territorio getTerritorio(String nomeTerritorio){
+		return mapTerritorios.get(nomeTerritorio);
+	}
+
+	//Retorna a instancia do tabuleiro
+	public Tabuleiro getTabuleiro() {
+		if (tabuleiro == null){
+			return new Tabuleiro();
+		}
+		return tabuleiro;
+	}
+
 	public static HashMap<String, Territorio> getMapTerritorios() {
 		return mapTerritorios;
 	}
 	
-
-	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
-		Tabuleiro.mapTerritorios = mapTerritorios;
-	}
-	
-
 	public static HashMap<String, Continente> getMapContinente() {
 		return mapContinente;
 	}
 	
-
-	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
-		Tabuleiro.mapContinente = mapContinente;
-	}
-	
-
 	public ArrayList<Territorio> getCartasTerritorios() {
 		return cartasTerritorios;
 	}
 	
-
 	public void setCartasTerritorios(ArrayList<Territorio> cartasTerritorios) {
 		this.cartasTerritorios = cartasTerritorios;
 	}
 	
+	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
+		Tabuleiro.mapTerritorios = mapTerritorios;
+	}
+
+	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
+		Tabuleiro.mapContinente = mapContinente;
+	}
 
 	public int getNumJogadores() {
 		return numJogadores;
