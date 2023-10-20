@@ -28,18 +28,6 @@ class Continente {
 		this.cor = corCont;
 	}
 
-	public ArrayList <Territorio> getTerritorios(){
-		return this.territorios;
-	}
-
-	public String getNome(){
-		return this.nome;
-	}
-
-	public int getQtdExerc(){
-		return this.qtdExercitoConquista;
-	}
-
 	// Adicionar Territorios no continente
 	public void addTerritorio(Territorio ter){
 		this.territorios.add(ter);
@@ -62,5 +50,24 @@ class Continente {
 		}
 		return false;
 	}
+
+	// ----------------- Getters & Setters -----------------
+
+	//Retorna os territórios do continente
+	public ArrayList <Territorio> getTerritorios(){
+		return this.territorios;
+	}
+
+	//Retorna o nome do continente
+	public String getNome(){
+		return this.nome;
+	}
+
+	//Retorna a qtd de exércitos obtidos pela conquista do continente
+	public int getQtdExerc(){
+		return this.qtdExercitoConquista;
+	}
+
+	
 }
  
