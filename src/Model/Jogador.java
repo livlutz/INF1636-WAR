@@ -94,12 +94,10 @@ class Jogador {
 	// Posicionar exércitos em território do jogador
 	// Cabe a função que chamou verificar se pode
 	public void posicionarExercitos(Territorio t, int qtdExercitos){
-	
 		t.alterarQtdExercitos(qtdExercitos);
-
 	}
 
-	// Executa todos os passos para a rodada de posicionamento de um jogador
+	// Executa todos os passos para a rodada de posicionamento de um jogador - falta implementar
 	public void rodadaDePosicionamento(){
 		HashMap <String, Continente> continentes = Tabuleiro.getContinentes();
 		
@@ -118,7 +116,7 @@ class Jogador {
 			this.verCartas();
 			System.out.println("Você quer trocar cartas? (S/N)");
 			String resp = input.nextLine();
-			
+
 			if (resp.equals("S") || resp.equals("s")){
 				System.out.println("Digite os três formatos das cartas que deseja trocar (C/Q/T): ");
 				String a = input.nextLine();
@@ -222,46 +220,7 @@ class Jogador {
 		
 	}
 
-	public int getCor() {
-		return cor;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public int getQtdExercitoPosic() {
-		return qtdExercitoPosic;
-	}
-
-	public void setQtdExercitoPosic(int qtdExercitoPosic) {
-		this.qtdExercitoPosic = qtdExercitoPosic;
-	}
-
-	public int getQtdTerritorios(){
-		return qtdTerritorios;
-	}
-
-	public void setQtdTerritorios(int qtd){
-		qtdTerritorios = qtd;
-	}
-	
-	public String getObj() {
-		return obj;
-	}
-
-	public void setObj(String obj) {
-		this.obj = obj;
-	}
-
-	public int getQtdTrocaCartas() {
-		return qtdTrocaCartas;
-	}
-	
-	public ArrayList<Cartas> getCartas() {
-		return cartas;
-	}
-	
+	//Adiciona uma carta ao jogador
 	public void addCarta() {
 		//condicao add carta -> conquistar territorios em cada jogada
 		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
@@ -269,16 +228,71 @@ class Jogador {
 		}
 	}
 
-	public ArrayList<Territorio> getTerritorios() {
-		return territorios;
-	}
-
+	//Adiciona um território ao jogador
 	public void addTerritorio(Territorio t) {
 		territorios.add(t);
 	}
 
+	//Remove um território do jogador
 	public void removeTerritorio(Territorio t) {
 		territorios.remove(t);
+	}
+
+	// --------------------------- getters & setters ---------------------------
+
+	//Retorna a cor do jogador
+	public int getCor() {
+		return cor;
+	}
+
+	//Retorna o nome do jogador
+	public String getNome() {
+		return nome;
+	}
+
+	//Retorna a quantidade de exércitos que o jogador pode posicionar
+	public int getQtdExercitoPosic() {
+		return qtdExercitoPosic;
+	}
+
+	//Retorna a quantidade de territórios que o jogador possui
+	public int getQtdTerritorios(){
+		return qtdTerritorios;
+	}
+
+	//Retorna o objetivo do jogador
+	public String getObj() {
+		return obj;
+	}
+
+	//Retorna a quantidade de trocas de cartas que o jogador fez
+	public int getQtdTrocaCartas() {
+		return qtdTrocaCartas;
+	}
+	
+	//Retorna as cartas que o jogador possui (o ArrayList de cartas)
+	public ArrayList<Cartas> getCartas() {
+		return cartas;
+	}
+
+	//Retorna os territórios que o jogador possui (o ArrayList de territórios)
+	public ArrayList<Territorio> getTerritorios() {
+		return territorios;
+	}
+
+	//Altera a quantidade de exércitos que o jogador pode posicionar
+	public void setQtdExercitoPosic(int qtdExercitoPosic) {
+		this.qtdExercitoPosic = qtdExercitoPosic;
+	}
+
+	//Altera a quantidade de territórios que o jogador possui
+	public void setQtdTerritorios(int qtd){
+		qtdTerritorios = qtd;
+	}
+	
+	//Altera o objetivo do jogador
+	public void setObj(String obj) {
+		this.obj = obj;
 	}
 
 }
