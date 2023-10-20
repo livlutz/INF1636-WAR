@@ -17,4 +17,17 @@ class Cartas {
 		f = Formato.values() [r.nextInt(Formato.values().length)];
 	}
 
+	//----------------- Getters & Setters -----------------
+
+	//Retorna o formato da carta
+	public Formato getF() {
+		return f;
+	}
+
+	//Altera o formato da carta
+	public void setF(Formato f) {
+		this.f = f;
+	}
+
+
 }
