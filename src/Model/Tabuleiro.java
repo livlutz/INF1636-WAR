@@ -42,7 +42,12 @@ class Tabuleiro{
 	
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
-		//TODO
+		
+		if(VerificarAtaque(atacante.getJogador(), atacante, defensor)){
+			//TODO
+		}
+
+		return;
 	}
 	
 	//Move exercitos por territórios
@@ -59,7 +64,7 @@ class Tabuleiro{
 	
 	 //Inicializa cada jogador
 	public void InstanciaJogadores() {
-		for (int i = 0;i<numJogadores;i++) {
+		for (int i = 0;i < numJogadores;i++) {
 			Jogador jogador = new Jogador("jogador",i);
 			
 			String obj = objetivo.getObjetivoAleatorio();
@@ -363,6 +368,7 @@ class Tabuleiro{
 		Territorio t;
 		Continente c; 
 		
+		//America do Sul
 		c = new Continente("America do Sul", 2, Continente.CorCont.verde);
 		
 		t = mapTerritorios.get("Brasil");
@@ -379,9 +385,10 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
+		//America do Norte
 		c = new Continente("America do Norte", 5, Continente.CorCont.laranja);
 
-		t = mapTerritorios.get("Nova Iorque");
+		t = mapTerritorios.get("Nova York");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Mexico");
@@ -393,73 +400,79 @@ class Tabuleiro{
 		t = mapTerritorios.get("Groelandia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Ottawa");
+		t = mapTerritorios.get("Texas");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Alasca");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Labrador");
+		t = mapTerritorios.get("Calgary");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Vancouver");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Mackenzie");
+		t = mapTerritorios.get("Quebec");
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
 
+		//Europa
 		c = new Continente("Europa", 5, Continente.CorCont.azul);
 
-		t = mapTerritorios.get("Moscou");
+		t = mapTerritorios.get("Espanha");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Islandia");
-		c.territorios.add(t);
-
-		t = mapTerritorios.get("Inglaterra");
-		c.territorios.add(t);
-
-		t = mapTerritorios.get("Alemanha");
-		c.territorios.add(t);
-
-		t = mapTerritorios.get("Polonia");
+		t = mapTerritorios.get("Reino Unido");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Franca");
 		c.territorios.add(t);
 
+		t = mapTerritorios.get("Italia");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Polonia");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Romenia");
+		c.territorios.add(t);
+
 		t = mapTerritorios.get("Suecia");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Ucrania");
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
 
+		//Africa
 		c = new Continente("Africa", 3, Continente.CorCont.rosa);
 
 		t = mapTerritorios.get("Egito");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Congo");
+		t = mapTerritorios.get("Nigeria");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Africa do Sul");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Madagascar");
+		t = mapTerritorios.get("Somalia");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Argelia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Sudao");
+		t = mapTerritorios.get("Angola");
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
 
+		//Asia
 		c = new Continente("Asia", 7, Continente.CorCont.amarelo);
 
-		t = mapTerritorios.get("Oriente Medio");
+		t = mapTerritorios.get("Arabia Saudita");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("India");
@@ -477,23 +490,46 @@ class Tabuleiro{
 		t = mapTerritorios.get("Japao");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Aral");
+		t = mapTerritorios.get("Coreia do Norte");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Omsk");
+		t = mapTerritorios.get("Coreia do Sul");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Tchita");
+		t = mapTerritorios.get("Bangladesh");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Vladivostok");
+		t = mapTerritorios.get("Tailandia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Dudinka");
+		t = mapTerritorios.get("Jordania");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Vietna");
+		t = mapTerritorios.get("Iraque");
 		c.territorios.add(t);
+
+		t = mapTerritorios.get("Ira");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Paquistao");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Turquia");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Cazaquistao");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Siria");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Letonia");
+		c.territorios.add(t);
+
+		t = mapTerritorios.get("Estonia");
+		c.territorios.add(t);
+
+		//Falta alguns paises da asia e a oceania
 
 		mapContinente.put(c.getNome(), c);
 
