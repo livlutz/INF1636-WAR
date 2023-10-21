@@ -95,7 +95,7 @@ class Tabuleiro{
 	private void InstanciaTerritorios() {
 		Territorio t;
 		
-		// Territórios América do Sul
+		//Territórios América do Sul
 		t = new Territorio("Brasil");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
@@ -116,7 +116,7 @@ class Tabuleiro{
 		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// Territórios América do Norte
+		//Territórios América do Norte
 		t = new Territorio("Nova York");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
@@ -162,7 +162,7 @@ class Tabuleiro{
 		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// Territórios Europa
+		//Territórios Europa
 		t = new Territorio("Polonia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
@@ -177,96 +177,183 @@ class Tabuleiro{
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
-		
-		// territorios Africa
+
+		t = new Territorio("Espanha");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Reino Unido");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Romania");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Ucrania");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Italia");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		//Territórios África
 		t = new Territorio("Egito");
 		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Congo");
-		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Africa do Sul");
-		mapTerritorios.put(t.getNome(), t);
-		cartasTerritorios.add(t);
-
-		t = new Territorio("Madagascar");
-		mapTerritorios.put(t.getNome(), t);
+		t.AddAdjacente(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Argelia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Sudao");
+		t = new Territorio("Nigeria");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// territorios Asia
-		t = new Territorio("Oriente Medio");
+		t = new Territorio("Somalia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("India");
+		t = new Territorio("Angola");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Africa do Sul");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		//Territórios Ásia
+		t = new Territorio("Estonia");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Letonia");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Russia");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Siberia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("China");
+		t = new Territorio("Turquia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Mongolia");
+		t = new Territorio("Cazaquistao");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 		t = new Territorio("Japao");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Aral");
+		t = new Territorio("Siria");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Omsk");
+		t = new Territorio("Paquistao");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Tchita");
+		t = new Territorio("China");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Vladivostok");
+		t = new Territorio("Mongolia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Dudinka");
+		t = new Territorio("Coreia do Norte");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Vietna");
+		t = new Territorio("Coreia do Sul");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		// territorios Oceania
+		t = new Territorio("Jordania");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Iraque");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Ira");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("India");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Bangladesh");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Tailandia");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		t = new Territorio("Arabia Saudita");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		cartasTerritorios.add(t);
+
+		//Territórios Oceania
 		t = new Territorio("Australia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Nova Guine");
+		t = new Territorio("Indonesia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Sumatra");
+		t = new Territorio("Perth");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
-		t = new Territorio("Borneo");
+		t = new Territorio("Nova Zelandia");
 		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
 
 	}

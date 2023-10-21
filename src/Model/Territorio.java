@@ -70,7 +70,6 @@ class Territorio {
 				case "Venezuela":
 				t.AddAdjacente(new Territorio("Brasil"));
 				t.AddAdjacente(new Territorio("Peru"));
-				t.AddAdjacente(new Territorio("Aregentina"));
 				t.AddAdjacente(new Territorio("Mexico"));
 				break;
 
@@ -84,13 +83,14 @@ class Territorio {
 				case "California":
 				t.AddAdjacente(new Territorio("Mexico"));
 				t.AddAdjacente(new Territorio("Texas"));
-				t.AddAdjacente(new Territorio("Vancouver"));
+				t.AddAdjacente(new Territorio("Nova York"));
 				break;
 
 				case "Texas":
 				t.AddAdjacente(new Territorio("Mexico"));
 				t.AddAdjacente(new Territorio("California"));
 				t.AddAdjacente(new Territorio("Vancouver"));
+				t.AddAdjacente(new Territorio("Quebec"));
 				t.AddAdjacente(new Territorio("Nova York"));
 				break;
 
@@ -116,6 +116,7 @@ class Territorio {
 
 				case "Groelandia":
 				t.AddAdjacente(new Territorio("Calgary"));
+				t.AddAdjacente(new Territorio("Quebec"));
 				t.AddAdjacente(new Territorio("Reio Unido"));
 				break;
 
@@ -128,6 +129,7 @@ class Territorio {
 				t.AddAdjacente(new Territorio("Nova York"));
 				t.AddAdjacente(new Territorio("Vancouver"));
 				t.AddAdjacente(new Territorio("Groelandia"));
+				t.AddAdjacente(new Territorio("Texas"));
 				break;
 
 				//África
@@ -249,6 +251,7 @@ class Territorio {
 				t.AddAdjacente(new Territorio("Estonia"));
 				t.AddAdjacente(new Territorio("Polonia"));
 				t.AddAdjacente(new Territorio("Suecia"));
+				t.AddAdjacente(new Territorio("Ucrania"));
 				break;
 
 				case "Estonia":
