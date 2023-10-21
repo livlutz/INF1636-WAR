@@ -1,6 +1,4 @@
 package Model;
-import java.util.Random;
-
 class Cartas {
 	
 	//enum com a forma geométrica presente em cada carta
@@ -15,10 +13,9 @@ class Cartas {
 	private Territorio territorio;
 	
 	//Construtor
-	public Cartas() {
-		Random r = new Random ();
-		f = Formato.values() [r.nextInt(Formato.values().length)];
-		territorio = new Territorio(null);
+	public Cartas(int i, Territorio t) {
+		f = Formato.values()[i];
+		territorio = t;
 	}
 
 	//----------------- Getters & Setters -----------------

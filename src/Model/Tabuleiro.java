@@ -552,6 +552,14 @@ class Tabuleiro{
 		mapContinente.put(c.getNome(), c);
 	}
 
+	private void InstanciaCartas(){
+		Cartas c;
+		for (int i = 0; i < 42; i++) {
+			c = new Cartas();
+			cartasTerritorios.add(c.getTerritorio());
+		}
+	}
+	
 	// ----------------- Getters & Setters -----------------
 	
 	// Retorna objeto territorio a partir do nome
@@ -595,31 +603,23 @@ class Tabuleiro{
 		return numJogadores;
 	}
 	
-
 	public void setNumJogadores(int numJogadores) {
 		this.numJogadores = numJogadores;
 	}
 	
-
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 	
-
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
 	
-
 	public Objetivo getObjetivo() {
 		return objetivo;
 	}
 	
-
 	public void setObjetivo(Objetivo objetivo) {
 		this.objetivo = objetivo;
 	}
-	
-	
-	
 }
