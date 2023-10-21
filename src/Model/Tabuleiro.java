@@ -529,22 +529,24 @@ class Tabuleiro{
 		t = mapTerritorios.get("Estonia");
 		c.territorios.add(t);
 
-		//Falta alguns paises da asia e a oceania
+		t = mapTerritorios.get("Russia");
+		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
 
+		//Oceania
 		c = new Continente("Oceania", 2, Continente.CorCont.vermelho);
 
 		t = mapTerritorios.get("Australia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Nova Guine");
+		t = mapTerritorios.get("Nova Zelandia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Sumatra");
+		t = mapTerritorios.get("Indoneia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Borneo");
+		t = mapTerritorios.get("Perth");
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
