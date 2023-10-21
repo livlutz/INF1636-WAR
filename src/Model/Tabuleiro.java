@@ -554,10 +554,7 @@ class Tabuleiro{
 
 	private void InstanciaCartas(){
 		Cartas c;
-		for (int i = 0; i < 42; i++) {
-			c = new Cartas();
-			cartasTerritorios.add(c.getTerritorio());
-		}
+		//TODO
 	}
 	
 	// ----------------- Getters & Setters -----------------
