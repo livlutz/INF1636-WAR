@@ -10,11 +10,15 @@ class Cartas {
 	
 	//Guarda o formato presente na carta
 	protected Formato f;
+
+	//Territorio da carta
+	private Territorio territorio;
 	
 	//Construtor
 	public Cartas() {
 		Random r = new Random ();
 		f = Formato.values() [r.nextInt(Formato.values().length)];
+		territorio = new Territorio(null);
 	}
 
 	//----------------- Getters & Setters -----------------
@@ -29,5 +33,13 @@ class Cartas {
 		this.f = f;
 	}
 
+	//Retorna o territorio da carta
+	public Territorio getTerritorio() {
+		return territorio;
+	}
 
+	//Altera o territorio da carta
+	public void setTerritorio(Territorio territorio) {
+		this.territorio = territorio;
+	}
 }
