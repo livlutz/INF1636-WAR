@@ -29,12 +29,9 @@ public class MainFrame extends JFrame {
 
 		public static MainFrame getMainFrame() {
 			if (mf == null) {
-				return new MainFrame();
+				mf = new MainFrame();
 			}
-			else {
-				return mf;
-			}
-				
+			return mf;	
 		}
 		public void goToCsPanel() {
 			startingPanel.setVisible(false);
