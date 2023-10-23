@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.CardLayout;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -7,9 +9,10 @@ public class MainFrame extends JFrame {
 		private final int LARGURA = 1200;
 		private final int ALTURA = 800;
 		private static MainFrame mf = null;
-		private StartingPanel startingPanel =  new StartingPanel();
-		private GamePanel gamePanel = new GamePanel();
-		private CharacterSelectionPanel csPanel = new CharacterSelectionPanel();
+		public CardLayout mLayout = null;
+		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
+		private GamePanel gamePanel = GamePanel.getGamePanel();
+		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 		private MainFrame() {
 			
 			setSize(LARGURA, ALTURA);
@@ -17,11 +20,14 @@ public class MainFrame extends JFrame {
 			setTitle("War");
 			setVisible(true);
 			getContentPane().add(startingPanel);
-			//getContentPane().add(gamePanel);
+		
 			//getContentPane().add(csPanel);
+		
+			//getContentPane().add(gamePanel);
 			
 		}
-		public static MainFrame getInstance() {
+
+		public static MainFrame getMainFrame() {
 			if (mf == null) {
 				return new MainFrame();
 			}
@@ -30,5 +36,12 @@ public class MainFrame extends JFrame {
 			}
 				
 		}
-
+		public void goToCsPanel() {
+			startingPanel.setVisible(false);
+			getContentPane().add(csPanel);
+		}
+		public void goToGamePanel() {
+			csPanel.setVisible(false);
+			getContentPane().add(gamePanel);
+		}
 }

@@ -9,15 +9,22 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class GamePanel extends JPanel{
-	static GamePanel gamePanel = null;
+	public static GamePanel gamePanel = null;
 	Image tabuleiro = null;
 	Image background = null;
 	Graphics2D g2d;
 	
-	public GamePanel() {
+	private GamePanel() {
 		String filePath = new File("").getAbsolutePath();
 		System.out.println(filePath);
 	}
+	public static GamePanel getGamePanel() {
+		if (gamePanel == null) {
+			gamePanel = new GamePanel();
+		}
+		return gamePanel;
+	}
+	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
