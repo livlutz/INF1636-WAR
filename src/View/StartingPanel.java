@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class StartingPanel extends JPanel{
 	
-	//MainFrame mainFrame = MainFrame.getMainFrame();
 	JButton iniciar = new JButton("Iniciar novo jogo");
 	JButton continuar = new JButton("Continuar jogo");
 	public static StartingPanel startingPanel = null;
@@ -15,7 +14,6 @@ public class StartingPanel extends JPanel{
 		iniciar.addActionListener(new ActionListener(){
 			@Override
 	        public void actionPerformed(ActionEvent e) {
-	            System.out.println("Botao iniciar");
 	            MainFrame.getMainFrame().goToCsPanel();
 	        }
 		});
