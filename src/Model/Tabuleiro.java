@@ -105,6 +105,8 @@ class Tabuleiro{
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		cartasTerritorios.add(t);
+		//t.setPosX();
+		//t.setPosY();
 
 		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
