@@ -13,7 +13,7 @@ public class GamePanel extends JPanel{
 	Image tabuleiro = null;
 	Image background = null;
 	Graphics2D g2d;
-	
+
 	private GamePanel() {
 		String filePath = new File("").getAbsolutePath();
 		System.out.println(filePath);

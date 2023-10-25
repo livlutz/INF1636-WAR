@@ -8,6 +8,8 @@ class Territorio {
 		//Guarda o nome do território
 		private String nome;
 		
+		protected double posX;
+		protected double posY;
 		//Guarda a quantidade de Exércitos no território
 		private int qntExercitos;
 		

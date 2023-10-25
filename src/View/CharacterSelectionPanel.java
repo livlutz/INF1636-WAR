@@ -9,11 +9,14 @@ import javax.swing.*;
 public class CharacterSelectionPanel extends JPanel {
 
 	public static CharacterSelectionPanel csPanel = null;
-	int numJogadores = 4;
+	private int numJogadores = 4;
 	SelectionComponent sc = new SelectionComponent();
 	SelectionComponent sc1 = new SelectionComponent();
 	SelectionComponent sc2 = new SelectionComponent();
 	SelectionComponent sc3 = new SelectionComponent();
+	SelectionComponent sc4 = new SelectionComponent();
+	SelectionComponent sc5 = new SelectionComponent();
+	SelectionComponent sc6 = new SelectionComponent();
 	JButton btn = new JButton("Iniciar Jogo");
 	private CharacterSelectionPanel() {
 		
@@ -25,10 +28,6 @@ public class CharacterSelectionPanel extends JPanel {
 		
 	
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(sc);
-		add(sc1);
-		add(sc2);
-		add(sc3);
 		add(btn);
 			
 	}
@@ -39,5 +38,14 @@ public class CharacterSelectionPanel extends JPanel {
 		}
 		return csPanel;
 	}
-		
+	
+	public void setNumJogadores(int numJogadores) {
+		this.numJogadores = numJogadores;
+	}
+	public void drawJogadores() {
+		for(int i = 0;i < numJogadores;i++) {
+			add(new SelectionComponent());
+			System.out.println(i);
+		}
+	}
 }
