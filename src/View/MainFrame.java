@@ -13,7 +13,8 @@ public class MainFrame extends JFrame {
 		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
-		private Exercitos exercitos = Exercitos.getExercitos();
+		//Metodo em jogador de pegar exercitos
+		//private int exercitos = Exercitos.getExercitos();
 		private MainFrame() {
 			
 			setSize(LARGURA, ALTURA);
