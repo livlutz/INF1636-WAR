@@ -134,7 +134,44 @@ public class TesteJogador {
 		j.trocarCartas(c1, c2, c3);
 		assertEquals(j.getQtdExercitoPosic(), 4);
 
-		//falta testar com quantidades maiores de trocas
+		//segunda troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//terceira troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//quarta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//quinta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//sexta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdExercitoPosic(), 55);
+
+		//setima troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdExercitoPosic(), 75);
+
 	}
 
 	@Test
