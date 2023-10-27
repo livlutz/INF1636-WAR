@@ -30,6 +30,8 @@ class Jogador {
 
 	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
 	
+	private boolean eliminadoNessaRodada = false; //Guarda se o jogador foi eliminado nessa rodada
+
 	//Construtor da classe
 	public Jogador(String nome, int cor) {
 		this.nome = nome;
@@ -280,6 +282,11 @@ class Jogador {
 		return territorios;
 	}
 
+	//Retorna se o jogador foi eliminado nessa rodada
+	public boolean getEliminadoNessaRodada() {
+		return eliminadoNessaRodada;
+	}
+
 	//Altera a quantidade de exércitos que o jogador pode posicionar
 	public void setQtdExercitoPosic(int qtdExercitoPosic) {
 		this.qtdExercitoPosic = qtdExercitoPosic;
@@ -293,6 +300,11 @@ class Jogador {
 	//Altera o objetivo do jogador
 	public void setObj(String obj) {
 		this.obj = obj;
+	}
+
+	//Altera se o jogador foi eliminado nessa rodada para verificação de objetivos
+	public void setEliminadoNessaRodada(boolean eliminadoNessaRodada) {
+		this.eliminadoNessaRodada = eliminadoNessaRodada;
 	}
 
 }
