@@ -201,13 +201,22 @@ class Jogador {
 	public boolean trocarCartas (Cartas a, Cartas b, Cartas c) {
 		if(temTroca()) {
 			int primTrocaExerc = 4;
-		
+			int contaDepoisCincoTrocas = 3;
+			
+			//primeira vez trocando
 			if(qtdTrocaCartas == 0) {
 				qtdExercitoPosic += primTrocaExerc;
 			}
-		
-			else {
+			
+			//quando temos 2 ate 5 trocas ja efetuadas
+			else if (qtdTrocaCartas < 6) {
 				qtdExercitoPosic += (primTrocaExerc + 2 * qtdTrocaCartas);
+			}
+			
+			//temos mais de 5 trocas ja efetuadas
+			else {
+				qtdExercitoPosic += (contaDepoisCincoTrocas * 5);
+				contaDepoisCincoTrocas ++;
 			}
 		
 			qtdTrocaCartas++;
