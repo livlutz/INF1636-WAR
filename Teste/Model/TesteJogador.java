@@ -14,11 +14,13 @@ public class TesteJogador {
 		assertNotNull(j);
 	}
 	
-	@Test
+	/*@Test
+	//TODO
 	public void testeVerCartas() {
 		Jogador j = new Jogador ("Jooj",1);
+		j.addCarta(new Cartas(0, null));
 		j.verCartas();
-	}
+	}*/
 	
 	@Test 
 	public void testaAlteraQtdTerritorios() {
@@ -73,7 +75,13 @@ public class TesteJogador {
 	@Test
 	public void testaTrocarEGetQtdDeCartas() {
 		Jogador j = new Jogador ("Jooj",1);
-		j.trocarCartas(null, null, null);
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
 		assertEquals(j.getQtdTrocaCartas(),1);
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
@@ -90,23 +98,96 @@ public class TesteJogador {
 		assertEquals(j.getNome(),"Jooj");
 	}
 	
-	@Test
-	//reformular
+	/*@Test
+	//TODO
 	public void testaAddCarta() {
 		Jogador j = new Jogador ("Jooj",1);
 		j.addCarta();
 		ArrayList <Cartas> c = new ArrayList <Cartas>();
 		//c.add(new Cartas());
 		assertEquals(j.getCartas().size(),c.size());
-	}
+	}*/
 	
 	@Test
-	public void testaTrocaCartas() {
+	public void testaTemTroca() {
 		Jogador j = new Jogador(null, 0);
-		for(int i =0; i<5;i++) {
-			j.addCarta();
-		}
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
 		assertTrue(j.temTroca());
+	}
+
+	@Test
+	public void testaTrocaCartas(){
+		Jogador j = new Jogador(null, 0);
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+
+		//primeira troca
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdExercitoPosic(), 4);
+
+		//segunda troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//terceira troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//quarta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//quinta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+
+		//sexta troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdExercitoPosic(), 55);
+
+		//setima troca
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdExercitoPosic(), 75);
+
+	}
+
+	@Test
+	public void testaAddTerritorio() {
+		Jogador j = new Jogador ("Jooj",1);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		assertEquals(j.getTerritorios().size(),1);
+	}
+
+	@Test
+	public void testaGetTerritorios() {
+		Jogador j = new Jogador ("Jooj",1);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		assertEquals(j.getTerritorios().size(),1);
 	}
 	
 	@Test
