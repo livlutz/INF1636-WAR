@@ -578,7 +578,7 @@ class Tabuleiro{
 		return mapTerritorios;
 	}
 	
-	public static HashMap<String, Continente> getMapContinente() {
+	public static HashMap<String, Continente> getMapContinentes() {
 		return mapContinente;
 	}
 	
