@@ -45,7 +45,7 @@ public class CharacterSelectionPanel extends JPanel {
 	public void drawJogadores() {
 		for(int i = 0;i < numJogadores;i++) {
 			add(new SelectionComponent());
-			System.out.println(i);
+			//System.out.println(i);
 		}
 	}
 }

@@ -1,33 +1,43 @@
 package Model;
+import java.awt.Color;
 import java.util.ArrayList;
 
-class Territorio {
+public class Territorio {
 	 	//Guarda o jogador que domina o território
 		private Jogador jogador;
 		
 		//Guarda o nome do território
 		private String nome;
+		private Color cor = Color.BLACK;
+
+		protected int posX;
+		protected int posY;
 		
-		protected double posX;
-		protected double posY;
-		public double getPosX() {
+		public Color getCor() {
+			return cor;
+		}
+
+		public void setCor(Color cor) {
+			this.cor = cor;
+		}
+		public int getPosX() {
 			return posX;
 		}
 
-		public void setPosX(double posX) {
+		public void setPosX(int posX) {
 			this.posX = posX;
 		}
 
-		public double getPosY() {
+		public int getPosY() {
 			return posY;
 		}
 
-		public void setPosY(double posY) {
+		public void setPosY(int posY) {
 			this.posY = posY;
 		}
 
 		//Guarda a quantidade de Exércitos no território
-		private int qntExercitos;
+		private int qntExercitos = 0;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
