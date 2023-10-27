@@ -220,6 +220,9 @@ class Jogador {
 			}
 		
 			qtdTrocaCartas++;
+			cartas.remove(a);
+			cartas.remove(b);
+			cartas.remove(c);
 			return true;
 		}
 		

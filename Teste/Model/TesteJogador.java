@@ -75,7 +75,13 @@ public class TesteJogador {
 	@Test
 	public void testaTrocarEGetQtdDeCartas() {
 		Jogador j = new Jogador ("Jooj",1);
-		j.trocarCartas(null, null, null);
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.trocarCartas(c1, c2, c3);
 		assertEquals(j.getQtdTrocaCartas(),1);
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
@@ -126,7 +132,7 @@ public class TesteJogador {
 
 		//primeira troca
 		j.trocarCartas(c1, c2, c3);
-		assertEquals(j.getQtdTrocaCartas(), 4);
+		assertEquals(j.getQtdExercitoPosic(), 4);
 
 		//falta testar com quantidades maiores de trocas
 	}
