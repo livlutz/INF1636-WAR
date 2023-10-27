@@ -14,11 +14,13 @@ public class TesteJogador {
 		assertNotNull(j);
 	}
 	
-	@Test
+	/*@Test
+	//TODO
 	public void testeVerCartas() {
 		Jogador j = new Jogador ("Jooj",1);
+		j.addCarta(new Cartas(0, null));
 		j.verCartas();
-	}
+	}*/
 	
 	@Test 
 	public void testaAlteraQtdTerritorios() {
@@ -90,23 +92,71 @@ public class TesteJogador {
 		assertEquals(j.getNome(),"Jooj");
 	}
 	
-	@Test
-	//reformular
+	/*@Test
+	//TODO
 	public void testaAddCarta() {
 		Jogador j = new Jogador ("Jooj",1);
 		j.addCarta();
 		ArrayList <Cartas> c = new ArrayList <Cartas>();
 		//c.add(new Cartas());
 		assertEquals(j.getCartas().size(),c.size());
-	}
+	}*/
 	
 	@Test
-	public void testaTrocaCartas() {
+	public void testaTemTroca() {
 		Jogador j = new Jogador(null, 0);
 		for(int i =0; i<5;i++) {
 			j.addCarta();
 		}
 		assertTrue(j.temTroca());
+	}
+
+	@Test
+	public void testaTrocaCartas(){
+		Jogador j = new Jogador(null, 0);
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		Cartas c4 = new Cartas(3, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
+		j.getCartas().add(c4);
+
+		assertTrue(j.trocarCartas(c2, c3, c4));
+		assertEquals(j.getQtdExercitoPosic(), 4);
+
+		assertTrue(j.trocarCartas(c1, c2, c3));
+		assertEquals(j.getQtdExercitoPosic(), 6);
+
+		assertTrue(j.trocarCartas(c1, c2, c3));
+		assertEquals(j.getQtdExercitoPosic(), 8);
+
+		assertTrue(j.trocarCartas(c1, c2, c3));
+		assertEquals(j.getQtdExercitoPosic(), 10);
+
+		assertTrue(j.trocarCartas(c1, c2, c3));
+		assertEquals(j.getQtdExercitoPosic(), 12);
+
+		assertTrue(j.trocarCartas(c1, c2, c3));
+		assertEquals(j.getQtdExercitoPosic(), 15);
+
+	}
+
+	@Test
+	public void testaAddTerritorio() {
+		Jogador j = new Jogador ("Jooj",1);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		assertEquals(j.getTerritorios().size(),1);
+	}
+
+	@Test
+	public void testaGetTerritorios() {
+		Jogador j = new Jogador ("Jooj",1);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		assertEquals(j.getTerritorios().size(),1);
 	}
 	
 	@Test

@@ -10,12 +10,6 @@ import org.junit.Test;
 public class TesteTabuleiro {
 	
 	/*@Test
-	public void testaConstrutor() {
-		Tabuleiro t = new Tabuleiro();
-		assertNotNull(t);
-	}
-	
-	@Test
 	public void testeVerificarAtaque() {
 		Tabuleiro t = new Tabuleiro();
 		Territorio a = new Territorio("A");
@@ -62,7 +56,7 @@ public class TesteTabuleiro {
 	public void testaGetTerritorio() {
 		Tabuleiro t = new Tabuleiro();
 		Territorio terr = new Territorio("Teste");
-		t.getMapTerritorios().put("Teste", terr);
+		Tabuleiro.getMapTerritorios().put("Teste", terr);
 		assertEquals(Tabuleiro.getTerritorio("Teste"),terr);
 	}
 	
@@ -71,7 +65,7 @@ public class TesteTabuleiro {
 		Tabuleiro t = new Tabuleiro();
 		Continente c = new Continente("A", 0, null);
 		HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
-		t.setMapContinente(mapContinente);
+		Tabuleiro.setMapContinente(mapContinente);
 		assertEquals(Tabuleiro.getContinentes(),mapContinente);
 	}
 	

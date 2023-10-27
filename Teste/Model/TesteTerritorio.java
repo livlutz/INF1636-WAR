@@ -92,6 +92,13 @@ public class TesteTerritorio {
 		lista.add(b);
 		assertEquals(t.getAdjacentes(),lista);
 	}
+
+	@Test
+	public void testaInstanciaAdjacentes(){
+		Territorio t = new Territorio("Brasil");
+		t.instanciaAdjacentes(t);
+		assertTrue(t.getAdjacentes().size() != 0);
+	}
 	
 	
 	
