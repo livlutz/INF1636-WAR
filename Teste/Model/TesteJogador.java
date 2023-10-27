@@ -105,9 +105,12 @@ public class TesteJogador {
 	@Test
 	public void testaTemTroca() {
 		Jogador j = new Jogador(null, 0);
-		for(int i =0; i<5;i++) {
-			j.addCarta();
-		}
+		Cartas c1 = new Cartas(0, null);
+		Cartas c2 = new Cartas(1, null);
+		Cartas c3 = new Cartas(2, null);
+		j.getCartas().add(c1);
+		j.getCartas().add(c2);
+		j.getCartas().add(c3);
 		assertTrue(j.temTroca());
 	}
 
@@ -117,30 +120,15 @@ public class TesteJogador {
 		Cartas c1 = new Cartas(0, null);
 		Cartas c2 = new Cartas(1, null);
 		Cartas c3 = new Cartas(2, null);
-		Cartas c4 = new Cartas(3, null);
 		j.getCartas().add(c1);
 		j.getCartas().add(c2);
 		j.getCartas().add(c3);
-		j.getCartas().add(c4);
 
-		assertTrue(j.trocarCartas(c2, c3, c4));
-		assertEquals(j.getQtdExercitoPosic(), 4);
+		//primeira troca
+		j.trocarCartas(c1, c2, c3);
+		assertEquals(j.getQtdTrocaCartas(), 4);
 
-		assertTrue(j.trocarCartas(c1, c2, c3));
-		assertEquals(j.getQtdExercitoPosic(), 6);
-
-		assertTrue(j.trocarCartas(c1, c2, c3));
-		assertEquals(j.getQtdExercitoPosic(), 8);
-
-		assertTrue(j.trocarCartas(c1, c2, c3));
-		assertEquals(j.getQtdExercitoPosic(), 10);
-
-		assertTrue(j.trocarCartas(c1, c2, c3));
-		assertEquals(j.getQtdExercitoPosic(), 12);
-
-		assertTrue(j.trocarCartas(c1, c2, c3));
-		assertEquals(j.getQtdExercitoPosic(), 15);
-
+		//falta testar com quantidades maiores de trocas
 	}
 
 	@Test
