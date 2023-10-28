@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
 
-import javax.print.attribute.HashAttributeSet;
-
 class Jogador {
 
 	// enum com as cores que um jogador pode escolher
