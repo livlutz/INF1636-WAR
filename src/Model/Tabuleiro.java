@@ -589,7 +589,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 	}
-
+	
+	//Inicializa as cartas
 	private void InstanciaCartas(){
 		Cartas c;
 		//Cartas de Território
