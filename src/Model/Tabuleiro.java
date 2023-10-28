@@ -51,11 +51,11 @@ class Tabuleiro{
 	}
 	
 	//Move exercitos por territórios
-	public void MoverExercitos(int qntExercitos,Territorio origem,Territorio destino) {
+	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
-		if (origem.getQtdExercitos() > qntExercitos) {
-			origem.setQtdExercitos(origem.getQtdExercitos() - qntExercitos);
-			destino.setQtdExercitos(destino.getQtdExercitos() + qntExercitos);
+		if (origem.getQtdExercitos() > qtdExercitos) {
+			origem.setQtdExercitos(origem.getQtdExercitos() - qtdExercitos);
+			destino.setQtdExercitos(destino.getQtdExercitos() + qtdExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
@@ -66,7 +66,7 @@ class Tabuleiro{
 	public void InstanciaJogadores() {
 		for (int i = 0;i < numJogadores;i++) {
 			Jogador jogador = new Jogador("jogador",i);
-			
+			//falta pegar o objetivo
 			String obj = objetivo.getObjetivoAleatorio();
 			
 			jogador.setObj(obj);

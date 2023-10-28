@@ -67,14 +67,14 @@ public class TesteTerritorio {
 	@Test
 	public void testaGetQtdExercitos() {
 		Territorio t = new Territorio ("Territorio teste");
-		assertEquals(t.getQntExercitos(),0);
+		assertEquals(t.getQtdExercitos(),0);
 	}
 	
 	@Test
 	public void testaSetQtdExercitos() {
 		Territorio t = new Territorio ("Territorio teste");
-		t.setQntExercitos(1);
-		assertEquals(t.getQntExercitos(),1);
+		t.setQtdExercitos(1);
+		assertEquals(t.getQtdExercitos(),1);
 	}
 	
 	@Test
