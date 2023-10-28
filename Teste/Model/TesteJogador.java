@@ -14,14 +14,6 @@ public class TesteJogador {
 		assertNotNull(j);
 	}
 	
-	/*@Test
-	//TODO
-	public void testeVerCartas() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.addCarta(new Cartas(0, null));
-		j.verCartas();
-	}*/
-	
 	@Test 
 	public void testaAlteraQtdTerritorios() {
 		Jogador j = new Jogador ("Jooj",1);

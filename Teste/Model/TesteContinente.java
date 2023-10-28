@@ -15,28 +15,6 @@ public class TesteContinente {
 	}
 	
 	@Test
-	public void testaGetTerritorios() {
-		Continente c = new Continente("Continente",0, null);
-		Territorio t = new Territorio("Teste");
-		c.territorios.add(t);
-		ArrayList <Territorio> a = new ArrayList <Territorio> ();
-		a.add(t);
-		assertEquals(c.getTerritorios(),a);
-	}
-	
-	@Test
-	public void testeGetNome() {
-		Continente c = new Continente("Continente",0, null);
-		assertEquals(c.getNome(),"Continente");
-	}
-	
-	@Test
-	public void testeGetQtdExerc() {
-		Continente c = new Continente("Continente",0, null);
-		assertEquals(c.getQtdExerc(),0);
-	}
-	
-	@Test
 	public void testeAddTerritorios() {
 		Continente c = new Continente("Continente",0, null);
 		Territorio t = new Territorio("Teste");

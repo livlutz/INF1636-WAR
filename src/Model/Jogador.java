@@ -39,7 +39,7 @@ class Jogador {
 	//Permite ver todas as cartas na posse do jogador
 	public void verCartas() {
 		for(Cartas c : cartas) {
-			System.out.println(c.f);
+			System.out.printf("Carta: %s - territorio : %s\n", c.getF(),c.getTerritorio().getNome());	
 		}
 	}
 
@@ -232,11 +232,8 @@ class Jogador {
 	}
 
 	//Adiciona uma carta ao jogador
-	public void addCarta() {
-		//condicao add carta -> conquistar territorios em cada jogada
-		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
-			//TODO
-		}
+	public void addCarta(Cartas c) {
+		cartas.add(c);
 	}
 
 	//Adiciona um território ao jogador

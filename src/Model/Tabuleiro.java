@@ -709,6 +709,37 @@ class Tabuleiro{
 		listaCartas.add(c);
 	}
 	
+	//Da uma carta a um jogador caso ele conquiste territorios
+	public void DaCartas(Jogador j){
+		//condicao para dar cartas ao jogador -> conquistar territorios
+		//pegar todos os territorios e cartas q o jogador tem
+		ArrayList <Territorio> t = j.getTerritorios();
+		ArrayList <Cartas> c = j.getCartas();
+
+		//se ele conquistou territorios, precisamos dar cartas a ele
+		if(j.alterarQtdTerritorios(numJogadores)){
+			//percorre a lista de territorios do jogador
+			for(Territorio t1 : t){
+				//percorre a lista de cartas do deck do jogo
+				for(Cartas c1 : listaCartas){
+					/*se o nome do territorio for igual ao nome da carta
+					 * e o jogador nao tem a carta daquele territorio, 
+					 * teremos que dar a carta a ele
+					*/
+					if(t1.getNome().equals(c1.getTerritorio().getNome())){
+						if(!c.contains(c1)){
+							j.addCarta(c1);
+						}
+					}
+				}
+			}
+		}
+		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagem
+		else{
+			System.out.printf("Jogador nao conquistou territorios\n");
+			return;
+		}
+	}
 	// ----------------- Getters & Setters -----------------
 	
 	// Retorna objeto territorio a partir do nome
