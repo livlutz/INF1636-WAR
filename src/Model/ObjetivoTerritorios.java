@@ -4,6 +4,7 @@ class ObjetivoTerritorios extends Objetivo{
         
         private int qtdTerritorios;
         
+        // Construtor
         public ObjetivoTerritorios(int qtdTerritorios) {
             this.qtdTerritorios = qtdTerritorios;
             this.descricao = "Conquistar " + qtdTerritorios + " TERRITÓRIOS";
@@ -12,6 +13,7 @@ class ObjetivoTerritorios extends Objetivo{
             }
         }
         
+        // Verifica se o objetivo foi alcançado
         public boolean alcancou(Jogador j) {
             // Se o jogador não conquistou a quantidade de territórios necessária, objetivo não alcançado
             if(j.getQtdTerritorios() < this.qtdTerritorios) {

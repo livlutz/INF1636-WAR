@@ -3,7 +3,7 @@ class Cartas {
 	
 	//enum com a forma geométrica presente em cada carta
 	public enum Formato{
-		Quadrado,circulo,retangulo;
+		Quadrado,circulo,triangulo;
 	}
 	
 	//Guarda o formato presente na carta
