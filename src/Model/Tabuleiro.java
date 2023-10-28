@@ -734,7 +734,7 @@ class Tabuleiro{
 				}
 			}
 		}
-		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagem
+		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagemq
 		else{
 			System.out.printf("Jogador nao conquistou territorios\n");
 			return;
