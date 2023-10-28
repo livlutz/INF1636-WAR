@@ -616,14 +616,13 @@ class Tabuleiro{
 		listaCartas.add(c);
 		c = new Cartas(2, mapTerritorios.get("Groelandia"));
 		listaCartas.add(c);
-		//tem q verificar o formato dessas cartas
-		c = new Cartas(1, mapTerritorios.get("Mexico"));
+		c = new Cartas(0, mapTerritorios.get("Mexico"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Nova York"));
+		c = new Cartas(0, mapTerritorios.get("Nova York"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Quebec"));
+		c = new Cartas(1, mapTerritorios.get("Quebec"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Texas"));
+		c = new Cartas(2, mapTerritorios.get("Texas"));
 		listaCartas.add(c);
 		c = new Cartas(2, mapTerritorios.get("Vancouver"));
 		listaCartas.add(c);
@@ -635,21 +634,21 @@ class Tabuleiro{
 		listaCartas.add(c);
 		c = new Cartas(2, mapTerritorios.get("Peru"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Venezuela"));
+		c = new Cartas(2, mapTerritorios.get("Venezuela"));
 		listaCartas.add(c);
 
 		//Asia
 		c = new Cartas(1, mapTerritorios.get("Arabia Saudita"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Bangladesh"));
+		c = new Cartas(1, mapTerritorios.get("Bangladesh"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Cazaquistao"));
+		c = new Cartas(1, mapTerritorios.get("Cazaquistao"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("China"));
+		c = new Cartas(0, mapTerritorios.get("China"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Coreia do Norte"));
+		c = new Cartas(0, mapTerritorios.get("Coreia do Norte"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Coreia do Sul"));
+		c = new Cartas(2, mapTerritorios.get("Coreia do Sul"));
 		listaCartas.add(c);
 		c = new Cartas(1, mapTerritorios.get("Estonia"));
 		listaCartas.add(c);
@@ -657,25 +656,25 @@ class Tabuleiro{
 		listaCartas.add(c);
 		c = new Cartas(0, mapTerritorios.get("Ira"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Iraque"));
+		c = new Cartas(2, mapTerritorios.get("Iraque"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Japao"));
+		c = new Cartas(1, mapTerritorios.get("Japao"));
 		listaCartas.add(c);
 		c = new Cartas(0, mapTerritorios.get("Jordania"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Letonia"));
+		c = new Cartas(0, mapTerritorios.get("Letonia"));
 		listaCartas.add(c);
 		c = new Cartas(2, mapTerritorios.get("Mongolia"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Paquistao"));
+		c = new Cartas(1, mapTerritorios.get("Paquistao"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Russia"));
+		c = new Cartas(2, mapTerritorios.get("Russia"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Siria"));
+		c = new Cartas(0, mapTerritorios.get("Siria"));
 		listaCartas.add(c);
 		c = new Cartas(0, mapTerritorios.get("Siberia"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Tailandia"));
+		c = new Cartas(2, mapTerritorios.get("Tailandia"));
 		listaCartas.add(c);
 		c = new Cartas(2, mapTerritorios.get("Turquia"));
 		listaCartas.add(c);
@@ -687,25 +686,25 @@ class Tabuleiro{
 		listaCartas.add(c);
 		c = new Cartas(0, mapTerritorios.get("Italia"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Polonia"));
+		c = new Cartas(2, mapTerritorios.get("Polonia"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Reino Unido"));
+		c = new Cartas(1, mapTerritorios.get("Reino Unido"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Romenia"));
+		c = new Cartas(2, mapTerritorios.get("Romenia"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Suecia"));
+		c = new Cartas(0, mapTerritorios.get("Suecia"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Ucrania"));
+		c = new Cartas(1, mapTerritorios.get("Ucrania"));
 		listaCartas.add(c);
 
 		//Oceania
-		c = new Cartas(0, mapTerritorios.get("Australia"));
+		c = new Cartas(2, mapTerritorios.get("Australia"));
 		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Indonesia"));
+		c = new Cartas(2, mapTerritorios.get("Indonesia"));
 		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Nova Zelandia"));
+		c = new Cartas(0, mapTerritorios.get("Nova Zelandia"));
 		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Perth"));
+		c = new Cartas(1, mapTerritorios.get("Perth"));
 		listaCartas.add(c);
 	}
 	
