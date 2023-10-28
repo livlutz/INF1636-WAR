@@ -4,6 +4,7 @@ package Model;
 class ObjetivoDestruir extends Objetivo{
     private Jogador jAlvo;
 
+    // Construtor
     public ObjetivoDestruir(Jogador jogador){
         this.jAlvo = jogador;
         String descricao = "Destruir totalmente os EXÉRCITOS ";
@@ -33,6 +34,7 @@ class ObjetivoDestruir extends Objetivo{
         this.descricao = descricao;
     }
 
+    //Verifica se o objetivo foi alcançado
     public boolean alcancou(Jogador j){
         // Se o jogador não pegou o objetivo de se destruir
         if (j.getCor() != jAlvo.getCor()){

@@ -185,16 +185,16 @@ class Jogador {
 	
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
-		int circulos = 0, quadrados = 0, retangulos = 0;
+		int circulos = 0, quadrados = 0, triangulos = 0;
 		for (Cartas c: cartas){
 			if (c.f == Cartas.Formato.circulo)
 				circulos++;
 			else if (c.f == Cartas.Formato.Quadrado)
 				quadrados++;
 			else
-				retangulos++;
+				triangulos++;
 		}
-		if (circulos >= 3 || quadrados >= 3 || retangulos >= 3 || (circulos >= 1 && quadrados >= 1 && retangulos >= 1))
+		if (circulos >= 3 || quadrados >= 3 || triangulos >= 3 || (circulos >= 1 && quadrados >= 1 && triangulos >= 1))
 			return true;
 		return false;
 	}

@@ -8,6 +8,7 @@ class ObjetivoContinentes extends Objetivo{
     private Continente cont2;
     private int qtdContinentes;
 
+    //Define o objetivo
     public ObjetivoContinentes(Continente cont1, Continente cont2, boolean cont3){
         this.cont1 = cont1;
         this.cont2 = cont2;
@@ -21,6 +22,7 @@ class ObjetivoContinentes extends Objetivo{
         }
     }
 
+    // Verifica se o jogador alcançou o objetivo
     public boolean alcancou(Jogador j){
 
         // Se o jogador não dominar os dois continentes não alcançou o objetivo
