@@ -3,7 +3,7 @@ package Model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ObjetivoContinentes extends Objetivo{
+class ObjetivoContinentes extends Objetivo{
     private Continente cont1;
     private Continente cont2;
     private int qtdContinentes;

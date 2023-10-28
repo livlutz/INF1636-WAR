@@ -1,7 +1,7 @@
 package Model;
 
 
-public class ObjetivoDestruir extends Objetivo{
+class ObjetivoDestruir extends Objetivo{
     private Jogador jAlvo;
 
     public ObjetivoDestruir(Jogador jogador){
