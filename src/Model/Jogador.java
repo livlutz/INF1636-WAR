@@ -24,7 +24,7 @@ class Jogador {
 	
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  //Guarda as cartas que possui
 	
-	private String obj;  //Guarda seu objetivo no jogo
+	private Objetivo obj;  //Guarda seu objetivo no jogo
 
 	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
 	
@@ -169,18 +169,6 @@ class Jogador {
 		input.close();
 	}
 	
-	//Altera a quantidade de territórios 
-	protected boolean alterarQtdTerritorios (int qtd) {
-			// se tentar subtrair mais territórios do que tem 
-			if (qtd < 0) {
-				if ((qtd * (-1)) > this.qtdTerritorios) {
-					return false;
-				}
-			}
-			this.qtdTerritorios += qtd;
-			return true;
-	}
-	
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, triangulos = 0;
@@ -239,11 +227,15 @@ class Jogador {
 	//Adiciona um território ao jogador
 	public void addTerritorio(Territorio t) {
 		territorios.add(t);
+		// Aumenta em 1 a quantidade de territórios
+		this.qtdTerritorios++;
 	}
 
 	//Remove um território do jogador
 	public void removeTerritorio(Territorio t) {
 		territorios.remove(t);
+		// Diminui em 1 a quantidade de territórios
+		this.qtdTerritorios--;
 	}
 
 	// --------------------------- getters & setters ---------------------------
@@ -269,7 +261,7 @@ class Jogador {
 	}
 
 	//Retorna o objetivo do jogador
-	public String getObj() {
+	public Objetivo getObj() {
 		return obj;
 	}
 
@@ -297,14 +289,9 @@ class Jogador {
 	public void setQtdExercitoPosic(int qtdExercitoPosic) {
 		this.qtdExercitoPosic = qtdExercitoPosic;
 	}
-
-	//Altera a quantidade de territórios que o jogador possui
-	public void setQtdTerritorios(int qtd){
-		qtdTerritorios = qtd;
-	}
 	
 	//Altera o objetivo do jogador
-	public void setObj(String obj) {
+	public void setObj(Objetivo obj) {
 		this.obj = obj;
 	}
 

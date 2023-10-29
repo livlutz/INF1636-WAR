@@ -12,8 +12,6 @@ public class Tabuleiro{
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	private static Tabuleiro tabuleiro = null;
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
-	private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
-	
 
 	//Construtor
 	private Tabuleiro() {
@@ -88,17 +86,25 @@ public class Tabuleiro{
 	}
 	
 	// distribui os territórios entre os jogadores, colocando um exército em cada
-	void distribuiTerritorios(ArrayList<Jogador> jogadores){
+	public void distribuiTerritorios(ArrayList<Jogador> jogadores){
+		// Embaralha a lista de territórios
 		Collections.shuffle(listaTerritorios);
+
 		int qtdJogadores = jogadores.size();
 		int qtdTerritorios = listaTerritorios.size();
 
 		for (int i = 0; i < qtdTerritorios; i++) {
 			Territorio t = listaTerritorios.get(i);
 			Jogador j = jogadores.get(i % qtdJogadores);
-			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
+
+			// Define o jogador do território
 			t.setJogador(j);
+			// Define 1 para a quantidade de exércitos do território
 			t.setQntExercitos(1);
+
+			// Adiciona o território na lista de territórios do jogador
+			j.addTerritorio(t);
+
 		}
 	}
 
@@ -674,157 +680,6 @@ public class Tabuleiro{
 		c.territorios.add(t);
 
 		mapContinente.put(c.getNome(), c);
-	}
-	
-	//Inicializa as cartas
-	private void InstanciaCartas(){
-		Cartas c;
-		//Cartas de Território
-		//Africa
-		c = new Cartas(2, mapTerritorios.get("Africa do Sul"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Angola"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Argelia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Egito"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Nigeria"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Somalia"));
-		listaCartas.add(c);
-
-		//America do Norte
-		c = new Cartas(2, mapTerritorios.get("Alasca"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("California"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Calgary"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Groelandia"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Mexico"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Nova York"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Quebec"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Texas"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Vancouver"));
-		listaCartas.add(c);
-
-		//America do Sul
-		c = new Cartas(0, mapTerritorios.get("Argentina"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Brasil"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Peru"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Venezuela"));
-		listaCartas.add(c);
-
-		//Asia
-		c = new Cartas(1, mapTerritorios.get("Arabia Saudita"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Bangladesh"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Cazaquistao"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("China"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Coreia do Norte"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Coreia do Sul"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Estonia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("India"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Ira"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Iraque"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Japao"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Jordania"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Letonia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Mongolia"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Paquistao"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Russia"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Siria"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Siberia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Tailandia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Turquia"));
-		listaCartas.add(c);
-
-		//Europa
-		c = new Cartas(1, mapTerritorios.get("Espanha"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Franca"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Italia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Polonia"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Reino Unido"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Romenia"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Suecia"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Ucrania"));
-		listaCartas.add(c);
-
-		//Oceania
-		c = new Cartas(2, mapTerritorios.get("Australia"));
-		listaCartas.add(c);
-		c = new Cartas(2, mapTerritorios.get("Indonesia"));
-		listaCartas.add(c);
-		c = new Cartas(0, mapTerritorios.get("Nova Zelandia"));
-		listaCartas.add(c);
-		c = new Cartas(1, mapTerritorios.get("Perth"));
-		listaCartas.add(c);
-	}
-	
-	//Da uma carta a um jogador caso ele conquiste territorios
-	public void DaCartas(Jogador j, int qtdTerritoriosConquistados){
-		//condicao para dar cartas ao jogador -> conquistar territorios
-		//pegar todos os territorios e cartas q o jogador tem
-		ArrayList <Territorio> t = j.getTerritorios();
-		ArrayList <Cartas> c = j.getCartas();
-
-		//se ele conquistou territorios, precisamos dar cartas a ele
-		if(j.alterarQtdTerritorios(qtdTerritoriosConquistados)){
-			//percorre a lista de territorios do jogador
-			for(Territorio t1 : t){
-				//percorre a lista de cartas do deck do jogo
-				for(Cartas c1 : listaCartas){
-					/*se o nome do territorio for igual ao nome da carta
-					 * e o jogador nao tem a carta daquele territorio, 
-					 * teremos que dar a carta a ele
-					*/
-					if(t1.getNome().equals(c1.getTerritorio().getNome())){
-						if(!c.contains(c1)){
-							j.addCarta(c1);
-						}
-					}
-				}
-			}
-		}
-		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagemq
-		else{
-			System.out.printf("Jogador nao conquistou territorios\n");
-			return;
-		}
 	}
 	
 	// ----------------- Getters & Setters -----------------
