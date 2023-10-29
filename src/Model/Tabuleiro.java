@@ -14,22 +14,11 @@ public class Tabuleiro{
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
 	private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
 	
-	//Guarda a quantidade de jogadores
-	private int numJogadores = 5;
-	
-	//Guarda cada jogador
-	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
-	
-	//Inicializa os objetivos
-	private Objetivo objetivo = new Objetivo();
 
 	//Construtor
 	private Tabuleiro() {
 		InstanciaTerritorios();
 		InstanciaContinente();
-		Objetivo.criaObjetivos();
-		InstanciaJogadores();
-		distribuiTerritorios();
 	}
 	
 	//Valida um ataque
@@ -98,29 +87,15 @@ public class Tabuleiro{
 		}
 	}
 	
-	 //Inicializa cada jogador
-	public void InstanciaJogadores() {
-		for (int i = 0;i < numJogadores;i++) {
-			Jogador jogador = new Jogador("jogador",i);
-			//falta pegar o objetivo
-			String obj = objetivo.getObjetivoAleatorio();
-			
-			jogador.setObj(obj);
-			
-			jogadores.add(jogador);
-		}
-		Collections.shuffle(jogadores);
-	}
-	
 	// distribui os territórios entre os jogadores, colocando um exército em cada
-	void distribuiTerritorios(){
+	void distribuiTerritorios(ArrayList<Jogador> jogadores){
 		Collections.shuffle(listaTerritorios);
-		int qndJogadores = jogadores.size();
-		int qndTerritorios = listaTerritorios.size();
+		int qtdJogadores = jogadores.size();
+		int qtdTerritorios = listaTerritorios.size();
 
-		for (int i = 0; i < qndTerritorios; i++) {
+		for (int i = 0; i < qtdTerritorios; i++) {
 			Territorio t = listaTerritorios.get(i);
-			Jogador j = jogadores.get(i % qndJogadores);
+			Jogador j = jogadores.get(i % qtdJogadores);
 			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
 			t.setQntExercitos(1);
@@ -821,14 +796,14 @@ public class Tabuleiro{
 	}
 	
 	//Da uma carta a um jogador caso ele conquiste territorios
-	public void DaCartas(Jogador j){
+	public void DaCartas(Jogador j, int qtdTerritoriosConquistados){
 		//condicao para dar cartas ao jogador -> conquistar territorios
 		//pegar todos os territorios e cartas q o jogador tem
 		ArrayList <Territorio> t = j.getTerritorios();
 		ArrayList <Cartas> c = j.getCartas();
 
 		//se ele conquistou territorios, precisamos dar cartas a ele
-		if(j.alterarQtdTerritorios(numJogadores)){
+		if(j.alterarQtdTerritorios(qtdTerritoriosConquistados)){
 			//percorre a lista de territorios do jogador
 			for(Territorio t1 : t){
 				//percorre a lista de cartas do deck do jogo
@@ -896,34 +871,5 @@ public class Tabuleiro{
 	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
 		Tabuleiro.mapContinente = mapContinente;
 	}
-	
-	//Retorna o numero de jogadores na partida
-	public int getNumJogadores() {
-		return numJogadores;
-	}
-	
-	//Altera o numero de jogadores na partida
-	public void setNumJogadores(int numJogadores) {
-		this.numJogadores = numJogadores;
-	}
-	
-	//Retorna o array de jogadores
-	public ArrayList<Jogador> getJogadores() {
-		return jogadores;
-	}
-	
-	//Altera o array de jogadores
-	public void setJogadores(ArrayList<Jogador> jogadores) {
-		this.jogadores = jogadores;
-	}
-	
-	//Retorna o objetivo
-	public Objetivo getObjetivo() {
-		return objetivo;
-	}
-	
-	//Altera o objetivo
-	public void setObjetivo(Objetivo objetivo) {
-		this.objetivo = objetivo;
-	}
+
 }
