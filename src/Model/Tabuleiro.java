@@ -2,7 +2,6 @@ package Model;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 class Tabuleiro{
@@ -70,7 +69,6 @@ class Tabuleiro{
 		listaTerritorios.add(t);
 		t.setPosX(355);
 		t.setPosY(471);
-		listaTerritorios.add(t);
 
 		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
@@ -78,7 +76,6 @@ class Tabuleiro{
 		listaTerritorios.add(t);
 		t.setPosX(319);
 		t.setPosY(580);
-		listaTerritorios.add(t);
 
 		t = new Territorio("Peru");
 		mapTerritorios.put(t.getNome(), t);
@@ -86,7 +83,6 @@ class Tabuleiro{
 		listaTerritorios.add(t);
 		t.setPosX(275);
 		t.setPosY(510);
-		listaTerritorios.add(t);
 
 		t = new Territorio("Venezuela");
 		mapTerritorios.put(t.getNome(), t);
@@ -95,7 +91,6 @@ class Tabuleiro{
 		t.setPosX(232);
 		t.setPosY(452);
 		
-		listaTerritorios.add(t);
 
 		//Territórios América do Norte
 		t = new Territorio("Nova York");
@@ -111,7 +106,6 @@ class Tabuleiro{
 		listaTerritorios.add(t);
 		t.setPosX(166);
 		t.setPosY(361);
-		listaTerritorios.add(t);
 
 		t = new Territorio("Mexico");
 		mapTerritorios.put(t.getNome(), t);
