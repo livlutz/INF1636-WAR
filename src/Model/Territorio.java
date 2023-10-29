@@ -37,7 +37,7 @@ public class Territorio {
 		}
 
 		//Guarda a quantidade de Exércitos no território
-		private int qtdExercitos;
+		private int qndExercitos;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
@@ -64,12 +64,12 @@ public class Territorio {
 		
 		// Alterar quantidade de exércitos sem precisar saber o valor antes
 		// Int positivo add exercitos e negativo subtrai 
-		protected boolean alterarQtdExercitos (int qtd) {
+		protected boolean alterarqndExercitos (int qnd) {
 			// se tentar subtrair mais exércitos do que tem (sem poder zerar)
-			if (qtd < 0)
-				if ((qtd * (-1)) >= this.qntExercitos)
+			if (qnd < 0)
+				if ((qnd * (-1)) >= this.qndExercitos)
 					return false;
-			this.qntExercitos += qtd;
+			this.qndExercitos += qnd;
 			return true;
 		}
 
