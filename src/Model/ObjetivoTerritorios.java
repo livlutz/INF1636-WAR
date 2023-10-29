@@ -27,7 +27,7 @@ class ObjetivoTerritorios extends Objetivo{
             int cont = 0;
             // Se o jogador precisava conquistar 18 territórios e conquistou, verifica se 18 deles possuem pelo menos 2 exércitos
             for (Territorio t: j.getTerritorios()){
-                if (t.getQtdExercitos() >= 2)
+                if (t.getQntExercitos() >= 2)
                     cont++;
             }
 

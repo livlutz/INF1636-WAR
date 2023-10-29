@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-class Tabuleiro{
+public class Tabuleiro{
 
 	//Mapa do tabuleiro
-	private static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
+	public static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	private static Tabuleiro tabuleiro = null;
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
@@ -22,7 +22,7 @@ class Tabuleiro{
 	
 	//Inicializa os objetivos
 	private Objetivo objetivo = new Objetivo();
-	
+
 	//Construtor
 	private Tabuleiro() {
 		InstanciaTerritorios();
@@ -37,7 +37,7 @@ class Tabuleiro{
 		if(tAtacante.getJogador() == atacante)
 			if (atacante != tDefensor.getJogador()) 
 				if (tAtacante.verificaAdjacencia(tDefensor))
-					if(tAtacante.getQtdExercitos() > 1)
+					if(tAtacante.getQntExercitos() > 1)
 						return true;	
 		return false;
 	}
@@ -46,8 +46,8 @@ class Tabuleiro{
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		
 		if(VerificarAtaque(atacante.getJogador(), atacante, defensor)){
-			int qtdAtaque = atacante.getQtdExercitos() - 1;
-			int qtdDefesa = defensor.getQtdExercitos();
+			int qtdAtaque = atacante.getQntExercitos() - 1;
+			int qtdDefesa = defensor.getQntExercitos();
 			int[] dadosAtaque = new int[qtdAtaque];
 			int[] dadosDefesa = new int[qtdDefesa];
 			Dado dado = new Dado();
@@ -77,8 +77,8 @@ class Tabuleiro{
 			}
 			
 			//Atualiza os exércitos
-			atacante.setQtdExercitos(atacante.getQtdExercitos() - qtdAtaquePerdidos);
-			defensor.setQtdExercitos(defensor.getQtdExercitos() - qtdDefesaPerdidos);
+			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
+			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
 
 		}
 		
@@ -89,9 +89,9 @@ class Tabuleiro{
 	//Move exercitos por territórios
 	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
-		if (origem.getQtdExercitos() > qtdExercitos) {
-			origem.setQtdExercitos(origem.getQtdExercitos() - qtdExercitos);
-			destino.setQtdExercitos(destino.getQtdExercitos() + qtdExercitos);
+		if (origem.getQntExercitos() > qtdExercitos) {
+			origem.setQntExercitos(origem.getQntExercitos() - qtdExercitos);
+			destino.setQntExercitos(destino.getQntExercitos() + qtdExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
@@ -115,15 +115,15 @@ class Tabuleiro{
 	// distribui os territórios entre os jogadores, colocando um exército em cada
 	void distribuiTerritorios(){
 		Collections.shuffle(listaTerritorios);
-		int qtdJogadores = jogadores.size();
-		int qtdTerritorios = listaTerritorios.size();
+		int qndJogadores = jogadores.size();
+		int qndTerritorios = listaTerritorios.size();
 
-		for (int i = 0; i < qtdTerritorios; i++) {
+		for (int i = 0; i < qndTerritorios; i++) {
 			Territorio t = listaTerritorios.get(i);
-			Jogador j = jogadores.get(i % qtdJogadores);
+			Jogador j = jogadores.get(i % qndJogadores);
 			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
-			t.setQtdExercitos(1);
+			t.setQntExercitos(1);
 		}
 	}
 
@@ -141,28 +141,49 @@ class Tabuleiro{
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-		//t.setPosX();
-		//t.setPosY();
+		t.setPosX(355);
+		t.setPosY(471);
+		listaTerritorios.add(t);
 
 		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
+		listaTerritorios.add(t);
+		t.setPosX(319);
+		t.setPosY(580);
 		listaTerritorios.add(t);
 
 		t = new Territorio("Peru");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
+		t.setPosX(275);
+		t.setPosY(510);
+		listaTerritorios.add(t);
 
 		t = new Territorio("Venezuela");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
+		listaTerritorios.add(t);
+		t.setPosX(232);
+		t.setPosY(452);
+		
 		listaTerritorios.add(t);
 
 		//Territórios América do Norte
 		t = new Territorio("Nova York");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
+		listaTerritorios.add(t);
+		t.setPosX(251);
+		t.setPosY(281);
+		
+		t = new Territorio("Mexico");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		listaTerritorios.add(t);
+		t.setPosX(166);
+		t.setPosY(361);
 		listaTerritorios.add(t);
 
 		t = new Territorio("Mexico");
@@ -174,231 +195,321 @@ class Tabuleiro{
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(135);
+		t.setPosY(276);
+		
 		t = new Territorio("Groelandia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
+		t.setPosX(383);
+		t.setPosY(118);
 
 		t = new Territorio("Alasca");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(114);
+		t.setPosY(148);
+		
 		t = new Territorio("Vancouver");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(194);
+		t.setPosY(201);
+		
 		t = new Territorio("Calgary");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
+		t.setPosX(216);
+		t.setPosY(155);
 
 		t = new Territorio("Quebec");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(325);
+		t.setPosY(195);
+		
 		t = new Territorio("Texas");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(189);
+		t.setPosY(282);
+		
 		//Territórios Europa
 		t = new Territorio("Polonia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(675);
+		t.setPosY(208);
+		
 		t = new Territorio("Franca");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(570);
+		t.setPosY(252);
+		
 		t = new Territorio("Suecia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(628);
+		t.setPosY(152);
+		
 		t = new Territorio("Espanha");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(527);
+		t.setPosY(296);
+		
 		t = new Territorio("Reino Unido");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(544);
+		t.setPosY(192);
+		
 		t = new Territorio("Romania");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(678);
+		t.setPosY(278);
+		
 		t = new Territorio("Ucrania");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(703);
+		t.setPosY(244);
+		
 		t = new Territorio("Italia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(628);
+		t.setPosY(248);
+		
 		//Territórios África
 		t = new Territorio("Egito");
 		mapTerritorios.put(t.getNome(), t);
 		t.AddAdjacente(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(674);
+		t.setPosY(406);
+		
 		t = new Territorio("Argelia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(549);
+		t.setPosY(392);
+		
 		t = new Territorio("Nigeria");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(622);
+		t.setPosY(459);
+		
 		t = new Territorio("Somalia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(731);
+		t.setPosY(494);
+		
 		t = new Territorio("Angola");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(655);
+		t.setPosY(532);
+		
 		t = new Territorio("Africa do Sul");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(679);
+		t.setPosY(590);
+		
 		//Territórios Ásia
 		t = new Territorio("Estonia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(784);
+		t.setPosY(150);
+		
 		t = new Territorio("Letonia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(770);
+		t.setPosY(199);
+		
 		t = new Territorio("Russia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(910);
+		t.setPosY(164);
+		
 		t = new Territorio("Siberia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1046);
+		t.setPosY(160);
+		
 		t = new Territorio("Turquia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(860);
+		t.setPosY(255);
+		
 		t = new Territorio("Cazaquistao");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(982);
+		t.setPosY(229);
+		
 		t = new Territorio("Japao");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1111);
+		t.setPosY(286);
+		
 		t = new Territorio("Siria");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(776);
+		t.setPosY(305);
+		
 		t = new Territorio("Paquistao");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(879);
+		t.setPosY(339);
+		
 		t = new Territorio("China");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(931);
+		t.setPosY(311);
+		
 		t = new Territorio("Mongolia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1014);
+		t.setPosY(265);
+		
 		t = new Territorio("Coreia do Norte");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1012);
+		t.setPosY(315);
+		
 		t = new Territorio("Coreia do Sul");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1018);
+		t.setPosY(344);
+		
 		t = new Territorio("Jordania");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(732);
+		t.setPosY(363);
+		
 		t = new Territorio("Iraque");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(801);
+		t.setPosY(360);
+		
 		t = new Territorio("Ira");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(850);
+		t.setPosY(358);
+		
 		t = new Territorio("India");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(936);
+		t.setPosY(401);
+		
 		t = new Territorio("Bangladesh");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(997);
+		t.setPosY(392);
+		
 		t = new Territorio("Tailandia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1055);
+		t.setPosY(386);
+		
 		t = new Territorio("Arabia Saudita");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(796);
+		t.setPosY(426);
+		
 		//Territórios Oceania
 		t = new Territorio("Australia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1034);
+		t.setPosY(629);
+		
 		t = new Territorio("Indonesia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1053);
+		t.setPosY(526);
+		
 		t = new Territorio("Perth");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(951);
+		t.setPosY(616);
+		
 		t = new Territorio("Nova Zelandia");
 		mapTerritorios.put(t.getNome(), t);
 		t.instanciaAdjacentes(t);
 		listaTerritorios.add(t);
-
+		t.setPosX(1089);
+		t.setPosY(672);
+		
 	}
 	
 	//Inicializa os continentes
@@ -749,9 +860,9 @@ class Tabuleiro{
 	}
 
 	//Retorna a instancia do tabuleiro
-	public Tabuleiro getTabuleiro() {
+	public static Tabuleiro getTabuleiro() {
 		if (tabuleiro == null){
-			return new Tabuleiro();
+			tabuleiro = new Tabuleiro();
 		}
 		return tabuleiro;
 	}

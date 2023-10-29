@@ -1,18 +1,21 @@
 package Model;
+import java.awt.Color;
 import java.util.ArrayList;
 
-class Territorio {
+public class Territorio {
 	 	//Guarda o jogador que domina o território
 		private Jogador jogador;
 		
 		//Guarda o nome do território
 		private String nome;
+		private Color cor = Color.BLACK;
 		
-		protected double posX;
-		protected double posY;
+		//Guarda a posição do território no tabuleiro
+		protected int posX;
+		protected int posY;
 		
 		//Guarda a quantidade de Exércitos no território
-		private int qtdExercitos;
+		private int qndExercitos;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
@@ -39,12 +42,12 @@ class Territorio {
 		
 		// Alterar quantidade de exércitos sem precisar saber o valor antes
 		// Int positivo add exercitos e negativo subtrai 
-		protected boolean alterarQtdExercitos (int qtd) {
+		protected boolean alterarQndExercitos (int qnd) {
 			// se tentar subtrair mais exércitos do que tem (sem poder zerar)
-			if (qtd < 0)
-				if ((qtd * (-1)) >= this.qtdExercitos)
+			if (qnd < 0)
+				if ((qnd * (-1)) >= this.qndExercitos)
 					return false;
-			this.qtdExercitos += qtd;
+			this.qndExercitos += qnd;
 			return true;
 		}
 
@@ -404,6 +407,7 @@ class Territorio {
 		}
 		
 		// ---------------------- getters & setters ----------------------
+		
 		//Retorna o jogador
 		public Jogador getJogador() {
 			return jogador;
@@ -415,13 +419,13 @@ class Territorio {
 		}
 
 		//Retorna a quantidade de exércitos
-		public int getQtdExercitos() {
-			return qtdExercitos;
+		public int getQntExercitos() {
+			return qndExercitos;
 		}
 
 		//Altera a quantidade de exércitos
-		public void setQtdExercitos(int qntExercitos) {
-			this.qtdExercitos = qntExercitos;
+		public void setQntExercitos(int qntExercitos) {
+			this.qndExercitos = qntExercitos;
 		}
 		
 		//Retorna o nome do território
@@ -435,26 +439,32 @@ class Territorio {
 		}
 
 		//Retorna a posição no eixo x do território
-		public double getPosX() {
+		public int getPosX() {
 			return posX;
 		}
 
 		//Altera a posição no eixo x do território
-		public void setPosX(double posX) {
+		public void setPosX(int posX) {
 			this.posX = posX;
 		}
 
 		//Retorna a posição no eixo y do território
-		public double getPosY() {
+		public int getPosY() {
 			return posY;
 		}
 
 		//Altera a posição no eixo y do território
-		public void setPosY(double posY) {
+		public void setPosY(int posY) {
 			this.posY = posY;
 		}
-
-
 		
-
+		//Retorna a cor do territorio
+		public Color getCor() {
+			return cor;
+		}
+		
+		//Altera a cor do territorio
+		public void setCor(Color cor) {
+			this.cor = cor;
+		}
 }

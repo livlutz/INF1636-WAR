@@ -1,26 +1,36 @@
 package View;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 
-public class Exercitos extends JComponent{
+import javax.swing.JComponent;
 
-		public static Exercitos exercitos = null;
-		int posX = 10;
-		int posY = 10;
-		private Exercitos() {
+public class Exercitos extends JComponent {
+	
+	private final int size = 20;
+	private int posX;
+	private int posY;
+	private Color cor;
+	Graphics2D g2d;
+	private String qntExercitos = "0";
+	
+	public Exercitos(int x, int y,Color color, String qntExercitos) {
+		this.posX = x;
+		this.posY = y;
+		this.cor = color;
+		this.qntExercitos = qntExercitos;
+		//setBounds(0,0, 660, 660);
+	}
+	
+	void drawPlayer(Graphics g2d) {
+		Ellipse2D player;
+		player = new Ellipse2D.Float(posX, posY, size, size);
+		g2d.setColor(cor);
+		((Graphics2D) g2d).fill(player);
+		g2d.drawString(qntExercitos, posX, posY);
+	}
+	
 
-		}
-		protected void paintCOmponente(Graphics g) {
-			Graphics2D g2d = (Graphics2D)g.create();
-			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			g2d.setColor(Color.WHITE);
-			g2d.fillOval(posX, posY, 10, 10);
-		}
-		public static Exercitos getExercitos() {
-			if (exercitos == null){
-				exercitos = new Exercitos();
-			}
-			return exercitos;
-		}
 }
