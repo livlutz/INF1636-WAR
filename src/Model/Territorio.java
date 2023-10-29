@@ -9,33 +9,11 @@ public class Territorio {
 		//Guarda o nome do território
 		private String nome;
 		private Color cor = Color.BLACK;
-
-		protected int posX;
-		protected int posY;
 		
-		public Color getCor() {
-			return cor;
-		}
-
-		public void setCor(Color cor) {
-			this.cor = cor;
-		}
-		public int getPosX() {
-			return posX;
-		}
-
-		public void setPosX(int posX) {
-			this.posX = posX;
-		}
-
-		public int getPosY() {
-			return posY;
-		}
-
-		public void setPosY(int posY) {
-			this.posY = posY;
-		}
-
+		//Guarda a posição do território no tabuleiro
+		protected double posX;
+		protected double posY;
+		
 		//Guarda a quantidade de Exércitos no território
 		private int qndExercitos;
 		
@@ -429,6 +407,7 @@ public class Territorio {
 		}
 		
 		// ---------------------- getters & setters ----------------------
+		
 		//Retorna o jogador
 		public Jogador getJogador() {
 			return jogador;
@@ -478,8 +457,14 @@ public class Territorio {
 		public void setPosY(double posY) {
 			this.posY = posY;
 		}
-
-
 		
-
+		//Retorna a cor do territorio
+		public Color getCor() {
+			return cor;
+		}
+		
+		//Altera a cor do territorio
+		public void setCor(Color cor) {
+			this.cor = cor;
+		}
 }
