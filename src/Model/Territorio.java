@@ -2,17 +2,13 @@ package Model;
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Territorio {
+class Territorio {
 	 	//Guarda o jogador que domina o território
 		private Jogador jogador;
 		
 		//Guarda o nome do território
 		private String nome;
 		private Color cor = Color.BLACK;
-		
-		//Guarda a posição do território no tabuleiro
-		protected int posX;
-		protected int posY;
 		
 		//Guarda a quantidade de Exércitos no território
 		private int qndExercitos;
@@ -436,26 +432,6 @@ public class Territorio {
 		//Retorna os territórios adjacentes (o ArrayList de territórios adjacentes)
 		public ArrayList<Territorio> getAdjacentes() {
 			return adjacentes;
-		}
-
-		//Retorna a posição no eixo x do território
-		public int getPosX() {
-			return posX;
-		}
-
-		//Altera a posição no eixo x do território
-		public void setPosX(int posX) {
-			this.posX = posX;
-		}
-
-		//Retorna a posição no eixo y do território
-		public int getPosY() {
-			return posY;
-		}
-
-		//Altera a posição no eixo y do território
-		public void setPosY(int posY) {
-			this.posY = posY;
 		}
 		
 		//Retorna a cor do territorio
