@@ -1,4 +1,5 @@
 package View;
+import Model.APIJogo;
 import Model.Tabuleiro;
 import Model.Territorio;
 
@@ -19,7 +20,8 @@ public class GamePanel extends JPanel {
 	Image tabuleiroImg = null;
 	Image background = null;
 	Graphics2D g2d;
-	Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
+	APIJogo	apiJogo = APIJogo.getAPIJogo();
+	Tabuleiro tabuleiro = apiJogo.getTabuleiro();
 	JButton salvarButton,dadoButton, nextButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	String[] territorios;

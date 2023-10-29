@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class Tabuleiro{
+public class Tabuleiro{
 
 	//Mapa do tabuleiro
 	public static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();

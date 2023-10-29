@@ -2,6 +2,7 @@ package Model;
 
 public class APIJogo {
     private static APIJogo APIJogo = null;
+    private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -15,4 +16,9 @@ public class APIJogo {
         }
         return APIJogo;
     }
+
+    public Tabuleiro getTabuleiro(){
+        return this.tabuleiro;
+    }
+
 }
