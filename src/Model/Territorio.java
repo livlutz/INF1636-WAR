@@ -11,8 +11,8 @@ public class Territorio {
 		private Color cor = Color.BLACK;
 		
 		//Guarda a posição do território no tabuleiro
-		protected double posX;
-		protected double posY;
+		protected int posX;
+		protected int posY;
 		
 		//Guarda a quantidade de Exércitos no território
 		private int qndExercitos;
@@ -439,22 +439,22 @@ public class Territorio {
 		}
 
 		//Retorna a posição no eixo x do território
-		public double getPosX() {
+		public int getPosX() {
 			return posX;
 		}
 
 		//Altera a posição no eixo x do território
-		public void setPosX(double posX) {
+		public void setPosX(int posX) {
 			this.posX = posX;
 		}
 
 		//Retorna a posição no eixo y do território
-		public double getPosY() {
+		public int getPosY() {
 			return posY;
 		}
 
 		//Altera a posição no eixo y do território
-		public void setPosY(double posY) {
+		public void setPosY(int posY) {
 			this.posY = posY;
 		}
 		
