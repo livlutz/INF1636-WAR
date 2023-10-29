@@ -64,7 +64,7 @@ public class Territorio {
 		
 		// Alterar quantidade de exércitos sem precisar saber o valor antes
 		// Int positivo add exercitos e negativo subtrai 
-		protected boolean alterarqndExercitos (int qnd) {
+		protected boolean alterarQndExercitos (int qnd) {
 			// se tentar subtrair mais exércitos do que tem (sem poder zerar)
 			if (qnd < 0)
 				if ((qnd * (-1)) >= this.qndExercitos)
@@ -441,12 +441,12 @@ public class Territorio {
 
 		//Retorna a quantidade de exércitos
 		public int getQntExercitos() {
-			return qntExercitos;
+			return qndExercitos;
 		}
 
 		//Altera a quantidade de exércitos
 		public void setQntExercitos(int qntExercitos) {
-			this.qntExercitos = qntExercitos;
+			this.qndExercitos = qntExercitos;
 		}
 		
 		//Retorna o nome do território

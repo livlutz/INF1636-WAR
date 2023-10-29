@@ -94,7 +94,7 @@ class Jogador {
 	// Posicionar exércitos em território do jogador
 	// Cabe a função que chamou verificar se pode
 	public void posicionarExercitos(Territorio t, int qtdExercitos){
-		t.alterarQtdExercitos(qtdExercitos);
+		t.alterarQndExercitos(qtdExercitos);
 	}
 
 	// Executa todos os passos para a rodada de posicionamento de um jogador - falta implementar
