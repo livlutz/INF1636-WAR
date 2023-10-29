@@ -30,6 +30,8 @@ class Jogador {
 	
 	private boolean eliminadoNessaRodada = false; //Guarda se o jogador foi eliminado nessa rodada
 
+	private boolean conquistouNessaRodada = false; //Guarda se o jogador conquistou um território nessa rodada
+
 	//Construtor da classe
 	public Jogador(String nome, int cor) {
 		this.nome = nome;
@@ -285,6 +287,11 @@ class Jogador {
 		return eliminadoNessaRodada;
 	}
 
+	//Retorna se o jogador conquistou um território nessa rodada
+	public boolean getConquistouNessaRodada() {
+		return conquistouNessaRodada;
+	}
+
 	//Altera a quantidade de exércitos que o jogador pode posicionar
 	public void setQtdExercitoPosic(int qtdExercitoPosic) {
 		this.qtdExercitoPosic = qtdExercitoPosic;
@@ -298,6 +305,11 @@ class Jogador {
 	//Altera se o jogador foi eliminado nessa rodada para verificação de objetivos
 	public void setEliminadoNessaRodada(boolean eliminadoNessaRodada) {
 		this.eliminadoNessaRodada = eliminadoNessaRodada;
+	}
+
+	//Altera se o jogador conquistou um território nessa rodada para recepção de cartas
+	public void setConquistouNessaRodada(boolean conquistouNessaRodada) {
+		this.conquistouNessaRodada = conquistouNessaRodada;
 	}
 
 }

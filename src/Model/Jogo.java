@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -34,6 +35,95 @@ class Jogo {
         }
         return jogo;
     }
+
+    // Adiciona jogador na partida
+    public boolean addJogador(Jogador jogador){
+        for (Jogador j: jogadores){
+            if (j.getNome().equals(jogador.getNome()) || j.getCor() == jogador.getCor())
+                return false;
+        }
+        jogadores.add(jogador);
+        return true;
+    }
+
+    // Inicializa o jogo
+    public void InicializaJogo(){
+        // Instancia cartas
+        InstanciaCartas(Tabuleiro.getMapTerritorios());
+
+        // Instancia objetivos
+        InstanciaObjetivos();
+
+        // Embaralha os objetivos
+        Collections.shuffle(objetivos);
+
+        // Define o objetivo de cada jogador
+        for (int i = 0;i < numJogadores;i++){
+            jogadores.get(i).setObj(objetivos.get(i));
+        }
+
+        // Embaralha os jogadores
+        Collections.shuffle(jogadores);
+
+        // Distribui os territorios
+        tabuleiro.distribuiTerritorios(jogadores);
+
+    }
+    
+	//Valida um ataque
+	public boolean VerificarAtaque(Jogador atacante, Territorio tAtacante, Territorio tDefensor) {
+		if(tAtacante.getJogador() == atacante)
+			if (atacante != tDefensor.getJogador()) 
+				if (tAtacante.verificaAdjacencia(tDefensor))
+					if(tAtacante.getQntExercitos() > 1)
+						return true;	
+		return false;
+	}
+	
+	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
+	public void RealizaAtaque(Jogador jAtacante, Territorio atacante,Territorio defensor) {
+		
+		if(VerificarAtaque(jAtacante, atacante, defensor)){
+			int qtdAtaque = atacante.getQntExercitos() - 1;
+			int qtdDefesa = defensor.getQntExercitos();
+			int[] dadosAtaque = new int[qtdAtaque];
+			int[] dadosDefesa = new int[qtdDefesa];
+			Dado dado = new Dado();
+			int qtdAtaquePerdidos = 0;
+			int qtdDefesaPerdidos = 0;
+			
+			for (int i = 0;i < qtdAtaque;i++) {
+				dadosAtaque[i] = dado.rodarDado();
+			}
+			
+			for (int i = 0;i < qtdDefesa;i++) {
+				dadosDefesa[i] = dado.rodarDado();
+			}
+			
+			//Ordena os dados
+			Arrays.sort(dadosAtaque);
+			Arrays.sort(dadosDefesa);
+			
+			//Compara os dados
+			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
+				if (dadosAtaque[i] > dadosDefesa[i]) {
+					qtdDefesaPerdidos++;
+				}
+				else {
+					qtdAtaquePerdidos++;
+				}
+			}
+			
+			//Atualiza os exércitos
+			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
+			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
+
+		}
+		
+		System.out.println("Nao foi possivel realizar o ataque");
+		return;
+	}
+	
 
     public void InstanciaObjetivos(){
         Objetivo obj;
@@ -69,40 +159,6 @@ class Jogo {
         obj = new ObjetivoTerritorios(18);
         objetivos.add(obj);
     
-    }
-
-    // Adiciona jogador na partida
-    public boolean addJogador(Jogador jogador){
-        for (Jogador j: jogadores){
-            if (j.getNome().equals(jogador.getNome()) || j.getCor() == jogador.getCor())
-                return false;
-        }
-        jogadores.add(jogador);
-        return true;
-    }
-
-    // Inicializa o jogo
-    public void InicializaJogo(){
-        // Instancia cartas
-        InstanciaCartas(Tabuleiro.getMapTerritorios());
-
-        // Instancia objetivos
-        InstanciaObjetivos();
-
-        // Embaralha os objetivos
-        Collections.shuffle(objetivos);
-
-        // Define o objetivo de cada jogador
-        for (int i = 0;i < numJogadores;i++){
-            jogadores.get(i).setObj(objetivos.get(i));
-        }
-
-        // Embaralha os jogadores
-        Collections.shuffle(jogadores);
-
-        // Distribui os territorios
-        tabuleiro.distribuiTerritorios(jogadores);
-
     }
 
 	
@@ -233,7 +289,7 @@ class Jogo {
 		ArrayList <Cartas> c = j.getCartas();
 
 		//se ele conquistou territorios, precisamos dar cartas a ele
-		if(j.alterarQtdTerritorios(qtdTerritoriosConquistados)){
+		if(j.getConquistouNessaRodada()){
 			//percorre a lista de territorios do jogador
 			for(Territorio t1 : t){
 				//percorre a lista de cartas do deck do jogo
