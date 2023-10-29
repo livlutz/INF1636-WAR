@@ -32,7 +32,39 @@ class Jogo {
     }
 
     public void InstanciaObjetivos(){
-         
+        Objetivo obj;
+        // Instancia objetivos de destruir jogador
+        for(Jogador j : jogadores){
+        obj = new ObjetivoDestruir(j);
+        objetivos.add(obj);
+        }
+
+        // Instancia objetivos de conquistar continentes    
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("America do Norte"),Tabuleiro.getContinente("Africa"),false);
+        objetivos.add(obj);
+
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Asia"),Tabuleiro.getContinente("Africa"),false);
+        objetivos.add(obj);
+
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("America do Norte"),Tabuleiro.getContinente("Oceania"),false);
+        objetivos.add(obj);
+
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Europa"),Tabuleiro.getContinente("America do Sul"),true);
+        objetivos.add(obj);
+
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Asia"),Tabuleiro.getContinente("America do Sul"),true);
+        objetivos.add(obj);
+
+        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Europa"),Tabuleiro.getContinente("Oceania"),true);
+        objetivos.add(obj);
+
+        // Instancia objetivos de conquistar territorios
+        obj = new ObjetivoTerritorios(24);
+        objetivos.add(obj);
+
+        obj = new ObjetivoTerritorios(18);
+        objetivos.add(obj);
+    
     }
 
     	

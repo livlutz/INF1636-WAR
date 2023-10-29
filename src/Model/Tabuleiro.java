@@ -834,6 +834,11 @@ public class Tabuleiro{
 		return mapTerritorios.get(nomeTerritorio);
 	}
 
+	// Retorna objeto continente a partir do nome
+	public static Continente getContinente(String nomeContinente){
+		return mapContinente.get(nomeContinente);
+	}
+
 	//Retorna a instancia do tabuleiro
 	public static Tabuleiro getTabuleiro() {
 		if (tabuleiro == null){
