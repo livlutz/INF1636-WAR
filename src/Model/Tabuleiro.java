@@ -740,6 +740,7 @@ class Tabuleiro{
 			return;
 		}
 	}
+	
 	// ----------------- Getters & Setters -----------------
 	
 	// Retorna objeto territorio a partir do nome
@@ -754,51 +755,63 @@ class Tabuleiro{
 		}
 		return tabuleiro;
 	}
-
+	
+	//Retorna hashmap de territorios
 	public static HashMap<String, Territorio> getMapTerritorios() {
 		return mapTerritorios;
 	}
 	
+	//Retorna hashmap de continentes
 	public static HashMap<String, Continente> getMapContinentes() {
 		return mapContinente;
 	}
 	
+	//Retorna o array de territorios
 	public ArrayList<Territorio> getlistaTerritorios() {
 		return listaTerritorios;
 	}
 	
+	//Altera lista de territorios
 	public void setlistaTerritorios(ArrayList<Territorio> listaTerritorios) {
 		this.listaTerritorios = listaTerritorios;
 	}
 	
+	//Altera hashmap de territorios
 	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
 		Tabuleiro.mapTerritorios = mapTerritorios;
 	}
-
+	
+	//Altera hashmap de continentes
 	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
 		Tabuleiro.mapContinente = mapContinente;
 	}
-
+	
+	//Retorna o numero de jogadores na partida
 	public int getNumJogadores() {
 		return numJogadores;
 	}
 	
+	//Altera o numero de jogadores na partida
 	public void setNumJogadores(int numJogadores) {
 		this.numJogadores = numJogadores;
 	}
 	
+	//Retorna o array de jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 	
+	//Altera o array de jogadores
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
 	
+	//Retorna o objetivo
 	public Objetivo getObjetivo() {
 		return objetivo;
 	}
 	
+	//Altera o objetivo
 	public void setObjetivo(Objetivo objetivo) {
 		this.objetivo = objetivo;
 	}
