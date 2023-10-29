@@ -16,9 +16,9 @@ public class Exercitos extends JComponent {
 	Graphics2D g2d;
 	private String qntExercitos = "0";
 	
-	public Exercitos(int x, int y,Color color, String qntExercitos) {
-		this.posX = x;
-		this.posY = y;
+	public Exercitos(double d, double e,Color color, String qntExercitos) {
+		this.posX = (int)d;
+		this.posY = (int)e;
 		this.cor = color;
 		this.qntExercitos = qntExercitos;
 		//setBounds(0,0, 660, 660);

@@ -22,7 +22,7 @@ public class Tabuleiro{
 	
 	//Inicializa os objetivos
 	private Objetivo objetivo = new Objetivo();
-
+	
 	//Construtor
 	private Tabuleiro() {
 		InstanciaTerritorios();
@@ -37,7 +37,7 @@ public class Tabuleiro{
 		if(tAtacante.getJogador() == atacante)
 			if (atacante != tDefensor.getJogador()) 
 				if (tAtacante.verificaAdjacencia(tDefensor))
-					if(tAtacante.getQtdExercitos() > 1)
+					if(tAtacante.getQntExercitos() > 1)
 						return true;	
 		return false;
 	}
@@ -46,8 +46,8 @@ public class Tabuleiro{
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		
 		if(VerificarAtaque(atacante.getJogador(), atacante, defensor)){
-			int qtdAtaque = atacante.getQtdExercitos() - 1;
-			int qtdDefesa = defensor.getQtdExercitos();
+			int qtdAtaque = atacante.getQntExercitos() - 1;
+			int qtdDefesa = defensor.getQntExercitos();
 			int[] dadosAtaque = new int[qtdAtaque];
 			int[] dadosDefesa = new int[qtdDefesa];
 			Dado dado = new Dado();
@@ -77,8 +77,8 @@ public class Tabuleiro{
 			}
 			
 			//Atualiza os exércitos
-			atacante.setQtdExercitos(atacante.getQtdExercitos() - qtdAtaquePerdidos);
-			defensor.setQtdExercitos(defensor.getQtdExercitos() - qtdDefesaPerdidos);
+			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
+			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
 
 		}
 		
@@ -89,9 +89,9 @@ public class Tabuleiro{
 	//Move exercitos por territórios
 	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
-		if (origem.getQtdExercitos() > qtdExercitos) {
-			origem.setQtdExercitos(origem.getQtdExercitos() - qtdExercitos);
-			destino.setQtdExercitos(destino.getQtdExercitos() + qtdExercitos);
+		if (origem.getQntExercitos() > qtdExercitos) {
+			origem.setQntExercitos(origem.getQntExercitos() - qtdExercitos);
+			destino.setQntExercitos(destino.getQntExercitos() + qtdExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
@@ -123,7 +123,7 @@ public class Tabuleiro{
 			Jogador j = jogadores.get(i % qndJogadores);
 			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
-			t.setQtdExercitos(1);
+			t.setQntExercitos(1);
 		}
 	}
 
