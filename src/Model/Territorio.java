@@ -1,18 +1,43 @@
 package Model;
+import java.awt.Color;
 import java.util.ArrayList;
 
-class Territorio {
+public class Territorio {
 	 	//Guarda o jogador que domina o território
 		private Jogador jogador;
 		
 		//Guarda o nome do território
 		private String nome;
+		private Color cor = Color.BLACK;
+
+		protected int posX;
+		protected int posY;
 		
-		protected double posX;
-		protected double posY;
-		
+		public Color getCor() {
+			return cor;
+		}
+
+		public void setCor(Color cor) {
+			this.cor = cor;
+		}
+		public int getPosX() {
+			return posX;
+		}
+
+		public void setPosX(int posX) {
+			this.posX = posX;
+		}
+
+		public int getPosY() {
+			return posY;
+		}
+
+		public void setPosY(int posY) {
+			this.posY = posY;
+		}
+
 		//Guarda a quantidade de Exércitos no território
-		private int qtdExercitos;
+		private int qndExercitos;
 		
 		//Guarda os territórios adjacentes a este (this)
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
@@ -39,12 +64,12 @@ class Territorio {
 		
 		// Alterar quantidade de exércitos sem precisar saber o valor antes
 		// Int positivo add exercitos e negativo subtrai 
-		protected boolean alterarQtdExercitos (int qtd) {
+		protected boolean alterarQndExercitos (int qnd) {
 			// se tentar subtrair mais exércitos do que tem (sem poder zerar)
-			if (qtd < 0)
-				if ((qtd * (-1)) >= this.qtdExercitos)
+			if (qnd < 0)
+				if ((qnd * (-1)) >= this.qndExercitos)
 					return false;
-			this.qtdExercitos += qtd;
+			this.qndExercitos += qnd;
 			return true;
 		}
 
@@ -415,13 +440,13 @@ class Territorio {
 		}
 
 		//Retorna a quantidade de exércitos
-		public int getQtdExercitos() {
-			return qtdExercitos;
+		public int getQntExercitos() {
+			return qndExercitos;
 		}
 
 		//Altera a quantidade de exércitos
-		public void setQtdExercitos(int qntExercitos) {
-			this.qtdExercitos = qntExercitos;
+		public void setQntExercitos(int qntExercitos) {
+			this.qndExercitos = qntExercitos;
 		}
 		
 		//Retorna o nome do território

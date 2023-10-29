@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 	
-		private final int LARGURA = 1200;
+		private final int LARGURA = 1500;
 		private final int ALTURA = 800;
 		private static MainFrame mf = null;
 		public CardLayout mLayout = null;
@@ -42,5 +42,6 @@ public class MainFrame extends JFrame {
 		public void goToGamePanel() {
 			csPanel.setVisible(false);
 			getContentPane().add(gamePanel);
+			//gamePanel.desenhaExercitos();
 		}
 }
