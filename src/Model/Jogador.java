@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
 
-import javax.print.attribute.HashAttributeSet;
-
 class Jogador {
 
 	// enum com as cores que um jogador pode escolher
@@ -30,6 +28,8 @@ class Jogador {
 
 	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
 	
+	private boolean eliminadoNessaRodada = false; //Guarda se o jogador foi eliminado nessa rodada
+
 	//Construtor da classe
 	public Jogador(String nome, int cor) {
 		this.nome = nome;
@@ -39,7 +39,7 @@ class Jogador {
 	//Permite ver todas as cartas na posse do jogador
 	public void verCartas() {
 		for(Cartas c : cartas) {
-			System.out.println(c.f);
+			System.out.printf("Carta: %s - territorio : %s\n", c.getF(),c.getTerritorio().getNome());	
 		}
 	}
 
@@ -183,16 +183,16 @@ class Jogador {
 	
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
-		int circulos = 0, quadrados = 0, retangulos = 0;
+		int circulos = 0, quadrados = 0, triangulos = 0;
 		for (Cartas c: cartas){
 			if (c.f == Cartas.Formato.circulo)
 				circulos++;
 			else if (c.f == Cartas.Formato.Quadrado)
 				quadrados++;
 			else
-				retangulos++;
+				triangulos++;
 		}
-		if (circulos >= 3 || quadrados >= 3 || retangulos >= 3 || (circulos >= 1 && quadrados >= 1 && retangulos >= 1))
+		if (circulos >= 3 || quadrados >= 3 || triangulos >= 3 || (circulos >= 1 && quadrados >= 1 && triangulos >= 1))
 			return true;
 		return false;
 	}
@@ -232,11 +232,8 @@ class Jogador {
 	}
 
 	//Adiciona uma carta ao jogador
-	public void addCarta() {
-		//condicao add carta -> conquistar territorios em cada jogada
-		if(this.alterarQtdTerritorios(qtdExercitoPosic)) {
-			//TODO
-		}
+	public void addCarta(Cartas c) {
+		cartas.add(c);
 	}
 
 	//Adiciona um território ao jogador
@@ -291,6 +288,11 @@ class Jogador {
 		return territorios;
 	}
 
+	//Retorna se o jogador foi eliminado nessa rodada
+	public boolean getEliminadoNessaRodada() {
+		return eliminadoNessaRodada;
+	}
+
 	//Altera a quantidade de exércitos que o jogador pode posicionar
 	public void setQtdExercitoPosic(int qtdExercitoPosic) {
 		this.qtdExercitoPosic = qtdExercitoPosic;
@@ -304,6 +306,11 @@ class Jogador {
 	//Altera o objetivo do jogador
 	public void setObj(String obj) {
 		this.obj = obj;
+	}
+
+	//Altera se o jogador foi eliminado nessa rodada para verificação de objetivos
+	public void setEliminadoNessaRodada(boolean eliminadoNessaRodada) {
+		this.eliminadoNessaRodada = eliminadoNessaRodada;
 	}
 
 }

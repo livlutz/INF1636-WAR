@@ -459,6 +459,27 @@ public class Territorio {
 			return adjacentes;
 		}
 
+		//Retorna a posição no eixo x do território
+		public double getPosX() {
+			return posX;
+		}
+
+		//Altera a posição no eixo x do território
+		public void setPosX(double posX) {
+			this.posX = posX;
+		}
+
+		//Retorna a posição no eixo y do território
+		public double getPosY() {
+			return posY;
+		}
+
+		//Altera a posição no eixo y do território
+		public void setPosY(double posY) {
+			this.posY = posY;
+		}
+
+
 		
 
 }

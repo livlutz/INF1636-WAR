@@ -2,6 +2,7 @@ package Model;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Tabuleiro{
@@ -10,7 +11,8 @@ public class Tabuleiro{
 	public static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	private static Tabuleiro tabuleiro = null;
-	private ArrayList<Territorio> cartasTerritorios = new ArrayList<Territorio>();
+	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
+	private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
 	
 	//Guarda a quantidade de jogadores
 	private int numJogadores = 5;
@@ -35,7 +37,7 @@ public class Tabuleiro{
 		if(tAtacante.getJogador() == atacante)
 			if (atacante != tDefensor.getJogador()) 
 				if (tAtacante.verificaAdjacencia(tDefensor))
-					if(tAtacante.getQntExercitos() > 1)
+					if(tAtacante.getQtdExercitos() > 1)
 						return true;	
 		return false;
 	}
@@ -44,18 +46,52 @@ public class Tabuleiro{
 	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
 		
 		if(VerificarAtaque(atacante.getJogador(), atacante, defensor)){
-			//TODO
-		}
+			int qtdAtaque = atacante.getQtdExercitos() - 1;
+			int qtdDefesa = defensor.getQtdExercitos();
+			int[] dadosAtaque = new int[qtdAtaque];
+			int[] dadosDefesa = new int[qtdDefesa];
+			Dado dado = new Dado();
+			int qtdAtaquePerdidos = 0;
+			int qtdDefesaPerdidos = 0;
+			
+			for (int i = 0;i < qtdAtaque;i++) {
+				dadosAtaque[i] = dado.rodarDado();
+			}
+			
+			for (int i = 0;i < qtdDefesa;i++) {
+				dadosDefesa[i] = dado.rodarDado();
+			}
+			
+			//Ordena os dados
+			Arrays.sort(dadosAtaque);
+			Arrays.sort(dadosDefesa);
+			
+			//Compara os dados
+			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
+				if (dadosAtaque[i] > dadosDefesa[i]) {
+					qtdDefesaPerdidos++;
+				}
+				else {
+					qtdAtaquePerdidos++;
+				}
+			}
+			
+			//Atualiza os exércitos
+			atacante.setQtdExercitos(atacante.getQtdExercitos() - qtdAtaquePerdidos);
+			defensor.setQtdExercitos(defensor.getQtdExercitos() - qtdDefesaPerdidos);
 
+		}
+		
+		System.out.println("Nao foi possivel realizar o ataque");
 		return;
 	}
 	
 	//Move exercitos por territórios
-	public void MoverExercitos(int qntExercitos,Territorio origem,Territorio destino) {
+	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
-		if (origem.getQntExercitos() > qntExercitos) {
-			origem.setQntExercitos(origem.getQntExercitos() - qntExercitos);
-			destino.setQntExercitos(destino.getQntExercitos() + qntExercitos);
+		if (origem.getQtdExercitos() > qtdExercitos) {
+			origem.setQtdExercitos(origem.getQtdExercitos() - qtdExercitos);
+			destino.setQtdExercitos(destino.getQtdExercitos() + qtdExercitos);
 		}
 		else {
 			System.out.println("Nao pode mover essa quantidade de exercitos");
@@ -66,7 +102,7 @@ public class Tabuleiro{
 	public void InstanciaJogadores() {
 		for (int i = 0;i < numJogadores;i++) {
 			Jogador jogador = new Jogador("jogador",i);
-			
+			//falta pegar o objetivo
 			String obj = objetivo.getObjetivoAleatorio();
 			
 			jogador.setObj(obj);
@@ -87,7 +123,7 @@ public class Tabuleiro{
 			Jogador j = jogadores.get(i % qndJogadores);
 			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
-			t.setQntExercitos(1);
+			t.setQtdExercitos(1);
 		}
 	}
 
@@ -107,6 +143,9 @@ public class Tabuleiro{
 		cartasTerritorios.add(t);
 		t.setPosX(355);
 		t.setPosY(471);
+		listaTerritorios.add(t);
+		//t.setPosX();
+		//t.setPosY();
 
 		t = new Territorio("Argentina");
 		mapTerritorios.put(t.getNome(), t);
@@ -114,6 +153,7 @@ public class Tabuleiro{
 		cartasTerritorios.add(t);
 		t.setPosX(319);
 		t.setPosY(580);
+		listaTerritorios.add(t);
 
 		t = new Territorio("Peru");
 		mapTerritorios.put(t.getNome(), t);
@@ -121,6 +161,7 @@ public class Tabuleiro{
 		cartasTerritorios.add(t);
 		t.setPosX(275);
 		t.setPosY(510);
+		listaTerritorios.add(t);
 
 		t = new Territorio("Venezuela");
 		mapTerritorios.put(t.getNome(), t);
@@ -129,6 +170,8 @@ public class Tabuleiro{
 		t.setPosX(232);
 		t.setPosY(452);
 		
+		listaTerritorios.add(t);
+
 		//Territórios América do Norte
 		t = new Territorio("Nova York");
 		mapTerritorios.put(t.getNome(), t);
@@ -143,6 +186,12 @@ public class Tabuleiro{
 		cartasTerritorios.add(t);
 		t.setPosX(166);
 		t.setPosY(361);
+		listaTerritorios.add(t);
+
+		t = new Territorio("Mexico");
+		mapTerritorios.put(t.getNome(), t);
+		t.instanciaAdjacentes(t);
+		listaTerritorios.add(t);
 
 		t = new Territorio("California");
 		mapTerritorios.put(t.getNome(), t);
@@ -653,10 +702,156 @@ public class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 	}
-
+	
+	//Inicializa as cartas
 	private void InstanciaCartas(){
 		Cartas c;
-		//TODO
+		//Cartas de Território
+		//Africa
+		c = new Cartas(2, mapTerritorios.get("Africa do Sul"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Angola"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Argelia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Egito"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Nigeria"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Somalia"));
+		listaCartas.add(c);
+
+		//America do Norte
+		c = new Cartas(2, mapTerritorios.get("Alasca"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("California"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Calgary"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Groelandia"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Mexico"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Nova York"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Quebec"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Texas"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Vancouver"));
+		listaCartas.add(c);
+
+		//America do Sul
+		c = new Cartas(0, mapTerritorios.get("Argentina"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Brasil"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Peru"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Venezuela"));
+		listaCartas.add(c);
+
+		//Asia
+		c = new Cartas(1, mapTerritorios.get("Arabia Saudita"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Bangladesh"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Cazaquistao"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("China"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Coreia do Norte"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Coreia do Sul"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Estonia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("India"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Ira"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Iraque"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Japao"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Jordania"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Letonia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Mongolia"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Paquistao"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Russia"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Siria"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Siberia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Tailandia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Turquia"));
+		listaCartas.add(c);
+
+		//Europa
+		c = new Cartas(1, mapTerritorios.get("Espanha"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Franca"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Italia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Polonia"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Reino Unido"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Romenia"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Suecia"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Ucrania"));
+		listaCartas.add(c);
+
+		//Oceania
+		c = new Cartas(2, mapTerritorios.get("Australia"));
+		listaCartas.add(c);
+		c = new Cartas(2, mapTerritorios.get("Indonesia"));
+		listaCartas.add(c);
+		c = new Cartas(0, mapTerritorios.get("Nova Zelandia"));
+		listaCartas.add(c);
+		c = new Cartas(1, mapTerritorios.get("Perth"));
+		listaCartas.add(c);
+	}
+	
+	//Da uma carta a um jogador caso ele conquiste territorios
+	public void DaCartas(Jogador j){
+		//condicao para dar cartas ao jogador -> conquistar territorios
+		//pegar todos os territorios e cartas q o jogador tem
+		ArrayList <Territorio> t = j.getTerritorios();
+		ArrayList <Cartas> c = j.getCartas();
+
+		//se ele conquistou territorios, precisamos dar cartas a ele
+		if(j.alterarQtdTerritorios(numJogadores)){
+			//percorre a lista de territorios do jogador
+			for(Territorio t1 : t){
+				//percorre a lista de cartas do deck do jogo
+				for(Cartas c1 : listaCartas){
+					/*se o nome do territorio for igual ao nome da carta
+					 * e o jogador nao tem a carta daquele territorio, 
+					 * teremos que dar a carta a ele
+					*/
+					if(t1.getNome().equals(c1.getTerritorio().getNome())){
+						if(!c.contains(c1)){
+							j.addCarta(c1);
+						}
+					}
+				}
+			}
+		}
+		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagemq
+		else{
+			System.out.printf("Jogador nao conquistou territorios\n");
+			return;
+		}
 	}
 	
 	// ----------------- Getters & Setters -----------------
@@ -673,51 +868,63 @@ public class Tabuleiro{
 		}
 		return tabuleiro;
 	}
-
+	
+	//Retorna hashmap de territorios
 	public static HashMap<String, Territorio> getMapTerritorios() {
 		return mapTerritorios;
 	}
 	
-	public static HashMap<String, Continente> getMapContinente() {
+	//Retorna hashmap de continentes
+	public static HashMap<String, Continente> getMapContinentes() {
 		return mapContinente;
 	}
 	
-	public ArrayList<Territorio> getCartasTerritorios() {
-		return cartasTerritorios;
+	//Retorna o array de territorios
+	public ArrayList<Territorio> getlistaTerritorios() {
+		return listaTerritorios;
 	}
 	
-	public void setCartasTerritorios(ArrayList<Territorio> cartasTerritorios) {
-		this.cartasTerritorios = cartasTerritorios;
+	//Altera lista de territorios
+	public void setlistaTerritorios(ArrayList<Territorio> listaTerritorios) {
+		this.listaTerritorios = listaTerritorios;
 	}
 	
+	//Altera hashmap de territorios
 	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
 		Tabuleiro.mapTerritorios = mapTerritorios;
 	}
-
+	
+	//Altera hashmap de continentes
 	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
 		Tabuleiro.mapContinente = mapContinente;
 	}
-
+	
+	//Retorna o numero de jogadores na partida
 	public int getNumJogadores() {
 		return numJogadores;
 	}
 	
+	//Altera o numero de jogadores na partida
 	public void setNumJogadores(int numJogadores) {
 		this.numJogadores = numJogadores;
 	}
 	
+	//Retorna o array de jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 	
+	//Altera o array de jogadores
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
 	
+	//Retorna o objetivo
 	public Objetivo getObjetivo() {
 		return objetivo;
 	}
 	
+	//Altera o objetivo
 	public void setObjetivo(Objetivo objetivo) {
 		this.objetivo = objetivo;
 	}

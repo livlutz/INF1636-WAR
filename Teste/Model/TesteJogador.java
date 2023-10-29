@@ -14,14 +14,6 @@ public class TesteJogador {
 		assertNotNull(j);
 	}
 	
-	/*@Test
-	//TODO
-	public void testeVerCartas() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.addCarta(new Cartas(0, null));
-		j.verCartas();
-	}*/
-	
 	@Test 
 	public void testaAlteraQtdTerritorios() {
 		Jogador j = new Jogador ("Jooj",1);
@@ -98,15 +90,12 @@ public class TesteJogador {
 		assertEquals(j.getNome(),"Jooj");
 	}
 	
-	/*@Test
-	//TODO
+	@Test
 	public void testaAddCarta() {
 		Jogador j = new Jogador ("Jooj",1);
-		j.addCarta();
-		ArrayList <Cartas> c = new ArrayList <Cartas>();
-		//c.add(new Cartas());
-		assertEquals(j.getCartas().size(),c.size());
-	}*/
+		j.addCarta(new Cartas(1, null));
+		assertEquals(j.getCartas().size(),1);
+	}
 	
 	@Test
 	public void testaTemTroca() {
@@ -191,8 +180,19 @@ public class TesteJogador {
 	}
 	
 	@Test
-	public void testeRodadaDePosicionamento() {
-		//TODO
+	public void testaRemoveTerritorio() {
+		Jogador j = new Jogador ("Jooj",1);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		j.removeTerritorio(t);
+		assertEquals(j.getTerritorios().size(),0);
 	}
 	
+	@Test
+	public void testaGetCartas() {
+		Jogador j = new Jogador ("Jooj",1);
+		Cartas c = new Cartas(1, null);
+		j.addCarta(c);
+		assertEquals(j.getCartas().size(),1);
+	}
 }
