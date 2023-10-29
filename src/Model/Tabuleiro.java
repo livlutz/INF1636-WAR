@@ -79,12 +79,12 @@ public class Tabuleiro{
 	// distribui os territórios entre os jogadores, colocando um exército em cada
 	void distribuiTerritorios(){
 		Collections.shuffle(cartasTerritorios);
-		int qtdJogadores = jogadores.size();
-		int qtdTerritorios = cartasTerritorios.size();
+		int qndJogadores = jogadores.size();
+		int qndTerritorios = cartasTerritorios.size();
 
-		for (int i = 0; i < qtdTerritorios; i++) {
+		for (int i = 0; i < qndTerritorios; i++) {
 			Territorio t = cartasTerritorios.get(i);
-			Jogador j = jogadores.get(i % qtdJogadores);
+			Jogador j = jogadores.get(i % qndJogadores);
 			System.out.println("Jogador " + j.getNome() + " recebeu territorio " + t.getNome());
 			t.setJogador(j);
 			t.setQntExercitos(1);
