@@ -19,60 +19,6 @@ class Tabuleiro{
 		InstanciaContinente();
 	}
 	
-	//Valida um ataque
-	public boolean VerificarAtaque(Jogador atacante, Territorio tAtacante, Territorio tDefensor) {
-		if(tAtacante.getJogador() == atacante)
-			if (atacante != tDefensor.getJogador()) 
-				if (tAtacante.verificaAdjacencia(tDefensor))
-					if(tAtacante.getQntExercitos() > 1)
-						return true;	
-		return false;
-	}
-	
-	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
-	public void RealizaAtaque(Territorio atacante,Territorio defensor) {
-		
-		if(VerificarAtaque(atacante.getJogador(), atacante, defensor)){
-			int qtdAtaque = atacante.getQntExercitos() - 1;
-			int qtdDefesa = defensor.getQntExercitos();
-			int[] dadosAtaque = new int[qtdAtaque];
-			int[] dadosDefesa = new int[qtdDefesa];
-			Dado dado = new Dado();
-			int qtdAtaquePerdidos = 0;
-			int qtdDefesaPerdidos = 0;
-			
-			for (int i = 0;i < qtdAtaque;i++) {
-				dadosAtaque[i] = dado.rodarDado();
-			}
-			
-			for (int i = 0;i < qtdDefesa;i++) {
-				dadosDefesa[i] = dado.rodarDado();
-			}
-			
-			//Ordena os dados
-			Arrays.sort(dadosAtaque);
-			Arrays.sort(dadosDefesa);
-			
-			//Compara os dados
-			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
-				if (dadosAtaque[i] > dadosDefesa[i]) {
-					qtdDefesaPerdidos++;
-				}
-				else {
-					qtdAtaquePerdidos++;
-				}
-			}
-			
-			//Atualiza os exércitos
-			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
-			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
-
-		}
-		
-		System.out.println("Nao foi possivel realizar o ataque");
-		return;
-	}
-	
 	//Move exercitos por territórios
 	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
