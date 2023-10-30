@@ -19,9 +19,6 @@ class Tabuleiro{
 	//Guarda cada jogador
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	
-	//Inicializa os objetivos
-	private Objetivo objetivo = new Objetivo();
-	
 	//Construtor
 	private Tabuleiro() {
 		InstanciaTerritorios();

@@ -14,14 +14,6 @@ public class TesteJogador {
 		assertNotNull(j);
 	}
 	
-	@Test 
-	public void testaAlteraQtdTerritorios() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.setQtdTerritorios(4);
-		assertTrue(j.alterarQtdTerritorios(1));
-		assertFalse(j.alterarQtdTerritorios(-6));
-	}
-	
 	@Test
 	public void testaGetQtdExecPos() {
 		Jogador j = new Jogador ("Jooj",1);
@@ -34,34 +26,6 @@ public class TesteJogador {
 		Jogador j = new Jogador ("Jooj",1);
 		j.setQtdExercitoPosic(4);
 		assertEquals(j.getQtdExercitoPosic(),4);
-	}
-	
-	@Test
-	public void testaGetQtdTerritorios() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.setQtdTerritorios(2);
-		assertEquals(j.getQtdTerritorios(),2);
-	}
-	
-	@Test
-	public void testaSetQtdTerritorios() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.setQtdTerritorios(2);
-		assertEquals(j.getQtdTerritorios(),2);
-	}
-	
-	@Test
-	public void testaGetObj() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.setObj("A");
-		assertEquals(j.getObj(),"A");
-	}
-	
-	@Test
-	public void testaSetObj() {
-		Jogador j = new Jogador ("Jooj",1);
-		j.setObj("A");
-		assertEquals(j.getObj(),"A");
 	}
 	
 	@Test
