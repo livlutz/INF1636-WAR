@@ -47,7 +47,13 @@ class Jogo {
     }
 
     // Inicializa o jogo
-    public void InicializaJogo(){
+    public boolean InicializaJogo(){
+    	
+    	//Jogo n comeca se tiver menos q 3 jogadores
+    	if((jogadores.size())<3) {
+    		return false;
+    	}
+    	
         // Instancia cartas
         InstanciaCartas(Tabuleiro.getMapTerritorios());
 
@@ -67,6 +73,8 @@ class Jogo {
 
         // Distribui os territorios
         tabuleiro.distribuiTerritorios(jogadores);
+        
+        return true;
 
     }
     
@@ -282,7 +290,7 @@ class Jogo {
 	}
 	
 	//Da uma carta a um jogador caso ele conquiste territorios
-	public void DaCartas(Jogador j, int qtdTerritoriosConquistados){
+	public void DaCartas(Jogador j){
 		//condicao para dar cartas ao jogador -> conquistar territorios
 		//pegar todos os territorios e cartas q o jogador tem
 		ArrayList <Territorio> t = j.getTerritorios();
