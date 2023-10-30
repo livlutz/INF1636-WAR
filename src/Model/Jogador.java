@@ -24,11 +24,13 @@ class Jogador {
 	
 	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  //Guarda as cartas que possui
 	
-	private String obj;  //Guarda seu objetivo no jogo
+	private Objetivo obj;  //Guarda seu objetivo no jogo
 
 	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
 	
 	private boolean eliminadoNessaRodada = false; //Guarda se o jogador foi eliminado nessa rodada
+
+	private boolean conquistouNessaRodada = false; //Guarda se o jogador conquistou um território nessa rodada
 
 	//Construtor da classe
 	public Jogador(String nome, int cor) {
@@ -169,18 +171,6 @@ class Jogador {
 		input.close();
 	}
 	
-	//Altera a quantidade de territórios 
-	protected boolean alterarQtdTerritorios (int qtd) {
-			// se tentar subtrair mais territórios do que tem 
-			if (qtd < 0) {
-				if ((qtd * (-1)) > this.qtdTerritorios) {
-					return false;
-				}
-			}
-			this.qtdTerritorios += qtd;
-			return true;
-	}
-	
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, triangulos = 0;
@@ -239,11 +229,15 @@ class Jogador {
 	//Adiciona um território ao jogador
 	public void addTerritorio(Territorio t) {
 		territorios.add(t);
+		// Aumenta em 1 a quantidade de territórios
+		this.qtdTerritorios++;
 	}
 
 	//Remove um território do jogador
 	public void removeTerritorio(Territorio t) {
 		territorios.remove(t);
+		// Diminui em 1 a quantidade de territórios
+		this.qtdTerritorios--;
 	}
 
 	// --------------------------- getters & setters ---------------------------
@@ -269,7 +263,7 @@ class Jogador {
 	}
 
 	//Retorna o objetivo do jogador
-	public String getObj() {
+	public Objetivo getObj() {
 		return obj;
 	}
 
@@ -293,24 +287,29 @@ class Jogador {
 		return eliminadoNessaRodada;
 	}
 
+	//Retorna se o jogador conquistou um território nessa rodada
+	public boolean getConquistouNessaRodada() {
+		return conquistouNessaRodada;
+	}
+
 	//Altera a quantidade de exércitos que o jogador pode posicionar
 	public void setQtdExercitoPosic(int qtdExercitoPosic) {
 		this.qtdExercitoPosic = qtdExercitoPosic;
 	}
-
-	//Altera a quantidade de territórios que o jogador possui
-	public void setQtdTerritorios(int qtd){
-		qtdTerritorios = qtd;
-	}
 	
 	//Altera o objetivo do jogador
-	public void setObj(String obj) {
+	public void setObj(Objetivo obj) {
 		this.obj = obj;
 	}
 
 	//Altera se o jogador foi eliminado nessa rodada para verificação de objetivos
 	public void setEliminadoNessaRodada(boolean eliminadoNessaRodada) {
 		this.eliminadoNessaRodada = eliminadoNessaRodada;
+	}
+
+	//Altera se o jogador conquistou um território nessa rodada para recepção de cartas
+	public void setConquistouNessaRodada(boolean conquistouNessaRodada) {
+		this.conquistouNessaRodada = conquistouNessaRodada;
 	}
 
 }
