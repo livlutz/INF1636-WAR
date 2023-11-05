@@ -41,7 +41,7 @@ public class TesteTerritorio {
 	@Test
 	public void TestaAlterarQtdExercitos() {
 		Territorio a = new Territorio("Territorio teste");
-		Jogador j = new Jogador("jooj",2);
+		Jogador j = new Jogador("jooj",null);
 		j.setQtdExercitoPosic(10);
 		a.setJogador(j);
 		assertTrue(a.alterarQndExercitos(1));
@@ -51,7 +51,7 @@ public class TesteTerritorio {
 	@Test
 	public void testaGetJogador() {
 		Territorio t = new Territorio ("Territorio teste");
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		t.setJogador(j);
 		assertEquals(t.getJogador(),j);
 	}
@@ -59,7 +59,7 @@ public class TesteTerritorio {
 	@Test
 	public void testaSetJogador() {
 		Territorio t = new Territorio ("Territorio teste");
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		t.setJogador(j);
 		assertEquals(t.getJogador(),j);
 	}

@@ -10,27 +10,27 @@ public class TesteJogador {
 
 	@Test
 	public void testeConstrutor() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		assertNotNull(j);
 	}
 	
 	@Test
 	public void testaGetQtdExecPos() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		j.setQtdExercitoPosic(4);
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
 	@Test
 	public void testaSetQtdExecPosic() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		j.setQtdExercitoPosic(4);
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
 	@Test
 	public void testaTrocarEGetQtdDeCartas() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		Cartas c1 = new Cartas(0, null);
 		Cartas c2 = new Cartas(1, null);
 		Cartas c3 = new Cartas(2, null);
@@ -44,26 +44,26 @@ public class TesteJogador {
 	
 	@Test
 	public void testaGetCor() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		assertEquals(j.getCor(),1);
 	}
 	
 	@Test
 	public void testaGetNome() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		assertEquals(j.getNome(),"Jooj");
 	}
 	
 	@Test
 	public void testaAddCarta() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		j.addCarta(new Cartas(1, null));
 		assertEquals(j.getCartas().size(),1);
 	}
 	
 	@Test
 	public void testaTemTroca() {
-		Jogador j = new Jogador(null, 0);
+		Jogador j = new Jogador(null,null);
 		Cartas c1 = new Cartas(0, null);
 		Cartas c2 = new Cartas(1, null);
 		Cartas c3 = new Cartas(2, null);
@@ -75,7 +75,7 @@ public class TesteJogador {
 
 	@Test
 	public void testaTrocaCartas(){
-		Jogador j = new Jogador(null, 0);
+		Jogador j = new Jogador(null, null);
 		Cartas c1 = new Cartas(0, null);
 		Cartas c2 = new Cartas(1, null);
 		Cartas c3 = new Cartas(2, null);
@@ -129,7 +129,7 @@ public class TesteJogador {
 
 	@Test
 	public void testaAddTerritorio() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		Territorio t = new Territorio("A");
 		j.addTerritorio(t);
 		assertEquals(j.getTerritorios().size(),1);
@@ -137,7 +137,7 @@ public class TesteJogador {
 
 	@Test
 	public void testaGetTerritorios() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		Territorio t = new Territorio("A");
 		j.addTerritorio(t);
 		assertEquals(j.getTerritorios().size(),1);
@@ -145,7 +145,7 @@ public class TesteJogador {
 	
 	@Test
 	public void testaRemoveTerritorio() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		Territorio t = new Territorio("A");
 		j.addTerritorio(t);
 		j.removeTerritorio(t);
@@ -154,7 +154,7 @@ public class TesteJogador {
 	
 	@Test
 	public void testaGetCartas() {
-		Jogador j = new Jogador ("Jooj",1);
+		Jogador j = new Jogador ("Jooj",null);
 		Cartas c = new Cartas(1, null);
 		j.addCarta(c);
 		assertEquals(j.getCartas().size(),1);

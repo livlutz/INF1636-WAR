@@ -29,7 +29,7 @@ public class TesteContinente {
 		Continente c = new Continente("Continente",0, null);
 		Territorio t = new Territorio("Territorio Teste 1");
 		Territorio a = new Territorio("Territorio Teste 2");
-		Jogador j = new Jogador("Jooj",1);
+		Jogador j = new Jogador("Jooj", null);
 		t.setJogador(j);
 		a.setJogador(j);
 		c.addTerritorio(t);

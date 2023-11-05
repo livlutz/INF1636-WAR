@@ -17,8 +17,8 @@ public class TesteCartas {
 	public void testaTerrPertenceJogador() {
 		Territorio t = new Territorio("Teste");
 		Cartas c = new Cartas (1,t);
-		Jogador j = new Jogador(null, 0);
-		Jogador a = new Jogador(null, 1);
+		Jogador j = new Jogador("Jogador 1",null);
+		Jogador a = new Jogador("Jogador 2",null);
 		j.addTerritorio(t);
 		assertTrue(c.terrPertenceJogador(j));
 		assertFalse(c.terrPertenceJogador(a));
