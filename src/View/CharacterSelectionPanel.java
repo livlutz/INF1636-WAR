@@ -18,18 +18,16 @@ public class CharacterSelectionPanel extends JPanel {
 	SelectionComponent sc5 = new SelectionComponent();
 	SelectionComponent sc6 = new SelectionComponent();
 	JButton btn = new JButton("Iniciar Jogo");
-	private CharacterSelectionPanel() {
-		
+	
+	private CharacterSelectionPanel() {	
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 	            MainFrame.getMainFrame().goToGamePanel();
 	        }
-		});
-		
-	
+		}
+		);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(btn);
-			
 	}
 	
 	public static CharacterSelectionPanel getCharacterSelectionPanel() {
@@ -45,7 +43,6 @@ public class CharacterSelectionPanel extends JPanel {
 	public void drawJogadores() {
 		for(int i = 0;i < numJogadores;i++) {
 			add(new SelectionComponent());
-			//System.out.println(i);
 		}
 	}
 }
