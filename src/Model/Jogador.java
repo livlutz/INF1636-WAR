@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
-
+import java.awt.Color;
 class Jogador {
 
-	// enum com as cores que um jogador pode escolher
-	public static enum Cor {
-		branco,preto,vermelho,azul,amarelo,verde;
-	}
-	
-	private int cor; //Guarda a cor do jogador
+	private Color cor; //Guarda a cor do jogador
 	
 	private String nome; //Guarda o nome do jogador
 	
@@ -33,7 +28,7 @@ class Jogador {
 	private boolean conquistouNessaRodada = false; //Guarda se o jogador conquistou um território nessa rodada
 
 	//Construtor da classe
-	public Jogador(String nome, int cor) {
+	public Jogador(String nome, Color cor) {
 		this.nome = nome;
 		this.cor = cor;
 	}
@@ -243,10 +238,15 @@ class Jogador {
 	// --------------------------- getters & setters ---------------------------
 
 	//Retorna a cor do jogador
-	public int getCor() {
+	public Color getCor() {
 		return cor;
 	}
 
+	//Altera a cor do jogador
+	public void setCor(Color cor) {
+		this.cor = cor;
+	}
+	
 	//Retorna o nome do jogador
 	public String getNome() {
 		return nome;

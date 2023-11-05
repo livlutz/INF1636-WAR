@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Color;
 
 class ObjetivoDestruir extends Objetivo{
     private Jogador jAlvo;
@@ -9,25 +10,27 @@ class ObjetivoDestruir extends Objetivo{
         this.jAlvo = jogador;
         String descricao = "Destruir totalmente os EXÉRCITOS ";
         String cor = "";
-        switch(jogador.getCor()){
-            case 0:
+        //cores : branco, preto, azul, verde, vermelho, amarelo
+        switch(jAlvo.getCor().getRGB()){
+            case -1:
                 cor = "BRANCOS";
                 break;
-            case 1:
+            case -16777216:
                 cor = "PRETOS";
                 break;
-            case 2:
-                cor = "VERMELHOS";
-                break;
-            case 3:
+            case -16776961:
                 cor = "AZUIS";
                 break;
-            case 4:
-                cor = "AMARELOS";
-                break;
-            case 5:
+            case -16711936:
                 cor = "VERDES";
                 break;
+            case -65536:
+                cor = "VERMELHOS";
+                break;
+            case -256:
+                cor = "AMARELOS";
+                break;
+            
         }
         descricao += cor + "se é você quem possui os exércitos " + cor 
             + " ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS";
