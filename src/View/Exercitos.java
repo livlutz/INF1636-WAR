@@ -35,5 +35,4 @@ public class Exercitos extends JComponent {
 		g2d.drawString(qntExercitos, posX, posY);
 	}
 	
-
 }

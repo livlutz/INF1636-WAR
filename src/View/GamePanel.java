@@ -118,7 +118,6 @@ public class GamePanel extends JPanel {
 		return gamePanel;
 	}
 	
-	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g2d = (Graphics2D) g;
@@ -129,8 +128,7 @@ public class GamePanel extends JPanel {
 
 	void desenhaExercitos(Graphics2D g2d) {
 		Exercitos exercitos;
-		for (String t: territorios) {
-            
+		for (String t: territorios) { 
 			switch(t){
 				case "Brasil":
 					exercitos = new Exercitos(355,471,apiJogo.getCorTerritorio(t));
@@ -295,5 +293,9 @@ public class GamePanel extends JPanel {
 		}
 	}
 	
+	void desenhaCartaObjetivo(){
+		//TODO desenhar carta objetivo
+
+	}
 		
 }
