@@ -1,10 +1,8 @@
 package Model;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.Test;
+import java.awt.Color;
 
 public class TesteJogador {
 
@@ -44,8 +42,9 @@ public class TesteJogador {
 	
 	@Test
 	public void testaGetCor() {
-		Jogador j = new Jogador ("Jooj",null);
-		assertEquals(j.getCor(),1);
+		Color c = new Color (255,213,45);
+		Jogador j = new Jogador ("Jooj", c);
+		assertEquals(j.getCor(),c);
 	}
 	
 	@Test
