@@ -8,3 +8,5 @@ Os únicos aspectos que o programa irá controlar são aquelas que dizem respeit
 distribuição de cartas entre os jogadores; distribuição e deslocamento de exércitos;
 ataques e lançamento dos dados; e, por último, a definição do vencedor, aquele que
 atingiu seu objetivo primeiro
+
+Guia para as cores que estamos usando (RGB usado para cada uma delas) : https://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
