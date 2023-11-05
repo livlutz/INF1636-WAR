@@ -12,7 +12,7 @@ class Jogo {
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     
 	// Guarda a quantidade de jogadores
-	private int numJogadores;
+	private int numJogadores = 5;
 	
 	// Guarda cada jogador
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
@@ -132,7 +132,7 @@ class Jogo {
 		return;
 	}
 	
-
+	//Instancia os objetivos de cada jogador
     public void InstanciaObjetivos(){
         Objetivo obj;
         // Instancia objetivos de destruir jogador
@@ -169,7 +169,6 @@ class Jogo {
     
     }
 
-	
 	// Instancia as cartas
 	private void InstanciaCartas(HashMap<String,Territorio> mapTerritorios){
 		Cartas c;

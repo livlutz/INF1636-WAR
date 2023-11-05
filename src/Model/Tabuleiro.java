@@ -11,13 +11,6 @@ class Tabuleiro{
 	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	private static Tabuleiro tabuleiro = null;
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
-	private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
-	
-	//Guarda a quantidade de jogadores
-	private int numJogadores = 5;
-	
-	//Guarda cada jogador
-	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	
 	//Construtor
 	private Tabuleiro() {
