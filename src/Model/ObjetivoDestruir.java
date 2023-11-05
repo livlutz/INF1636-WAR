@@ -11,27 +11,30 @@ class ObjetivoDestruir extends Objetivo{
         String descricao = "Destruir totalmente os EXÉRCITOS ";
         String cor = "";
         //cores : branco, preto, azul, verde, vermelho, amarelo
-        switch(jAlvo.getCor().getRGB()){
-            case -1:
-                cor = "BRANCOS";
-                break;
-            case -16777216:
-                cor = "PRETOS";
-                break;
-            case -16776961:
-                cor = "AZUIS";
-                break;
-            case -16711936:
-                cor = "VERDES";
-                break;
-            case -65536:
-                cor = "VERMELHOS";
-                break;
-            case -256:
-                cor = "AMARELOS";
-                break;
-            
+        if(jAlvo.getCor() == new Color(255,255,255)){
+            cor = "BRANCOS";
         }
+
+        else if (jAlvo.getCor() == new Color(0,0,0)){
+            cor = "PRETOS";
+        }
+
+        else if (jAlvo.getCor() == new Color(255,255,0)){
+            cor = "AMARELOS";
+        }
+
+        else if (jAlvo.getCor() == new Color(0,0,255)){
+            cor = "AZUIS";
+        }
+
+        else if (jAlvo.getCor() == new Color(0,255,0)){
+            cor = "VERDES";
+        }
+
+        else if (jAlvo.getCor() == new Color(255,0,0)){
+            cor = "VERMELHOS";
+        }
+        
         descricao += cor + "se é você quem possui os exércitos " + cor 
             + " ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS";
         this.descricao = descricao;
