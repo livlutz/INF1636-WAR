@@ -1,13 +1,15 @@
 package View;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
 	
-		private final int LARGURA = 1500;
-		private final int ALTURA = 800;
+		public final int LARGURA = 1200;
+		public final int ALTURA = 700;
 		private static MainFrame mf = null;
 		public CardLayout mLayout = null;
 		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
@@ -15,10 +17,11 @@ public class MainFrame extends JFrame {
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 		//Metodo em jogador de pegar exercitos
 		//private int exercitos = Exercitos.getExercitos();
+		
+		//Construtor
 		private MainFrame() {
-			
 			setSize(LARGURA, ALTURA);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setTitle("War");
 			setVisible(true);
 			getContentPane().add(startingPanel);
