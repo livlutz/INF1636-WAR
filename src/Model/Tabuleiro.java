@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.HashMap;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -331,8 +332,8 @@ class Tabuleiro{
 		Territorio t;
 		Continente c; 
 		
-		//America do Sul
-		c = new Continente("America do Sul", 2, Continente.CorCont.verde);
+		//America do Sul - Verde 
+		c = new Continente("America do Sul", 2, new Color(0,255,0));
 		
 		t = mapTerritorios.get("Brasil");
 		c.territorios.add(t);
@@ -348,8 +349,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//America do Norte
-		c = new Continente("America do Norte", 5, Continente.CorCont.laranja);
+		//America do Norte - Vermelho 
+		c = new Continente("America do Norte", 5, new Color (255,0,0));
 
 		t = mapTerritorios.get("Nova York");
 		c.territorios.add(t);
@@ -380,8 +381,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Europa
-		c = new Continente("Europa", 5, Continente.CorCont.azul);
+		//Europa - Azul escuro 
+		c = new Continente("Europa", 5, new Color (0,0,153));
 
 		t = mapTerritorios.get("Espanha");
 		c.territorios.add(t);
@@ -409,8 +410,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Africa
-		c = new Continente("Africa", 3, Continente.CorCont.rosa);
+		//Africa - Roxo 
+		c = new Continente("Africa", 3, new Color (102,0,153));
 
 		t = mapTerritorios.get("Egito");
 		c.territorios.add(t);
@@ -432,8 +433,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Asia
-		c = new Continente("Asia", 7, Continente.CorCont.amarelo);
+		//Asia -  Amarelo 
+		c = new Continente("Asia", 7, new Color (255,255,0));
 
 		t = mapTerritorios.get("Arabia Saudita");
 		c.territorios.add(t);
@@ -497,8 +498,8 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Oceania
-		c = new Continente("Oceania", 2, Continente.CorCont.vermelho);
+		//Oceania - Azul claro  
+		c = new Continente("Oceania", 2, new Color (51,204,255));
 
 		t = mapTerritorios.get("Australia");
 		c.territorios.add(t);
