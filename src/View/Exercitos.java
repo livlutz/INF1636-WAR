@@ -15,7 +15,10 @@ public class Exercitos extends JComponent {
 	private Color cor;
 	Graphics2D g2d;
 	private String qntExercitos = "0";
-	
+
+	//Cor do jogador correspondente a cor do exercito
+
+	//Construtor
 	public Exercitos(int x, int y,Color color) {
 		this.posX = x;
 		this.posY = y;
