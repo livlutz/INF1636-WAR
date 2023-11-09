@@ -414,6 +414,7 @@ class Territorio {
 		//Altera o jogador
 		public void setJogador(Jogador jogador) {
 			this.jogador = jogador;
+			this.cor = jogador.getCor();
 		}
 
 		//Retorna a quantidade de exércitos
@@ -441,8 +442,4 @@ class Territorio {
 			return cor;
 		}
 		
-		//Altera a cor do territorio para a cor do jogador que o domina
-		public void setCor(Color cor) {
-			this.cor = cor;
-		}
 }
