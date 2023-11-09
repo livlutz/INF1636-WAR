@@ -20,6 +20,13 @@ public class APIJogo {
         return APIJogo;
     }
 
+    //Método de inicializar jogo
+    public boolean comecaJogo() {
+    	Jogo j = Jogo.getJogo();
+    	boolean r = j.InicializaJogo();
+    	return r;
+    }
+
     // Retorna lista de nomes de territórios
     public String[] getTerritoriosLista() {
 		String[] arrayTerritorios = new String[51];
