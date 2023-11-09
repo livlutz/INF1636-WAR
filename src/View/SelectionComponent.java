@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 public class SelectionComponent extends JPanel {
 	JTextField textField = new JTextField("Nome do jogador",20);
-	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo"});
+	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo","Branco"});
 	
 	public SelectionComponent() {
 		add(textField);
