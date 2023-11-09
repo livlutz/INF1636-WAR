@@ -287,8 +287,7 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(0,0,apiJogo.getCorTerritorio(t));
 			}
 			
-            exercitos.drawPlayer(this.g2d);
-            
+            exercitos.drawPlayer(g2d);
             
 		}
 	}

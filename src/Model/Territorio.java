@@ -8,7 +8,9 @@ class Territorio {
 		
 		//Guarda o nome do território
 		private String nome;
-		private Color cor = Color.BLACK;
+		
+		//Guarda a cor do territorio 
+		private Color cor;
 		
 		//Guarda a quantidade de Exércitos no território
 		private int qndExercitos;
@@ -439,8 +441,8 @@ class Territorio {
 			return cor;
 		}
 		
-		//Altera a cor do territorio
-		public void setCor(Color cor) {
-			this.cor = cor;
+		//Altera a cor do territorio para a cor do jogador que o domina
+		public void setCor() {
+			this.cor = jogador.getCor();
 		}
 }

@@ -28,12 +28,10 @@ public class Exercitos extends JComponent {
 		setBounds(0,0, 660, 660);
 	}
 	
-	void drawPlayer(Graphics g2d) {
-		Ellipse2D player;
-		super.paintComponent(g2d);
-		this.g2d = (Graphics2D) g2d;
-		this.g2d.setColor(cor);
-		player = new Ellipse2D.Double(posX, posY, size, size);
+	void drawPlayer(Graphics g) {
+		this.g2d = (Graphics2D) g;
+		this.g2d.setPaint(cor);
+		Ellipse2D player = new Ellipse2D.Float(posX, posY, size, size);
 		this.g2d.fill(player);
 		this.g2d.drawString(qntExercitos, posX, posY);
 	}

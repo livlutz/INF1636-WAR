@@ -34,7 +34,10 @@ public class APIJogo {
 
     // Retorna cor do jogador que domina aquele território
     public Color getCorTerritorio(String t){
-        return Tabuleiro.mapTerritorios.get(t).getCor();
+    	//Primeiro setamos a cor do territorio para a cor do jogador que o domina
+       Tabuleiro.mapTerritorios.get(t).setCor();
+       // Depois retornamos a cor do territorio (Que, neste caso, é a cor do jogador que o domina)
+       return Tabuleiro.mapTerritorios.get(t).getCor();
     }
 
     // Retorna quantidade de exércitos no território em formato de string
