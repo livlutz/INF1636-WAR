@@ -7,10 +7,22 @@ import javax.swing.JTextField;
 public class SelectionComponent extends JPanel {
 	JTextField textField = new JTextField("Nome do jogador",20);
 	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo","Branco"});
+	Color cor;
+	String nome;
 	
 	public SelectionComponent() {
 		add(textField);
 		add(comboBox);
+	}
+
+	//Pega o nome do jogador
+	public void setNome() {
+		nome = comboBox.getName();
+	}
+	
+	//Seta o nome do jogador
+	public String getNome() {
+		return nome;
 	}
 
 	//Seta a cor de acordo com a cor que o jogador escolher
