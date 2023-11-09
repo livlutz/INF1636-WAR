@@ -1,13 +1,18 @@
 package View;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class StartingPanel extends JPanel{
 	
 	JButton iniciar = new JButton("Iniciar novo jogo");
 	JButton continuar = new JButton("Continuar jogo");
+	Image start = null;
 	public static StartingPanel startingPanel = null;
 	JRadioButton radioButton3 = new JRadioButton();
 	JRadioButton radioButton4 = new JRadioButton();
@@ -55,6 +60,14 @@ public class StartingPanel extends JPanel{
 		add(radioButton4);
 		add(radioButton5);
 		add(radioButton6);
+		
+		try {
+			start = ImageIO.read(new File ("images/bgconfiguracao.png"));
+		}
+		
+		catch (IOException e) {
+			System.out.println("Erro na leitura do plano de fundo\n");
+		}
 	}
 	
 	public static StartingPanel getStartingPanel() {

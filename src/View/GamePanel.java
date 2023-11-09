@@ -120,10 +120,10 @@ public class GamePanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g2d = (Graphics2D) g;
-		g2d.drawImage(background, 0,0,1200,800,null);
-		g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
-		desenhaExercitos(g2d);
+		this.g2d = (Graphics2D) g;
+		this.g2d.drawImage(background, 0,0,1200,800,null);
+		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
+		desenhaExercitos(this.g2d);
 	}
 
 	void desenhaExercitos(Graphics2D g2d) {
@@ -287,11 +287,12 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(0,0,apiJogo.getCorTerritorio(t));
 			}
 			
-            exercitos.drawPlayer(g2d);
+            exercitos.drawPlayer(this.g2d);
             
             
 		}
 	}
+	
 	
 	void desenhaCartaObjetivo(){
 		//TODO desenhar carta objetivo

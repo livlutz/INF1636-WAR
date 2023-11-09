@@ -9,7 +9,6 @@ public class SelectionComponent extends JPanel {
 	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo"});
 	
 	public SelectionComponent() {
-		
 		add(textField);
 		add(comboBox);
 	}

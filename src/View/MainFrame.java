@@ -38,10 +38,12 @@ public class MainFrame extends JFrame {
 			}
 			return mf;	
 		}
+		
 		public void goToCsPanel() {
 			startingPanel.setVisible(false);
 			getContentPane().add(csPanel);
 		}
+		
 		public void goToGamePanel() {
 			csPanel.setVisible(false);
 			getContentPane().add(gamePanel);
