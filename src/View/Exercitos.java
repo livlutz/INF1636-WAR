@@ -30,6 +30,7 @@ public class Exercitos extends JComponent {
 	
 	void drawPlayer(Graphics g) {
 		this.g2d = (Graphics2D) g;
+		//tem q pegar a cor do jogador que domina o territorio
 		this.g2d.setPaint(cor);
 		Ellipse2D player = new Ellipse2D.Float(posX, posY, size, size);
 		this.g2d.fill(player);

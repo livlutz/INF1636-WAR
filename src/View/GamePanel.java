@@ -126,6 +126,7 @@ public class GamePanel extends JPanel {
 		desenhaExercitos(this.g2d);
 	}
 
+	//desenha cada territorio 
 	void desenhaExercitos(Graphics2D g2d) {
 		Exercitos exercitos;
 		for (String t: territorios) { 
@@ -285,8 +286,10 @@ public class GamePanel extends JPanel {
 					break;
 				default:
 					exercitos = new Exercitos(0,0,apiJogo.getCorTerritorio(t));
+			
 			}
 			
+			//desenha o territorio
             exercitos.drawPlayer(g2d);
             
 		}

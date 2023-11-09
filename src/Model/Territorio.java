@@ -19,7 +19,7 @@ class Territorio {
 		private ArrayList<Territorio> adjacentes = new ArrayList<Territorio>();
 		
 		//Construtor
-		public Territorio(String nome){
+		public Territorio(String nome) {
 			// inicializa para se chamar getters não ter problema
 			this.jogador = null;
 			this.nome = nome;
@@ -442,7 +442,7 @@ class Territorio {
 		}
 		
 		//Altera a cor do territorio para a cor do jogador que o domina
-		public void setCor() {
-			this.cor = jogador.getCor();
+		public void setCor(Color cor) {
+			this.cor = cor;
 		}
 }
