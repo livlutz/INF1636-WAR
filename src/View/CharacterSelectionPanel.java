@@ -9,14 +9,7 @@ import javax.swing.*;
 public class CharacterSelectionPanel extends JPanel {
 
 	public static CharacterSelectionPanel csPanel = null;
-	private int numJogadores = 4;
-	SelectionComponent sc = new SelectionComponent();
-	SelectionComponent sc1 = new SelectionComponent();
-	SelectionComponent sc2 = new SelectionComponent();
-	SelectionComponent sc3 = new SelectionComponent();
-	SelectionComponent sc4 = new SelectionComponent();
-	SelectionComponent sc5 = new SelectionComponent();
-	SelectionComponent sc6 = new SelectionComponent();
+	private int numJogadores;
 	JButton btn = new JButton("Iniciar Jogo");
 	
 	private CharacterSelectionPanel() {	
