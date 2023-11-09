@@ -49,9 +49,6 @@ class Tabuleiro{
 			// Define 1 para a quantidade de exércitos do território
 			t.setQntExercitos(1);
 
-			// Define a cor do território
-			t.setCor(j.getCor());
-
 			// Adiciona o território na lista de territórios do jogador
 			j.addTerritorio(t);
 
