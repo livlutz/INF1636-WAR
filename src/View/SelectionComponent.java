@@ -12,4 +12,34 @@ public class SelectionComponent extends JPanel {
 		add(textField);
 		add(comboBox);
 	}
+
+	//Seta a cor de acordo com a cor que o jogador escolher
+	public void setCor() {
+			
+		switch(comboBox.getName()) {
+			case "Azul":
+				this.cor = Color.BLUE;
+				break;
+			case "Preto":
+				this.cor = Color.BLACK;
+				break;
+			case "Vermelho":
+				this.cor = Color.RED;
+				break;
+			case "Verde":
+				this.cor = Color.GREEN;
+				break;
+			case "Amarelo":
+				this.cor = Color.YELLOW;
+				break;
+			default:
+				this.cor= Color.WHITE;
+				break;
+		}
+			
+	}
+	
+	public Color getCor() {
+		return cor;
+	}
 }
