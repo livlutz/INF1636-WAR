@@ -3,6 +3,7 @@ package View;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class SelectionComponent extends JPanel {
 	JTextField textField = new JTextField("Nome do jogador",20);
