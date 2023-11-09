@@ -46,4 +46,8 @@ public class CharacterSelectionPanel extends JPanel {
 			add(new SelectionComponent());
 		}
 	}
+
+	public int getJogadores() {
+		return numJogadores;
+	}
 }

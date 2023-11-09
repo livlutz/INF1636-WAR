@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 		//Metodo em jogador de pegar exercitos
-		//private int exercitos = Exercitos.getExercitos();
+		//private int qtdJogadores = csPanel.getJogadores();
 		
 		//Construtor
 		private MainFrame() {

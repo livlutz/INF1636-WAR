@@ -17,12 +17,16 @@ public class GamePanel extends JPanel {
 	public static GamePanel gamePanel = null;
 	Image tabuleiroImg = null;
 	Image background = null;
+	Image cartaObj = null;
+	Image cartaObjGrande = null;
+
 	Graphics2D g2d;
 	// Chamando API aqui enquanto Controller não está pronto
 	APIJogo	apiJogo = APIJogo.getAPIJogo();
 	JButton salvarButton,dadoButton, nextButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	String[] territorios = apiJogo.getTerritoriosLista();
+
 
 	private GamePanel() {
 		String filePath = new File("").getAbsolutePath();
@@ -297,7 +301,16 @@ public class GamePanel extends JPanel {
 	
 	
 	void desenhaCartaObjetivo(){
-		//TODO desenhar carta objetivo
+		try {
+			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
+			cartaObjGrande = ImageIO.read(new File("images/war_carta_objetivo_grande.png"));
+		}
+		catch (IOException e) {
+			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");
+			
+		}
+
+		//tem q pegar cada jogador e escrever na carta o objetivo dele
 
 	}
 		
