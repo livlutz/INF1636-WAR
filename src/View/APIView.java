@@ -31,7 +31,6 @@ public class APIView {
 	}
 
 	public boolean podeComecarJogo(){
-		System.out.println(characterSelectionPanel.getNomesJogadores());
 		if (gerente.verificaComeco(characterSelectionPanel.getNomesJogadores(), characterSelectionPanel.getCoresJogadores()) == false){
 			characterSelectionPanel.getNomesJogadores().clear();
 			characterSelectionPanel.getCoresJogadores().clear();

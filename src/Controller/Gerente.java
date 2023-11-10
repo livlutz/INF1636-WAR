@@ -27,7 +27,6 @@ public class Gerente {
     public boolean verificaComeco(ArrayList<String> nomes, ArrayList<Color> cores){
         int cont = 0;
         for (String s: nomes){
-            System.out.println(s);
             // Verifica se algum nome é nulo
             if (s == null){
                 apiJogo.resetJogadores();

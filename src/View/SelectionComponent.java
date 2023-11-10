@@ -24,19 +24,16 @@ public class SelectionComponent extends JPanel {
 	//----------------- getters & setters --------------//
 	
 	//Pega o nome do jogador
-	public void setNome() {
-		nome = comboBox.getName();
-	}
-	
-	//Seta o nome do jogador
-	public String getNome() {
-		return nome;
+	private void setNome() {
+		if (!textField.getText().equals("Nome do jogador")) {
+			this.nome = textField.getText();
+		}
 	}
 
 	//Seta a cor de acordo com a cor que o jogador escolher
-	public void setCor() {
+	private void setCor() {
 			
-		switch(comboBox.getName()) {
+		switch(comboBox.getSelectedItem().toString()) {
 			case "Azul":
 				this.cor = Color.BLUE;
 				break;
@@ -59,7 +56,15 @@ public class SelectionComponent extends JPanel {
 			
 	}
 	
+	// Devolve o nome que está na textField
+	public String getNome() {
+		setNome();
+		return nome;
+	}
+
+	// Devolve a cor que está no comboBox
 	public Color getCor() {
+		setCor();
 		return cor;
 	}
 }
