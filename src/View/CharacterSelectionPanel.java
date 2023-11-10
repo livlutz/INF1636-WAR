@@ -31,7 +31,7 @@ public class CharacterSelectionPanel extends JPanel {
 		return csPanel;
 	}
 	
-	//Desenha a selecao de jogadores de acordo com o numero selecionado
+	//Desenha os jogadores de acordo com o numero selecionado
 	public void drawJogadores() {
 		for(int i = 0;i < numJogadores;i++) {
 			add(SelectionComponent.getSelectionComponent());
