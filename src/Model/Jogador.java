@@ -27,6 +27,7 @@ class Jogador {
 
 	private boolean conquistouNessaRodada = false; //Guarda se o jogador conquistou um território nessa rodada
 
+	private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro(); // Guarda a instancia de tabuleiro
 	//Construtor da classe
 	public Jogador(String nome, Color cor) {
 		this.nome = nome;
@@ -55,7 +56,7 @@ class Jogador {
 			String nomeTerritorio = input.nextLine();
 
 			// procura o território no hashmap do tabuleiro 
-			Territorio t = Tabuleiro.getTerritorio(nomeTerritorio);
+			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
 			
 			// verifica se o território existe
 			if (t == null){
@@ -132,7 +133,7 @@ class Jogador {
 			String nomeTerritorio = input.nextLine();
 
 			// procura o território no hashmap do tabuleiro 
-			Territorio t = Tabuleiro.getTerritorio(nomeTerritorio);
+			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
 			
 			// verifica se o território existe
 			if (t == null){

@@ -48,362 +48,364 @@ class Territorio {
 			this.qndExercitos += qnd;
 			return true;
 		}
-
-		//Instancia os territórios adjacentes
-		protected void instanciaAdjacentes(Territorio t){
-			switch(t.nome){
-				//América do sul
-				case "Brasil":
-				t.AddAdjacente(new Territorio("Argentina"));
-				t.AddAdjacente(new Territorio("Peru"));
-				t.AddAdjacente(new Territorio("Venezuela")); 
-				t.AddAdjacente(new Territorio("Nigeria"));
-				break;
-
-				case "Argentina":
-				t.AddAdjacente(new Territorio("Brasil"));
-				t.AddAdjacente(new Territorio("Peru"));
-				break;
-
-				case "Peru":
-				t.AddAdjacente(new Territorio("Brasil"));
-				t.AddAdjacente(new Territorio("Argentina"));
-				t.AddAdjacente(new Territorio("Venezuela"));
-				break;
-
-				case "Venezuela":
-				t.AddAdjacente(new Territorio("Brasil"));
-				t.AddAdjacente(new Territorio("Peru"));
-				t.AddAdjacente(new Territorio("Mexico"));
-				break;
-
-				//América do Norte
-				case "Mexico":
-				t.AddAdjacente(new Territorio("Venezuela"));	
-				t.AddAdjacente(new Territorio("California"));
-				t.AddAdjacente(new Territorio("Texas"));
-				break;
-
-				case "California":
-				t.AddAdjacente(new Territorio("Mexico"));
-				t.AddAdjacente(new Territorio("Texas"));
-				t.AddAdjacente(new Territorio("Nova York"));
-				break;
-
-				case "Texas":
-				t.AddAdjacente(new Territorio("Mexico"));
-				t.AddAdjacente(new Territorio("California"));
-				t.AddAdjacente(new Territorio("Vancouver"));
-				t.AddAdjacente(new Territorio("Quebec"));
-				t.AddAdjacente(new Territorio("Nova York"));
-				break;
-
-				case "Vancouver":
-				t.AddAdjacente(new Territorio("California"));
-				t.AddAdjacente(new Territorio("Texas"));
-				t.AddAdjacente(new Territorio("Alaska"));
-				t.AddAdjacente(new Territorio("Calgary"));
-				t.AddAdjacente(new Territorio("Quebec"));
-				break;
-
-				case "Alaska":
-				t.AddAdjacente(new Territorio("Vancouver"));
-				t.AddAdjacente(new Territorio("Calgary"));
-				t.AddAdjacente(new Territorio("Siberia"));
-				break;
-
-				case "Calgary":
-				t.AddAdjacente(new Territorio("Alaska"));
-				t.AddAdjacente(new Territorio("Vancouver"));
-				t.AddAdjacente(new Territorio("Groelandia"));
-				break;
-
-				case "Groelandia":
-				t.AddAdjacente(new Territorio("Calgary"));
-				t.AddAdjacente(new Territorio("Quebec"));
-				t.AddAdjacente(new Territorio("Reio Unido"));
-				break;
-
-				case "Nova York":
-				t.AddAdjacente(new Territorio("Texas"));
-				t.AddAdjacente(new Territorio("Quebec"));
-				break;
-
-				case "Quebec":
-				t.AddAdjacente(new Territorio("Nova York"));
-				t.AddAdjacente(new Territorio("Vancouver"));
-				t.AddAdjacente(new Territorio("Groelandia"));
-				t.AddAdjacente(new Territorio("Texas"));
-				break;
-
-				//África
-				case "Nigeria":	
-				t.AddAdjacente(new Territorio("Brasil"));
-				t.AddAdjacente(new Territorio("Egito"));
-				t.AddAdjacente(new Territorio("Angola"));
-				t.AddAdjacente(new Territorio("Argelia"));
-				t.AddAdjacente(new Territorio("Somalia"));
-				break;
-
-				case "Egito":
-				t.AddAdjacente(new Territorio("Nigeria"));
-				t.AddAdjacente(new Territorio("Argelia"));
-				t.AddAdjacente(new Territorio("Somalia"));
-				t.AddAdjacente(new Territorio("Jordania"));
-				t.AddAdjacente(new Territorio("Romenia"));
-				break;
-
-				case "Angola":
-				t.AddAdjacente(new Territorio("Nigeria"));
-				t.AddAdjacente(new Territorio("Somalia"));
-				t.AddAdjacente(new Territorio("Africa do Sul"));
-				break;
-
-				case "Argelia":
-				t.AddAdjacente(new Territorio("Nigeria"));
-				t.AddAdjacente(new Territorio("Egito"));
-				t.AddAdjacente(new Territorio("Espanha"));
-				t.AddAdjacente(new Territorio("Italia"));
-				break;
-
-				case "Somalia":
-				t.AddAdjacente(new Territorio("Nigeria"));
-				t.AddAdjacente(new Territorio("Egito"));
-				t.AddAdjacente(new Territorio("Angola"));
-				t.AddAdjacente(new Territorio("Africa do Sul"));
-				t.AddAdjacente(new Territorio("Arabia Saudita"));
-				break;
-
-				case "Africa do Sul":
-				t.AddAdjacente(new Territorio("Angola"));
-				t.AddAdjacente(new Territorio("Somalia"));
-				break;
-
-				//Ásia
-				case "Siberia":
-				t.AddAdjacente(new Territorio("Alaska"));
-				t.AddAdjacente(new Territorio("Russia"));
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				break;
-
-				case "Cazaquistao":
-				t.AddAdjacente(new Territorio("Siberia"));
-				t.AddAdjacente(new Territorio("Russia"));
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Mongolia"));
-				t.AddAdjacente(new Territorio("Letonia"));
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("Japao"));
-				break;
-
-				case "Russia":
-				t.AddAdjacente(new Territorio("Siberia"));
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				t.AddAdjacente(new Territorio("Estonia"));
-				t.AddAdjacente(new Territorio("Letonia"));
-				break;
-
-				case "China":
-				t.AddAdjacente(new Territorio("Cazaquistao"));	
-				t.AddAdjacente(new Territorio("Mongolia"));
-				t.AddAdjacente(new Territorio("Coreia do Norte"));
-				t.AddAdjacente(new Territorio("Coreia do Sul"));
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("Paquistao"));
-				t.AddAdjacente(new Territorio("India"));
-				break;
-
-				case "Mongolia":
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Japao"));
-				break;
-
-				case "Coreia do Norte":
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Coreia do Sul"));
-				t.AddAdjacente(new Territorio("Japao"));
-				break;
-
-				case "Coreia do Sul":
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Coreia do Norte"));
-				t.AddAdjacente(new Territorio("India"));
-				t.AddAdjacente(new Territorio("Bangladesh"));
-				t.AddAdjacente(new Territorio("Tailandia"));
-				break;
-
-				case "Japao":
-				t.AddAdjacente(new Territorio("Mongolia"));
-				t.AddAdjacente(new Territorio("Coreia do Norte"));
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				break;
-
-				case "Turquia":
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Letonia"));
-				t.AddAdjacente(new Territorio("Siria"));
-				t.AddAdjacente(new Territorio("Paquistao"));
-				t.AddAdjacente(new Territorio("Ucrania"));
-				break;
-
-				case "Letonia":
-				t.AddAdjacente(new Territorio("Cazaquistao"));
-				t.AddAdjacente(new Territorio("Russia"));
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("Estonia"));
-				t.AddAdjacente(new Territorio("Polonia"));
-				t.AddAdjacente(new Territorio("Suecia"));
-				t.AddAdjacente(new Territorio("Ucrania"));
-				break;
-
-				case "Estonia":
-				t.AddAdjacente(new Territorio("Letonia"));
-				t.AddAdjacente(new Territorio("Russia"));
-				t.AddAdjacente(new Territorio("Suecia"));
-				break;
-
-				case "Paquistao":
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("India"));
-				t.AddAdjacente(new Territorio("Siria"));
-				t.AddAdjacente(new Territorio("Ira"));
-				break;
-
-				case "India":
-				t.AddAdjacente(new Territorio("Paquistao"));
-				t.AddAdjacente(new Territorio("Coreia do Sul"));
-				t.AddAdjacente(new Territorio("Bangladesh"));
-				t.AddAdjacente(new Territorio("China"));
-				t.AddAdjacente(new Territorio("Indonesia"));
-				break;
-
-				case "Bangladesh":
-				t.AddAdjacente(new Territorio("India"));
-				t.AddAdjacente(new Territorio("Coreia do Sul"));
-				t.AddAdjacente(new Territorio("Tailandia"));
-				t.AddAdjacente(new Territorio("Indonesia"));
-				break;
-
-				case "Tailandia":
-				t.AddAdjacente(new Territorio("Bangladesh"));
-				t.AddAdjacente(new Territorio("Coreia do Sul"));
-				break;
-
-				case "Siria":
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("Paquistao"));
-				t.AddAdjacente(new Territorio("Ira"));
-				t.AddAdjacente(new Territorio("Iraque"));
-				t.AddAdjacente(new Territorio("Jordania"));
-				break;
-
-				case "Ira":
-				t.AddAdjacente(new Territorio("Paquistao"));
-				t.AddAdjacente(new Territorio("Siria"));
-				t.AddAdjacente(new Territorio("Iraque"));
-				break;
-
-				case "Iraque":
-				t.AddAdjacente(new Territorio("Ira"));
-				t.AddAdjacente(new Territorio("Siria"));
-				t.AddAdjacente(new Territorio("Jordania"));
-				t.AddAdjacente(new Territorio("Arabia Saudita"));
-				break;
-
-				case "Jordania":
-				t.AddAdjacente(new Territorio("Siria"));
-				t.AddAdjacente(new Territorio("Iraque"));
-				t.AddAdjacente(new Territorio("Egito"));
-				t.AddAdjacente(new Territorio("Arabia Saudita"));
-				break;
-
-				case "Arabia Saudita":
-				t.AddAdjacente(new Territorio("Iraque"));
-				t.AddAdjacente(new Territorio("Jordania"));
-				t.AddAdjacente(new Territorio("Somalia"));
-				break;
-
-				//Europa
-				case "Espanha":
-				t.AddAdjacente(new Territorio("Argelia"));
-				t.AddAdjacente(new Territorio("Franca"));
-				break;
-
-				case "Franca":
-				t.AddAdjacente(new Territorio("Espanha"));
-				t.AddAdjacente(new Territorio("Italia"));
-				t.AddAdjacente(new Territorio("Reino Unido"));
-				t.AddAdjacente(new Territorio("Suecia"));
-				break;
-
-				case "Italia":
-				t.AddAdjacente(new Territorio("Argelia"));
-				t.AddAdjacente(new Territorio("Franca"));
-				t.AddAdjacente(new Territorio("Polonia"));
-				t.AddAdjacente(new Territorio("Suecia"));
-				t.AddAdjacente(new Territorio("Romenia"));
-				break;
-
-				case "Reino Unido":
-				t.AddAdjacente(new Territorio("Franca"));
-				t.AddAdjacente(new Territorio("Groelandia"));
-				break;
-
-				case "Polonia":
-				t.AddAdjacente(new Territorio("Letonia"));
-				t.AddAdjacente(new Territorio("Italia"));
-				t.AddAdjacente(new Territorio("Romenia"));
-				t.AddAdjacente(new Territorio("Ucrania"));
-				break;
-
-				case "Suecia":
-				t.AddAdjacente(new Territorio("Estonia"));
-				t.AddAdjacente(new Territorio("Letonia"));
-				t.AddAdjacente(new Territorio("Italia"));
-				t.AddAdjacente(new Territorio("Franca"));
-				break;
-
-				case "Romenia":
-				t.AddAdjacente(new Territorio("Egito"));	
-				t.AddAdjacente(new Territorio("Italia"));
-				t.AddAdjacente(new Territorio("Polonia"));
-				t.AddAdjacente(new Territorio("Ucrania"));
-				break;
-
-				case "Ucrania":
-				t.AddAdjacente(new Territorio("Polonia"));
-				t.AddAdjacente(new Territorio("Romenia"));
-				t.AddAdjacente(new Territorio("Turquia"));
-				t.AddAdjacente(new Territorio("Letonia"));
-				break;
-
-				//Oceania
-				case "Indonesia":
-				t.AddAdjacente(new Territorio("India"));
-				t.AddAdjacente(new Territorio("Bangladesh"));
-				t.AddAdjacente(new Territorio("Nova Zelandia"));
-				t.AddAdjacente(new Territorio("Australia"));
-				break;
-
-				case "Nova Zelandia":
-				t.AddAdjacente(new Territorio("Indonesia"));
-				t.AddAdjacente(new Territorio("Australia"));
-				break;
-
-				case "Australia":
-				t.AddAdjacente(new Territorio("Indonesia"));
-				t.AddAdjacente(new Territorio("Nova Zelandia"));
-				break;
-
-				case "Perth":
-				t.AddAdjacente(new Territorio("Australia"));
-				break;
-			}
-		}
 		
+		//Instancia os territórios adjacentes
+		protected void instanciaAdjacentes(){
+			Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
+			Territorio t = this;
+			switch(t.nome){
+			//América do sul
+			case "Brasil":
+			t.AddAdjacente(tabuleiro.getTerritorio("Argentina"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Peru"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Venezuela")); 
+			t.AddAdjacente(tabuleiro.getTerritorio("Nigeria"));
+			break;
+
+			case "Argentina":
+			t.AddAdjacente(tabuleiro.getTerritorio("Brasil"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Peru"));
+			break;
+
+			case "Peru":
+			t.AddAdjacente(tabuleiro.getTerritorio("Brasil"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Argentina"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Venezuela"));
+			break;
+
+			case "Venezuela":
+			t.AddAdjacente(tabuleiro.getTerritorio("Brasil"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Peru"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Mexico"));
+			break;
+
+			//América do Norte
+			case "Mexico":
+			t.AddAdjacente(tabuleiro.getTerritorio("Venezuela"));	
+			t.AddAdjacente(tabuleiro.getTerritorio("California"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
+			break;
+
+			case "California":
+			t.AddAdjacente(tabuleiro.getTerritorio("Mexico"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Nova York"));
+			break;
+
+			case "Texas":
+			t.AddAdjacente(tabuleiro.getTerritorio("Mexico"));
+			t.AddAdjacente(tabuleiro.getTerritorio("California"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Nova York"));
+			break;
+
+			case "Vancouver":
+			t.AddAdjacente(tabuleiro.getTerritorio("California"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
+			break;
+
+			case "Alaska":
+			t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Siberia"));
+			break;
+
+			case "Calgary":
+			t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Groelandia"));
+			break;
+
+			case "Groelandia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Reio Unido"));
+			break;
+
+			case "Nova York":
+			t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
+			break;
+
+			case "Quebec":
+			t.AddAdjacente(tabuleiro.getTerritorio("Nova York"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Groelandia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
+			break;
+
+			//África
+			case "Nigeria":	
+			t.AddAdjacente(tabuleiro.getTerritorio("Brasil"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Egito"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Angola"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Argelia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Somalia"));
+			break;
+
+			case "Egito":
+			t.AddAdjacente(tabuleiro.getTerritorio("Nigeria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Argelia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Somalia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Jordania"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Romenia"));
+			break;
+
+			case "Angola":
+			t.AddAdjacente(tabuleiro.getTerritorio("Nigeria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Somalia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Africa do Sul"));
+			break;
+
+			case "Argelia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Nigeria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Egito"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Espanha"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Italia"));
+			break;
+
+			case "Somalia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Nigeria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Egito"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Angola"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Africa do Sul"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Arabia Saudita"));
+			break;
+
+			case "Africa do Sul":
+			t.AddAdjacente(tabuleiro.getTerritorio("Angola"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Somalia"));
+			break;
+
+			//Ásia
+			case "Siberia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Russia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			break;
+
+			case "Cazaquistao":
+			t.AddAdjacente(tabuleiro.getTerritorio("Siberia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Russia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Mongolia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Japao"));
+			break;
+
+			case "Russia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Siberia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Estonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			break;
+
+			case "China":
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));	
+			t.AddAdjacente(tabuleiro.getTerritorio("Mongolia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Norte"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Sul"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Paquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("India"));
+			break;
+
+			case "Mongolia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Japao"));
+			break;
+
+			case "Coreia do Norte":
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Sul"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Japao"));
+			break;
+
+			case "Coreia do Sul":
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Norte"));
+			t.AddAdjacente(tabuleiro.getTerritorio("India"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Bangladesh"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Tailandia"));
+			break;
+
+			case "Japao":
+			t.AddAdjacente(tabuleiro.getTerritorio("Mongolia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Norte"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			break;
+
+			case "Turquia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Siria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Paquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ucrania"));
+			break;
+
+			case "Letonia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Russia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Estonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Polonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Suecia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ucrania"));
+			break;
+
+			case "Estonia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Russia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Suecia"));
+			break;
+
+			case "Paquistao":
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("India"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Siria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ira"));
+			break;
+
+			case "India":
+			t.AddAdjacente(tabuleiro.getTerritorio("Paquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Sul"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Bangladesh"));
+			t.AddAdjacente(tabuleiro.getTerritorio("China"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Indonesia"));
+			break;
+
+			case "Bangladesh":
+			t.AddAdjacente(tabuleiro.getTerritorio("India"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Sul"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Tailandia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Indonesia"));
+			break;
+
+			case "Tailandia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Bangladesh"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Coreia do Sul"));
+			break;
+
+			case "Siria":
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Paquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ira"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Iraque"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Jordania"));
+			break;
+
+			case "Ira":
+			t.AddAdjacente(tabuleiro.getTerritorio("Paquistao"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Siria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Iraque"));
+			break;
+
+			case "Iraque":
+			t.AddAdjacente(tabuleiro.getTerritorio("Ira"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Siria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Jordania"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Arabia Saudita"));
+			break;
+
+			case "Jordania":
+			t.AddAdjacente(tabuleiro.getTerritorio("Siria"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Iraque"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Egito"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Arabia Saudita"));
+			break;
+
+			case "Arabia Saudita":
+			t.AddAdjacente(tabuleiro.getTerritorio("Iraque"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Jordania"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Somalia"));
+			break;
+
+			//Europa
+			case "Espanha":
+			t.AddAdjacente(tabuleiro.getTerritorio("Argelia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Franca"));
+			break;
+
+			case "Franca":
+			t.AddAdjacente(tabuleiro.getTerritorio("Espanha"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Italia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Reino Unido"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Suecia"));
+			break;
+
+			case "Italia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Argelia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Franca"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Polonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Suecia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Romenia"));
+			break;
+
+			case "Reino Unido":
+			t.AddAdjacente(tabuleiro.getTerritorio("Franca"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Groelandia"));
+			break;
+
+			case "Polonia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Italia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Romenia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ucrania"));
+			break;
+
+			case "Suecia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Estonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Italia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Franca"));
+			break;
+
+			case "Romenia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Egito"));	
+			t.AddAdjacente(tabuleiro.getTerritorio("Italia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Polonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Ucrania"));
+			break;
+
+			case "Ucrania":
+			t.AddAdjacente(tabuleiro.getTerritorio("Polonia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Romenia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Turquia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Letonia"));
+			break;
+
+			//Oceania
+			case "Indonesia":
+			t.AddAdjacente(tabuleiro.getTerritorio("India"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Bangladesh"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Nova Zelandia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Australia"));
+			break;
+
+			case "Nova Zelandia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Indonesia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Australia"));
+			break;
+
+			case "Australia":
+			t.AddAdjacente(tabuleiro.getTerritorio("Indonesia"));
+			t.AddAdjacente(tabuleiro.getTerritorio("Nova Zelandia"));
+			break;
+
+			case "Perth":
+			t.AddAdjacente(tabuleiro.getTerritorio("Australia"));
+			break;
+		}
+	}
+			
 		// ---------------------- getters & setters ----------------------
 		
 		//Retorna o jogador

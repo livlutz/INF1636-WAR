@@ -48,6 +48,8 @@ class Jogo {
 
     // Inicializa o jogo
     public boolean InicializaJogo(){
+    	//Inicializa o tabuleiro
+    	tabuleiro.Inicializa();
     	
     	//Jogo n comeca se tiver menos q 3 jogadores
     	if((jogadores.size())<3) {
@@ -142,22 +144,22 @@ class Jogo {
         }
 
         // Instancia objetivos de conquistar continentes    
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("America do Norte"),Tabuleiro.getContinente("Africa"),false);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("America do Norte"),tabuleiro.getContinente("Africa"),false);
         objetivos.add(obj);
 
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Asia"),Tabuleiro.getContinente("Africa"),false);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("Asia"),tabuleiro.getContinente("Africa"),false);
         objetivos.add(obj);
 
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("America do Norte"),Tabuleiro.getContinente("Oceania"),false);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("America do Norte"),tabuleiro.getContinente("Oceania"),false);
         objetivos.add(obj);
 
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Europa"),Tabuleiro.getContinente("America do Sul"),true);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("Europa"),tabuleiro.getContinente("America do Sul"),true);
         objetivos.add(obj);
 
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Asia"),Tabuleiro.getContinente("America do Sul"),true);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("Asia"),tabuleiro.getContinente("America do Sul"),true);
         objetivos.add(obj);
 
-        obj = new ObjetivoContinentes(Tabuleiro.getContinente("Europa"),Tabuleiro.getContinente("Oceania"),true);
+        obj = new ObjetivoContinentes(tabuleiro.getContinente("Europa"),tabuleiro.getContinente("Oceania"),true);
         objetivos.add(obj);
 
         // Instancia objetivos de conquistar territorios

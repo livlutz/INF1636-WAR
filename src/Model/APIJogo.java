@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class APIJogo {
     private static APIJogo APIJogo = null;
-    private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
+    private Tabuleiro tabuleiro;
 
     // Construtor privado para o singleton
     private APIJogo(){
-
+    	tabuleiro = Tabuleiro.getTabuleiro();
     }
 
     // Singleton

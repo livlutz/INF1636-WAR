@@ -96,7 +96,7 @@ public class TesteTerritorio {
 	@Test
 	public void testaInstanciaAdjacentes(){
 		Territorio t = new Territorio("Brasil");
-		t.instanciaAdjacentes(t);
+		t.instanciaAdjacentes();
 		assertTrue(t.getAdjacentes().size() != 0);
 	}
 	
