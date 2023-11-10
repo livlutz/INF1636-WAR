@@ -9,11 +9,12 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements ObservadoIF {
 	public static GamePanel gamePanel = null;
 	
 	//Imagens do tabuleiro, fundo e cartas de objetivo
@@ -34,7 +35,12 @@ public class GamePanel extends JPanel {
 	//Lista de territorios no jogo
 	String[] territorios = apiJogo.getTerritoriosLista();
 
+	// Observadores
+	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
+
+	// Painel dos dados
 	DadosPanel painelDosDados = new DadosPanel();
+
 	//Construtor
 	private GamePanel() {
 		setLayout(null);
@@ -343,6 +349,22 @@ public class GamePanel extends JPanel {
 
 		//TODO : tem q pegar cada jogador e escrever na carta o objetivo dele
 
+	}
+
+	@Override
+	public void add(ObservadorIF o) {
+		observadores.add(o);
+	}
+
+	@Override
+	public void remove(ObservadorIF o) {
+		observadores.remove(o);
+	}
+
+	@Override
+	public Object get() {
+		// TODO 
+		return null;
 	}
 		
 }

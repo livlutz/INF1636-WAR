@@ -2,7 +2,7 @@ package View;
 
 import Controller.Gerente;
 
-public class APIView {
+public class APIView implements ObservadorIF{
 	private static APIView APIView = null;
 	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 	StartingPanel startingPanel = StartingPanel.getStartingPanel();
@@ -18,6 +18,13 @@ public class APIView {
 			APIView = new APIView();
 		}
 		return APIView;
+	}
+
+	// Notifica o observador
+	@Override
+	public void notifica(ObservadoIF o){
+		Object obj = o.get();
+		//TODO
 	}
 
 	public void selecionarJogadores(int numJogadores){
