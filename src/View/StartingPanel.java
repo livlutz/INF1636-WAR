@@ -31,17 +31,26 @@ public class StartingPanel extends JPanel{
 		iniciar.addActionListener(new ActionListener(){
 			@Override
 	        public void actionPerformed(ActionEvent e) {
+				int selected = 0;
 				if (radioButton3.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(3);
+					selected++;
 				}
 				if (radioButton4.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(4);
+					selected++;
 				}
 				if (radioButton5.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(5);
+					selected++;
 				}
 				if (radioButton6.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(6);
+					selected++;
+				}
+				if(selected == 0) {
+					JOptionPane.showMessageDialog(null, "Selecione o número de jogadores");
+					return;
 				}
 				CharacterSelectionPanel.getCharacterSelectionPanel().drawJogadores();
 				
