@@ -9,8 +9,7 @@ import View.SelectionComponent;
 public class APIJogo {
     private static APIJogo APIJogo = null;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
-    private ArrayList <String> nomesJogadores = new ArrayList<String>();
-    private ArrayList <Color> coresJogadores = new ArrayList<Color>();
+    private Jogo jogo = Jogo.getJogo();
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -53,16 +52,15 @@ public class APIJogo {
         return String.valueOf(Tabuleiro.mapTerritorios.get(t).getQntExercitos());
     }
 
-    //Adiciona um jogador
-    public void addJogador() {
-    	for(String s : nomesJogadores){
-            nomesJogadores.add(SelectionComponent.getNome());
-        }
-        for(Color c : coresJogadores){
-            coresJogadores.add(SelectionComponent.getCor());
-        }
+    // Tenta adicionar jogador
+    public boolean addJogador(String nome, Color cor) {
+        Jogador j = new Jogador(nome, cor);
+    	return jogo.addJogador(j);
     }
 
+    public void resetJogadores(){
+        jogo.getJogadores().clear();
+    }
     
 
 }

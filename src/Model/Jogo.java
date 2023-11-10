@@ -322,4 +322,8 @@ class Jogo {
 		}
 	}
 
+	public ArrayList<Jogador> getJogadores() {
+		return jogadores;
+	}
+
 }
