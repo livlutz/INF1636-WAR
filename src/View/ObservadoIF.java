@@ -2,13 +2,8 @@ package View;
 
 public interface ObservadoIF {
 
-
-	public default void add(ObservadorIF o ) {
-		
-	}
-	public default void remove(ObservadorIF o ) {
-		
-	}
-	void get();
+	public void add(ObservadorIF o );
+	public void remove(ObservadorIF o );
+	public Object get();
 
 }
