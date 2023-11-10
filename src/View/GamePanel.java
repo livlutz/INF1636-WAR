@@ -34,16 +34,35 @@ public class GamePanel extends JPanel {
 	//Lista de territorios no jogo
 	String[] territorios = apiJogo.getTerritoriosLista();
 
+	DadosPanel painelDosDados = new DadosPanel();
 	//Construtor
 	private GamePanel() {
+		setLayout(null);
+		JLabel atacantes = new JLabel("Atacantes");
+		atacantes.setBounds(1250,170,200,30);
+		add(atacantes);
+		JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
+		comboBoxAtacantes.setBounds(1250,200,200,30);
+		add(comboBoxAtacantes);
+		
+		JLabel defensores = new JLabel("Defensores");
+		defensores.setBounds(1250,230,200,30);
+		add(defensores);
+		JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
+		comboBoxDefensores.setBounds(1250,260,200,30);
+		add(comboBoxDefensores);
+		
+		painelDosDados.setBounds(1250,400,200,300);
+		add(painelDosDados);
+		
 		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");
 		dadoButton = new JButton("Jogar os dados");
 		nextButton = new JButton("Terminar a rodada");
 		
-		salvarButton.setLocation(1250,20);
-		dadoButton.setLocation(1250, 40);
-		nextButton.setLocation(1250,60);
+		salvarButton.setBounds(1250,20,200,30);
+		dadoButton.setBounds(1250, 300,200,30);
+		nextButton.setBounds(1250, 80,200,30);
 		
 		add(salvarButton);
 		add(dadoButton);
