@@ -2,7 +2,5 @@ package View;
 
 public interface ObservadorIF {
 
-		public default void notifica(ObservadoIF o) {
-			o.get();
-		}
+		public void notifica(ObservadoIF o);
 }
