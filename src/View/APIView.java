@@ -2,7 +2,7 @@ package View;
 
 public class APIView {
 	private static APIView APIView = null;
-	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
+	/*CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 	StartingPanel startingPanel = StartingPanel.getStartingPanel();
 	SelectionComponent selectionComponent = SelectionComponent.getSelectionComponent();
 
@@ -34,6 +34,6 @@ public class APIView {
 
 	public void setCorJogador(int numJogador, String cor){
 		selectionComponent.setCor();
-	}
+	}*/
 
 }

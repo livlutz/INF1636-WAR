@@ -16,17 +16,9 @@ public class SelectionComponent extends JPanel {
 	String nome; // Guarda o nome escolhido
 
 	//Construtor
-	private SelectionComponent (){
+	public SelectionComponent() {
 		add(textField);
 		add(comboBox);
-	};
-	
-	//Singleton
-	public static SelectionComponent getSelectionComponent() {
-		if (selectionComponent==null) {
-			selectionComponent = new SelectionComponent();
-		}
-		return selectionComponent;
 	}
 	
 	//----------------- getters & setters --------------//
