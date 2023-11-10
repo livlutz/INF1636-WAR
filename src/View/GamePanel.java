@@ -70,15 +70,7 @@ public class GamePanel extends JPanel {
 		//territorios = getTerritoriosLista();
 		
 		try {
-			background = ImageIO.read(new File("images/war_tabuleiro_fundo.png"));
-			
-		}
-		catch (IOException e) {
-			System.out.println("Erro na leitura do plano de fundo");
-		}
-		
-		try {
-			tabuleiroImg = ImageIO.read(new File("images/war_tabuleiro_mapa.png"));
+			tabuleiroImg = ImageIO.read(new File("images/mapaComFundo.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem do tabuleiro");
@@ -134,7 +126,6 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
-		this.g2d.drawImage(background, 0,0,1200,800,null);
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		desenhaExercitos(this.g2d);
 	}
