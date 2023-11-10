@@ -135,6 +135,7 @@ public class GamePanel extends JPanel {
 		Exercitos exercitos;
 		for (String t: territorios) { 
 			switch(t){
+				//America do Sul
 				case "Brasil":
 					exercitos = new Exercitos(355,471,apiJogo.getCorTerritorio(t));
 					break;
@@ -147,11 +148,13 @@ public class GamePanel extends JPanel {
 				case "Venezuela":
 					exercitos = new Exercitos(232,452,apiJogo.getCorTerritorio(t));
 					break;
+
+				//America do Norte
 				case "Nova York":
-					exercitos = new Exercitos(251,281,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(242,281,apiJogo.getCorTerritorio(t));
 					break;
 				case "Mexico":
-					exercitos = new Exercitos(166,361,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(152,361,apiJogo.getCorTerritorio(t));
 					break;
 				case "California":
 					exercitos = new Exercitos(135,276,apiJogo.getCorTerritorio(t));
@@ -174,6 +177,8 @@ public class GamePanel extends JPanel {
 				case "Texas":
 					exercitos = new Exercitos(189,282,apiJogo.getCorTerritorio(t));
 					break;
+					
+				//Europa
 				case "Polonia":
 					exercitos = new Exercitos(675,208,apiJogo.getCorTerritorio(t));
 					break;
@@ -181,23 +186,25 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(570,252,apiJogo.getCorTerritorio(t));
 					break;
 				case "Suecia":
-					exercitos = new Exercitos(628,152,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(615,152,apiJogo.getCorTerritorio(t));
 					break;
 				case "Espanha":
-					exercitos = new Exercitos(527,296,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(521,285,apiJogo.getCorTerritorio(t));
 					break;
 				case "Reino Unido":
-					exercitos = new Exercitos(544,192,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(540,192,apiJogo.getCorTerritorio(t));
 					break;
 				case "Romania":
 					exercitos = new Exercitos(678,278,apiJogo.getCorTerritorio(t));
 					break;
 				case "Ucrania":
-					exercitos = new Exercitos(703,244,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(696,244,apiJogo.getCorTerritorio(t));
 					break;
 				case "Italia":
-					exercitos = new Exercitos(628,248,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(628,235,apiJogo.getCorTerritorio(t));
 					break;
+				
+				//Africa
 				case "Egito":
 					exercitos = new Exercitos(674,406,apiJogo.getCorTerritorio(t));
 					break;
@@ -216,6 +223,8 @@ public class GamePanel extends JPanel {
 				case "Africa do Sul":
 					exercitos = new Exercitos(679,590,apiJogo.getCorTerritorio(t));
 					break;
+				
+				//Asia
 				case "Estonia":
 					exercitos = new Exercitos(784,150,apiJogo.getCorTerritorio(t));
 					break;
@@ -226,7 +235,7 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(910,164,apiJogo.getCorTerritorio(t));
 					break;
 				case "Siberia":
-					exercitos = new Exercitos(1046,160,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1038,160,apiJogo.getCorTerritorio(t));
 					break;
 				case "Turquia":
 					exercitos = new Exercitos(860,255,apiJogo.getCorTerritorio(t));
@@ -235,10 +244,10 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(982,229,apiJogo.getCorTerritorio(t));
 					break;
 				case "Japao":
-					exercitos = new Exercitos(1111,286,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1105,286,apiJogo.getCorTerritorio(t));
 					break;
 				case "Siria":
-					exercitos = new Exercitos(776,305,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(776,298,apiJogo.getCorTerritorio(t));
 					break;
 				case "Paquistao":
 					exercitos = new Exercitos(879,339,apiJogo.getCorTerritorio(t));
@@ -247,47 +256,50 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(931,311,apiJogo.getCorTerritorio(t));
 					break;
 				case "Mongolia":
-					exercitos = new Exercitos(1014,265,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1014,262,apiJogo.getCorTerritorio(t));
 					break;
 				case "Coreia do Norte":
 					exercitos = new Exercitos(1012,315,apiJogo.getCorTerritorio(t));
 					break;
 				case "Coreia do Sul":
-					exercitos = new Exercitos(1018,344,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1006,340,apiJogo.getCorTerritorio(t));
 					break;
 				case "Jordania":
-					exercitos = new Exercitos(732,363,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(729,363,apiJogo.getCorTerritorio(t));
 					break;
 				case "Iraque":
-					exercitos = new Exercitos(801,360,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(790,360,apiJogo.getCorTerritorio(t));
 					break;
 				case "Ira":
-					exercitos = new Exercitos(850,358,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(846,358,apiJogo.getCorTerritorio(t));
 					break;
 				case "India":
 					exercitos = new Exercitos(936,401,apiJogo.getCorTerritorio(t));
 					break;
 				case "Bangladesh":
-					exercitos = new Exercitos(997,392,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(984,392,apiJogo.getCorTerritorio(t));
 					break;
 				case "Tailandia":
-					exercitos = new Exercitos(1055,386,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1048,386,apiJogo.getCorTerritorio(t));
 					break;
 				case "Arabia Saudita":
 					exercitos = new Exercitos(796,426,apiJogo.getCorTerritorio(t));
 					break;
+				
+				//Oceania
 				case "Australia":
 					exercitos = new Exercitos(1034,629,apiJogo.getCorTerritorio(t));
 					break;
 				case "Indonesia":
-					exercitos = new Exercitos(1053,526,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1053,520,apiJogo.getCorTerritorio(t));
 					break;
 				case "Perth":
 					exercitos = new Exercitos(951,616,apiJogo.getCorTerritorio(t));
 					break;
 				case "Nova Zelandia":
-					exercitos = new Exercitos(1089,672,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1087,672,apiJogo.getCorTerritorio(t));
 					break;
+					
 				default:
 					exercitos = new Exercitos(0,0,apiJogo.getCorTerritorio(t));
 			
