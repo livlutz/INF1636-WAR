@@ -9,8 +9,8 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 		
 		//Tamanho da janela grafica
-		public final int LARGURA = 1200;
-		public final int ALTURA = 700;
+		public final int LARGURA = 1500;
+		public final int ALTURA = 840;
 		
 		//Frames do jogo
 		private static MainFrame mf = null;
@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 			
 			// Associa observador ao observado
 			gamePanel.add(apiView);
-			
+
 			//getContentPane().add(csPanel);
 		
 			//getContentPane().add(gamePanel);
