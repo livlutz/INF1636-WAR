@@ -18,6 +18,7 @@ public class MainFrame extends JFrame {
 		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
+		private APIView apiView = APIView.getAPIView();
 		
 		/* TODO
 		Metodo em jogador de pegar exercitos
@@ -30,7 +31,10 @@ public class MainFrame extends JFrame {
 			setTitle("War");
 			setVisible(true);
 			getContentPane().add(startingPanel);
-		
+			
+			// Associa observador ao observado
+			gamePanel.add(apiView);
+			
 			//getContentPane().add(csPanel);
 		
 			//getContentPane().add(gamePanel);
