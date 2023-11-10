@@ -2,9 +2,8 @@ package View;
 
 public class APIView {
 	private static APIView APIView = null;
-	/*CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
+	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 	StartingPanel startingPanel = StartingPanel.getStartingPanel();
-	SelectionComponent selectionComponent = SelectionComponent.getSelectionComponent();
 
 	// Construtor privado para o singleton
 	private APIView(){
@@ -27,13 +26,5 @@ public class APIView {
 		characterSelectionPanel.setVisible(false);
 		startingPanel.setVisible(true);
 	}
-
-	public void setNomeJogador(int numJogador, String nome){
-		selectionComponent.setNome();
-	}
-
-	public void setCorJogador(int numJogador, String cor){
-		selectionComponent.setCor();
-	}*/
 
 }
