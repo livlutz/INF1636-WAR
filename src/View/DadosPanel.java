@@ -38,7 +38,6 @@ public class DadosPanel extends Panel {
 				dado5Defensor = ImageIO.read(new File("images/dado_defesa_5.png"));
 				dado6Defensor = ImageIO.read(new File("images/dado_defesa_6.png"));
 				
-				System.out.println("Dados carregados");
 			}
 			catch (IOException e) {
 				System.out.println("Nao foi possivel carregar a imagem dos dados");
