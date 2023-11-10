@@ -7,16 +7,21 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
-	
+		
+		//Tamanho da janela grafica
 		public final int LARGURA = 1200;
 		public final int ALTURA = 700;
+		
+		//Frames do jogo
 		private static MainFrame mf = null;
 		public CardLayout mLayout = null;
 		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
-		//Metodo em jogador de pegar exercitos
-		//private int qtdJogadores = csPanel.getJogadores();
+		
+		/* TODO
+		Metodo em jogador de pegar exercitos
+		private int qtdJogadores = csPanel.getJogadores();*/
 		
 		//Construtor
 		private MainFrame() {
@@ -31,7 +36,8 @@ public class MainFrame extends JFrame {
 			//getContentPane().add(gamePanel);
 			
 		}
-
+		
+		//Singleton
 		public static MainFrame getMainFrame() {
 			if (mf == null) {
 				mf = new MainFrame();
@@ -39,6 +45,7 @@ public class MainFrame extends JFrame {
 			return mf;	
 		}
 		
+		//Direcionamento entre os frames
 		public void goToCsPanel() {
 			startingPanel.setVisible(false);
 			getContentPane().add(csPanel);

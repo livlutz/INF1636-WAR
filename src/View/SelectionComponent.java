@@ -6,16 +6,22 @@ import javax.swing.JTextField;
 import java.awt.Color;
 
 public class SelectionComponent extends JPanel {
+	
+	//Campos de texto e escolha de cor do jogador
 	JTextField textField = new JTextField("Nome do jogador",20);
 	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo","Branco"});
-	Color cor;
-	String nome;
 	
+	Color cor; // Guarda a cor escolhida
+	String nome; // Guarda o nome escolhido
+	
+	//Construtor
 	public SelectionComponent() {
 		add(textField);
 		add(comboBox);
 	}
-
+	
+	//----------------- getters & setters --------------//
+	
 	//Pega o nome do jogador
 	public void setNome() {
 		nome = comboBox.getName();

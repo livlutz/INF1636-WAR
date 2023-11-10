@@ -10,15 +10,22 @@ import java.io.IOException;
 
 public class StartingPanel extends JPanel{
 	
+	//Botoes
 	JButton iniciar = new JButton("Iniciar novo jogo");
 	JButton continuar = new JButton("Continuar jogo");
+	
+	//Imagem do frame de inicio do jogo
 	Image start = null;
 	public static StartingPanel startingPanel = null;
+	
+	//Criando e agrupando botoes
 	JRadioButton radioButton3 = new JRadioButton();
 	JRadioButton radioButton4 = new JRadioButton();
 	JRadioButton radioButton5 = new JRadioButton();
 	JRadioButton radioButton6 = new JRadioButton();
 	ButtonGroup buttonGroup = new ButtonGroup();
+	
+	//Construtor
 	private StartingPanel() {
 	
 		iniciar.addActionListener(new ActionListener(){
@@ -70,6 +77,7 @@ public class StartingPanel extends JPanel{
 		}
 	}
 	
+	//Singleton
 	public static StartingPanel getStartingPanel() {
 		if (startingPanel == null) {
 			startingPanel = new StartingPanel();	

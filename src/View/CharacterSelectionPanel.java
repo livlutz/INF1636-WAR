@@ -12,6 +12,7 @@ public class CharacterSelectionPanel extends JPanel {
 	private int numJogadores;
 	JButton btn = new JButton("Iniciar Jogo");
 	
+	//Constroi o painel
 	private CharacterSelectionPanel() {	
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -30,17 +31,20 @@ public class CharacterSelectionPanel extends JPanel {
 		return csPanel;
 	}
 	
-	public void setNumJogadores(int numJogadores) {
-		this.numJogadores = numJogadores;
-	}
-	
+	//Desenha a selecao de jogadores de acordo com o numero selecionado
 	public void drawJogadores() {
 		for(int i = 0;i < numJogadores;i++) {
 			add(new SelectionComponent());
 		}
 	}
-
+	
+	//---------------------- getters & setters -------------------//
+	
 	public int getJogadores() {
 		return numJogadores;
+	}
+	
+	public void setNumJogadores(int numJogadores) {
+		this.numJogadores = numJogadores;
 	}
 }

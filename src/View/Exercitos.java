@@ -10,14 +10,14 @@ import javax.swing.JComponent;
 
 public class Exercitos extends JComponent {
 	
-	private final int size = 20;
-	private int posX;
-	private int posY;
-	private Color cor;
-	Graphics2D g2d;
-	private String qntExercitos = "0";
+	private final int size = 20; //Tamanho da bolinha
+	private int posX; //Coordenada x da bolinha
+	private int posY; //Coordenada y da bolinha
+	private Color cor; // Cor da bolinha
+	Graphics2D g2d;   //Componente grafica para o desenho
+	private String qntExercitos = "0"; // Qtd de exercitos "Default" das bolinhas
 
-	//Cor do jogador correspondente a cor do exercito
+	//OBS : Cor do jogador correspondente a cor do exercito
 
 	//Construtor
 	public Exercitos(int x, int y,Color color) {
@@ -28,15 +28,17 @@ public class Exercitos extends JComponent {
 		setBounds(0,0, 660, 660);
 	}
 	
+	//Desenha a bolinha
 	void drawPlayer(Graphics g) {
 		this.g2d = (Graphics2D) g;
-		//tem q pegar a cor do jogador que domina o territorio
 		this.g2d.setPaint(cor);
 		Ellipse2D player = new Ellipse2D.Float(posX, posY, size, size);
 		this.g2d.fill(player);
 		this.g2d.drawString(qntExercitos, posX, posY);
 	}
-
+	
+	//----------------------------- getters & setters -----------------//
+	
 	public int getPosX() {
 		return posX;
 	}

@@ -15,19 +15,26 @@ import javax.swing.*;
 
 public class GamePanel extends JPanel {
 	public static GamePanel gamePanel = null;
+	
+	//Imagens do tabuleiro, fundo e cartas de objetivo
 	Image tabuleiroImg = null;
 	Image background = null;
 	Image cartaObj = null;
 	Image cartaObjGrande = null;
 
-	Graphics2D g2d;
+	Graphics2D g2d; //Componente grafica
+	
 	// Chamando API aqui enquanto Controller não está pronto
 	APIJogo	apiJogo = APIJogo.getAPIJogo();
+	
+	//Botoes e comboboxes
 	JButton salvarButton,dadoButton, nextButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
+	
+	//Lista de territorios no jogo
 	String[] territorios = apiJogo.getTerritoriosLista();
 
-
+	//Construtor
 	private GamePanel() {
 		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");
@@ -115,6 +122,7 @@ public class GamePanel extends JPanel {
 		
 	}
 	
+	//Singleton
 	public static GamePanel getGamePanel() {
 		if (gamePanel == null) {
 			gamePanel = new GamePanel();
@@ -122,6 +130,7 @@ public class GamePanel extends JPanel {
 		return gamePanel;
 	}
 	
+	//Desenha as imagens de tabuleiro e fundo
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
@@ -299,7 +308,7 @@ public class GamePanel extends JPanel {
 		}
 	}
 	
-	
+	//Desenha as cartas de objetivo com os objetivos
 	void desenhaCartaObjetivo(){
 		try {
 			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
@@ -310,7 +319,7 @@ public class GamePanel extends JPanel {
 			
 		}
 
-		//tem q pegar cada jogador e escrever na carta o objetivo dele
+		//TODO : tem q pegar cada jogador e escrever na carta o objetivo dele
 
 	}
 		
