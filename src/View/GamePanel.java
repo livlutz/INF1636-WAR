@@ -185,7 +185,7 @@ public class GamePanel extends JPanel implements ObservadoIF {
 					exercitos = new Exercitos(135,276,apiJogo.getCorTerritorio(t));
 					break;
 				case "Groelandia":
-					exercitos = new Exercitos(383,118,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(383,120,apiJogo.getCorTerritorio(t));
 					break;
 				case "Alasca":
 					exercitos = new Exercitos(114,148,apiJogo.getCorTerritorio(t));
