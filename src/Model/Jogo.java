@@ -10,9 +10,6 @@ class Jogo {
 
     // Guarda o tabuleiro
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
-    
-	// Guarda a quantidade de jogadores
-	private int numJogadores = 5;
 	
 	// Guarda cada jogador
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
@@ -48,14 +45,15 @@ class Jogo {
 
     // Inicializa o jogo
     public boolean InicializaJogo(){
-    	//Inicializa o tabuleiro
-    	tabuleiro.Inicializa();
     	
     	//Jogo n comeca se tiver menos q 3 jogadores
     	if((jogadores.size())<3) {
     		return false;
-    	}
-    	
+		}
+		
+    	//Inicializa o tabuleiro
+    	tabuleiro.Inicializa();
+
         // Instancia cartas
         InstanciaCartas(Tabuleiro.getMapTerritorios());
 
@@ -66,8 +64,11 @@ class Jogo {
         Collections.shuffle(objetivos);
 
         // Define o objetivo de cada jogador
-        for (int i = 0;i < numJogadores;i++){
-            jogadores.get(i).setObj(objetivos.get(i));
+        for (int i = 0;i < jogadores.size();i++){
+			// Pega objetivo aleatório
+			Objetivo obj = objetivos.get((int) (Math.random() * objetivos.size()));
+            jogadores.get(i).setObj(obj);
+			objetivos.remove(obj);
         }
 
         // Embaralha os jogadores
