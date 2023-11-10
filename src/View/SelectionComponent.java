@@ -7,17 +7,26 @@ import java.awt.Color;
 
 public class SelectionComponent extends JPanel {
 	
+	public static SelectionComponent selectionComponent = null;
 	//Campos de texto e escolha de cor do jogador
 	JTextField textField = new JTextField("Nome do jogador",20);
 	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo","Branco"});
 	
 	Color cor; // Guarda a cor escolhida
 	String nome; // Guarda o nome escolhido
-	
+
 	//Construtor
-	public SelectionComponent() {
+	private SelectionComponent (){
 		add(textField);
 		add(comboBox);
+	};
+	
+	//Singleton
+	public static SelectionComponent getSelectionComponent() {
+		if (selectionComponent==null) {
+			selectionComponent = new SelectionComponent();
+		}
+		return selectionComponent;
 	}
 	
 	//----------------- getters & setters --------------//
