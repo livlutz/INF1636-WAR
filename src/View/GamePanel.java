@@ -175,12 +175,12 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(325,195,apiJogo.getCorTerritorio(t));
 					break;
 				case "Texas":
-					exercitos = new Exercitos(189,282,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(185,282,apiJogo.getCorTerritorio(t));
 					break;
 					
 				//Europa
 				case "Polonia":
-					exercitos = new Exercitos(675,208,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(666,209,apiJogo.getCorTerritorio(t));
 					break;
 				case "Franca":
 					exercitos = new Exercitos(570,252,apiJogo.getCorTerritorio(t));
@@ -235,7 +235,7 @@ public class GamePanel extends JPanel {
 					exercitos = new Exercitos(910,164,apiJogo.getCorTerritorio(t));
 					break;
 				case "Siberia":
-					exercitos = new Exercitos(1038,160,apiJogo.getCorTerritorio(t));
+					exercitos = new Exercitos(1032,157,apiJogo.getCorTerritorio(t));
 					break;
 				case "Turquia":
 					exercitos = new Exercitos(860,255,apiJogo.getCorTerritorio(t));
