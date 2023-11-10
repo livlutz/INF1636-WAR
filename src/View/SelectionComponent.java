@@ -12,8 +12,8 @@ public class SelectionComponent extends JPanel {
 	JTextField textField = new JTextField("Nome do jogador",20);
 	JComboBox comboBox = new JComboBox(new String[] { "Azul","Preto","Vermelho","Verde","Amarelo","Branco"});
 	
-	Color cor; // Guarda a cor escolhida
-	String nome; // Guarda o nome escolhido
+	private Color cor; // Guarda a cor escolhida
+	private String nome; // Guarda o nome escolhido
 
 	//Construtor
 	public SelectionComponent() {

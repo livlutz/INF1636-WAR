@@ -1,11 +1,16 @@
 package Model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Map;
+
+import View.SelectionComponent;
 
 public class APIJogo {
     private static APIJogo APIJogo = null;
-    private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();;
+    private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
+    private ArrayList <String> nomesJogadores = new ArrayList<String>();
+    private ArrayList <Color> coresJogadores = new ArrayList<Color>();
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -46,6 +51,16 @@ public class APIJogo {
     // Retorna quantidade de exércitos no território em formato de string
     public String getQtdExTerritorio(String t){
         return String.valueOf(Tabuleiro.mapTerritorios.get(t).getQntExercitos());
+    }
+
+    //Adiciona um jogador
+    public void addJogador() {
+    	for(String s : nomesJogadores){
+            nomesJogadores.add(SelectionComponent.getNome());
+        }
+        for(Color c : coresJogadores){
+            coresJogadores.add(SelectionComponent.getCor());
+        }
     }
 
     
