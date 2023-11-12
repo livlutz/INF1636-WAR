@@ -23,7 +23,13 @@ public class APIView implements ObservadorIF{
 	// Notifica o observador
 	@Override
 	public void notifica(ObservadoIF o){
-		Object obj = o.get();
+		GamePanel obj = (GamePanel)o;
+		Object[] infos = (Object[])obj.get();
+		if ((int)infos[0] == -1){
+			obj.setNomesJogadores(gerente.getNomesJogadores());
+			obj.infos[0] = 0;
+			//TODO
+		}
 		//TODO
 	}
 

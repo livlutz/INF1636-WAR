@@ -47,11 +47,15 @@ public class Gerente {
         return apiJogo.comecaJogo();
     }
 
-    public static Color getCorTerritorio(String t){
+    public Color getCorTerritorio(String t){
         return apiJogo.getCorTerritorio(t);
     }
 
-    public static String[] getTerritoriosLista(){
+    public String[] getTerritoriosLista(){
         return apiJogo.getTerritoriosLista();
+    }
+
+    public String[] getNomesJogadores(){
+        return apiJogo.getNomesJogadores();
     }
 }

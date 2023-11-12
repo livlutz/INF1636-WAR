@@ -56,8 +56,11 @@ class GamePanel extends JPanel implements ObservadoIF {
 
 	Object[] infos = new Object[8];
 
-	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
+	// Gerente
+	Gerente gerente = Gerente.getGerente();
 
+	// ComboBoxes
+	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
 	JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
 
 	//Construtor
@@ -176,181 +179,183 @@ class GamePanel extends JPanel implements ObservadoIF {
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		desenhaExercitos(this.g2d);
+		infos[0] = -1;
+		observadores.get(0).notifica(this);
 	}
 
 	//desenha cada territorio 
 	void desenhaExercitos(Graphics2D g2d) {
-		this.territorios = Gerente.getTerritoriosLista();
+		this.territorios = gerente.getTerritoriosLista();
 		Exercitos exercitos;
 		for (String t: territorios) { 
 			switch(t){
 				//America do Sul
 				case "Brasil":
-					exercitos = new Exercitos(355,471,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(355,471,gerente.getCorTerritorio(t));
 					break;
 				case "Argentina":
-					exercitos = new Exercitos(319,580,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(319,580,gerente.getCorTerritorio(t));
 					break;
 				case "Peru":
-					exercitos = new Exercitos(275,510,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(275,510,gerente.getCorTerritorio(t));
 					break;
 				case "Venezuela":
-					exercitos = new Exercitos(232,452,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(232,452,gerente.getCorTerritorio(t));
 					break;
 
 				//America do Norte
 				case "Nova York":
-					exercitos = new Exercitos(242,281,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(242,281,gerente.getCorTerritorio(t));
 					break;
 				case "Mexico":
-					exercitos = new Exercitos(152,361,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(152,361,gerente.getCorTerritorio(t));
 					break;
 				case "California":
-					exercitos = new Exercitos(135,276,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(135,276,gerente.getCorTerritorio(t));
 					break;
 				case "Groelandia":
-					exercitos = new Exercitos(383,120,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(383,120,gerente.getCorTerritorio(t));
 					break;
 				case "Alasca":
-					exercitos = new Exercitos(114,148,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(114,148,gerente.getCorTerritorio(t));
 					break;
 				case "Vancouver":
-					exercitos = new Exercitos(194,201,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(194,201,gerente.getCorTerritorio(t));
 					break;
 				case "Calgary":
-					exercitos = new Exercitos(216,155,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(216,155,gerente.getCorTerritorio(t));
 					break;
 				case "Quebec":
-					exercitos = new Exercitos(325,195,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(325,195,gerente.getCorTerritorio(t));
 					break;
 				case "Texas":
-					exercitos = new Exercitos(185,282,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(185,282,gerente.getCorTerritorio(t));
 					break;
 					
 				//Europa
 				case "Polonia":
-					exercitos = new Exercitos(666,209,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(666,209,gerente.getCorTerritorio(t));
 					break;
 				case "Franca":
-					exercitos = new Exercitos(570,252,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(570,252,gerente.getCorTerritorio(t));
 					break;
 				case "Suecia":
-					exercitos = new Exercitos(615,152,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(615,152,gerente.getCorTerritorio(t));
 					break;
 				case "Espanha":
-					exercitos = new Exercitos(521,285,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(521,285,gerente.getCorTerritorio(t));
 					break;
 				case "Reino Unido":
-					exercitos = new Exercitos(540,192,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(540,192,gerente.getCorTerritorio(t));
 					break;
 				case "Romania":
-					exercitos = new Exercitos(678,278,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(678,278,gerente.getCorTerritorio(t));
 					break;
 				case "Ucrania":
-					exercitos = new Exercitos(696,244,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(696,244,gerente.getCorTerritorio(t));
 					break;
 				case "Italia":
-					exercitos = new Exercitos(628,235,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(628,235,gerente.getCorTerritorio(t));
 					break;
 				
 				//Africa
 				case "Egito":
-					exercitos = new Exercitos(674,406,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(674,406,gerente.getCorTerritorio(t));
 					break;
 				case "Argelia":
-					exercitos = new Exercitos(549,392,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(549,392,gerente.getCorTerritorio(t));
 					break;
 				case "Nigeria":
-					exercitos = new Exercitos(622,459,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(622,459,gerente.getCorTerritorio(t));
 					break;
 				case "Somalia":
-					exercitos = new Exercitos(731,494,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(731,494,gerente.getCorTerritorio(t));
 					break;
 				case "Angola":
-					exercitos = new Exercitos(655,532,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(655,532,gerente.getCorTerritorio(t));
 					break;
 				case "Africa do Sul":
-					exercitos = new Exercitos(679,590,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(679,590,gerente.getCorTerritorio(t));
 					break;
 				
 				//Asia
 				case "Estonia":
-					exercitos = new Exercitos(784,150,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(784,150,gerente.getCorTerritorio(t));
 					break;
 				case "Letonia":
-					exercitos = new Exercitos(770,199,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(770,199,gerente.getCorTerritorio(t));
 					break;
 				case "Russia":
-					exercitos = new Exercitos(910,164,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(910,164,gerente.getCorTerritorio(t));
 					break;
 				case "Siberia":
-					exercitos = new Exercitos(1032,157,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1032,157,gerente.getCorTerritorio(t));
 					break;
 				case "Turquia":
-					exercitos = new Exercitos(860,255,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(860,255,gerente.getCorTerritorio(t));
 					break;
 				case "Cazaquistao":
-					exercitos = new Exercitos(982,229,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(982,229,gerente.getCorTerritorio(t));
 					break;
 				case "Japao":
-					exercitos = new Exercitos(1105,286,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1105,286,gerente.getCorTerritorio(t));
 					break;
 				case "Siria":
-					exercitos = new Exercitos(776,298,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(776,298,gerente.getCorTerritorio(t));
 					break;
 				case "Paquistao":
-					exercitos = new Exercitos(879,339,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(879,339,gerente.getCorTerritorio(t));
 					break;
 				case "China":
-					exercitos = new Exercitos(931,311,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(931,311,gerente.getCorTerritorio(t));
 					break;
 				case "Mongolia":
-					exercitos = new Exercitos(1014,262,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1014,262,gerente.getCorTerritorio(t));
 					break;
 				case "Coreia do Norte":
-					exercitos = new Exercitos(1012,315,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1012,315,gerente.getCorTerritorio(t));
 					break;
 				case "Coreia do Sul":
-					exercitos = new Exercitos(1006,340,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1006,340,gerente.getCorTerritorio(t));
 					break;
 				case "Jordania":
-					exercitos = new Exercitos(729,363,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(729,363,gerente.getCorTerritorio(t));
 					break;
 				case "Iraque":
-					exercitos = new Exercitos(790,360,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(790,360,gerente.getCorTerritorio(t));
 					break;
 				case "Ira":
-					exercitos = new Exercitos(846,358,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(846,358,gerente.getCorTerritorio(t));
 					break;
 				case "India":
-					exercitos = new Exercitos(936,401,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(936,401,gerente.getCorTerritorio(t));
 					break;
 				case "Bangladesh":
-					exercitos = new Exercitos(984,392,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(984,392,gerente.getCorTerritorio(t));
 					break;
 				case "Tailandia":
-					exercitos = new Exercitos(1048,386,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1048,386,gerente.getCorTerritorio(t));
 					break;
 				case "Arabia Saudita":
-					exercitos = new Exercitos(796,426,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(796,426,gerente.getCorTerritorio(t));
 					break;
 				
 				//Oceania
 				case "Australia":
-					exercitos = new Exercitos(1034,629,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1034,629,gerente.getCorTerritorio(t));
 					break;
 				case "Indonesia":
-					exercitos = new Exercitos(1053,520,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1053,520,gerente.getCorTerritorio(t));
 					break;
 				case "Perth":
-					exercitos = new Exercitos(951,616,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(951,616,gerente.getCorTerritorio(t));
 					break;
 				case "Nova Zelandia":
-					exercitos = new Exercitos(1087,672,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(1087,672,gerente.getCorTerritorio(t));
 					break;
 					
 				default:
-					exercitos = new Exercitos(0,0,Gerente.getCorTerritorio(t));
+					exercitos = new Exercitos(0,0,gerente.getCorTerritorio(t));
 			
 			}
 			
@@ -374,6 +379,10 @@ class GamePanel extends JPanel implements ObservadoIF {
 	@Override
 	public Object get() {
 		return infos;
+	}
+
+	public void setNomesJogadores(String[] nomesJogadores){
+		this.nomesJogadores = nomesJogadores;
 	}
 		
 }

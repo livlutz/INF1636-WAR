@@ -61,5 +61,13 @@ import java.util.Map;
         jogo.getJogadores().clear();
     }
     
-
+    public String[] getNomesJogadores() {
+    	String[] nomes = new String[jogo.getJogadores().size()];
+    	int cont = 0;
+    	for (Jogador j: jogo.getJogadores()) {
+    		nomes[cont] = j.getNome();
+    		cont++;
+    	}
+    	return nomes;
+    }
 }
