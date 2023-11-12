@@ -12,4 +12,7 @@ atingiu seu objetivo primeiro
 Guia para as cores que estamos usando (RGB usado para cada uma delas) : https://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
 
 Lívia - link com instruções pra desenhar a bolinha no mapa : https://www.tabnine.com/code/java/methods/java.awt.Graphics2D/fill
+
 link com instruções para desenhar cores no geral : https://stackoverflow.com/questions/33784268/fill-a-shape-with-a-random-color-in-java
+
+Link com instruções de escrita em uma imagem : https://www.baeldung.com/java-add-text-to-image
