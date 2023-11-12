@@ -21,7 +21,7 @@ public class DadosPanel extends Panel {
 		Image dado5Defensor;
 		Image dado6Defensor;
 
-		DadosPanel(){
+		public DadosPanel(){
 			setBackground(Color.darkGray);
 			try {
 				dado1Atacante = ImageIO.read(new File("images/dado_ataque_1.png"));
