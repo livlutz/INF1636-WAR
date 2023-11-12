@@ -31,10 +31,27 @@ public class Exercitos extends JComponent {
 	//Desenha a bolinha
 	void drawPlayer(Graphics g) {
 		this.g2d = (Graphics2D) g;
+
+		// Pega a cor do jogador
 		this.g2d.setPaint(cor);
+
 		Ellipse2D player = new Ellipse2D.Float(posX, posY, size, size);
+		// Preenche a bolinha com a cor do jogador
 		this.g2d.fill(player);
-		this.g2d.drawString(qntExercitos, posX, posY);
+
+		// Pega nova cor para contraste
+		if (cor == Color.BLACK || cor == Color.BLUE){
+			this.g2d.setPaint(Color.WHITE);
+		}
+		else {
+			this.g2d.setPaint(Color.BLACK);
+		}
+
+		// Desenha a borda 
+		this.g2d.draw(player);
+
+		// Desenha a quantidade de exercitos
+		this.g2d.drawString(qntExercitos, posX + 6, posY + 14);
 	}
 	
 	//----------------------------- getters & setters -----------------//
