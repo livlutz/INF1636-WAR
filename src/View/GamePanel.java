@@ -49,10 +49,10 @@ public class GamePanel extends JPanel implements ObservadoIF {
 		setLayout(null);
 
 		JLabel atacantes = new JLabel("Atacantes");
-		atacantes.setBounds(1250,170,200,30);
+		atacantes.setBounds(1250,150,200,30);
 		add(atacantes);
 		JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
-		comboBoxAtacantes.setBounds(1250,200,200,30);
+		comboBoxAtacantes.setBounds(1250,180,200,30);
 		add(comboBoxAtacantes);
 		
 		JLabel defensores = new JLabel("Defensores");
@@ -62,8 +62,11 @@ public class GamePanel extends JPanel implements ObservadoIF {
 		comboBoxDefensores.setBounds(1250,260,200,30);
 		add(comboBoxDefensores);
 		
-		painelDosDados.setBounds(1250,400,200,300);
+		painelDosDados.setBounds(1250,400,200,200);
 		add(painelDosDados);
+
+		painelCartas.setBounds(1220,400,200,200);
+		add(painelCartas);
 		
 		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");

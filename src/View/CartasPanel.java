@@ -11,7 +11,7 @@ public class CartasPanel extends Panel {
 	Image cartaObj,cartaObjGrande;
 	
 	public CartasPanel() {
-		setBackground(Color.darkGray);
+		setBackground(Color.LIGHT_GRAY);
 		try {
 			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
 			cartaObjGrande = ImageIO.read(new File("images/war_carta_objetivo_grande.png"));
