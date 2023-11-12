@@ -34,8 +34,8 @@ public class APIJogo {
     public String[] getTerritoriosLista() {
 		String [] terr = new String[51]; 
 		int cont = 0;
-		for (Territorio t: Tabuleiro.mapTerritorios.values()) {
-            terr[cont] = t.getNome();
+		for (String t: Tabuleiro.mapTerritorios.keySet()) {
+            terr[cont] = t;
             cont ++;
 		}
 

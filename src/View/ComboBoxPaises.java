@@ -12,7 +12,7 @@ public class ComboBoxPaises extends JComboBox<String>{
 		adicionaPaises();
 	}
 	
-	void adicionaPaises() {
+	private void adicionaPaises() {
 		for (String t: territorios) {
 			this.addItem(t);
 		}
