@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
-public class APIJogo {
+ public class APIJogo {
     private static APIJogo APIJogo = null;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     private Jogo jogo = Jogo.getJogo();

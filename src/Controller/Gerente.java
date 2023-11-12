@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class Gerente {
     public static Gerente gerente = null;
-    private APIJogo apiJogo = APIJogo.getAPIJogo();
+    private static APIJogo apiJogo = APIJogo.getAPIJogo();
 
     // Construtor privado para o singleton
     private Gerente(){
@@ -45,5 +45,13 @@ public class Gerente {
             cont++;
         }
         return apiJogo.comecaJogo();
+    }
+
+    public static Color getCorTerritorio(String t){
+        return apiJogo.getCorTerritorio(t);
+    }
+
+    public static String[] getTerritoriosLista(){
+        return apiJogo.getTerritoriosLista();
     }
 }
