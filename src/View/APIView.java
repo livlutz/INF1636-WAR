@@ -38,7 +38,7 @@ public class APIView implements ObservadorIF{
 	}
 
 	public boolean podeComecarJogo(){
-		if (gerente.verificaComeco(characterSelectionPanel.getNomesJogadores(), characterSelectionPanel.getCoresJogadores()) == false){
+		if (!gerente.comecaJogo(characterSelectionPanel.getNomesJogadores(), characterSelectionPanel.getCoresJogadores())){
 			characterSelectionPanel.getNomesJogadores().clear();
 			characterSelectionPanel.getCoresJogadores().clear();
 			return false;

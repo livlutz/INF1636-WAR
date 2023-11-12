@@ -24,7 +24,7 @@ public class Gerente {
         return gerente;
     }
 
-    public boolean verificaComeco(ArrayList<String> nomes, ArrayList<Color> cores){
+    public boolean comecaJogo(ArrayList<String> nomes, ArrayList<Color> cores){
         int cont = 0;
         for (String s: nomes){
             // Verifica se algum nome é nulo
@@ -44,6 +44,6 @@ public class Gerente {
             };
             cont++;
         }
-        return true;
+        return apiJogo.comecaJogo();
     }
 }

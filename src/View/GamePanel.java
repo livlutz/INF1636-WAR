@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements ObservadoIF {
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territorios no jogo
-	String[] territorios = apiJogo.getTerritoriosLista();
+	String[] territorios;
 
 	// Observadores
 	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
@@ -44,6 +44,7 @@ public class GamePanel extends JPanel implements ObservadoIF {
 	//Construtor
 	private GamePanel() {
 		setLayout(null);
+
 		JLabel atacantes = new JLabel("Atacantes");
 		atacantes.setBounds(1250,170,200,30);
 		add(atacantes);
