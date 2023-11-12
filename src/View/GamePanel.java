@@ -80,7 +80,7 @@ public class GamePanel extends JPanel implements ObservadoIF {
 		painelDosDados.setBounds(1250,350,200,200);
 		add(painelDosDados);
 
-		painelCartas.setBounds(1250,570,200,200);
+		painelCartas.setBounds(1250,580,200,200);
 		add(painelCartas);
 		
 		String filePath = new File("").getAbsolutePath();

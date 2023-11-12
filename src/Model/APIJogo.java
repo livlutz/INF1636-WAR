@@ -32,14 +32,14 @@ public class APIJogo {
 
     // Retorna lista de nomes de territórios
     public String[] getTerritoriosLista() {
-		String[] arrayTerritorios = new String[51];
+		String [] terr = new String[51]; 
 		int cont = 0;
 		for (Territorio t: Tabuleiro.mapTerritorios.values()) {
-            arrayTerritorios[cont] = t.getNome();
-            cont++;
+            terr[cont] = t.getNome();
+            cont ++;
 		}
 
-		return arrayTerritorios;
+		return terr;
 	}
 
     // Retorna cor do jogador que domina aquele território

@@ -20,8 +20,6 @@ public class CartasPanel extends Panel {
 			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");
 			
 		}
-		
-		System.out.println("Cartas desenhadas");
 
 	}
 			
