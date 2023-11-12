@@ -1,6 +1,6 @@
 package View;
 
-public interface ObservadoIF {
+interface ObservadoIF {
 
 	public void add(ObservadorIF o );
 	public void remove(ObservadorIF o );

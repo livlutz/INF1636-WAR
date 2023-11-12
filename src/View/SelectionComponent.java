@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Color;
 
-public class SelectionComponent extends JPanel {
+class SelectionComponent extends JPanel {
 	
 	public static SelectionComponent selectionComponent = null;
 	//Campos de texto e escolha de cor do jogador

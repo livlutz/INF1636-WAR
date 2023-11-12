@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class CartasPanel extends Panel {
+class CartasPanel extends Panel {
 	
 	Image cartaObj,cartaObjGrande;
 	

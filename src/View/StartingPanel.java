@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class StartingPanel extends JPanel{
+class StartingPanel extends JPanel{
 	
 	//Botoes
 	JButton iniciar = new JButton("Iniciar novo jogo");

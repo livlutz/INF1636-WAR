@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Map;
 
-import View.SelectionComponent;
 
 public class APIJogo {
     private static APIJogo APIJogo = null;

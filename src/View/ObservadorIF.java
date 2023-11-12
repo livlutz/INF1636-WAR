@@ -1,6 +1,6 @@
 package View;
 
-public interface ObservadorIF {
+interface ObservadorIF {
 
 		public void notifica(ObservadoIF o);
 }

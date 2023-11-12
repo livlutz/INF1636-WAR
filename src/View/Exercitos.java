@@ -8,7 +8,7 @@ import java.awt.geom.Ellipse2D;
 
 import javax.swing.JComponent;
 
-public class Exercitos extends JComponent {
+class Exercitos extends JComponent {
 	
 	private final int size = 20; //Tamanho da bolinha
 	private int posX; //Coordenada x da bolinha

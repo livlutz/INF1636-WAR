@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class DadosPanel extends Panel {
+class DadosPanel extends Panel {
 
 		Image dado1Atacante;
 		Image dado2Atacante;

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class CharacterSelectionPanel extends JPanel {
+class CharacterSelectionPanel extends JPanel {
 
 	public static CharacterSelectionPanel csPanel = null;
 	private int numJogadores;

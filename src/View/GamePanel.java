@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class GamePanel extends JPanel implements ObservadoIF {
+class GamePanel extends JPanel implements ObservadoIF {
 	public static GamePanel gamePanel = null;
 	
 	//Imagens do tabuleiro, fundo e cartas de objetivo
