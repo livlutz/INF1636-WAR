@@ -46,11 +46,12 @@ class Jogo {
 
     // Inicializa o jogo
     public boolean InicializaJogo(){
+		
     	//Jogo n comeca se tiver menos q 3 jogadores
     	if((jogadores.size())<3) {
     		return false;
-    	}
-		System.out.println("Inicializando jogo");
+    	} 
+
 		//Inicializa o tabuleiro
     	tabuleiro.Inicializa();
     	

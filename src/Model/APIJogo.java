@@ -36,7 +36,6 @@ public class APIJogo {
 		int cont = 0;
 		for (Territorio t: Tabuleiro.mapTerritorios.values()) {
             arrayTerritorios[cont] = t.getNome();
-            System.out.println(arrayTerritorios[cont]);
             cont++;
 		}
 

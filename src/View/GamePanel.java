@@ -158,6 +158,7 @@ public class GamePanel extends JPanel implements ObservadoIF {
 
 	//desenha cada territorio 
 	void desenhaExercitos(Graphics2D g2d) {
+		this.territorios = apiJogo.getTerritoriosLista();
 		Exercitos exercitos;
 		for (String t: territorios) { 
 			switch(t){
