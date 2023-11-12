@@ -40,6 +40,9 @@ public class GamePanel extends JPanel implements ObservadoIF {
 
 	// Painel dos dados
 	DadosPanel painelDosDados = new DadosPanel();
+	
+	//Painel das Cartas
+	CartasPanel painelCartas = new CartasPanel();
 
 	// Nomes dos jogadores
 	String[] nomesJogadores;
@@ -353,20 +356,6 @@ public class GamePanel extends JPanel implements ObservadoIF {
 		}
 	}
 	
-	//Desenha as cartas de objetivo com os objetivos
-	void desenhaCartaObjetivo(){
-		try {
-			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
-			cartaObjGrande = ImageIO.read(new File("images/war_carta_objetivo_grande.png"));
-		}
-		catch (IOException e) {
-			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");
-			
-		}
-
-		//TODO : tem q pegar cada jogador e escrever na carta o objetivo dele
-
-	}
 
 	@Override
 	public void add(ObservadorIF o) {
