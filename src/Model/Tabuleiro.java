@@ -14,11 +14,12 @@ class Tabuleiro{
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
 	
 	//Construtor
-	private Tabuleiro() {}
+	private Tabuleiro() {
+		InstanciaTerritorios();
+	}
 	
 	//Inicializando o tabuleiro
 	public void Inicializa() {
-		InstanciaTerritorios();
 		for (Territorio t: listaTerritorios) {
 			t.instanciaAdjacentes();
 		}
