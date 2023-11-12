@@ -10,6 +10,7 @@ public class CartasPanel extends Panel {
 	
 	Image cartaObj,cartaObjGrande;
 	
+	// Construtor
 	public CartasPanel() {
 		setBackground(Color.LIGHT_GRAY);
 		try {
@@ -21,6 +22,13 @@ public class CartasPanel extends Panel {
 			
 		}
 
+	}
+
+	// Desenha as cartas de objetivo
+	public void desenhaCartas(Graphics g) {
+		super.paint(g);
+		g.drawImage(cartaObj, 1255, 350, 100, 150, null);
+		g.drawImage(cartaObjGrande, 1275, 350, 100, 150, null);
 	}
 			
 }
