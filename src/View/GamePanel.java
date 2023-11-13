@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-class GamePanel extends JPanel implements ObservadoIF {
+class GamePanel extends JPanel implements ObservadorIF {
 	public static GamePanel gamePanel = null;
 	
 	//Imagens do tabuleiro, fundo e cartas de objetivo
@@ -32,29 +32,11 @@ class GamePanel extends JPanel implements ObservadoIF {
 	//Lista de territorios no jogo
 	String[] territorios;
 
-	// Observadores
-	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
-
 	// Painel dos dados
 	DadosPanel painelDosDados = new DadosPanel();
 	
 	//Painel das Cartas
 	CartasPanel painelCartas = new CartasPanel();
-
-	// Nomes dos jogadores
-	String[] nomesJogadores;
-
-	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
-	// 0 - Estado para indicar telas (Começando agora = -1; Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
-	// 1 - Vez (Int pos do array de nomesJogadores)
-	// 2 - Realizando posicionamento - Estado (Não está realizando = 0; Selecionou territorio = 1; Posicionamento terminado = 2)
-	// 3 - Realizando ataque - Estado (Não está realizando = 0; Selecionou atacante = 1; Selecionou defensor = 2; Rolou Dados = 3; Ataque terminado = 4)
-	// 4 - Realizando reposicionamento - Estado (Não está realizando = 0; Selecionou origem = 1; Selecionou destino = 2; Reposicionamento terminado = 3)
-	// 5 - String com o nome do territorio principal/origem (Atacante, origem de reposicionamento e receptor de posicionamento de exércitos)
-	// 6 - String com o nome do territorio destino (Defensor ou destino de reposicionamento)
-	// 7 - Array de int com os resultados dos dados (Primeiros 3 ataque, últimos 3 defesa) - 0 = não rolado, -1 = não pode jogar esse dado, 1-6 = valor do dado
-
-	Object[] infos = new Object[8];
 
 	// Gerente
 	Gerente gerente = Gerente.getGerente();
@@ -179,8 +161,12 @@ class GamePanel extends JPanel implements ObservadoIF {
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		desenhaExercitos(this.g2d);
-		infos[0] = -1;
-		observadores.get(0).notifica(this);
+	}
+
+	// Notifica o observador
+	@Override
+	public void notifica(ObservadoIF o){
+		//TODO
 	}
 
 	//desenha cada territorio 
@@ -365,24 +351,6 @@ class GamePanel extends JPanel implements ObservadoIF {
 		}
 	}
 	
-
-	@Override
-	public void add(ObservadorIF o) {
-		observadores.add(o);
-	}
-
-	@Override
-	public void remove(ObservadorIF o) {
-		observadores.remove(o);
-	}
-
-	@Override
-	public Object get() {
-		return infos;
-	}
-
-	public void setNomesJogadores(String[] nomesJogadores){
-		this.nomesJogadores = nomesJogadores;
-	}
+	
 		
 }

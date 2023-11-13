@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
 			getContentPane().add(startingPanel);
 			
 			// Associa observador ao observado
-			gamePanel.add(apiView);
+			apiView.add(gamePanel);
 
 			//getContentPane().add(csPanel);
 		
