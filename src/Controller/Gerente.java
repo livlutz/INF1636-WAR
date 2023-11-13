@@ -10,7 +10,8 @@ import java.awt.Color;
 
 public class Gerente {
     public static Gerente gerente = null;
-    private static APIJogo apiJogo = APIJogo.getAPIJogo();
+    private APIJogo apiJogo = APIJogo.getAPIJogo();
+    private APIView apiView = APIView.getAPIView();
 
     // Construtor privado para o singleton
     private Gerente(){

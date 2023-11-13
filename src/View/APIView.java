@@ -2,18 +2,16 @@ package View;
 
 import java.util.ArrayList;
 
-import Controller.Gerente;
 
 public class APIView implements ObservadoIF{
 	private static APIView APIView = null;
 	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 	StartingPanel startingPanel = StartingPanel.getStartingPanel();
-	private Gerente gerente = Gerente.getGerente();
+	//private Gerente gerente = Gerente.getGerente();
 
 	// Observadores
 	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
 
-	
 	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
 	// 0 - Estado para indicar telas (Começando agora = -1; Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
 	// 1 - Vez (Int pos do array de nomesJogadores)
@@ -63,13 +61,5 @@ public class APIView implements ObservadoIF{
 		startingPanel.setVisible(true);
 	}
 
-	public boolean podeComecarJogo(){
-		if (!gerente.comecaJogo(characterSelectionPanel.getNomesJogadores(), characterSelectionPanel.getCoresJogadores())){
-			characterSelectionPanel.getNomesJogadores().clear();
-			characterSelectionPanel.getCoresJogadores().clear();
-			return false;
-		}
-		return true;
-	}
 
 }

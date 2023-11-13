@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import Controller.Gerente;
+
 import java.util.ArrayList;
 
 class CharacterSelectionPanel extends JPanel {
@@ -24,10 +27,12 @@ class CharacterSelectionPanel extends JPanel {
 					nomesJogadores.add(s.getNome());
 					coresJogadores.add(s.getCor());
 				}
-				if (APIView.getAPIView().podeComecarJogo()) {
+				if (Gerente.getGerente().comecaJogo(nomesJogadores, coresJogadores)) {
 					MainFrame.getMainFrame().goToGamePanel();
 				}
 				else {
+					nomesJogadores.clear();
+					coresJogadores.clear();
 					JOptionPane.showMessageDialog(null, "Nomes ou cores inválidos ou repetidos");
 				}
 	        }
