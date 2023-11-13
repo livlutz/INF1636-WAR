@@ -21,6 +21,9 @@ class Jogo {
     // Guarda lista de cartas
     private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
 
+	// Guarda o jogador da vez
+	private int vez = 0;
+
     // Construtor privado para o singleton
     private Jogo(){
 
@@ -325,4 +328,7 @@ class Jogo {
 		return jogadores;
 	}
 
+	public int getVez() {
+		return vez;
+	}
 }

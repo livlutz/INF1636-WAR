@@ -12,6 +12,12 @@ public class APIView implements ObservadoIF{
 	// Observadores
 	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
 
+	// Array de nomes dos jogadores
+	String[] nomesJogadores = new String[6];
+
+	// Array de nomes de territorios 
+	String[] listaTerritorios;
+
 	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
 	// 0 - Estado para indicar telas (Começando agora = -1; Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
 	// 1 - Vez (Int pos do array de nomesJogadores)
@@ -61,5 +67,16 @@ public class APIView implements ObservadoIF{
 		startingPanel.setVisible(true);
 	}
 
+	public void setNomesJogadores(String[] nomes){
+		nomesJogadores = nomes;
+	}
+
+	public String[] getNomesJogadores(){
+		return nomesJogadores;
+	}
+
+	public Object[] getInfos(){
+		return infos;
+	}
 
 }

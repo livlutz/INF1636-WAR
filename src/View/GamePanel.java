@@ -162,11 +162,79 @@ class GamePanel extends JPanel implements ObservadorIF {
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		desenhaExercitos(this.g2d);
 	}
-
+	
+	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
+	// 0 - Estado para indicar telas (Começando agora = -1; Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
+	// 1 - Vez (Int pos do array de nomesJogadores)
+	// 2 - Realizando posicionamento - Estado (Não está realizando = 0; Selecionou territorio = 1; Posicionamento terminado = 2)
+	// 3 - Realizando ataque - Estado (Não está realizando = 0; Selecionou atacante = 1; Selecionou defensor = 2; Rolou Dados = 3; Ataque terminado = 4)
+	// 4 - Realizando reposicionamento - Estado (Não está realizando = 0; Selecionou origem = 1; Selecionou destino = 2; Reposicionamento terminado = 3)
+	// 5 - String com o nome do territorio principal/origem (Atacante, origem de reposicionamento e receptor de posicionamento de exércitos)
+	// 6 - String com o nome do territorio destino (Defensor ou destino de reposicionamento)
+	// 7 - Array de int com os resultados dos dados (Primeiros 3 ataque, últimos 3 defesa) - 0 = não rolado, -1 = não pode jogar esse dado, 1-6 = valor do dado
+	
 	// Notifica o observador
 	@Override
 	public void notifica(ObservadoIF o){
-		//TODO
+		APIView apiView = (APIView) o;
+		Object[] infos = (Object[]) apiView.get();
+		if ((int) infos[0] == 0){
+			// Posicionamento
+			if((int) infos[1] == 0){
+				// Começando agora
+				comboBoxAtacantes.setSelectedIndex(-1);
+			}
+			else if ((int) infos[2] == 1){
+				// Selecionou territorio
+				comboBoxAtacantes.setSelectedItem((String) infos[5]);
+			}
+			else if ((int) infos[2] == 2){
+				// Posicionamento terminado
+				comboBoxAtacantes.setSelectedIndex(-1);
+			}
+		}
+		else if ((int) infos[0] == 1){
+			// Ataque
+			if ((int) infos[3] == 1){
+				// Selecionou atacante
+				comboBoxAtacantes.setSelectedItem((String) infos[5]);
+			}
+			else if ((int) infos[3] == 2){
+				// Selecionou defensor
+				comboBoxDefensores.setSelectedItem((String) infos[6]);
+			}
+			else if ((int) infos[3] == 3){
+				// Rolou dados
+				//painelDosDados.setDados((int[]) infos[7]);
+			}
+			else if ((int) infos[3] == 4){
+				// Ataque terminado
+				comboBoxAtacantes.setSelectedIndex(-1);
+				comboBoxDefensores.setSelectedIndex(-1);
+				//painelDosDados.setDados(new int[] {0,0,0,0,0,0});
+			}
+		}
+		else if ((int) infos[0] == 2){
+			// Reposicionamento
+			if ((int) infos[4] == 1){
+				// Selecionou origem
+				comboBoxAtacantes.setSelectedItem((String) infos[5]);
+			}
+			else if ((int) infos[4] == 2){
+				// Selecionou destino
+				comboBoxDefensores.setSelectedItem((String) infos[6]);
+			}
+			else if ((int) infos[4] == 3){
+				// Reposicionamento terminado
+				comboBoxAtacantes.setSelectedIndex(-1);
+				comboBoxDefensores.setSelectedIndex(-1);
+			}
+		}
+		else if ((int) infos[0] == 3){
+			// Passando a vez
+			comboBoxAtacantes.setSelectedIndex(-1);
+			comboBoxDefensores.setSelectedIndex(-1);
+		}
 	}
 
 	//desenha cada territorio 

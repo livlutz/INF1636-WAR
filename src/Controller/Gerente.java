@@ -45,7 +45,14 @@ public class Gerente {
             };
             cont++;
         }
-        return apiJogo.comecaJogo();
+        if (apiJogo.comecaJogo()){
+            apiView.setNomesJogadores(apiJogo.getNomesJogadores());
+            apiView.getInfos()[0] = 0;
+            apiView.getInfos()[1] = 0;
+            //TODO
+            return true;
+        }
+        return false;
     }
 
     public Color getCorTerritorio(String t){
