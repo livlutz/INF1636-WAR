@@ -19,7 +19,7 @@ public class APIView implements ObservadoIF{
 	String[] listaTerritorios;
 
 	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
-	// 0 - Estado para indicar telas (Começando agora = -1; Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
+	// 0 - Estado para indicar telas (Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
 	// 1 - Vez (Int pos do array de nomesJogadores)
 	// 2 - Realizando posicionamento - Estado (Não está realizando = 0; Selecionou territorio = 1; Posicionamento terminado = 2)
 	// 3 - Realizando ataque - Estado (Não está realizando = 0; Selecionou atacante = 1; Selecionou defensor = 2; Rolou Dados = 3; Ataque terminado = 4)
@@ -67,6 +67,12 @@ public class APIView implements ObservadoIF{
 		startingPanel.setVisible(true);
 	}
 
+	public void comecaJogo(){
+		for (ObservadorIF o : observadores) {
+			o.notifica(this);
+		}
+	}
+
 	public void setNomesJogadores(String[] nomes){
 		nomesJogadores = nomes;
 	}
@@ -77,6 +83,14 @@ public class APIView implements ObservadoIF{
 
 	public Object[] getInfos(){
 		return infos;
+	}
+
+	public void setListaTerritorios(String[] l){
+		listaTerritorios = l;
+	}
+
+	public String[] getListaTerritorios(){
+		return listaTerritorios;
 	}
 
 }

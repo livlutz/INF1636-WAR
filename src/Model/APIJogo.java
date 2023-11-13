@@ -70,4 +70,15 @@ import java.util.Map;
     	}
     	return nomes;
     }
+
+    public String[] getTerritoriosJogador(int i) {
+        ArrayList<Territorio> ter = jogo.getJogadores().get(i).getTerritorios();
+    	String[] listaTerritorios = new String[ter.size()];
+    	int cont = 0;
+    	for (Territorio t: ter) {
+    		listaTerritorios[cont] = t.getNome();
+    		cont++;
+    	}
+    	return listaTerritorios;
+    }
 }
