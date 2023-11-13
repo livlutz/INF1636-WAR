@@ -15,7 +15,11 @@ class StartingPanel extends JPanel{
 	JButton continuar = new JButton("Continuar jogo");
 	
 	//Imagem do frame de inicio do jogo
-	Image start = null;
+	Image start;
+	
+	//Componente grafico
+	Graphics2D g;
+	
 	public static StartingPanel startingPanel = null;
 	
 	//Criando e agrupando botoes
@@ -27,7 +31,7 @@ class StartingPanel extends JPanel{
 	
 	//Construtor
 	private StartingPanel() {
-	
+
 		iniciar.addActionListener(new ActionListener(){
 			@Override
 	        public void actionPerformed(ActionEvent e) {
@@ -84,6 +88,7 @@ class StartingPanel extends JPanel{
 		catch (IOException e) {
 			System.out.println("Erro na leitura do plano de fundo\n");
 		}
+		
 	}
 	
 	//Singleton
@@ -92,5 +97,11 @@ class StartingPanel extends JPanel{
 			startingPanel = new StartingPanel();	
 		}
 		return startingPanel;
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		this.g = (Graphics2D) g;
+		this.g.drawImage(start,0,0,1500,800,null);
 	}
 }
