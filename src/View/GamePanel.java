@@ -1,5 +1,6 @@
 package View;
 import Controller.Gerente;
+import Model.APIJogo;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	String[] territorios;
 
 	// Painel dos dados
-	DadosPanel painelDosDados = new DadosPanel();
+	DadosPanel dadosPanel = new DadosPanel();
 	
 	//Painel das Cartas
 	CartasPanel painelCartas = new CartasPanel();
@@ -42,6 +43,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 	// ComboBoxes
 	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
 	JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
+	String valoresDados[] = {"0","1","2","3","4","5","6"};
+	JComboBox dadosAtacante = new JComboBox(valoresDados);
+	JComboBox dadosDefensores = new JComboBox(valoresDados);
+	APIJogo apiJogo = APIJogo.getAPIJogo();
 
 	//Construtor
 	private GamePanel() {
@@ -52,6 +57,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(atacantes);
 		//JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
 		comboBoxAtacantes.setBounds(1250,150,200,30);
+		dadosAtacante.setBounds(1450,150,50,30);
+		add(dadosAtacante);	
 		add(comboBoxAtacantes);
 		
 		JLabel defensores = new JLabel("Defensores");
@@ -59,10 +66,12 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(defensores);
 		//JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
 		comboBoxDefensores.setBounds(1250,230,200,30);
+		dadosDefensores.setBounds(1450,230,50,30);
+		add(dadosDefensores);
 		add(comboBoxDefensores);
 		
-		painelDosDados.setBounds(1250,350,200,200);
-		add(painelDosDados);
+		dadosPanel.setBounds(1250,350,200,200);
+		add(dadosPanel);
 
 		painelCartas.setBounds(1250,580,200,200);
 		add(painelCartas);
@@ -88,7 +97,23 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		dadoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO lançar os dados
+				int [] dadosAtaque = new int [3];
+				int [] dadosDefesa = new int [3];
+				if (dadosAtacante.getSelectedItem() == "0" && dadosDefensores.getSelectedItem() == "0") {
+					//apiJogo.realizaAtaque(null, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(), dadosAtaque, dadosDefesa);
+				}
+				else {
+					//apiJogo.realizaAtaqueForçado(null, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(),Integer.valueOf(dadosAtacante.getSelectedItem()), Integer.valueOf(dadosDefensores.getSelectedItem()));
+					int dadoAtaque = Integer.valueOf((String) dadosAtacante.getSelectedItem());
+					dadosAtaque[0] = dadoAtaque;
+					dadosAtaque[1] = dadoAtaque;
+					dadosAtaque[2] = dadoAtaque;
+					int dadoDefesa = Integer.valueOf((String) dadosDefensores.getSelectedItem());
+					dadosDefesa[0] = dadoDefesa;
+					dadosDefesa[1] = dadoDefesa;
+					dadosDefesa[2] = dadoDefesa;
+				}
+				dadosPanel.mostrarDados(dadosAtaque, dadosDefesa);
 			}
 		});
 		

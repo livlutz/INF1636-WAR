@@ -93,13 +93,15 @@ class Jogo {
 	}
 	
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
-	public void RealizaAtaque(Jogador jAtacante, Territorio atacante,Territorio defensor) {
+	public void RealizaAtaque(Jogador jAtacante, Territorio atacante,Territorio defensor, int[]dadosAtaque, int[]dadosDefesa) {
 		
 		if(VerificarAtaque(jAtacante, atacante, defensor)){
 			int qtdAtaque = atacante.getQntExercitos() - 1;
+			if  (qtdAtaque > 3) {qtdAtaque = 3;}
 			int qtdDefesa = defensor.getQntExercitos();
-			int[] dadosAtaque = new int[qtdAtaque];
-			int[] dadosDefesa = new int[qtdDefesa];
+			if  (qtdDefesa > 3) {qtdDefesa = 3;}
+			dadosAtaque = new int[qtdAtaque];
+			dadosDefesa = new int[qtdDefesa];
 			Dado dado = new Dado();
 			int qtdAtaquePerdidos = 0;
 			int qtdDefesaPerdidos = 0;
@@ -131,10 +133,51 @@ class Jogo {
 			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
 
 		}
-		
+	
 		System.out.println("Nao foi possivel realizar o ataque");
 		return;
 	}
+		public void RealizaAtaqueForcado(Jogador jatacante, Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
+			if(VerificarAtaque(jatacante, tatacante, tdefensor)){
+				int qtdAtaque = tatacante.getQntExercitos() - 1;
+				if  (qtdAtaque > 3) {qtdAtaque = 3;}
+				int qtdDefesa = tdefensor.getQntExercitos();
+				if  (qtdDefesa > 3) {qtdDefesa = 3;}
+				int dadosAtaque[] = new int[3];
+				int dadosDefesa [] = new int[3];
+				Dado dado = new Dado();
+				int qtdAtaquePerdidos = 0;
+				int qtdDefesaPerdidos = 0;
+				
+				for (int i = 0;i < qtdAtaque;i++) {
+					dadosAtaque[i] = dadoAtaque;
+				}
+				
+				for (int i = 0;i < qtdDefesa;i++) {
+					dadosDefesa[i] = dadoDefesa;
+				}
+				
+				//Ordena os dados
+				Arrays.sort(dadosAtaque);
+				Arrays.sort(dadosDefesa);
+				
+				//Compara os dados
+				for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
+					if (dadosAtaque[i] > dadosDefesa[i]) {
+						qtdDefesaPerdidos++;
+					}
+					else {
+						qtdAtaquePerdidos++;
+					}
+				}
+				
+				//Atualiza os exércitos
+				tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
+				tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
+			
+			}
+			}
+	
 	
 	//Instancia os objetivos de cada jogador
     public void InstanciaObjetivos(){
@@ -331,4 +374,5 @@ class Jogo {
 	public int getVez() {
 		return vez;
 	}
+
 }
