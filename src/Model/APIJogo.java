@@ -40,6 +40,19 @@ import java.util.Map;
 
 		return terr;
 	}
+    
+    public void realizaAtaque(Jogador Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
+    	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
+    	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
+    	jogo.RealizaAtaque(Jatacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
+    	
+    }
+    
+    public void realizaAtaqueForcado(Jogador Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
+    	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
+    	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
+    	jogo.RealizaAtaqueForcado(Jatacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
+    }
 
     // Retorna cor do jogador que domina aquele território
     public Color getCorTerritorio(String t){
