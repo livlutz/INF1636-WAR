@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-class CartasPanel extends Panel {
+import Controller.Gerente;
+
+class CartasPanel extends Panel implements ObservadoIF {
 	
 	Image cartaObj,cartaObjGrande;
 	
@@ -24,11 +26,21 @@ class CartasPanel extends Panel {
 
 	}
 
+	// Adiciona um observador
+	public void add(ObservadorIF o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	// Desenha as cartas de objetivo
 	public void desenhaCartas(Graphics g) {
 		super.paint(g);
 		g.drawImage(cartaObj, 1255, 350, 100, 150, null);
 		g.drawImage(cartaObjGrande, 1275, 350, 100, 150, null);
+		//Escreve o objetivo do jogador na carta
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Arial", Font.BOLD, 15));
+		//Pegar o objetivo do jogador da vez pelo 
 	}
 			
 }

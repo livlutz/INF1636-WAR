@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -47,6 +48,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
+
+	//Array list de exercitos 
+	ArrayList<Exercitos> exercitos = new ArrayList<Exercitos>();
 
 	//Construtor
 	private GamePanel() {
