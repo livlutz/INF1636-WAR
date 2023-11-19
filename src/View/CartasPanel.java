@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import Controller.Gerente;
 
-class CartasPanel extends Panel implements ObservadoIF {
+class CartasPanel extends Panel {
 	
 	Image cartaObj,cartaObjGrande;
 	

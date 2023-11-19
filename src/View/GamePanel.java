@@ -50,7 +50,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
 	//Array list de exercitos 
-	ArrayList<Exercitos> exercitos = new ArrayList<Exercitos>();
+	ArrayList<Exercitos> listExercitos = new ArrayList<Exercitos>();
 
 	//Construtor
 	private GamePanel() {
@@ -400,7 +400,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 			
 			//desenha o territorio
             exercitos.drawPlayer(g2d);
-            
+			//Adiciona exercito na lista
+			listExercitos.add(exercitos);
 		}
 	}
 	
