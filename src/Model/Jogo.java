@@ -23,6 +23,10 @@ class Jogo {
 	// Guarda o jogador da vez
 	private int vez = 0;
 
+	// Últimos territórios alterados
+	private Territorio mod1 = null;
+	private Territorio mod2 = null;
+
     // Construtor privado para o singleton
     private Jogo(){
 
@@ -376,5 +380,13 @@ class Jogo {
 	//Retorna a vez de jogar de um jogador
 	public int getVez() {
 		return vez;
+	}
+
+	public Territorio getMod1() {
+		return mod1;
+	}
+
+	public Territorio getMod2() {
+		return mod2;
 	}
 }

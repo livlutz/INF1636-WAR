@@ -47,23 +47,14 @@ public class Gerente {
             };
             cont++;
         }
-        if (apiJogo.comecaJogo()){
-            // Entrega lista com nomes dos jogadores para a view
-            apiView.setNomesJogadores(apiJogo.getNomesJogadores());
-            // Posicionamento
-            apiView.getInfos()[0] = 0;
-            // Primeiro jogador
-            apiView.getInfos()[1] = 0;
-            // Não está realizando posicionamento ainda
-            apiView.getInfos()[2] = 0;
+        return apiJogo.comecaJogo();
+    }
 
-            // Atualiza lista de territórios para a lista de territórios do primeiro jogador
-            apiView.setListaTerritorios(apiJogo.getTerritoriosJogador(0));
-
-            apiView.comecaJogo();
-            return true;
+    // Método para gerenciar jogo
+    public void mainJogo(){
+        while(true){
+            
         }
-        return false;
     }
 
     // Método que retorna a cor de um território

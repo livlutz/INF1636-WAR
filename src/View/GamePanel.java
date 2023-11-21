@@ -198,36 +198,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 		desenhaExercitos(this.g2d);
 	}
 
-	// Array de infos para observer [int, int, int, int, int, String, String, int[]]
-	// 0 - Estado para indicar telas (Posicionando = 0; Atacando = 1; Reposicionamento = 2; Passando a vez = 3; Fim de jogo = 4)
-	// 1 - Vez (Int pos do array de nomesJogadores)
-	// 2 - Realizando posicionamento - Estado (Não está realizando = 0; Selecionou territorio = 1; Posicionamento terminado = 2)
-	// 3 - Realizando ataque - Estado (Não está realizando = 0; Selecionou atacante = 1; Selecionou defensor = 2; Rolou Dados = 3; Ataque terminado = 4)
-	// 4 - Realizando reposicionamento - Estado (Não está realizando = 0; Selecionou origem = 1; Selecionou destino = 2; Reposicionamento terminado = 3)
-	// 5 - String com o nome do territorio principal/origem (Atacante, origem de reposicionamento e receptor de posicionamento de exércitos)
-	// 6 - String com o nome do territorio destino (Defensor ou destino de reposicionamento)
-	// 7 - Array de int com os resultados dos dados (Primeiros 3 ataque, últimos 3 defesa) - 0 = não rolado, -1 = não pode jogar esse dado, 1-6 = valor do dado
-	
 	// Notifica o observador
 	@Override
 	public void notifica(ObservadoIF o){
-		APIView apiView = (APIView) o;
-		Object[] infos = (Object[]) apiView.get();
-		if ((int) infos[0] == 0){
-			// Posicionamento
-		}
-		else if ((int) infos[0] == 1){
-			// Ataque
-		}
-		else if ((int) infos[0] == 2){
-			// Reposicionamento
-		}
-		else if ((int) infos[0] == 3){
-			// Passando a vez
-		}
-		else if ((int) infos[0] == 4){
-			// Fim de jogo
-		}
+		Object infos = o.get();
+		//TODO
 	}
 
 	//Desenha cada território 
