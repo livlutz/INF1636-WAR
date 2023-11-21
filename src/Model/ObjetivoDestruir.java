@@ -3,6 +3,7 @@ package Model;
 import java.awt.Color;
 
 class ObjetivoDestruir extends Objetivo{
+    // Guarda o jogador que deve ser destruído
     private Jogador jAlvo;
 
     // Construtor

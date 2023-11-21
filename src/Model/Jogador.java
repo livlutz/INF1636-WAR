@@ -7,27 +7,38 @@ import java.util.Map;
 import java.awt.Color;
 class Jogador {
 
-	private Color cor; //Guarda a cor do jogador
+	//Guarda a cor do jogador
+	private Color cor; 
 	
-	private String nome; //Guarda o nome do jogador
+	//Guarda o nome do jogador
+	private String nome; 
 	
-	private int qtdExercitoPosic; //Guarda a quantidade de Exércitos que pode posicionar
+	//Guarda a quantidade de Exércitos que pode posicionar
+	private int qtdExercitoPosic; 
 	
-	private int qtdTrocaCartas = 0; //Guarda a quantidade de cartas que pode trocar
+	//Guarda a quantidade de cartas que pode trocar
+	private int qtdTrocaCartas = 0; 
 	
-	private int qtdTerritorios = 0;  //Guarda a quantidade de territórios em sua posse
-	
-	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  //Guarda as cartas que possui
-	
-	private Objetivo obj;  //Guarda seu objetivo no jogo
+	//Guarda a quantidade de territórios em sua posse
+	private int qtdTerritorios = 0;  
 
-	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); //Guarda os territórios que possui
+	//Guarda as cartas que um jogador possui
+	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  
 	
-	private boolean eliminadoNessaRodada = false; //Guarda se o jogador foi eliminado nessa rodada
+	//Guarda seu objetivo no jogo
+	private Objetivo obj;  
 
-	private boolean conquistouNessaRodada = false; //Guarda se o jogador conquistou um território nessa rodada
+	//Guarda os territórios que possui
+	private ArrayList <Territorio> territorios = new ArrayList <Territorio> (); 
+	
+	//Guarda se o jogador foi eliminado nessa rodada
+	private boolean eliminadoNessaRodada = false; 
 
-	private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro(); // Guarda a instancia de tabuleiro
+	//Guarda se o jogador conquistou um território nessa rodada
+	private boolean conquistouNessaRodada = false; 
+	
+	// Guarda a instancia de tabuleiro
+	private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro(); 
 	
 	//Construtor da classe
 	public Jogador(String nome, Color cor) {
@@ -45,41 +56,41 @@ class Jogador {
 	// Posicionar exércitos em continente dominado
 	// Deve ser chamado no início da jogada se o jogador dominar um continente
 	public void posicionarExercCont(Continente cont){
-		// objeto para pegar input de nome
+		// Objeto para pegar input de nome
 		Scanner input = new Scanner(System.in);
 
 		this.qtdExercitoPosic = cont.getQtdExerc();
 		while (this.qtdExercitoPosic > 0){
 			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar em " + cont.getNome() + ".");
 			
-			// pede ao usuário o nome do território
+			// Pede ao usuário o nome do território
 			System.out.println("Digite o nome do território: ");
 			String nomeTerritorio = input.nextLine();
 
-			// procura o território no hashmap do tabuleiro 
+			// Procura o território no hashmap do tabuleiro 
 			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
 			
-			// verifica se o território existe
+			// Verifica se o território existe
 			if (t == null){
 				System.out.println("Território não encontrado.");
 				continue;
 			}
 
-			// verifica se o território pertence ao continente
+			// Verifica se o território pertence ao continente
 			if (cont.noContinente(t)){
 
-				// pede ao usuário a quantidade de exércitos a serem posicionados
+				// Pede ao usuário a quantidade de exércitos a serem posicionados
 				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
 				int qtdExercitos = input.nextInt();
 				input.nextLine();
 
-				// verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
+				// Verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
 				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
 
-					// posiciona os exércitos no território
+					// Posiciona os exércitos no território
 					this.posicionarExercitos(t, qtdExercitos);
 
-					// subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
+					// Subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
 					this.qtdExercitoPosic -= qtdExercitos;
 				}
 				else
@@ -96,11 +107,11 @@ class Jogador {
 		t.alterarQndExercitos(qtdExercitos);
 	}
 
-	// Executa todos os passos para a rodada de posicionamento de um jogador - falta implementar
+	// Executa todos os passos para a rodada de posicionamento de um jogador
 	public void rodadaDePosicionamento(){
 		HashMap <String, Continente> continentes = Tabuleiro.getContinentes();
 		
-		// para cada continente, se o jogador dominar, posiciona os exércitos
+		// Para cada continente, se o jogador dominar, posiciona os exércitos
 		for (Map.Entry<String, Continente> e: continentes.entrySet()){
 			if (e.getValue().dominado(this))
 				this.posicionarExercCont(e.getValue());
@@ -108,7 +119,7 @@ class Jogador {
 
 		this.qtdExercitoPosic = this.qtdTerritorios/2;
 
-		// objeto para pegar input
+		// Objeto para pegar input
 		Scanner input = new Scanner(System.in);
 
 		if (this.temTroca()){
@@ -125,41 +136,42 @@ class Jogador {
 			}
 		}
 		
-		// posiciona os exércitos em territórios do jogador
+		// Posiciona os exércitos em territórios do jogador
 		while (this.qtdExercitoPosic > 0){
 			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar.");
 			
-			// pede ao usuário o nome do território
+			// Pede ao usuário o nome do território
 			System.out.println("Digite o nome do território: ");
 			String nomeTerritorio = input.nextLine();
 
-			// procura o território no hashmap do tabuleiro 
+			// Procura o território no hashmap do tabuleiro 
 			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
 			
-			// verifica se o território existe
+			// Verifica se o território existe
 			if (t == null){
 				System.out.println("Território não encontrado.");
 				continue;
 			}
 
-			// verifica se o território pertence ao jogador
+			// Verifica se o território pertence ao jogador
 			if (t.getJogador() == this){
 
-				// pede ao usuário a quantidade de exércitos a serem posicionados
+				// Pede ao usuário a quantidade de exércitos a serem posicionados
 				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
 				int qtdExercitos = input.nextInt();
 				input.nextLine();
 
-				// verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
+				// Verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
 				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
 
-					// posiciona os exércitos no território
+					// Posiciona os exércitos no território
 					this.posicionarExercitos(t, qtdExercitos);
 
-					// subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
+					// Subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
 					this.qtdExercitoPosic -= qtdExercitos;
 				}
 				
+				// Exibe mensagem de erro caso a quantidade de exércitos seja maior que a quantidade de exércitos que o jogador pode posicionar
 				else {
 					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
 				}
@@ -189,23 +201,26 @@ class Jogador {
 		if(temTroca()) {
 			int primTrocaExerc = 4;
 			
-			//primeira vez trocando
+			//Primeira vez trocando
 			if(qtdTrocaCartas == 0) {
 				qtdExercitoPosic += primTrocaExerc;
 			}
 			
-			//quando temos 2 ate 5 trocas ja efetuadas
+			//Quando temos 2 até 5 trocas já efetuadas
 			else if (qtdTrocaCartas < 5) {
 				qtdExercitoPosic += (primTrocaExerc + 2 * qtdTrocaCartas);
 			}
 			
-			//temos mais de 5 trocas ja efetuadas
+			//Temos mais de 5 trocas já efetuadas
 			else {
 				int diferenca = qtdTrocaCartas - 5;
 				qtdExercitoPosic += ((diferenca + 3) * 5);
 			}
-		
+			
+			//Aumenta a quantidade de trocas de cartas
 			qtdTrocaCartas++;
+
+			//Remove as cartas do jogador
 			cartas.remove(a);
 			cartas.remove(b);
 			cartas.remove(c);

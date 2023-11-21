@@ -23,7 +23,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Image cartaObj = null;
 	Image cartaObjGrande = null;
 
-	Graphics2D g2d; //Componente grafica
+	//Componente grafica
+	Graphics2D g2d; 
 	
 	//Botoes e comboboxes
 	JButton salvarButton,dadoButton, nextButton;
@@ -54,8 +55,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	//Construtor
 	private GamePanel() {
+		//Define o layout como null para poder posicionar os componentes
 		setLayout(null);
 
+		//Cria e adiciona os comboBoxes
 		JLabel atacantes = new JLabel("Atacantes");
 		atacantes.setBounds(1250,120,200,30);
 		add(atacantes);
@@ -74,12 +77,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(dadosDefensores);
 		add(comboBoxDefensores);
 		
+		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
 		add(dadosPanel);
 
+		//Cria e adiciona o painel das cartas
 		painelCartas.setBounds(1250,580,200,200);
 		add(painelCartas);
 		
+		//Cria e adiciona os botões
 		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");
 		dadoButton = new JButton("Jogar os dados");
@@ -93,6 +99,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(dadoButton);
 		add(nextButton);
 		
+		//Adiciona ações aos botões
 		salvarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO salvar jogo
@@ -129,6 +136,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		//territorios = getTerritoriosLista();
 		
+		//Carrega a imagem do tabuleiro
 		try {
 			tabuleiroImg = ImageIO.read(new File("images/mapaComFundo.png"));
 		}
@@ -182,7 +190,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		return gamePanel;
 	}
 	
-	//Desenha as imagens de tabuleiro e fundo
+	//Desenha as imagens de tabuleiro e exercitos
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
@@ -224,8 +232,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	//desenha cada territorio 
 	void desenhaExercitos(Graphics2D g2d) {
+		//Pega a lista de territorios
 		this.territorios = gerente.getTerritoriosLista();
 		Exercitos exercitos;
+		//Verifica qual o territorio e desenha o exercito na posicao correta
 		for (String t: territorios) { 
 			switch(t){
 				//America do Sul

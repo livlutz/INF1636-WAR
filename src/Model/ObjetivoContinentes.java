@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 class ObjetivoContinentes extends Objetivo{
+    //Guarda os continentes e a quantidade de continentes que o jogador deve dominar
     private Continente cont1;
     private Continente cont2;
     private int qtdContinentes;
@@ -47,8 +48,4 @@ class ObjetivoContinentes extends Objetivo{
         return false;
 
     }
-
-
-
-
 }

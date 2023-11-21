@@ -26,7 +26,7 @@ class Tabuleiro{
 		InstanciaContinente();
 	}
 	
-	//Retorna a instancia do tabuleiro
+	//Retorna a instância do tabuleiro
 		public static synchronized Tabuleiro getTabuleiro() {
 			if (tabuleiro == null){
 				tabuleiro = new Tabuleiro();
@@ -35,7 +35,7 @@ class Tabuleiro{
 		}
 		
 	
-	//Move exercitos por territórios
+	//Move exércitos por territórios
 	public void MoverExercitos(int qtdExercitos,Territorio origem,Territorio destino) {
 		
 		if (origem.getQntExercitos() > qtdExercitos) {
@@ -47,7 +47,7 @@ class Tabuleiro{
 		}
 	}
 	
-	// distribui os territórios entre os jogadores, colocando um exército em cada
+	// Distribui os territórios entre os jogadores, colocando um exército em cada
 	public void distribuiTerritorios(ArrayList<Jogador> jogadores){
 		// Embaralha a lista de territórios
 		Collections.shuffle(listaTerritorios);
@@ -80,7 +80,7 @@ class Tabuleiro{
 	private void InstanciaTerritorios() {
 		Territorio t;
 		
-		//Territórios América do Sul
+			//Territórios América do Sul
 				t = new Territorio("Brasil");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
@@ -135,7 +135,7 @@ class Tabuleiro{
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
-				//Territórios Europa
+			//Territórios Europa
 				t = new Territorio("Polonia");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
@@ -168,7 +168,7 @@ class Tabuleiro{
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
-				//Territórios África
+			//Territórios África
 				t = new Territorio("Egito");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
@@ -193,7 +193,7 @@ class Tabuleiro{
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
-				//Territórios Ásia
+			//Territórios Ásia
 				t = new Territorio("Estonia");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
@@ -274,7 +274,7 @@ class Tabuleiro{
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
-				//Territórios Oceania
+			//Territórios Oceania
 				t = new Territorio("Australia");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
@@ -298,7 +298,7 @@ class Tabuleiro{
 		Territorio t;
 		Continente c; 
 		
-		//America do Sul - Verde 
+		//América do Sul - Verde 
 		c = new Continente("America do Sul", 2, new Color(0,255,0));
 		
 		t = mapTerritorios.get("Brasil");
@@ -315,7 +315,7 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//America do Norte - Vermelho 
+		//América do Norte - Vermelho 
 		c = new Continente("America do Norte", 5, new Color (255,0,0));
 
 		t = mapTerritorios.get("Nova York");
@@ -376,7 +376,7 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Africa - Roxo 
+		//África - Roxo 
 		c = new Continente("Africa", 3, new Color (102,0,153));
 
 		t = mapTerritorios.get("Egito");
@@ -399,7 +399,7 @@ class Tabuleiro{
 
 		mapContinente.put(c.getNome(), c);
 
-		//Asia -  Amarelo 
+		//Ásia -  Amarelo 
 		c = new Continente("Asia", 7, new Color (255,255,0));
 
 		t = mapTerritorios.get("Arabia Saudita");
@@ -494,7 +494,6 @@ class Tabuleiro{
 		return mapContinente.get(nomeContinente);
 	}
 
-	
 	//Retorna hashmap de territorios
 	public static HashMap<String, Territorio> getMapTerritorios() {
 		return mapTerritorios;
@@ -524,5 +523,4 @@ class Tabuleiro{
 	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
 		Tabuleiro.mapContinente = mapContinente;
 	}
-
 }

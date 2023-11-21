@@ -1,7 +1,7 @@
 package Model;
 
 class ObjetivoTerritorios extends Objetivo{
-        
+        // Guarda a quantidade de territórios que o jogador deve conquistar
         private int qtdTerritorios;
         
         // Construtor
@@ -37,6 +37,5 @@ class ObjetivoTerritorios extends Objetivo{
 
             return false;
             
-        }
-        
+        }  
 }

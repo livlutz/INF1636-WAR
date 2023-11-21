@@ -41,6 +41,7 @@ import java.util.Map;
 		return terr;
 	}
     
+    //Método de realizar ataque
     public void realizaAtaque(Jogador Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
     	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
@@ -48,6 +49,7 @@ import java.util.Map;
     	
     }
     
+    //Método de realizar ataque forcado
     public void realizaAtaqueForcado(Jogador Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
     	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
@@ -70,10 +72,12 @@ import java.util.Map;
     	return jogo.addJogador(j);
     }
 
+    // Método de remover os jogadores
     public void resetJogadores(){
         jogo.getJogadores().clear();
     }
     
+    // Método que retorna a lista de nomes dos jogadores
     public String[] getNomesJogadores() {
     	String[] nomes = new String[jogo.getJogadores().size()];
     	int cont = 0;
@@ -84,6 +88,7 @@ import java.util.Map;
     	return nomes;
     }
 
+    // Método que retorna a lista de nomes dos territórios de um jogador
     public String[] getTerritoriosJogador(int i) {
         ArrayList<Territorio> ter = jogo.getJogadores().get(i).getTerritorios();
     	String[] listaTerritorios = new String[ter.size()];

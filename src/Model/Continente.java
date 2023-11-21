@@ -24,7 +24,7 @@ class Continente {
 		this.corCont = corCont;
 	}
 
-	// Adicionar Territorios no continente
+	// Adicionar Territórios no continente
 	public void addTerritorio(Territorio ter){
 		this.territorios.add(ter);
 	}
@@ -73,7 +73,5 @@ class Continente {
 	public void setCorCont(Color corCont){
 		this.corCont = corCont;
 	}
-
-	
 }
  

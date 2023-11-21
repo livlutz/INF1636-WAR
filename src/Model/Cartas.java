@@ -9,7 +9,7 @@ class Cartas {
 	//Guarda o formato presente na carta
 	protected Formato f;
 
-	//Territorio da carta
+	//Território da carta
 	private Territorio territorio;
 	
 	//Construtor
@@ -40,12 +40,12 @@ class Cartas {
 		this.f = f;
 	}
 
-	//Retorna o territorio da carta
+	//Retorna o território da carta
 	public Territorio getTerritorio() {
 		return territorio;
 	}
 
-	//Altera o territorio da carta
+	//Altera o território da carta
 	public void setTerritorio(Territorio territorio) {
 		this.territorio = territorio;
 	}

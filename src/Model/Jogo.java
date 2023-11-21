@@ -11,7 +11,6 @@ class Jogo {
     // Guarda o tabuleiro
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
 
-	
 	// Guarda cada jogador
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 
@@ -50,7 +49,7 @@ class Jogo {
     // Inicializa o jogo
     public boolean InicializaJogo(){
 		
-    	//Jogo n comeca se tiver menos q 3 jogadores
+    	//Jogo não comeca se tiver menos que 3 jogadores
     	if((jogadores.size())<3) {
     		return false;
     	} 
@@ -220,6 +219,7 @@ class Jogo {
 	private void InstanciaCartas(HashMap<String,Territorio> mapTerritorios){
 		Cartas c;
 		//Cartas de Território
+
 		//Africa
 		c = new Cartas(2, mapTerritorios.get("Africa do Sul"));
 		listaCartas.add(c);
@@ -234,7 +234,7 @@ class Jogo {
 		c = new Cartas(0, mapTerritorios.get("Somalia"));
 		listaCartas.add(c);
 
-		//America do Norte
+		//América do Norte
 		c = new Cartas(2, mapTerritorios.get("Alasca"));
 		listaCartas.add(c);
 		c = new Cartas(0, mapTerritorios.get("California"));
@@ -254,7 +254,7 @@ class Jogo {
 		c = new Cartas(2, mapTerritorios.get("Vancouver"));
 		listaCartas.add(c);
 
-		//America do Sul
+		//América do Sul
 		c = new Cartas(0, mapTerritorios.get("Argentina"));
 		listaCartas.add(c);
 		c = new Cartas(1, mapTerritorios.get("Brasil"));
@@ -264,7 +264,7 @@ class Jogo {
 		c = new Cartas(2, mapTerritorios.get("Venezuela"));
 		listaCartas.add(c);
 
-		//Asia
+		//Ásia
 		c = new Cartas(1, mapTerritorios.get("Arabia Saudita"));
 		listaCartas.add(c);
 		c = new Cartas(1, mapTerritorios.get("Bangladesh"));
@@ -335,21 +335,22 @@ class Jogo {
 		listaCartas.add(c);
 	}
 	
-	//Da uma carta a um jogador caso ele conquiste territorios
+	//Dá uma carta a um jogador caso ele conquiste territórios
 	public void DaCartas(Jogador j){
-		//condicao para dar cartas ao jogador -> conquistar territorios
-		//pegar todos os territorios e cartas q o jogador tem
+		//Condição para dar cartas ao jogador -> conquistar territórios
+		//Pegar todos os territórios e cartas que o jogador tem
+
 		ArrayList <Territorio> t = j.getTerritorios();
 		ArrayList <Cartas> c = j.getCartas();
 
-		//se ele conquistou territorios, precisamos dar cartas a ele
+		//Se ele conquistou territórios, precisamos dar cartas a ele
 		if(j.getConquistouNessaRodada()){
-			//percorre a lista de territorios do jogador
+			//Percorre a lista de territórios do jogador
 			for(Territorio t1 : t){
-				//percorre a lista de cartas do deck do jogo
+				//Percorre a lista de cartas do deck do jogo
 				for(Cartas c1 : listaCartas){
-					/*se o nome do territorio for igual ao nome da carta
-					 * e o jogador nao tem a carta daquele territorio, 
+					/*Se o nome do território for igual ao nome da carta
+					 * e o jogador não tem a carta daquele território, 
 					 * teremos que dar a carta a ele
 					*/
 					if(t1.getNome().equals(c1.getTerritorio().getNome())){
@@ -360,19 +361,20 @@ class Jogo {
 				}
 			}
 		}
-		//se o jogador nao conquistou territorios, nao damos cartas a ele e mostramos uma mensagemq
+		//Se o jogador não conquistou territórios, não damos cartas a ele e mostramos uma mensagem
 		else{
 			System.out.printf("Jogador nao conquistou territorios\n");
 			return;
 		}
 	}
 
+	//Retorna os jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 
+	//Retorna a vez de jogar de um jogador
 	public int getVez() {
 		return vez;
 	}
-
 }
