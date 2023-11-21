@@ -10,6 +10,7 @@ import java.awt.Color;
 
 public class Gerente {
     public static Gerente gerente = null;
+    // Instâncias de APIJogo e APIView
     private APIJogo apiJogo = APIJogo.getAPIJogo();
     private APIView apiView = APIView.getAPIView();
 
@@ -25,6 +26,7 @@ public class Gerente {
         return gerente;
     }
 
+    // Método para iniciar o jogo
     public boolean comecaJogo(ArrayList<String> nomes, ArrayList<Color> cores){
         int cont = 0;
         for (String s: nomes){
@@ -64,14 +66,17 @@ public class Gerente {
         return false;
     }
 
+    // Método que retorna a cor de um território
     public Color getCorTerritorio(String t){
         return apiJogo.getCorTerritorio(t);
     }
 
+    // Método que retorna a lista de territórios do jogo
     public String[] getTerritoriosLista(){
         return apiJogo.getTerritoriosLista();
     }
 
+    // Método que retorna a lista de nomes dos jogadores
     public String[] getNomesJogadores(){
         return apiJogo.getNomesJogadores();
     }
