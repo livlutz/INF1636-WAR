@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 		
-		//Tamanho da janela grafica
+		//Tamanho da janela gráfica
 		public final int LARGURA = 1500;
 		public final int ALTURA = 840;
 		
@@ -49,12 +49,13 @@ public class MainFrame extends JFrame {
 			return mf;	
 		}
 		
-		//Direcionamento entre os frames
+		//Direcionamento entre os frames (tela inicial)
 		public void goToCsPanel() {
 			startingPanel.setVisible(false);
 			getContentPane().add(csPanel);
 		}
 		
+		//Direcionamento entre os frames (início do jogo)
 		public void goToGamePanel() {
 			csPanel.setVisible(false);
 			getContentPane().add(gamePanel);

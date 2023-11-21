@@ -1,6 +1,7 @@
 package View;
 
 interface ObservadorIF {
-
-		public void notifica(ObservadoIF o);
+	
+	//Notifica um observador
+	public void notifica(ObservadoIF o);
 }

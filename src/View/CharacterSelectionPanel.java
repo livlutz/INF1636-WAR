@@ -13,13 +13,21 @@ import java.util.ArrayList;
 class CharacterSelectionPanel extends JPanel {
 
 	public static CharacterSelectionPanel csPanel = null;
+	
+	//Guarda o número de jogadores
 	private int numJogadores;
+
+	//Guarda os nomes e cores dos jogadores em um array
 	private ArrayList <String> nomesJogadores = new ArrayList<String>();
     private ArrayList <Color> coresJogadores = new ArrayList<Color>();
+
+	//Guarda os componentes de seleção de personagem
 	private ArrayList <SelectionComponent> selectionComponents = new ArrayList<SelectionComponent>();
+	
+	//Botão de iniciar jogo
 	JButton btn = new JButton("Iniciar Jogo");
 	
-	//Constroi o painel
+	//Constrói o painel
 	private CharacterSelectionPanel() {	
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +57,7 @@ class CharacterSelectionPanel extends JPanel {
 		return csPanel;
 	}
 	
-	//Desenha os jogadores de acordo com o numero selecionado
+	//Desenha os jogadores de acordo com o número selecionado
 	public void drawJogadores() {
 		for(int i = 0;i < numJogadores;i++) {
 			SelectionComponent selection = new SelectionComponent();
@@ -60,20 +68,23 @@ class CharacterSelectionPanel extends JPanel {
 	
 	//---------------------- getters & setters -------------------//
 	
+	//Retorna o número de jogadores
 	public int getJogadores() {
 		return numJogadores;
 	}
 	
+	//Altera o número de jogadores
 	public void setNumJogadores(int numJogadores) {
 		this.numJogadores = numJogadores;
 	}
 
+	//Retorna os nomes dos jogadores
 	public ArrayList<String> getNomesJogadores() {
 		return nomesJogadores;
 	}
 
+	//Retorna as cores dos jogadores
 	public ArrayList<Color> getCoresJogadores() {
 		return coresJogadores;
 	}
-
 }

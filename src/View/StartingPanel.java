@@ -10,19 +10,19 @@ import java.io.IOException;
 
 class StartingPanel extends JPanel{
 	
-	//Botoes
+	//Botões
 	JButton iniciar = new JButton("Iniciar novo jogo");
 	JButton continuar = new JButton("Continuar jogo");
 	
-	//Imagem do frame de inicio do jogo
+	//Imagem do frame de início do jogo
 	Image start;
 	
-	//Componente grafico
+	//Componente gráfico
 	Graphics2D g;
 	
 	public static StartingPanel startingPanel = null;
 	
-	//Criando e agrupando botoes
+	//Criando e agrupando botões
 	JRadioButton radioButton3 = new JRadioButton();
 	JRadioButton radioButton4 = new JRadioButton();
 	JRadioButton radioButton5 = new JRadioButton();
@@ -33,6 +33,7 @@ class StartingPanel extends JPanel{
 	private StartingPanel() {
 
 		iniciar.addActionListener(new ActionListener(){
+			//Adiciona ação ao botão
 			@Override
 	        public void actionPerformed(ActionEvent e) {
 				int selected = 0;
@@ -63,6 +64,7 @@ class StartingPanel extends JPanel{
 			}
 		});
 		
+		//Adiciona Botões
 		add(iniciar);
 		add(continuar);
 		
@@ -81,6 +83,7 @@ class StartingPanel extends JPanel{
 		add(radioButton5);
 		add(radioButton6);
 		
+		//Carrega a imagem de fundo
 		try {
 			start = ImageIO.read(new File ("images/bgconfiguracao.png"));
 		}
@@ -99,6 +102,7 @@ class StartingPanel extends JPanel{
 		return startingPanel;
 	}
 
+	//Desenha a imagem de fundo
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g = (Graphics2D) g;

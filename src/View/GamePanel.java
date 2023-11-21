@@ -23,26 +23,26 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Image cartaObj = null;
 	Image cartaObjGrande = null;
 
-	//Componente grafica
+	//Componente gráfica
 	Graphics2D g2d; 
 	
-	//Botoes e comboboxes
+	//Botões e comboboxes
 	JButton salvarButton,dadoButton, nextButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
-	//Lista de territorios no jogo
+	//Lista de territórios no jogo
 	String[] territorios;
 
-	// Painel dos dados
+	//Painel dos dados
 	DadosPanel dadosPanel = new DadosPanel();
 	
 	//Painel das Cartas
 	CartasPanel painelCartas = new CartasPanel();
 
-	// Gerente
+	//Gerente
 	Gerente gerente = Gerente.getGerente();
 
-	// ComboBoxes
+	//ComboBoxes
 	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
 	JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
@@ -50,7 +50,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
-	//Array list de exercitos 
+	//Array list de exércitos 
 	ArrayList<Exercitos> listExercitos = new ArrayList<Exercitos>();
 
 	//Construtor
@@ -190,7 +190,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		return gamePanel;
 	}
 	
-	//Desenha as imagens de tabuleiro e exercitos
+	//Desenha as imagens de tabuleiro e exércitos
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
@@ -230,15 +230,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
-	//desenha cada territorio 
+	//Desenha cada território 
 	void desenhaExercitos(Graphics2D g2d) {
-		//Pega a lista de territorios
+		//Pega a lista de territórios
 		this.territorios = gerente.getTerritoriosLista();
 		Exercitos exercitos;
-		//Verifica qual o territorio e desenha o exercito na posicao correta
+		//Verifica qual o território e desenha o exército na posição correta
 		for (String t: territorios) { 
 			switch(t){
-				//America do Sul
+				//América do Sul
 				case "Brasil":
 					exercitos = new Exercitos(355,471,gerente.getCorTerritorio(t));
 					break;
@@ -252,7 +252,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 					exercitos = new Exercitos(232,452,gerente.getCorTerritorio(t));
 					break;
 
-				//America do Norte
+				//América do Norte
 				case "Nova York":
 					exercitos = new Exercitos(242,281,gerente.getCorTerritorio(t));
 					break;
@@ -307,7 +307,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 					exercitos = new Exercitos(628,235,gerente.getCorTerritorio(t));
 					break;
 				
-				//Africa
+				//África
 				case "Egito":
 					exercitos = new Exercitos(674,406,gerente.getCorTerritorio(t));
 					break;
@@ -327,7 +327,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 					exercitos = new Exercitos(679,590,gerente.getCorTerritorio(t));
 					break;
 				
-				//Asia
+				//Ásia
 				case "Estonia":
 					exercitos = new Exercitos(784,150,gerente.getCorTerritorio(t));
 					break;
@@ -408,13 +408,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 			
 			}
 			
-			//desenha o territorio
+			//Desenha o território
             exercitos.drawPlayer(g2d);
-			//Adiciona exercito na lista
+			//Adiciona exército na lista
 			listExercitos.add(exercitos);
 		}
 	}
-	
-	
-		
 }

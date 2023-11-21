@@ -40,7 +40,7 @@ class CartasPanel extends Panel {
 		//Escreve o objetivo do jogador na carta
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Arial", Font.BOLD, 15));
-		//Pegar o objetivo do jogador da vez pelo 
+		// TODO Pegar o objetivo do jogador da vez pelo 
 	}
 			
 }
