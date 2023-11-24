@@ -64,14 +64,14 @@ class Jogo implements ObservadoIF{
         Object infos[] = new Object[4];
 
         // Array de quantidade de exércitos
-        ArrayList<Integer> qtdExercitos = new ArrayList<Integer>();
+        ArrayList<String> qtdExercitos = new ArrayList<String>();
 
         // Array de cores
         ArrayList<Color> cores = new ArrayList<Color>();
 
         // Preenche arrays com informações atuais do model
         for (Territorio t: tabuleiro.getlistaTerritorios()){
-            qtdExercitos.add(t.getQntExercitos());
+            qtdExercitos.add(((Integer)t.getQntExercitos()).toString());
             cores.add(t.getCor());
         }
         infos[0] = qtdExercitos;
