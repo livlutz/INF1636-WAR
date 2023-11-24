@@ -5,16 +5,16 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
+import View.APIView;
 import View.ObservadoIF;
 import View.ObservadorIF;
 
 
- public class APIJogo implements ObservadoIF{
+ public class APIJogo{
     private static APIJogo APIJogo = null;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     private Jogo jogo = Jogo.getJogo();
-    // Lista de observadores
-    private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
+    private APIView apiView = APIView.getAPIView();
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -28,55 +28,12 @@ import View.ObservadorIF;
         return APIJogo;
     }
 
-    // Método para adicionar observador
-    public void add(ObservadorIF o){
-        observadores.add(o);
-    }
-
-    // Método para remover observador
-    public void remove(ObservadorIF o){
-        observadores.remove(o);
-    }
-
-    // Método para passar informações observadores
-    public Object get(){
-        // Array de informações
-        Object infos[] = new Object[4];
-
-        // Array de quantidade de exércitos
-        ArrayList<Integer> qtdExercitos = new ArrayList<Integer>();
-
-        // Array de cores
-        ArrayList<Color> cores = new ArrayList<Color>();
-
-        // Preenche arrays com informações atuais do model
-        for (Territorio t: tabuleiro.getlistaTerritorios()){
-            qtdExercitos.add(t.getQntExercitos());
-            cores.add(t.getCor());
-        }
-        infos[0] = qtdExercitos;
-        infos[1] = cores;
-
-        // Preenche no array qual o índice dos territórios que foram modificados
-        if (jogo.getMod1() == null){
-            infos[2] = -1;
-        }
-        else{
-            infos[2] = tabuleiro.getlistaTerritorios().indexOf(jogo.getMod1());
-        }
-        if (jogo.getMod2() == null){
-            infos[3] = -1;
-        }
-        else{
-            infos[3] = tabuleiro.getlistaTerritorios().indexOf(jogo.getMod2());
-        }
-        return infos;
-    }
 
     //Método de inicializar jogo
     public boolean comecaJogo() {
-    	Jogo j = Jogo.getJogo();
-    	boolean r = j.InicializaJogo();
+    	boolean r = jogo.InicializaJogo();
+        // Associando observador GamePanel ao observado Jogo
+        jogo.add(apiView.getObs());
     	return r;
     }
 

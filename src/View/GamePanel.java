@@ -45,13 +45,13 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//ComboBoxes
 	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
 	JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
-	String valoresDados[] = {"0","1","2","3","4","5","6"};
+	String valoresDados[] = {"1","2","3"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
 	//Array list de exércitos 
-	ArrayList<Exercitos> listExercitos = new ArrayList<Exercitos>();
+	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
 	//Construtor
 	private GamePanel() {
@@ -62,18 +62,16 @@ class GamePanel extends JPanel implements ObservadorIF {
 		JLabel atacantes = new JLabel("Atacantes");
 		atacantes.setBounds(1250,120,200,30);
 		add(atacantes);
-		//JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
-		comboBoxAtacantes.setBounds(1250,150,200,30);
-		dadosAtacante.setBounds(1450,150,50,30);
+		comboBoxAtacantes.setBounds(1220,150,200,30);
+		dadosAtacante.setBounds(1420,150,50,30);
 		add(dadosAtacante);	
 		add(comboBoxAtacantes);
 		
 		JLabel defensores = new JLabel("Defensores");
 		defensores.setBounds(1250,200,200,30);
 		add(defensores);
-		//JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
-		comboBoxDefensores.setBounds(1250,230,200,30);
-		dadosDefensores.setBounds(1450,230,50,30);
+		comboBoxDefensores.setBounds(1220,230,200,30);
+		dadosDefensores.setBounds(1420,230,50,30);
 		add(dadosDefensores);
 		add(comboBoxDefensores);
 		
@@ -386,7 +384,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 			//Desenha o território
             exercitos.drawPlayer(g2d);
 			//Adiciona exército na lista
-			listExercitos.add(exercitos);
+			listaExercitos.add(exercitos);
 		}
 	}
 }

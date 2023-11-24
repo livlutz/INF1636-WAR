@@ -1,6 +1,5 @@
 package View;
 
-import Model.APIJogo;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -20,7 +19,6 @@ public class MainFrame extends JFrame {
 		private StartingPanel startingPanel =  StartingPanel.getStartingPanel();
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
-		private APIJogo apiJogo = APIJogo.getAPIJogo();
 		
 		/* TODO
 		Metodo em jogador de pegar exercitos
@@ -33,9 +31,6 @@ public class MainFrame extends JFrame {
 			setTitle("War");
 			setVisible(true);
 			getContentPane().add(startingPanel);
-			
-			// Associa observador ao observado
-			apiJogo.add(gamePanel);
 
 			//getContentPane().add(csPanel);
 		

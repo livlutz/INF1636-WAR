@@ -8,9 +8,6 @@ public class APIView{
 	StartingPanel startingPanel = StartingPanel.getStartingPanel();
 	//private Gerente gerente = Gerente.getGerente();
 
-	// Observadores
-	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
-
 	// Array de nomes dos jogadores
 	String[] nomesJogadores = new String[6];
 
@@ -40,6 +37,10 @@ public class APIView{
 	public void iniciarJogo(){
 		characterSelectionPanel.setVisible(false);
 		startingPanel.setVisible(true);
+	}
+
+	public ObservadorIF getObs(){
+		return (ObservadorIF) GamePanel.getGamePanel();
 	}
 
 	// ---------------------- getters & setters ----------------------

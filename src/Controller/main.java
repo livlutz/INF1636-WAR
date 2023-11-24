@@ -7,8 +7,8 @@ public class main {
 	private static MainFrame mainFrame;
 	public static void main(String[] args) {
 		//Inicializa a APIJogo e o MainFrame
-		APIJogo a = APIJogo.getAPIJogo();
 		mainFrame = MainFrame.getMainFrame();
+		APIJogo a = APIJogo.getAPIJogo();
 	}
 
 }

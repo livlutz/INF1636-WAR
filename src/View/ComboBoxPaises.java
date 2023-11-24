@@ -2,21 +2,20 @@ package View;
 
 import javax.swing.JComboBox;
 
-import Model.APIJogo;
+//import Model.APIJogo;
 
 class ComboBoxPaises extends JComboBox<String>{
 	
 	//Instancia a API do jogo
-	APIJogo apiJogo = APIJogo.getAPIJogo();
+	//APIJogo apiJogo = APIJogo.getAPIJogo();
 	
 	//Construtor
 	public ComboBoxPaises(){
-		adicionaPaises();
+		//adicionaPaises();
 	}
 	
 	//Adiciona os países ao combobox
-	private void adicionaPaises() {
-		String[] territorios = apiJogo.getTerritoriosLista();
+	public void adicionaPaises(String[] territorios) {
 		for (String t: territorios) {
 			this.addItem(t);
 			//this.removeItem(t);

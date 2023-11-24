@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.awt.Color;
 
-class Jogo {
+import View.ObservadoIF;
+import View.ObservadorIF;
+
+class Jogo implements ObservadoIF{
     private static Jogo jogo = null;
 
     // Guarda o tabuleiro
@@ -19,6 +23,9 @@ class Jogo {
 
     // Guarda lista de cartas
     private ArrayList<Cartas> listaCartas = new ArrayList<Cartas>();
+
+	// Guarda a lista de observadores
+	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
 
 	// Guarda o jogador da vez
 	private int vez = 0;
@@ -39,6 +46,55 @@ class Jogo {
         }
         return jogo;
     }
+
+	// Método para adicionar observador
+    public void add(ObservadorIF o){
+        observadores.add(o);
+    }
+
+    // Método para remover observador
+    public void remove(ObservadorIF o){
+        observadores.remove(o);
+    }
+
+	
+    // Método para passar informações observadores
+    public Object get(){
+        // Array de informações
+        Object infos[] = new Object[4];
+
+        // Array de quantidade de exércitos
+        ArrayList<Integer> qtdExercitos = new ArrayList<Integer>();
+
+        // Array de cores
+        ArrayList<Color> cores = new ArrayList<Color>();
+
+        // Preenche arrays com informações atuais do model
+        for (Territorio t: tabuleiro.getlistaTerritorios()){
+            qtdExercitos.add(t.getQntExercitos());
+            cores.add(t.getCor());
+        }
+        infos[0] = qtdExercitos;
+        infos[1] = cores;
+
+        // Preenche no array qual o índice dos territórios que foram modificados
+        if (mod1 == null){
+            infos[2] = -1;
+        }
+        else{
+            infos[2] = tabuleiro.getlistaTerritorios().indexOf(mod1);
+        }
+        if (mod2 == null){
+            infos[3] = -1;
+        }
+        else{
+            infos[3] = tabuleiro.getlistaTerritorios().indexOf(mod2);
+        }
+        return infos;
+    }
+
+
+
 
     // Adiciona jogador na partida
     public boolean addJogador(Jogador jogador){
@@ -382,11 +438,4 @@ class Jogo {
 		return vez;
 	}
 
-	public Territorio getMod1() {
-		return mod1;
-	}
-
-	public Territorio getMod2() {
-		return mod2;
-	}
 }
