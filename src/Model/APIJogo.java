@@ -14,8 +14,8 @@ import View.APIView;
     private APIView apiView = APIView.getAPIView();
 
     //Arquivo para salvar o jogo
-    FileReader inputStream = null;
-    FileWriter outputStream = null;
+    FileReader outputStream = null;
+    FileWriter inputStream = null;
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -148,51 +148,51 @@ import View.APIView;
     */
     public void salvarJogo(){
         try {
-            outputStream = new FileWriter("jogo.txt");
+            inputStream = new FileWriter("jogo.txt");
             //Escreve qtd de jogadores
-            outputStream.write(String.valueOf(jogo.getJogadores().size()));
-            outputStream.write("\n");
+            inputStream.write(String.valueOf(jogo.getJogadores().size()));
+            inputStream.write("\n");
 
             //Escreve a qtd de exercitos em cada territorio
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                outputStream.write(t.getNome() + " ");
-                outputStream.write(String.valueOf(t.getQntExercitos()));
-                outputStream.write("\n");
+                inputStream.write(t.getNome() + " ");
+                inputStream.write(String.valueOf(t.getQntExercitos()));
+                inputStream.write("\n");
             }
 
             //Escreve o nome dos jogadores
             for (Jogador j: jogo.getJogadores()) {
-                outputStream.write(j.getNome() + " ");
+                inputStream.write(j.getNome() + " ");
             }
 
             //Escreve os jogadores que dominam cada territorio
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                outputStream.write(t.getNome() + " ");
-                outputStream.write(t.getJogador().getNome());
-                outputStream.write("\n");
+                inputStream.write(t.getNome() + " ");
+                inputStream.write(t.getJogador().getNome());
+                inputStream.write("\n");
             }
 
             //Escreve os objetivos dos jogadores
             for (Jogador j: jogo.getJogadores()) {
-                outputStream.write(j.getNome() + " ");
-                outputStream.write(j.getObj().getDescricao());
-                outputStream.write("\n");
+                inputStream.write(j.getNome() + " ");
+                inputStream.write(j.getObj().getDescricao());
+                inputStream.write("\n");
             }
 
             //Escreve as cores dos jogadores
             for (Jogador j: jogo.getJogadores()) {
-                outputStream.write(j.getNome() + " ");
-                outputStream.write(String.valueOf(j.getCor().getRGB()));
-                outputStream.write("\n");
+                inputStream.write(j.getNome() + " ");
+                inputStream.write(String.valueOf(j.getCor().getRGB()));
+                inputStream.write("\n");
             }
 
             //Escreve as cartas dos jogadores
             for (Jogador j: jogo.getJogadores()) {
                 for (Cartas c: j.getCartas()) {
-                    outputStream.write(j.getNome() + " ");
-                    outputStream.write(c.getTerritorio().getNome()+ " ");
-                    outputStream.write(String.valueOf(c.getF().ordinal()));
-                    outputStream.write("\n");
+                    inputStream.write(j.getNome() + " ");
+                    inputStream.write(c.getTerritorio().getNome()+ " ");
+                    inputStream.write(String.valueOf(c.getF().ordinal()));
+                    inputStream.write("\n");
                 }
             }
         } 
@@ -203,9 +203,9 @@ import View.APIView;
 
         //Fechar arquivo
         finally {
-            if (outputStream != null) {
+            if (inputStream != null) {
                 try {
-                    outputStream.close();
+                    inputStream.close();
                 } 
                 catch (IOException e) {
                     System.out.println("Erro ao fechar arquivo para salvar jogo");
