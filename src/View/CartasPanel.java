@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Controller.Gerente;
-
 class CartasPanel extends Panel {
 	
 	Image cartaObj,cartaObjGrande;
@@ -24,12 +22,6 @@ class CartasPanel extends Panel {
 			
 		}
 
-	}
-
-	// Adiciona um observador
-	public void add(ObservadorIF o) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	// Desenha as cartas de objetivo

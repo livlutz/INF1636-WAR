@@ -4,8 +4,6 @@ import Model.*;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.fail;
-
 import java.awt.Color;
 
 public class Gerente {
