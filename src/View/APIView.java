@@ -58,9 +58,9 @@ public class APIView{
 		GamePanel.getGamePanel().atualizaDefensores(defensores);
 	}
 
-	public void mudaJogador(String jogador, Color cor, String descricaoObj, Cartas[] cartas){
+	/*public void mudaJogador(String jogador, Color cor, String descricaoObj, Cartas[] cartas){
 		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
-	}
+	}*/
 
 	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj){
 		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor.toString(), descricaoObj);
