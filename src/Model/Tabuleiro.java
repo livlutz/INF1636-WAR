@@ -8,8 +8,8 @@ import java.util.Collections;
 class Tabuleiro{
 
 	//Mapa do tabuleiro
-	public static HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
-	private static HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
+	public HashMap<String,Territorio> mapTerritorios = new HashMap<String,Territorio>();
+	private HashMap<String,Continente> mapContinente = new HashMap<String,Continente>();
 	private static Tabuleiro tabuleiro = null;
 	private ArrayList<Territorio> listaTerritorios = new ArrayList<Territorio>();
 	
@@ -71,10 +71,6 @@ class Tabuleiro{
 		}
 	}
 
-	// Retorna hashmap de continentes
-	public static HashMap<String, Continente> getContinentes(){
-		return mapContinente;
-	}
 
 	//Inicializa os territórios
 	private void InstanciaTerritorios() {
@@ -495,12 +491,12 @@ class Tabuleiro{
 	}
 
 	//Retorna hashmap de territorios
-	public static HashMap<String, Territorio> getMapTerritorios() {
+	public HashMap<String, Territorio> getMapTerritorios() {
 		return mapTerritorios;
 	}
 	
 	//Retorna hashmap de continentes
-	public static HashMap<String, Continente> getMapContinentes() {
+	public HashMap<String, Continente> getMapContinentes() {
 		return mapContinente;
 	}
 	
@@ -514,13 +510,4 @@ class Tabuleiro{
 		this.listaTerritorios = listaTerritorios;
 	}
 	
-	//Altera hashmap de territorios
-	public static void setMapTerritorios(HashMap<String, Territorio> mapTerritorios) {
-		Tabuleiro.mapTerritorios = mapTerritorios;
-	}
-	
-	//Altera hashmap de continentes
-	public static void setMapContinente(HashMap<String, Continente> mapContinente) {
-		Tabuleiro.mapContinente = mapContinente;
-	}
 }
