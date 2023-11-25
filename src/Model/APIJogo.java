@@ -155,30 +155,31 @@ import View.APIView;
 
             //Escreve a qtd de exercitos em cada territorio
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                outputStream.write(t.getNome() + " ");
                 outputStream.write(String.valueOf(t.getQntExercitos()));
                 outputStream.write("\n");
             }
 
             //Escreve o nome dos jogadores
             for (Jogador j: jogo.getJogadores()) {
-                outputStream.write(j.getNome());
-                outputStream.write("\n");
+                outputStream.write(j.getNome() + " ");
             }
 
             //Escreve os jogadores que dominam cada territorio
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                outputStream.write(t.getNome() + " ");
                 outputStream.write(t.getJogador().getNome());
-                outputStream.write("\n");
             }
 
             //Escreve os objetivos dos jogadores
             for (Jogador j: jogo.getJogadores()) {
+                outputStream.write(j.getNome() + " ");
                 outputStream.write(j.getObj().getDescricao());
-                outputStream.write("\n");
             }
 
             //Escreve as cores dos jogadores
             for (Jogador j: jogo.getJogadores()) {
+                outputStream.write(j.getNome() + " ");
                 outputStream.write(String.valueOf(j.getCor().getRGB()));
                 outputStream.write("\n");
             }
