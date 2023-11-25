@@ -15,7 +15,6 @@ class CartasPanel extends Panel {
 		setBackground(Color.LIGHT_GRAY);
 		try {
 			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
-			//cartaObjGrande = ImageIO.read(new File("images/war_carta_objetivo_grande.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");
@@ -27,8 +26,7 @@ class CartasPanel extends Panel {
 	// Desenha as cartas de objetivo
 	public void desenhaCartas(Graphics g) {
 		super.paint(g);
-		g.drawImage(cartaObj, 1355, 350, 180, 270, null);
-		//g.drawImage(cartaObjGrande, 1275, 370, 100, 150, null);
+		g.drawImage(cartaObj, 1355, 350, 160, 220, null);
 	}
 			
 }
