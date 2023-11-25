@@ -63,7 +63,7 @@ public class APIView{
 	}*/
 
 	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj){
-		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor.toString(), descricaoObj);
+		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj);
 	}
 
 	

@@ -203,7 +203,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
-		g2d.setColor(Color.getColor(corDoJogador));
+		g2d.setColor(corDoJogador);
 		g2d.fillOval(1450, 10, 50, 50);
 		desenhaExercitos(this.g2d);
 	}
