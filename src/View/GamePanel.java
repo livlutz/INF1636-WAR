@@ -27,7 +27,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Graphics2D g2d; 
 	
 	//Botões e comboboxes
-	JButton salvarButton,dadoButton, nextButton;
+	JButton salvarButton,dadoButton, nextButton, trocarCartasButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territórios no jogo
@@ -45,7 +45,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//ComboBoxes
 	JComboBox<String> comboBoxAtacantes;
 	JComboBox<String> comboBoxDefensores;
-	String valoresDados[] = {"1","2","3","4","5","6"};
+	String valoresDados[] = {"0","1","2","3","4","5","6"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
@@ -65,10 +65,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 		//Cria e adiciona os comboBoxes
 		comboBoxAtacantes = new JComboBox<String>();
 		JLabel atacantes = new JLabel("Atacantes");
-		atacantes.setBounds(1250,120,200,30);
+		atacantes.setBounds(1250,130,200,30);
 		add(atacantes);
-		comboBoxAtacantes.setBounds(1220,150,200,30);
-		dadosAtacante.setBounds(1420,150,50,30);
+		comboBoxAtacantes.setBounds(1220,160,200,30);
+		dadosAtacante.setBounds(1420,160,50,30);
 		add(dadosAtacante);    
 		add(comboBoxAtacantes);
 		comboBoxAtacantes.addActionListener(new ActionListener(){
@@ -100,15 +100,23 @@ class GamePanel extends JPanel implements ObservadorIF {
 		salvarButton = new JButton("Salvar o jogo");
 		dadoButton = new JButton("Jogar os dados");
 		nextButton = new JButton("Terminar a rodada");
+		trocarCartasButton = new JButton("Trocar cartas");
 		
 		salvarButton.setBounds(1250,20,200,30);
 		dadoButton.setBounds(1250,290,200,30);
-		nextButton.setBounds(1250,80,200,30);
+		nextButton.setBounds(1250,100,200,30);
+		trocarCartasButton.setBounds(1250,60,200,30);
 		
+		add(trocarCartasButton);
 		add(salvarButton);
 		add(dadoButton);
 		add(nextButton);
 		
+		trocarCartasButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		//Adiciona ações aos botões
 		salvarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
