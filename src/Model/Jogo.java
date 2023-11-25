@@ -90,9 +90,6 @@ class Jogo implements ObservadoIF{
         return infos;
     }
 
-
-
-
     // Adiciona jogador na partida
     public boolean addJogador(Jogador jogador){
         for (Jogador j: jogadores){
