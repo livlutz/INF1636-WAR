@@ -148,27 +148,30 @@ import View.APIView;
     */
     public void salvarJogo(){
         try {
-            inputStream = new FileWriter("jogo.txt");
+            inputStream = new FileWriter("jogo.txt",false);
+            
             //Escreve qtd de jogadores
             inputStream.write(String.valueOf(jogo.getJogadores().size()));
             inputStream.write("\n");
-
-            //Escreve a qtd de exercitos em cada territorio
-            for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                inputStream.write(t.getNome() + " ");
-                inputStream.write(String.valueOf(t.getQntExercitos()));
-                inputStream.write("\n");
-            }
-
+            
             //Escreve o nome dos jogadores
             for (Jogador j: jogo.getJogadores()) {
                 inputStream.write(j.getNome() + " ");
             }
+            
+            inputStream.write("\n");
+            
+            //Escreve as cores dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                inputStream.write(j.getNome() + " ");
+                inputStream.write(String.valueOf(j.getCor().getRGB()));
+                inputStream.write("\n");
+            }
 
-            //Escreve os jogadores que dominam cada territorio
+            //Escreve a qtd de exercitos em cada territorio e o nome do jogador que o domina
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
                 inputStream.write(t.getNome() + " ");
-                inputStream.write(t.getJogador().getNome());
+                inputStream.write(String.valueOf(t.getQntExercitos()) + " " + t.getJogador().getNome());
                 inputStream.write("\n");
             }
 
@@ -176,13 +179,6 @@ import View.APIView;
             for (Jogador j: jogo.getJogadores()) {
                 inputStream.write(j.getNome() + " ");
                 inputStream.write(j.getObj().getDescricao());
-                inputStream.write("\n");
-            }
-
-            //Escreve as cores dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                inputStream.write(j.getNome() + " ");
-                inputStream.write(String.valueOf(j.getCor().getRGB()));
                 inputStream.write("\n");
             }
 
