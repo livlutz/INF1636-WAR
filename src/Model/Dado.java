@@ -16,11 +16,13 @@ class Dado {
 		if(escolha == "1"){
 			System.out.println("Digite um número de 1 a 6 correspondente a face do dado:");
 			int face = sc.nextInt();
+			sc.close();
 			return face;
 		}
 		
 		else{
 			Random rand = new Random();
+			sc.close();
 			return rand.nextInt(6);
 		}
 			
