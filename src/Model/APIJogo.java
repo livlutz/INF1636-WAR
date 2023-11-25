@@ -120,7 +120,11 @@ import View.APIView;
                 cont++;
             }
     	}
-    	return listaTerritorios;
+        String[] listaTerritoriosFinal = new String[cont];
+        for (int i = 0; i < cont; i++) {
+            listaTerritoriosFinal[i] = listaTerritorios[i];
+        }
+    	return listaTerritoriosFinal;
     }
 
     // Método que retorna o nome do jogador da vez
