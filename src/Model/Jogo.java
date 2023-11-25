@@ -54,7 +54,6 @@ class Jogo implements ObservadoIF{
         observadores.remove(o);
     }
 
-	
     // Método para passar informações observadores
     public Object get(){
         // Array de informações
@@ -89,9 +88,6 @@ class Jogo implements ObservadoIF{
         }
         return infos;
     }
-
-
-
 
     // Adiciona jogador na partida
     public boolean addJogador(Jogador jogador){
@@ -188,10 +184,18 @@ class Jogo implements ObservadoIF{
 			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
 			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
 
+			//Atualiza os observadores
+			mod1 = atacante;
+			mod2 = defensor;
+			for (ObservadorIF o: observadores){
+				o.notifica(this);
+			}
+			return;
 		}
 	
 		System.out.println("Nao foi possivel realizar o ataque");
 		return;
+		
 	}
 		public void RealizaAtaqueForcado(Jogador jatacante, Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
 			if(VerificarAtaque(jatacante, tatacante, tdefensor)){
@@ -201,7 +205,6 @@ class Jogo implements ObservadoIF{
 				if  (qtdDefesa > 3) {qtdDefesa = 3;}
 				int dadosAtaque[] = new int[3];
 				int dadosDefesa [] = new int[3];
-				Dado dado = new Dado();
 				int qtdAtaquePerdidos = 0;
 				int qtdDefesaPerdidos = 0;
 				
@@ -230,9 +233,19 @@ class Jogo implements ObservadoIF{
 				//Atualiza os exércitos
 				tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
 				tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
-			
+
+				//Atualiza os observadores
+				mod1 = tatacante;
+				mod2 = tdefensor;
+				for (ObservadorIF o: observadores){
+					o.notifica(this);
+				}
+				return;
 			}
-			}
+
+			System.out.println("Nao foi possivel realizar o ataque");
+			return;
+		}
 	
 	
 	//Instancia os objetivos de cada jogador
@@ -429,6 +442,7 @@ class Jogo implements ObservadoIF{
 	public Jogador getJogadorVez(int i){
 		return jogadores.get(i);
 	}
+	
 	//Retorna os jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
