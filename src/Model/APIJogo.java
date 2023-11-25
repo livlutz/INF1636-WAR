@@ -53,7 +53,7 @@ import View.APIView;
 	}
     
     //Método de realizar ataque
-    public void realizaAtaque(String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
+    public void realizaAtaque(String atacante,String defensor, int[]dadosAtaque, int[]dadosDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
     	jogo.RealizaAtaque(Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
