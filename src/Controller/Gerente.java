@@ -76,8 +76,7 @@ public class Gerente {
             apiView.mostraAviso("Não foi encontrado nenhum jogo salvo.");
         }
         else{
-            //TODO: Carregar jogo na view
-            // Carregar jogo na view
+            apiView.mostraAviso("Jogo carregado com sucesso!");
         }
     }
 
