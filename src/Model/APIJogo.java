@@ -211,4 +211,9 @@ import View.APIView;
             }
         }
     }
+
+    // Método que carrega jogo de arquivo
+    public boolean carregarJogo(){
+        return false;
+    }
 }

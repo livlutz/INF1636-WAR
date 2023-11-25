@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+import Controller.Gerente;
+
 class StartingPanel extends JPanel{
 	
 	//Botões
@@ -61,6 +63,14 @@ class StartingPanel extends JPanel{
 				
 				MainFrame.getMainFrame().goToCsPanel();
 	            
+			}
+		});
+
+		continuar.addActionListener(new ActionListener(){
+			//Adiciona ação ao botão
+			@Override
+	        public void actionPerformed(ActionEvent e) {
+				Gerente.getGerente().clicouCarregar();
 			}
 		});
 		
