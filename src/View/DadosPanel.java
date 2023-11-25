@@ -28,8 +28,6 @@ class DadosPanel extends JPanel {
 
 	//Construtor
 	public DadosPanel(){
-		//Fundo cinza
-		setBackground(Color.darkGray);
 
 		//Carrega as imagens dos dados
 		try {
