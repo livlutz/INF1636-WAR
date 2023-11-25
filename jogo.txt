@@ -1,59 +1,59 @@
 3
-c a b 
+c b a 
 c -16711936
-a -16776961
 b -65536
-Groelandia 1 c
-Angola 1 a
+a -16776961
+Groelandia 1 a
+Angola 1 b
 Turquia 1 b
 Iraque 1 a
-Mongolia 1 c
-Siria 1 b
-Paquistao 1 c
-Coreia do Sul 1 b
+Mongolia 1 b
+Siria 1 a
+Paquistao 1 a
+Coreia do Sul 1 a
 Arabia Saudita 1 b
-Argentina 1 b
+Argentina 1 c
 Calgary 1 b
-Japao 1 b
-Perth 1 c
-California 1 c
-Cazaquistao 1 c
-India 1 c
+Japao 1 c
+Perth 1 a
+California 1 b
+Cazaquistao 1 a
+India 1 b
 Nova Zelandia 1 c
 Tailandia 1 a
-Texas 1 b
-Ira 1 c
+Texas 1 c
+Ira 1 a
 Peru 1 c
-Africa do Sul 1 c
-Vancouver 1 a
+Africa do Sul 1 b
+Vancouver 1 c
 Somalia 1 a
-Nova York 1 c
+Nova York 1 a
 Russia 1 b
-Franca 1 c
+Franca 1 a
 Brasil 1 a
-Alasca 1 a
-China 1 b
-Siberia 1 b
-Ucrania 1 b
-Nigeria 1 a
-Egito 1 b
-Romania 1 a
-Polonia 1 a
-Quebec 1 a
-Espanha 1 a
-Italia 1 b
-Argelia 1 a
-Reino Unido 1 a
+Alasca 1 c
+China 1 c
+Siberia 1 a
+Ucrania 1 a
+Nigeria 1 c
+Egito 1 a
+Romania 1 c
+Polonia 1 c
+Quebec 1 c
+Espanha 1 b
+Italia 1 c
+Argelia 1 b
+Reino Unido 1 c
 Coreia do Norte 1 b
-Venezuela 1 c
+Venezuela 1 b
 Bangladesh 1 b
-Mexico 1 a
+Mexico 1 c
 Suecia 1 c
-Letonia 1 a
-Australia 1 c
-Jordania 1 a
-Estonia 1 b
+Letonia 1 b
+Australia 1 b
+Jordania 1 b
+Estonia 1 a
 Indonesia 1 c
-c Conquistar os continentes Europa, Oceania e mais um continente à sua escolha
-a Conquistar os continentes America do Norte e Oceania
-b Conquistar 24 TERRITÓRIOS
+c 1 Conquistar os continentes America do Norte e Oceania
+b 1 Conquistar os continentes America do Norte e Africa
+a 3 Conquistar 18 TERRITÓRIOS e ocupar cada um deles com pelo menos dois exércitos
