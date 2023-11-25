@@ -28,12 +28,11 @@ class DadosPanel extends JPanel {
 
 	//Construtor
 	public DadosPanel(){
-		//Fundo cinza
-		setBackground(Color.darkGray);
-
+		
 		//Carrega as imagens dos dados
 		try {
-		
+			
+			dadoAtacante[0] =(ImageIO.read(new File("images/dado_ataque_1.png")));
 			dadoAtacante[1] =(ImageIO.read(new File("images/dado_ataque_2.png")));
 			dadoAtacante[2] =(ImageIO.read(new File("images/dado_ataque_3.png")));
 			dadoAtacante[3] =(ImageIO.read(new File("images/dado_ataque_4.png")));

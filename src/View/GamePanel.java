@@ -45,7 +45,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//ComboBoxes
 	JComboBox<String> comboBoxAtacantes;
 	JComboBox<String> comboBoxDefensores;
-	String valoresDados[] = {"1","2","3"};
+	String valoresDados[] = {"1","2","3","4","5","6"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
