@@ -36,7 +36,7 @@ class ObjetivoContinentes extends Objetivo{
         if (qtdContinentes == 2)
             return true;
 
-        HashMap <String, Continente> continentes = Tabuleiro.getContinentes();
+        HashMap <String, Continente> continentes = Tabuleiro.getTabuleiro().getMapContinentes();
         
 		// para cada continente, verifica se o jogador dominou se não for os já verificados
 		for (Map.Entry<String, Continente> c: continentes.entrySet()){
