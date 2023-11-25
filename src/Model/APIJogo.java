@@ -1,13 +1,9 @@
 package Model;
 
 import java.awt.Color;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Map;
 
 import View.APIView;
-import View.ObservadoIF;
-import View.ObservadorIF;
 
 
  public class APIJogo{
@@ -41,7 +37,7 @@ import View.ObservadorIF;
     public String[] getTerritoriosLista() {
 		String [] terr = new String[51]; 
 		int cont = 0;
-		for (String t: Tabuleiro.mapTerritorios.keySet()) {
+		for (String t: tabuleiro.mapTerritorios.keySet()) {
             terr[cont] = t;
             cont ++;
 		}
@@ -51,27 +47,27 @@ import View.ObservadorIF;
     
     //Método de realizar ataque
     public void realizaAtaque(Jogador Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
-    	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
-    	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
+    	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
+    	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
     	jogo.RealizaAtaque(Jatacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
     	
     }
     
     //Método de realizar ataque forcado
     public void realizaAtaqueForcado(Jogador Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
-    	Territorio Tatacante = Tabuleiro.mapTerritorios.get(atacante);
-    	Territorio Tdefensor = Tabuleiro.mapTerritorios.get(defensor);
+    	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
+    	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
     	jogo.RealizaAtaqueForcado(Jatacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
     }
 
     // Retorna cor do jogador que domina aquele território
     public Color getCorTerritorio(String t){
-    	return Tabuleiro.mapTerritorios.get(t).getCor();
+    	return tabuleiro.mapTerritorios.get(t).getCor();
     }
 
     // Retorna quantidade de exércitos no território em formato de string
     public String getQtdExTerritorio(String t){
-        return String.valueOf(Tabuleiro.mapTerritorios.get(t).getQntExercitos());
+        return String.valueOf(tabuleiro.mapTerritorios.get(t).getQntExercitos());
     }
 
     // Tenta adicionar jogador
@@ -110,7 +106,7 @@ import View.ObservadorIF;
 
     // Método que retorna adjacentes de um território por string
     public String[] getTerritoriosAdjacentes(String t) {
-        ArrayList<Territorio> adjacentes = Tabuleiro.mapTerritorios.get(t).getAdjacentes();
+        ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
