@@ -418,21 +418,12 @@ class Jogo implements ObservadoIF{
 
 		//Se ele conquistou territórios, precisamos dar cartas a ele
 		if(j.getConquistouNessaRodada()){
-			//Percorre a lista de territórios do jogador
-			for(Territorio t1 : t){
-				//Percorre a lista de cartas do deck do jogo
-				for(Cartas c1 : listaCartas){
-					/*Se o nome do território for igual ao nome da carta
-					 * e o jogador não tem a carta daquele território, 
-					 * teremos que dar a carta a ele
-					*/
-					if(t1.getNome().equals(c1.getTerritorio().getNome())){
-						if(!c.contains(c1)){
-							j.addCarta(c1);
-						}
-					}
-				}
-			}
+			//dar uma carta aleatoria ao jogador
+			Collections.shuffle(listaCartas);
+			Cartas carta = listaCartas.get(0);
+			j.addCarta(carta);
+			//remover a carta da lista de cartas
+			listaCartas.remove(0);
 		}
 		//Se o jogador não conquistou territórios, não damos cartas a ele e mostramos uma mensagem
 		else{
