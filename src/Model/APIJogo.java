@@ -178,6 +178,17 @@ import View.APIView;
             //Escreve os objetivos dos jogadores
             for (Jogador j: jogo.getJogadores()) {
                 inputStream.write(j.getNome() + " ");
+                switch(j.getObj().getClass().getName()){
+                    case "Model.ObjetivoContinentes":
+                        inputStream.write("1 ");
+                        break;
+                    case "Model.ObjetivoDestruir":
+                        inputStream.write("2 ");
+                        break;
+                    case "Model.ObjetivoTerritorios":
+                        inputStream.write("3 ");
+                        break;
+                }
                 inputStream.write(j.getObj().getDescricao());
                 inputStream.write("\n");
             }
