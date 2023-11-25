@@ -2,6 +2,8 @@ package View;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class APIView{
 	private static APIView APIView = null;
 	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
@@ -42,6 +44,20 @@ public class APIView{
 	public ObservadorIF getObs(){
 		return (ObservadorIF) GamePanel.getGamePanel();
 	}
+
+	public void mostraAviso(String aviso){
+		JOptionPane.showMessageDialog(null, aviso);
+	}
+
+	public void atualizaAtacantes(String[] atacantes){
+		GamePanel.getGamePanel().atualizaAtacantes(atacantes);
+	}
+
+	public void atualizaDefensores(String[] defensores){
+		GamePanel.getGamePanel().atualizaDefensores(defensores);
+	}
+
+	
 
 	// ---------------------- getters & setters ----------------------
 	

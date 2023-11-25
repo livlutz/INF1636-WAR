@@ -107,4 +107,21 @@ import View.ObservadorIF;
     	}
     	return listaTerritorios;
     }
+
+    // Método que retorna adjacentes de um território por string
+    public String[] getTerritoriosAdjacentes(String t) {
+        ArrayList<Territorio> adjacentes = Tabuleiro.mapTerritorios.get(t).getAdjacentes();
+    	String[] listaTerritorios = new String[adjacentes.size()];
+    	int cont = 0;
+    	for (Territorio ter: adjacentes) {
+    		listaTerritorios[cont] = ter.getNome();
+    		cont++;
+    	}
+    	return listaTerritorios;
+    }
+
+    // Método que salva jogo em arquivo
+    public void salvarJogo(){
+        //TODO salvar jogo
+    }
 }

@@ -27,7 +27,7 @@ class CharacterSelectionPanel extends JPanel {
 	//Botão de iniciar jogo
 	JButton btn = new JButton("Iniciar Jogo");
 	
-	//Constrói o painel
+	//Constrói o painel se puder começar o jogo
 	private CharacterSelectionPanel() {	
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -39,6 +39,7 @@ class CharacterSelectionPanel extends JPanel {
 					MainFrame.getMainFrame().goToGamePanel();
 				}
 				else {
+					// Se não puder começar, limpa os arrays e mostra mensagem
 					nomesJogadores.clear();
 					coresJogadores.clear();
 					JOptionPane.showMessageDialog(null, "Nomes ou cores inválidos ou repetidos");

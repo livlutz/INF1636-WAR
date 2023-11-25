@@ -27,9 +27,6 @@ class Jogo implements ObservadoIF{
 	// Guarda a lista de observadores
 	private ArrayList<ObservadorIF> observadores = new ArrayList<ObservadorIF>();
 
-	// Guarda o jogador da vez
-	private int vez = 0;
-
 	// Últimos territórios alterados
 	private Territorio mod1 = null;
 	private Territorio mod2 = null;
@@ -431,11 +428,6 @@ class Jogo implements ObservadoIF{
 	//Retorna os jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
-	}
-
-	//Retorna a vez de jogar de um jogador
-	public int getVez() {
-		return vez;
 	}
 
 }

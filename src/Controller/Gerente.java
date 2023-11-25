@@ -14,6 +14,15 @@ public class Gerente {
     private APIJogo apiJogo = APIJogo.getAPIJogo();
     private APIView apiView = APIView.getAPIView();
 
+    // Estado do jogo
+    private int estado = 0; // 0 = posicionamento, 1 = ataque, 2 = reposicionamento
+
+    // Pode salvar? (Somente com estado 0 e sem ter posicionado exércitos)
+    private boolean podeSalvar = true;
+
+    // Guarda o jogador da vez
+	private int vez = 0;
+
     // Construtor privado para o singleton
     private Gerente(){
     }
@@ -50,11 +59,26 @@ public class Gerente {
         return apiJogo.comecaJogo();
     }
 
-    // Método para gerenciar jogo
-    public void mainJogo(){
-        while(true){
-            
+    public void clicouSalvar(){
+        if (estado == 0 && podeSalvar){
+            apiJogo.salvarJogo();
+            apiView.mostraAviso("Jogo salvo com sucesso!");
         }
+        else{
+            apiView.mostraAviso("Não é possível salvar o jogo agora.");
+        }
+    }
+
+    public void selecionouAtacante(String atacante){
+        // Se estiver na etapa de ataque
+        if (estado == 1){
+            // Atualiza comboBox dos defensores com os adjacentes 
+            apiView.atualizaDefensores(apiJogo.getTerritoriosAdjacentes(atacante));
+        }
+    }
+
+    public void selecionouDefensor(String atacante, String defensor){
+    
     }
 
     // Método que retorna a cor de um território
