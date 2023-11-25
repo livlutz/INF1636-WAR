@@ -71,6 +71,16 @@ public class Gerente {
         }
     }
 
+    public void clicouCarregar(){
+        if (!apiJogo.carregarJogo()){
+            apiView.mostraAviso("Não foi encontrado nenhum jogo salvo.");
+        }
+        else{
+            //TODO: Carregar jogo na view
+            // Carregar jogo na view
+        }
+    }
+
     public void selecionouAtacante(String atacante){
         // Se estiver na etapa de ataque
         if (estado == 1){
