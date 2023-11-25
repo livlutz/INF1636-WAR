@@ -111,14 +111,17 @@ import View.APIView;
     	return listaTerritorios;
     }
 
-    // Método que retorna adjacentes de um território por string
-    public String[] getTerritoriosAdjacentes(String t) {
+    // Método que retorna adjacentes não dominados de um território por string
+    public String[] getTerritoriosDefensores(String t, int vez) {
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
-    		listaTerritorios[cont] = ter.getNome();
-    		cont++;
+            // Se o jogador não dominar o adjacente, adiciona na lista
+            if (ter.getJogador().getNome() != jogo.getJogadorVez(vez).getNome()){
+                listaTerritorios[cont] = ter.getNome();
+                cont++;
+            }
     	}
     	return listaTerritorios;
     }
