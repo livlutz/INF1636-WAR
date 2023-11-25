@@ -254,7 +254,6 @@ class Jogo implements ObservadoIF{
 			return;
 		}
 	
-	
 	//Instancia os objetivos de cada jogador
     public void InstanciaObjetivos(){
         Objetivo obj;

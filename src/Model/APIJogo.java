@@ -6,7 +6,6 @@ import java.io.*;
 
 import View.APIView;
 
-
  public class APIJogo{
     private static APIJogo APIJogo = null;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
@@ -51,20 +50,18 @@ import View.APIView;
 	}
     
     //Método de realizar ataque
-    public void realizaAtaque(String Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
+    public void realizaAtaque(Jogador Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	Jogador jogadorAtacante = jogo.getJogador(Jatacante);
-    	jogo.RealizaAtaque(jogadorAtacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
+    	jogo.RealizaAtaque(Jatacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
     	
     }
     
     //Método de realizar ataque forcado
-    public void realizaAtaqueForcado(String Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
+    public void realizaAtaqueForcado(Jogador Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	Jogador jogadorAtacante = jogo.getJogador(Jatacante);
-    	jogo.RealizaAtaqueForcado(jogadorAtacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
+    	jogo.RealizaAtaqueForcado(Jatacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
     }
 
     // Retorna cor do jogador que domina aquele território
@@ -111,17 +108,14 @@ import View.APIView;
     	return listaTerritorios;
     }
 
-    // Método que retorna adjacentes não dominados de um território por string
-    public String[] getTerritoriosDefensores(String t, int vez) {
+    // Método que retorna adjacentes de um território por string
+    public String[] getTerritoriosAdjacentes(String t) {
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
-            // Se o jogador não dominar o adjacente, adiciona na lista
-            if (ter.getJogador().getNome() != jogo.getJogadorVez(vez).getNome()){
-                listaTerritorios[cont] = ter.getNome();
-                cont++;
-            }
+    		listaTerritorios[cont] = ter.getNome();
+    		cont++;
     	}
     	return listaTerritorios;
     }
@@ -228,7 +222,77 @@ import View.APIView;
 
     // Método que carrega jogo de arquivo
     public boolean carregarJogo(){
-        return false;
+        try {
+            outputStream = new FileReader("jogo.txt");
+            BufferedReader br = new BufferedReader(outputStream);
+            String linha = br.readLine();
+            int qtdJogadores = Integer.parseInt(linha);
+
+            //Lê os nomes e cores dos jogadores
+            String[] nomes = new String[qtdJogadores];
+            Color[] cores = new Color[qtdJogadores];
+            int cont = 0;
+            while ((linha = br.readLine()) != null) {
+                String[] dados = linha.split(" ");
+                nomes[cont] = dados[0];
+                cores[cont] = new Color(Integer.parseInt(dados[1]));
+                cont++;
+            }
+
+            //Adiciona os jogadores
+            resetJogadores();
+            for (int i = 0; i < qtdJogadores; i++) {
+                addJogador(nomes[i], cores[i]);
+            }
+
+            //Lê a qtd de exercitos em cada territorio e o nome do jogador que o domina
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                    if (t.getNome().equals(dados[0])) {
+                        t.setQntExercitos(Integer.parseInt(dados[1]));
+                        t.setJogador(j);
+                        j.addTerritorio(t);
+                    }
+                }
+            }
+
+            //Lê os objetivos dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                switch(Integer.parseInt(dados[1])){
+                    case 1:
+                        j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[2]), tabuleiro.getMapContinentes().get(dados[3]), true));
+                        break;
+                    case 2:
+                        j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[2])));
+                        break;
+                    case 3:
+                        j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[2])));
+                        break;
+                }
+            }
+
+            //Lê as cartas dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                for (int i = 0; i < dados.length; i+=2) {
+                    for (Cartas c: j.getCartas()) {
+                        if (c.getTerritorio().getNome().equals(dados[i])) {
+                            c.setF(Cartas.Formato.values()[Integer.parseInt(dados[i+1])]);
+                        }
+                    }
+                }
+            }
+            return true;
+        } 
+        catch (IOException e) {
+            System.out.println("Erro ao abrir arquivo para carregar jogo");
+            return false;
+        }
     }
 
     // Método que retorna a quantidade de exércitos que o jogador pode posicionar
