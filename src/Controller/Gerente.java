@@ -72,8 +72,10 @@ public class Gerente {
     public void selecionouAtacante(String atacante){
         // Se estiver na etapa de ataque
         if (estado == 1){
+            if(atacante != null){
             // Atualiza comboBox dos defensores com os adjacentes 
             apiView.atualizaDefensores(apiJogo.getTerritoriosAdjacentes(atacante));
+            }
         }
     }
 

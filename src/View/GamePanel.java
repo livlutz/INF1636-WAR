@@ -43,8 +43,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Gerente gerente = Gerente.getGerente();
 
 	//ComboBoxes
-	JComboBox<String> comboBoxAtacantes = new ComboBoxPaises();
-	JComboBox<String> comboBoxDefensores = new ComboBoxPaises();
+	JComboBox<String> comboBoxAtacantes;
+	JComboBox<String> comboBoxDefensores;
 	String valoresDados[] = {"1","2","3"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
@@ -59,35 +59,36 @@ class GamePanel extends JPanel implements ObservadorIF {
 		setLayout(null);
 
 		//Cria e adiciona os comboBoxes
+		comboBoxAtacantes = new JComboBox<String>();
 		JLabel atacantes = new JLabel("Atacantes");
 		atacantes.setBounds(1250,120,200,30);
 		add(atacantes);
 		comboBoxAtacantes.setBounds(1220,150,200,30);
-		comboBoxAtacante.addActionListener(new ActionListener(){
+		dadosAtacante.setBounds(1420,150,50,30);
+		add(dadosAtacante);    
+		add(comboBoxAtacantes);
+		comboBoxAtacantes.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				gerente.selecionouAtacante((String) comboBoxAtacantes.getSelectedItem());
 	        }
 		}
-		);
-		dadosAtacante.setBounds(1420,150,50,30);
-		add(dadosAtacante);	
-		add(comboBoxAtacantes);
-		
+		); 
 
+		comboBoxDefensores = new JComboBox<String>();
 		JLabel defensores = new JLabel("Defensores");
 		defensores.setBounds(1250,200,200,30);
 		add(defensores);
 		comboBoxDefensores.setBounds(1220,230,200,30);
+		dadosDefensores.setBounds(1420,230,50,30);
+		add(dadosDefensores);
+		add(comboBoxDefensores);
 		comboBoxDefensores.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				gerente.selecionouDefensor((String) comboBoxAtacantes.getSelectedItem(), (String) comboBoxDefensores.getSelectedItem());
 	        }
 		}
 		);
-		dadosDefensores.setBounds(1420,230,50,30);
-		add(dadosDefensores);
-		add(comboBoxDefensores);
-		
+
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
 		add(dadosPanel);
@@ -252,6 +253,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	public void atualizaAtacantes(String[] atacantes){
 		// Esvazia a comboBox de atacantes e adiciona os novos territórios
 		comboBoxAtacantes.removeAllItems();
+		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
+		comboBoxAtacantes.addItem(null);
 		for (String s: atacantes){
 			comboBoxAtacantes.addItem(s);
 		}
@@ -260,6 +263,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	public void atualizaDefensores(String[] defensores){
 		// Esvazia a comboBox de defensores e adiciona os novos territórios
 		comboBoxDefensores.removeAllItems();
+		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
+		comboBoxDefensores.addItem(null);
 		for (String s: defensores){
 			comboBoxDefensores.addItem(s);
 		}
