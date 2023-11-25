@@ -97,16 +97,26 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxColocaExercitos.setBounds(1220,230,200,30);
 		add(comboBoxColocaExercitos); //
 		addExercito = new JButton("+1");
+		addExercito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		addExercito.setBounds(1420,230,60,30);
 		add(addExercito);
 		
 		comboBoxDestinoExercitos = new JComboBox<String>();
 		comboBoxDestinoExercitos.setBounds(1220,270,200,30);
 		add(comboBoxDestinoExercitos); //
-		destinoExercito = new JButton(" ");
-		destinoExercito.setBounds(1420,230,60,30);
+		destinoExercito = new JButton("->");
+		destinoExercito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		destinoExercito.setBounds(1420,270,60,30);
 		add(destinoExercito);
-		
+	
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
 		add(dadosPanel);
