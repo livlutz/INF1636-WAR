@@ -258,6 +258,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 	}
 
+	// Atualiza view no início da rodada de posicionamento para determinar o primeiro jogador
 	public void determinaPrimeiroJogador(String jogadorDaVez, Color corDoJogador, String descricaoObj){
 		// Adicionar frase "Primeiro jogador: NOME - COR"
 		// Adicionar descrição do objetivo em cima da carta
@@ -275,6 +276,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		// Imprime as cartas do jogador
 	//}
 
+	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
 	public void atualizaAtacantes(String[] atacantes){
 		// Esvazia a comboBox de atacantes e adiciona os novos territórios
 		comboBoxAtacantes.removeAllItems();
@@ -285,6 +287,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
+	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores defensores
 	public void atualizaDefensores(String[] defensores){
 		// Esvazia a comboBox de defensores e adiciona os novos territórios
 		comboBoxDefensores.removeAllItems();

@@ -6,7 +6,6 @@ import java.io.*;
 
 import View.APIView;
 
-
  public class APIJogo{
     private static APIJogo APIJogo = null;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
@@ -223,6 +222,66 @@ import View.APIView;
 
     // Método que carrega jogo de arquivo
     public boolean carregarJogo(){
+        try {
+            outputStream = new FileReader("jogo.txt");
+            BufferedReader br = new BufferedReader(outputStream);
+            String linha = br.readLine();
+            int qtdJogadores = Integer.parseInt(linha);
+            String[] nomes = new String[qtdJogadores];
+            Color[] cores = new Color[qtdJogadores];
+            int cont = 0;
+            while ((linha = br.readLine()) != null) {
+                String[] dados = linha.split(" ");
+                nomes[cont] = dados[0];
+                cores[cont] = new Color(Integer.parseInt(dados[1]));
+                cont++;
+            }
+            resetJogadores();
+            for (int i = 0; i < qtdJogadores; i++) {
+                addJogador(nomes[i], cores[i]);
+            }
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                    if (t.getNome().equals(dados[0])) {
+                        t.setQntExercitos(Integer.parseInt(dados[1]));
+                        t.setJogador(j);
+                        j.addTerritorio(t);
+                    }
+                }
+            }
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                switch(Integer.parseInt(dados[1])){
+                    case 1:
+                        j.setObj(new ObjetivoContinentes(dados[2]));
+                        break;
+                    case 2:
+                        j.setObj(new ObjetivoDestruir(dados[2]));
+                        break;
+                    case 3:
+                        j.setObj(new ObjetivoTerritorios(dados[2]));
+                        break;
+                }
+            }
+            for (Jogador j: jogo.getJogadores()) {
+                linha = br.readLine();
+                String[] dados = linha.split(" ");
+                for (int i = 0; i < dados.length; i+=2) {
+                    for (Cartas c: j.getCartas()) {
+                        if (c.getTerritorio().getNome().equals(dados[i])) {
+                            c.setF(Figura.valueOf(dados[i+1]));
+                        }
+                    }
+                }
+            }
+            return true;
+        } 
+        catch (IOException e) {
+            System.out.println("Erro ao abrir arquivo para carregar jogo");
         return false;
+        }
     }
 }
