@@ -169,12 +169,14 @@ import View.APIView;
             for (Territorio t: tabuleiro.mapTerritorios.values()) {
                 outputStream.write(t.getNome() + " ");
                 outputStream.write(t.getJogador().getNome());
+                outputStream.write("\n");
             }
 
             //Escreve os objetivos dos jogadores
             for (Jogador j: jogo.getJogadores()) {
                 outputStream.write(j.getNome() + " ");
                 outputStream.write(j.getObj().getDescricao());
+                outputStream.write("\n");
             }
 
             //Escreve as cores dos jogadores
@@ -187,8 +189,8 @@ import View.APIView;
             //Escreve as cartas dos jogadores
             for (Jogador j: jogo.getJogadores()) {
                 for (Cartas c: j.getCartas()) {
-                    outputStream.write(c.getTerritorio().getNome());
-                    outputStream.write("\n");
+                    outputStream.write(j.getNome() + " ");
+                    outputStream.write(c.getTerritorio().getNome()+ " ");
                     outputStream.write(String.valueOf(c.getF().ordinal()));
                     outputStream.write("\n");
                 }
