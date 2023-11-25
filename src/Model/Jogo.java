@@ -146,7 +146,7 @@ class Jogo implements ObservadoIF{
 	}
 	
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
-	public void RealizaAtaque(Jogador jAtacante, Territorio atacante,Territorio defensor, int[]dadosAtaque, int[]dadosDefesa) {
+	public void RealizaAtaque(Territorio atacante,Territorio defensor, int[]dadosAtaque, int[]dadosDefesa) {
 		
 		if(VerificarAtaque(atacante)){
 			int qtdAtaque = atacante.getQntExercitos() - 1;
@@ -200,7 +200,7 @@ class Jogo implements ObservadoIF{
 		System.out.println("Nao foi possivel realizar o ataque");
 		return;
 	}
-		public void RealizaAtaqueForcado(Jogador jatacante, Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
+		public void RealizaAtaqueForcado(Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
 			if(VerificarAtaque(tatacante)){
 				int qtdAtaque = tatacante.getQntExercitos() - 1;
 				if  (qtdAtaque > 3) {qtdAtaque = 3;}

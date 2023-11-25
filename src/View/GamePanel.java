@@ -129,10 +129,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 				int [] dadosAtaque = new int [3];
 				int [] dadosDefesa = new int [3];
 				if (dadosAtacante.getSelectedItem() == "0" && dadosDefensores.getSelectedItem() == "0") {
-					//apiJogo.realizaAtaque(jogadorDaVez, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(), dadosAtaque, dadosDefesa);
+					apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(), dadosAtaque, dadosDefesa);
 				}
 				else {
-					//apiJogo.realizaAtaqueForçado(jogadorDaVez, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(),Integer.valueOf(dadosAtacante.getSelectedItem()), Integer.valueOf(dadosDefensores.getSelectedItem()));
+					apiJogo.realizaAtaqueForçado(comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(),Integer.valueOf(dadosAtacante.getSelectedItem()), Integer.valueOf(dadosDefensores.getSelectedItem()));
 					int dadoAtaque = Integer.valueOf((String) dadosAtacante.getSelectedItem());
 					dadosAtaque[0] = dadoAtaque;
 					dadosAtaque[1] = dadoAtaque;
