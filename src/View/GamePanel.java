@@ -82,12 +82,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadosDefensores.setBounds(1420,230,50,30);
 		add(dadosDefensores);
 		add(comboBoxDefensores);
-		comboBoxDefensores.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				gerente.selecionouDefensor((String) comboBoxAtacantes.getSelectedItem(), (String) comboBoxDefensores.getSelectedItem());
-	        }
-		}
-		);
 
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);

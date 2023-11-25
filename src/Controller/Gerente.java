@@ -79,10 +79,6 @@ public class Gerente {
         }
     }
 
-    public void selecionouDefensor(String atacante, String defensor){
-    
-    }
-
     // Método que retorna a cor de um território
     public Color getCorTerritorio(String t){
         return apiJogo.getCorTerritorio(t);
