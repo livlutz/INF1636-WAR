@@ -109,7 +109,7 @@ class Jogador {
 
 	// Executa todos os passos para a rodada de posicionamento de um jogador
 	public void rodadaDePosicionamento(){
-		HashMap <String, Continente> continentes = Tabuleiro.getContinentes();
+		HashMap <String, Continente> continentes = tabuleiro.getMapContinentes();
 		
 		// Para cada continente, se o jogador dominar, posiciona os exércitos
 		for (Map.Entry<String, Continente> e: continentes.entrySet()){

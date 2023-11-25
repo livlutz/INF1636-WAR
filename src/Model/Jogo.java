@@ -115,7 +115,7 @@ class Jogo implements ObservadoIF{
     	tabuleiro.Inicializa();
     	
         // Instancia cartas
-        InstanciaCartas(Tabuleiro.getMapTerritorios());
+        InstanciaCartas(tabuleiro.getMapTerritorios());
 
         // Instancia objetivos
         InstanciaObjetivos();
