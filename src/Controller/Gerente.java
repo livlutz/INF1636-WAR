@@ -54,7 +54,11 @@ public class Gerente {
             };
             cont++;
         }
-        return apiJogo.comecaJogo();
+        if (apiJogo.comecaJogo()){
+            apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0));
+            return true;
+        }
+        return false;
     }
 
     public void clicouSalvar(){

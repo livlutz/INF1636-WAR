@@ -425,6 +425,10 @@ class Jogo implements ObservadoIF{
 		}
 	}
 
+	// Método para pegar o jogador da vez
+	public Jogador getJogadorVez(int i){
+		return jogadores.get(i);
+	}
 	//Retorna os jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
