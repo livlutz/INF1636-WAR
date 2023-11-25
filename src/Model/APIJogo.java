@@ -50,18 +50,20 @@ import View.APIView;
 	}
     
     //Método de realizar ataque
-    public void realizaAtaque(Jogador Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
+    public void realizaAtaque(String Jatacante,String atacante, String defensor, int[]dadosAtaque, int[]dadosDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	jogo.RealizaAtaque(Jatacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
+    	Jogador jogadorAtacante = jogo.getJogador(Jatacante);
+    	jogo.RealizaAtaque(jogadorAtacante, Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
     	
     }
     
     //Método de realizar ataque forcado
-    public void realizaAtaqueForcado(Jogador Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
+    public void realizaAtaqueForcado(String Jatacante,String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	jogo.RealizaAtaqueForcado(Jatacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
+    	Jogador jogadorAtacante = jogo.getJogador(Jatacante);
+    	jogo.RealizaAtaqueForcado(jogadorAtacante, Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
     }
 
     // Retorna cor do jogador que domina aquele território
@@ -108,14 +110,17 @@ import View.APIView;
     	return listaTerritorios;
     }
 
-    // Método que retorna adjacentes de um território por string
-    public String[] getTerritoriosAdjacentes(String t) {
+    // Método que retorna adjacentes não dominados de um território por string
+    public String[] getTerritoriosDefensores(String t, int vez) {
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
-    		listaTerritorios[cont] = ter.getNome();
-    		cont++;
+            // Se o jogador não dominar o adjacente, adiciona na lista
+            if (ter.getJogador().getNome() != jogo.getJogadorVez(vez).getNome()){
+                listaTerritorios[cont] = ter.getNome();
+                cont++;
+            }
     	}
     	return listaTerritorios;
     }

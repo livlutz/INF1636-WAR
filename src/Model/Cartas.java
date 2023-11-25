@@ -11,6 +11,8 @@ class Cartas {
 
 	//Território da carta
 	private Territorio territorio;
+
+	//Imagem da carta
 	
 	//Construtor
 	public Cartas(int i, Territorio t) {

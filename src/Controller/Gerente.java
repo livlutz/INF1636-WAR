@@ -86,7 +86,8 @@ public class Gerente {
         if (estado == 1){
             if(atacante != null){
             // Atualiza comboBox dos defensores com os adjacentes 
-            apiView.atualizaDefensores(apiJogo.getTerritoriosAdjacentes(atacante));
+
+            apiView.atualizaDefensores(apiJogo.getTerritoriosDefensores(atacante, vez));
             }
         }
     }

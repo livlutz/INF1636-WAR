@@ -54,6 +54,7 @@ class Jogo implements ObservadoIF{
         observadores.remove(o);
     }
 
+	
     // Método para passar informações observadores
     public Object get(){
         // Array de informações
@@ -88,6 +89,9 @@ class Jogo implements ObservadoIF{
         }
         return infos;
     }
+
+
+
 
     // Adiciona jogador na partida
     public boolean addJogador(Jogador jogador){
@@ -135,19 +139,16 @@ class Jogo implements ObservadoIF{
     }
     
 	//Valida um ataque
-	public boolean VerificarAtaque(Jogador atacante, Territorio tAtacante, Territorio tDefensor) {
-		if(tAtacante.getJogador() == atacante)
-			if (atacante != tDefensor.getJogador()) 
-				if (tAtacante.verificaAdjacencia(tDefensor))
-					if(tAtacante.getQntExercitos() > 1)
-						return true;	
+	public boolean VerificarAtaque(Territorio tAtacante) {
+		if(tAtacante.getQntExercitos() > 1)
+			return true;	
 		return false;
 	}
 	
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
 	public void RealizaAtaque(Jogador jAtacante, Territorio atacante,Territorio defensor, int[]dadosAtaque, int[]dadosDefesa) {
 		
-		if(VerificarAtaque(jAtacante, atacante, defensor)){
+		if(VerificarAtaque(atacante)){
 			int qtdAtaque = atacante.getQntExercitos() - 1;
 			if  (qtdAtaque > 3) {qtdAtaque = 3;}
 			int qtdDefesa = defensor.getQntExercitos();
@@ -184,21 +185,23 @@ class Jogo implements ObservadoIF{
 			atacante.setQntExercitos(atacante.getQntExercitos() - qtdAtaquePerdidos);
 			defensor.setQntExercitos(defensor.getQntExercitos() - qtdDefesaPerdidos);
 
-			//Atualiza os observadores
+			//Atualiza os territórios modificados
 			mod1 = atacante;
 			mod2 = defensor;
+
+			//Notifica os observadores
 			for (ObservadorIF o: observadores){
 				o.notifica(this);
 			}
+			
 			return;
 		}
 	
 		System.out.println("Nao foi possivel realizar o ataque");
 		return;
-		
 	}
 		public void RealizaAtaqueForcado(Jogador jatacante, Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
-			if(VerificarAtaque(jatacante, tatacante, tdefensor)){
+			if(VerificarAtaque(tatacante)){
 				int qtdAtaque = tatacante.getQntExercitos() - 1;
 				if  (qtdAtaque > 3) {qtdAtaque = 3;}
 				int qtdDefesa = tdefensor.getQntExercitos();
@@ -233,13 +236,17 @@ class Jogo implements ObservadoIF{
 				//Atualiza os exércitos
 				tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
 				tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
-
-				//Atualiza os observadores
+				
+				
+				//Atualiza os territórios modificados
 				mod1 = tatacante;
 				mod2 = tdefensor;
+
+				//Notifica os observadores
 				for (ObservadorIF o: observadores){
 					o.notifica(this);
 				}
+
 				return;
 			}
 
@@ -436,12 +443,20 @@ class Jogo implements ObservadoIF{
 			return;
 		}
 	}
+	
+	public Jogador getJogador(String jogadorNome) {
+		for(Jogador jogador:jogadores) {
+			if (jogador.getNome() == jogadorNome) {
+				return jogador;
+			}
+		}
+		return null;
+	}
 
 	// Método para pegar o jogador da vez
 	public Jogador getJogadorVez(int i){
 		return jogadores.get(i);
 	}
-	
 	//Retorna os jogadores
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
