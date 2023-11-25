@@ -230,4 +230,14 @@ import View.APIView;
     public boolean carregarJogo(){
         return false;
     }
+
+    // Método que retorna a quantidade de exércitos que o jogador pode posicionar
+    public int getQtdExercitosPosic(int vez){
+        return jogo.getJogadorVez(vez).getQtdExercitoPosic();
+    }
+
+    // Método que retorna a quantidade de jogadores
+    public int getQtdJogadores(){
+        return jogo.getJogadores().size();
+    }
 }

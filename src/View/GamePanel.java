@@ -148,7 +148,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO passar a rodada
+				gerente.clicouTerminarRodada();
 			}
 		});
 		

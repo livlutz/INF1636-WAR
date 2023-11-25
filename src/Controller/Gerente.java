@@ -81,6 +81,29 @@ public class Gerente {
         }
     }
 
+    public void clicouTerminarRodada(){
+        if (estado == 0){
+            if (true){
+                // Atualiza a view
+                apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
+                estado = 1;
+            }
+            else{
+                apiView.mostraAviso("Não é possível terminar a rodada agora.");
+            }
+        }
+        else{
+            if(estado == 1){
+                
+                estado = 2;
+            }
+            else{
+                vez = (vez + 1) % apiJogo.getQtdJogadores();
+                //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
+            }
+        }
+    }
+
     public void selecionouAtacante(String atacante){
         // Se estiver na etapa de ataque
         if (estado == 1){
