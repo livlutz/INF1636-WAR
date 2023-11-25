@@ -424,6 +424,15 @@ class Jogo implements ObservadoIF{
 			return;
 		}
 	}
+	
+	public Jogador getJogador(String jogadorNome) {
+		for(Jogador jogador:jogadores) {
+			if (jogador.getNome() == jogadorNome) {
+				return jogador;
+			}
+		}
+		return null;
+	}
 
 	// Método para pegar o jogador da vez
 	public Jogador getJogadorVez(int i){
