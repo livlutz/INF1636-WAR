@@ -117,6 +117,15 @@ import View.APIView;
     }
 
     // Método que salva jogo em arquivo
+    /*Informacoes para salvar
+     * -qtd de jogadores
+     * -qtd de exercitos em cada territorio
+     * -nome dos jogadores
+     * - jogadores que dominam cada territorio
+     * -objetivos dos jogadores
+     * -cores dos jogadores
+     * -cartas dos jogadores
+    */
     public void salvarJogo(){
         //TODO salvar jogo
     }
