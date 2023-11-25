@@ -27,7 +27,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Graphics2D g2d; 
 	
 	//Botões e comboboxes
-	JButton salvarButton,dadoButton, nextButton, trocarCartasButton;
+	JButton salvarButton,dadoButton, nextButton, trocarCartasButton,addExercito;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territórios no jogo
@@ -45,6 +45,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//ComboBoxes
 	JComboBox<String> comboBoxAtacantes;
 	JComboBox<String> comboBoxDefensores;
+	JComboBox<String> comboBoxColocaExercitos;
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
@@ -80,13 +81,24 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 		comboBoxDefensores = new JComboBox<String>();
 		JLabel defensores = new JLabel("Defensores");
-		defensores.setBounds(1250,200,200,30);
+		defensores.setBounds(1250,180,200,30);
 		add(defensores);
-		comboBoxDefensores.setBounds(1220,230,200,30);
-		dadosDefensores.setBounds(1420,230,50,30);
+		comboBoxDefensores.setBounds(1220,210,200,30);
+		dadosDefensores.setBounds(1420,210,50,30);
 		add(dadosDefensores);
 		add(comboBoxDefensores);
-
+		
+		comboBoxColocaExercitos = new JComboBox<String>();
+		JLabel selecionaPais = new JLabel("Colocar exercitos");
+		selecionaPais.setBounds(1250,240,200,30);
+		add(selecionaPais);
+		comboBoxColocaExercitos.setBounds(1220,270,200,30);
+		add(comboBoxColocaExercitos); //
+		addExercito = new JButton("Add");
+		addExercito.setBounds(1420,270,60,30);
+		add(addExercito);
+		
+		
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
 		add(dadosPanel);
@@ -103,7 +115,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		trocarCartasButton = new JButton("Trocar cartas");
 		
 		salvarButton.setBounds(1250,20,200,30);
-		dadoButton.setBounds(1250,290,200,30);
+		dadoButton.setBounds(1250,310,200,30);
 		nextButton.setBounds(1250,100,200,30);
 		trocarCartasButton.setBounds(1250,60,200,30);
 		
