@@ -9,7 +9,7 @@ class ObjetivoTerritorios extends Objetivo{
             this.qtdTerritorios = qtdTerritorios;
             this.descricao = "Conquistar " + qtdTerritorios + " TERRITÓRIOS";
             if (qtdTerritorios == 18){
-                this.descricao += "e ocupar cada um deles com pelo menos dois exércitos";
+                this.descricao += " e ocupar cada um deles com pelo menos dois exércitos";
             }
         }
         

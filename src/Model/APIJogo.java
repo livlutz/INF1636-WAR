@@ -2,6 +2,7 @@ package Model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.io.*;
 
 import View.APIView;
 
@@ -11,6 +12,10 @@ import View.APIView;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     private Jogo jogo = Jogo.getJogo();
     private APIView apiView = APIView.getAPIView();
+
+    //Arquivo para salvar o jogo
+    FileReader inputStream = null;
+    FileWriter outputStream = null;
 
     // Construtor privado para o singleton
     private APIJogo(){
@@ -127,6 +132,67 @@ import View.APIView;
      * -cartas dos jogadores
     */
     public void salvarJogo(){
-        //TODO salvar jogo
+        try {
+            outputStream = new FileWriter("jogo.txt");
+            //Escreve qtd de jogadores
+            outputStream.write(String.valueOf(jogo.getJogadores().size()));
+            outputStream.write("\n");
+
+            //Escreve a qtd de exercitos em cada territorio
+            for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                outputStream.write(String.valueOf(t.getQntExercitos()));
+                outputStream.write("\n");
+            }
+
+            //Escreve o nome dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                outputStream.write(j.getNome());
+                outputStream.write("\n");
+            }
+
+            //Escreve os jogadores que dominam cada territorio
+            for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                outputStream.write(t.getJogador().getNome());
+                outputStream.write("\n");
+            }
+
+            //Escreve os objetivos dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                outputStream.write(j.getObj().getDescricao());
+                outputStream.write("\n");
+            }
+
+            //Escreve as cores dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                outputStream.write(String.valueOf(j.getCor().getRGB()));
+                outputStream.write("\n");
+            }
+
+            //Escreve as cartas dos jogadores
+            for (Jogador j: jogo.getJogadores()) {
+                for (Cartas c: j.getCartas()) {
+                    outputStream.write(c.getTerritorio().getNome());
+                    outputStream.write("\n");
+                    outputStream.write(String.valueOf(c.getF().ordinal()));
+                    outputStream.write("\n");
+                }
+            }
+        } 
+
+        catch (IOException e) {
+            System.out.println("Erro ao abrir arquivo para salvar jogo");
+        }
+
+        //Fechar arquivo
+        finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } 
+                catch (IOException e) {
+                    System.out.println("Erro ao fechar arquivo para salvar jogo");
+                }
+            }
+        }
     }
 }
