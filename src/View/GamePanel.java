@@ -216,6 +216,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		g2d.setColor(corDoJogador);
 		g2d.fillOval(1460, 10, 50, 50);
 		desenhaExercitos(this.g2d);
+		painelCartas.desenhaCartas(g2d);
 	}
 
 	// Notifica o observador
@@ -273,7 +274,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		// Tira frase, descrição e cartas do jogador anterior 
 		// Coloca frase de "Vez de NOME - COR"
 		// Coloca descrição do objetivo em cima da carta
+		//
 		// Imprime as cartas do jogador
+		
 	//}
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
