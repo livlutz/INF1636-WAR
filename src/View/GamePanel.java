@@ -56,6 +56,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Jogador da vez e cor do jogador
 	String jogadorDaVez;
 	Color corDoJogador;
+	String descricaoObjetivo;
+	JLabel jogadorDaVezLabel = new JLabel();
 
 	//Array list de exércitos 
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
@@ -95,7 +97,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		selecionaPais.setBounds(1250,200,200,30);
 		add(selecionaPais);
 		comboBoxColocaExercitos.setBounds(1220,230,200,30);
-		add(comboBoxColocaExercitos); //
+		add(comboBoxColocaExercitos); 
 		addExercito = new JButton("+1");
 		addExercito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,7 +109,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		comboBoxDestinoExercitos = new JComboBox<String>();
 		comboBoxDestinoExercitos.setBounds(1220,270,200,30);
-		add(comboBoxDestinoExercitos); //
+		add(comboBoxDestinoExercitos); 
 		destinoExercito = new JButton("->");
 		destinoExercito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -129,25 +131,31 @@ class GamePanel extends JPanel implements ObservadorIF {
 		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");
 		dadoButton = new JButton("Jogar os dados");
-		nextButton = new JButton("Terminar a rodada");
+		nextButton = new JButton("Passar rodada");
 		trocarCartasButton = new JButton("Trocar cartas");
 		
 		salvarButton.setBounds(50,20,200,30);
 		dadoButton.setBounds(1250,310,200,30);
-		nextButton.setBounds(1250,60,200,30);
+		nextButton.setBounds(1250,530,200,30);
 		trocarCartasButton.setBounds(1250,20,200,30);
 		
 		add(trocarCartasButton);
 		add(salvarButton);
 		add(dadoButton);
 		add(nextButton);
+
+		//Cria e adiciona o label do jogador da vez
+		jogadorDaVezLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		jogadorDaVezLabel.setForeground(Color.WHITE);
+		jogadorDaVezLabel.setBounds(640,660,200,30);
+		add(jogadorDaVezLabel);
 		
 		trocarCartasButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		//Adiciona ações aos botões
+		
 		salvarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gerente.clicouSalvar();
@@ -244,7 +252,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		g2d.setColor(corDoJogador);
-		g2d.fillOval(1460, 10, 50, 50);
+		g2d.fillOval(580, 650, 50, 50);
+		jogadorDaVezLabel.setText("Vez de " + jogadorDaVez);
 		desenhaExercitos(this.g2d);
 		painelCartas.desenhaCartas(g2d);
 	}
