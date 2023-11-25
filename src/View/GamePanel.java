@@ -50,6 +50,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
+	String jogadorDaVez;
+	Color corDoJogador;
 	//Array list de exércitos 
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
@@ -117,10 +119,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 				int [] dadosAtaque = new int [3];
 				int [] dadosDefesa = new int [3];
 				if (dadosAtacante.getSelectedItem() == "0" && dadosDefensores.getSelectedItem() == "0") {
-					//apiJogo.realizaAtaque(null, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(), dadosAtaque, dadosDefesa);
+					//apiJogo.realizaAtaque(jogadorDaVez, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(), dadosAtaque, dadosDefesa);
 				}
 				else {
-					//apiJogo.realizaAtaqueForçado(null, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(),Integer.valueOf(dadosAtacante.getSelectedItem()), Integer.valueOf(dadosDefensores.getSelectedItem()));
+					//apiJogo.realizaAtaqueForçado(jogadorDaVez, comboBoxAtacantes.getSelectedItem(), comboBoxDefensores.getSelectedItem(),Integer.valueOf(dadosAtacante.getSelectedItem()), Integer.valueOf(dadosDefensores.getSelectedItem()));
 					int dadoAtaque = Integer.valueOf((String) dadosAtacante.getSelectedItem());
 					dadosAtaque[0] = dadoAtaque;
 					dadosAtaque[1] = dadoAtaque;
@@ -201,6 +203,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
+		g2d.setColor(Color.getColor(corDoJogador));
+		g2d.fillOval(1450, 10, 50, 50);
 		desenhaExercitos(this.g2d);
 	}
 
@@ -244,7 +248,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 	}
 
-	public void determinaPrimeiroJogador(String nome, String cor, String descricaoObj){
+	public void determinaPrimeiroJogador(String jogadorDaVez, Color corDoJogador, String descricaoObj){
 		// Adicionar frase "Primeiro jogador: NOME - COR"
 		// Adicionar descrição do objetivo em cima da carta
 		// NÃO IMPRIMIR AINDA, SÓ ADD PARA IMPRIMIR AO CHAMAR O DRAWCOMPONENT DO MAINFRAME
