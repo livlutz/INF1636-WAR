@@ -1,6 +1,8 @@
 package View;
 
 
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
 
 public class APIView{
@@ -54,6 +56,14 @@ public class APIView{
 
 	public void atualizaDefensores(String[] defensores){
 		GamePanel.getGamePanel().atualizaDefensores(defensores);
+	}
+
+	public void mudaJogador(String jogador, Color cor, String descricaoObj, Cartas[] cartas){
+		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
+	}
+
+	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj){
+		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor.toString(), descricaoObj);
 	}
 
 	

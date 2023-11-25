@@ -121,6 +121,21 @@ import View.APIView;
     	return listaTerritorios;
     }
 
+    // Método que retorna o nome do jogador da vez
+    public String getNomeJogadorVez(int i){
+        return jogo.getJogadorVez(i).getNome();
+    }
+
+    // Método que retorna a cor do jogador da vez
+    public Color getCorJogadorVez(int i){
+        return jogo.getJogadorVez(i).getCor();
+    }
+
+    // Método que retorna a descrição do objetivo do jogador da vez
+    public String getDescObjJogadorVez(int i){
+        return jogo.getJogadorVez(i).getObj().getDescricao();
+    }
+
     // Método que salva jogo em arquivo
     /*Informacoes para salvar
      * -qtd de jogadores
