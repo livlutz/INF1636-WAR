@@ -55,12 +55,12 @@ class DadosPanel extends JPanel {
 	//Desenha as imagens dos dados
 	public void paintComponent(Graphics g) {
 		g2d = (Graphics2D) g;
-		g2d.drawImage(ataque1,10,10,50,50,null);
-		g2d.drawImage(ataque2,10,60,50,50,null);
-		g2d.drawImage(ataque3,10,110,50,50,null);
-		g2d.drawImage(defesa1,60,10,50,50,null);
-		g2d.drawImage(defesa2,60,60,50,50,null);
-		g2d.drawImage(defesa3,60,110,50,50,null);
+		g2d.drawImage(ataque1,0,10,50,50,null);
+		g2d.drawImage(ataque2,0,60,50,50,null);
+		g2d.drawImage(ataque3,0,110,50,50,null);
+		g2d.drawImage(defesa1,50,10,50,50,null);
+		g2d.drawImage(defesa2,50,60,50,50,null);
+		g2d.drawImage(defesa3,50,110,50,50,null);
 	}
 
 	//Mostra os dados de ataque e defesa na tela

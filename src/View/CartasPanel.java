@@ -27,7 +27,7 @@ class CartasPanel extends Panel {
 	// Desenha as cartas de objetivo
 	public void desenhaCartas(Graphics g) {
 		super.paint(g);
-		g.drawImage(cartaObj, 1355, 350, 180, 270, null);
+		g.drawImage(cartaObj, 1355, 350, 160, 220, null);
 		//g.drawImage(cartaObjGrande, 1275, 370, 100, 150, null);
 	}
 			
