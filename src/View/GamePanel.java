@@ -50,8 +50,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JComboBox dadosDefensores = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
+	//Jogador da vez e cor do jogador
 	String jogadorDaVez;
 	Color corDoJogador;
+
 	//Array list de exércitos 
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
@@ -204,7 +206,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		this.g2d = (Graphics2D) g;
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		g2d.setColor(corDoJogador);
-		g2d.fillOval(1450, 10, 50, 50);
+		g2d.fillOval(1460, 10, 50, 50);
 		desenhaExercitos(this.g2d);
 	}
 
@@ -252,6 +254,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		// Adicionar frase "Primeiro jogador: NOME - COR"
 		// Adicionar descrição do objetivo em cima da carta
 		// NÃO IMPRIMIR AINDA, SÓ ADD PARA IMPRIMIR AO CHAMAR O DRAWCOMPONENT DO MAINFRAME
+		this.jogadorDaVez = jogadorDaVez;
+		this.corDoJogador = corDoJogador;
 	}
 
 	// Atualiza view no início da rodada de posicionamento para mudar jogador
