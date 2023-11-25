@@ -37,7 +37,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	DadosPanel dadosPanel = new DadosPanel();
 	
 	//Painel das Cartas
-	CartasPanel painelCartas = new CartasPanel();
+	CartaObjPanel cartaObjPanel = new CartaObjPanel();
 
 	//Gerente
 	Gerente gerente = Gerente.getGerente();
@@ -124,8 +124,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(dadosPanel);
 
 		//Cria e adiciona o painel das cartas
-		painelCartas.setBounds(1250,580,200,200);
-		add(painelCartas);
+		cartaObjPanel.setBounds(1250,580,200,200);
+		add(cartaObjPanel);
 		
 		//Cria e adiciona os botões
 		String filePath = new File("").getAbsolutePath();
@@ -255,7 +255,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		g2d.fillOval(580, 650, 50, 50);
 		jogadorDaVezLabel.setText("Vez de " + jogadorDaVez);
 		desenhaExercitos(this.g2d);
-		painelCartas.desenhaCartas(g2d);
+		cartaObjPanel.desenhaCartas(g2d);
 	}
 
 	// Notifica o observador
