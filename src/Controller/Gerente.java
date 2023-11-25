@@ -128,4 +128,14 @@ public class Gerente {
     public String[] getNomesJogadores(){
         return apiJogo.getNomesJogadores();
     }
+
+    //get vez
+    public int getVez(){
+        return vez;
+    }
+
+    //set vez
+    public void setVez(int vez){
+        this.vez = vez;
+    }
 }

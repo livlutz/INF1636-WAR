@@ -2,6 +2,9 @@ package Model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+
+import Controller.Gerente;
+
 import java.io.*;
 
 import View.APIView;
@@ -151,13 +154,16 @@ import View.APIView;
      * -objetivos dos jogadores
      * -cores dos jogadores
      * -cartas dos jogadores
+     * -vez do jogador
     */
     public void salvarJogo(){
         try {
             inputStream = new FileWriter("jogo.txt",false);
             
-            //Escreve qtd de jogadores
+            //Escreve qtd de jogadores e vez do jogador
             inputStream.write(String.valueOf(jogo.getJogadores().size()));
+            inputStream.write("\n");
+            inputStream.write(String.valueOf(Gerente.getGerente().getVez()));
             inputStream.write("\n");
             
             //Escreve o nome dos jogadores
@@ -233,7 +239,13 @@ import View.APIView;
             outputStream = new FileReader("jogo.txt");
             BufferedReader br = new BufferedReader(outputStream);
             String linha = br.readLine();
+
+            //Lê a qtd de jogadores
             int qtdJogadores = Integer.parseInt(linha);
+
+            //Lê a vez do jogador
+            linha = br.readLine();
+            Gerente.getGerente().setVez(Integer.parseInt(linha));
 
             //Lê os nomes e cores dos jogadores
             String[] nomes = new String[qtdJogadores];
