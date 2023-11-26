@@ -63,7 +63,7 @@ public class Gerente {
             for (String c: apiJogo.getContinentesLista()){
                 if (apiJogo.dominaCont(0, c)){
                     territorios = apiJogo.getTerritoriosCont(c);
-                    qtd = apiJogo.getExCont(0);
+                    qtd = apiJogo.getExCont(0, c);
                     continente++;
                 }
             }
@@ -134,7 +134,20 @@ public class Gerente {
             apiJogo.posicionarExercitos(territorio, qtd, vez);
             Integer qtdEx = apiJogo.getJogadorExPosic(vez);
             if (qtdEx == 0){
-                
+                if (continente == 6){
+                    apiJogo.atualizaQtdPosicGeral(vez);
+                    apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
+                    estado = 1;
+                    return;
+                }
+                else{
+                    String[] territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
+                    Integer qtdExCont = apiJogo.getExCont(vez, apiJogo.getContinentesLista()[continente]);
+                    continente++;
+                    apiView.atualizaPosicionamento(territorios);
+                    apiView.atualizaQtdPosic(qtdExCont);
+                    return;
+                }
             }
             else{
                 apiView.atualizaQtdPosic(qtdEx);
