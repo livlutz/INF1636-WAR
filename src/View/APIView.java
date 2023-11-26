@@ -63,8 +63,8 @@ public class APIView{
 		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
 	}*/
 
-	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj){
-		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj);
+	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj, String[] territorios, Integer qtd){
+		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj, territorios, qtd);
 	}
 	
 	public void atualizaPosicionamento(String[] territorios){

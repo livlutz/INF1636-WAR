@@ -58,7 +58,20 @@ public class Gerente {
             cont++;
         }
         if (apiJogo.comecaJogo()){
-            apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0));
+            String[] territorios;
+            Integer qtd;
+            for (String c: apiJogo.getContinentesLista()){
+                if (apiJogo.dominaCont(0, c)){
+                    territorios = apiJogo.getTerritoriosCont(c);
+                    qtd = apiJogo.getExCont(0);
+                    continente++;
+                }
+            }
+            if (continente == 6){
+                territorios = apiJogo.getTerritoriosJogador(0);
+                qtd = apiJogo.getJogadorExPosic(0);
+            }
+            apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
             return true;
         }
         return false;
@@ -83,25 +96,10 @@ public class Gerente {
         }
     }
 
-    public void clicouPosicionar(String territorio, Integer qtd){
-        if (estado == 0){
-            apiJogo.posicionarExercitos(territorio, qtd, vez);
-            Integer qtdEx = apiJogo.getJogadorExPosic(vez);
-            if (qtdEx == 0){
-                
-            }
-            else{
-                apiView.atualizaQtdPosic(qtdEx);
-            }
-            return;
-        }
-        return;
-    }
-
     public void clicouTerminarRodada(){
         // Se estiver na etapa de posicionamento
         if (estado == 0){
-            if (true){
+            if (apiJogo.getJogadorExPosic(vez) == 0){
                 // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
                 estado = 1;
@@ -129,6 +127,21 @@ public class Gerente {
         //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
         apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
 
+    }
+
+    public void clicouPosicionar(String territorio, Integer qtd){
+        if (estado == 0){
+            apiJogo.posicionarExercitos(territorio, qtd, vez);
+            Integer qtdEx = apiJogo.getJogadorExPosic(vez);
+            if (qtdEx == 0){
+                
+            }
+            else{
+                apiView.atualizaQtdPosic(qtdEx);
+            }
+            return;
+        }
+        return;
     }
 
     public void selecionouAtacante(String atacante){

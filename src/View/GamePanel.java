@@ -330,12 +330,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 	}
 
 	// Atualiza view no início da rodada de posicionamento para determinar o primeiro jogador
-	public void determinaPrimeiroJogador(String jogadorDaVez, Color corDoJogador, String descricaoObj){
+	public void determinaPrimeiroJogador(String jogadorDaVez, Color corDoJogador, String descricaoObj, String[] territorios, Integer qtd){
 		// Adicionar frase "Primeiro jogador: NOME - COR"
 		// Adicionar descrição do objetivo em cima da carta
 		// NÃO IMPRIMIR AINDA, SÓ ADD PARA IMPRIMIR AO CHAMAR O DRAWCOMPONENT DO MAINFRAME
 		this.jogadorDaVez = jogadorDaVez;
 		this.corDoJogador = corDoJogador;
+		this.descricaoObjetivo = descricaoObj;
+		this.atualizaPosicionamento(territorios);
+		this.atualizaQtdPosic(qtd);
 	}
 
 	// Atualiza view no início da rodada de posicionamento para mudar jogador
