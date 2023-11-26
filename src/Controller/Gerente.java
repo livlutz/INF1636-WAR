@@ -28,6 +28,9 @@ public class Gerente {
     private Gerente(){
     }
 
+    // Guarda se é a primeira rodada
+    private boolean primeiraRodada = true;
+
     // Arrays para guardar os dados de reposicionamento (bloquear reposicionamento múltiplo)
     private String[] nomesTerritoriosReposicionamento;
     private Integer[] qtdExercitosRepos;
@@ -143,6 +146,7 @@ public class Gerente {
         primeiroPosicionamento();
     }
 
+    // Método chamado quando é o primeiro posicionamento do jogador naquela rodada, para verificar se tem algum continente dominado por ele
     private void primeiroPosicionamento(){
         String[] territorios;
         Integer qtd;
@@ -206,6 +210,16 @@ public class Gerente {
                 // Se não tiver mais exércitos para posicionar
                 // Zera contador de continentes
                 continente = 0;
+                // Se for a primeira rodada, só pode posicionamento para todos
+                if (primeiraRodada){
+                    vez = (vez + 1) % apiJogo.getQtdJogadores();
+                    apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+                    primeiroPosicionamento();
+                    if (vez == 0){
+                        primeiraRodada = false;
+                    }
+                    return;
+                }
                 // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
                 estado = 1;
@@ -265,10 +279,7 @@ public class Gerente {
                     break;
                 }
             }
-            System.out.println(qtdExercitosRepos[i]);
-            System.out.println( origem + destino + qtd);
             qtdExercitosRepos[i] -= qtd;
-            System.out.println(qtdExercitosRepos[i]);
 
             // Se tiver exércitos para reposicionar continua na etapa de reposicionamento
             for (int j = 0; j < nomesTerritoriosReposicionamento.length; j++){

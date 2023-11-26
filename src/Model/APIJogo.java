@@ -145,7 +145,6 @@ import View.APIView;
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
-            System.out.println(ter.getNome());
     		// Se o jogador dominar o adjacente, adiciona na lista
             if (ter.getJogador().getNome() == jogo.getJogadorVez(vez).getNome()){
                 listaTerritorios[cont] = ter.getNome();

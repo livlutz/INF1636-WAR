@@ -324,6 +324,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
 	public void atualizaAtacantes(String[] atacantes){
+		// Esvazia a comboBox de atacantes e adiciona os novos territórios
+		comboBoxAtacantes.removeAllItems();
 		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
 		comboBoxAtacantes.addItem(null);
 		for (String s: atacantes){
@@ -342,6 +344,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os territórios para posicionamento
 	public void atualizaPosicionamento(String[] territorios){
+		// Esvazia a comboBox de origem e adiciona os novos territórios
+		comboBoxPosicionamento.removeAllItems();
 		for (String s: territorios){
 			comboBoxPosicionamento.addItem(s);
 		}

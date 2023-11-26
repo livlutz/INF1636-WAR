@@ -183,7 +183,7 @@ class Territorio {
 
 				//Ásia
 				case "Siberia":
-				t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+				t.AddAdjacente(tabuleiro.getTerritorio("Alasca"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Russia"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Cazaquistao"));
 				break;
