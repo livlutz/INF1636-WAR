@@ -130,28 +130,48 @@ public class Gerente {
     }
 
     public void clicouPosicionar(String territorio, Integer qtd){
+        // Verifica se está na rodada de posicionamento para agir
         if (estado == 0){
+
+            // Posiciona os exércitos e atualiza a quantidade a posicionar do jogador
             apiJogo.posicionarExercitos(territorio, qtd, vez);
             Integer qtdEx = apiJogo.getJogadorExPosic(vez);
+
+            // Se não tiver mais exércitos para posicionar
             if (qtdEx == 0){
+                
+                // Se ainda não testou todos os continentes
+                if (continente < 6){
+                    // Atualiza a view para posicionar no próximo continente se for dominado
+                    for (; continente < 6; continente++){
+                        if (apiJogo.dominaCont(vez, apiJogo.getContinentesLista()[continente])){
+                            String[] territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
+                            Integer qtdExCont = apiJogo.getExCont(vez, apiJogo.getContinentesLista()[continente]);
+                            apiView.atualizaPosicionamento(territorios);
+                            apiView.atualizaQtdPosic(qtdExCont);
+                            return;
+                        }
+                    }
+                }
+
+                // Se já posicionou em todos os continentes, posiciona no resto dos territórios
                 if (continente == 6){
-                    apiJogo.atualizaQtdPosicGeral(vez);
-                    apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
-                    estado = 1;
-                    return;
-                }
-                else{
-                    String[] territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
-                    Integer qtdExCont = apiJogo.getExCont(vez, apiJogo.getContinentesLista()[continente]);
+                    apiJogo.atualizaQtdExPosicGeral(vez);
+                    apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
+                    apiView.atualizaQtdPosic(apiJogo.getJogadorExPosic(vez));
                     continente++;
-                    apiView.atualizaPosicionamento(territorios);
-                    apiView.atualizaQtdPosic(qtdExCont);
                     return;
                 }
+                // Se não tiver mais exércitos para posicionar
+                // Zera contador de continentes
+                continente = 1;
+                // Atualiza a view para ataque
+                apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
+                estado = 1;
+                return;
             }
-            else{
-                apiView.atualizaQtdPosic(qtdEx);
-            }
+            // Se ainda tiver exércitos para posicionar
+            apiView.atualizaQtdPosic(qtdEx);
             return;
         }
         return;
