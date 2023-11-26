@@ -38,4 +38,8 @@ class ObjetivoTerritorios extends Objetivo{
             return false;
             
         }  
+
+        public int getQtdTerritorios(){
+            return this.qtdTerritorios;
+        }
 }

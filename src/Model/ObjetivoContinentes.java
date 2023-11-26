@@ -48,4 +48,17 @@ class ObjetivoContinentes extends Objetivo{
         return false;
 
     }
+
+    public Continente getCont1(){
+        return this.cont1;
+    }
+
+    public Continente getCont2(){
+        return this.cont2;
+    }
+
+    public int getQtdContinentes(){
+        return this.qtdContinentes;
+    }
+
 }

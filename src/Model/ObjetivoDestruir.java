@@ -63,4 +63,8 @@ class ObjetivoDestruir extends Objetivo{
         return false;
            
     }
+
+    public Jogador getJAlvo(){
+        return this.jAlvo;
+    }
 }

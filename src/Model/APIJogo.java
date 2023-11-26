@@ -288,15 +288,19 @@ import View.APIView;
                     switch(j.getObj().getClass().getName()){
                         case "Model.ObjetivoContinentes":
                             inputStream.write("1 ");
+                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont1().getNome() + " ");
+                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont2().getNome() + " ");
+                            inputStream.write(((ObjetivoContinentes)j.getObj()).getQtdContinentes());
                             break;
                         case "Model.ObjetivoDestruir":
                             inputStream.write("2 ");
+                            inputStream.write(((ObjetivoDestruir)j.getObj()).getJAlvo().getNome());
                             break;
                         case "Model.ObjetivoTerritorios":
                             inputStream.write("3 ");
+                            inputStream.write(String.valueOf(((ObjetivoTerritorios)j.getObj()).getQtdTerritorios()));
                             break;
                     }
-                    inputStream.write(j.getObj().getDescricao());
                     inputStream.write("\n");
                 }
 
@@ -376,15 +380,20 @@ import View.APIView;
                 for (Jogador j: jogo.getJogadores()) {
                     linha = br.readLine();
                     String[] dados = linha.split(" ");
-                    switch(Integer.parseInt(dados[1])){
+                    switch(Integer.parseInt(dados[0])){
                         case 1:
-                            j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[2]), tabuleiro.getMapContinentes().get(dados[3]), true));
+                            if(Integer.parseInt(dados[3]) == 3){
+                                j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), true));
+                            }
+                            else{
+                                j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), false));
+                            }
                             break;
                         case 2:
-                            j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[2])));
+                            j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[1])));
                             break;
                         case 3:
-                            j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[2])));
+                            j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[1])));
                             break;
                     }
                 }
