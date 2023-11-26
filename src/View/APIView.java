@@ -51,6 +51,7 @@ public class APIView{
 	}
 
 	public void atualizaAtacantes(String[] atacantes){
+		GamePanel.getGamePanel().mudaParaAtaque();
 		GamePanel.getGamePanel().atualizaAtacantes(atacantes);
 	}
 

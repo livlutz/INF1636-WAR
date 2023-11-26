@@ -289,6 +289,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		cartaObjPanel.desenhaCartas(g2d);
 	}
 
+
+
 	// Notifica o observador
 	@Override
 	public void notifica(ObservadoIF o){
@@ -364,11 +366,84 @@ class GamePanel extends JPanel implements ObservadorIF {
 	public void atualizaDefensores(String[] defensores){
 		// Esvazia a comboBox de defensores e adiciona os novos territórios
 		comboBoxDefensores.removeAllItems();
-		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
-		comboBoxDefensores.addItem(null);
 		for (String s: defensores){
 			comboBoxDefensores.addItem(s);
 		}
+	}
+
+	// Configura a view para primeira rodada de posicionamento
+	public void primeiraRodadaPosicionamento(){
+		// Deixa invisível elementos que não sejam de posicionamento
+		labelAtacantes.setVisible(false);
+		comboBoxAtacantes.setVisible(false);
+		dadosAtacante.setVisible(false);
+		labelDefensores.setVisible(false);
+		comboBoxDefensores.setVisible(false);
+		dadosDefensores.setVisible(false);
+		dadoButton.setVisible(false);
+
+		labelReposicionamento.setVisible(false);
+		comboBoxColocaExercitos.setVisible(false);
+		comboBoxDestinoExercitos.setVisible(false);
+		addExercito.setVisible(false);
+		destinoExercito.setVisible(false);
+	} 
+
+	public void mudaParaPosicionamento(){
+		// Remove elementos da rodada de reposicionamento
+		comboBoxColocaExercitos.removeAllItems();
+		comboBoxDestinoExercitos.removeAllItems();
+		labelReposicionamento.setVisible(false);
+		comboBoxColocaExercitos.setVisible(false);
+		comboBoxDestinoExercitos.setVisible(false);
+		addExercito.setVisible(false);
+		destinoExercito.setVisible(false);
+		dadoButton.setVisible(false);
+
+		// Deixa visível elementos da rodada de posicionamento
+		labelPosicionamento.setVisible(true);
+		comboBoxPosicionamento.setVisible(true);
+		comboBoxQtdPosicionamento.setVisible(true);
+		posicButton.setVisible(true);
+	}
+
+	public void mudaParaAtaque(){
+		// Remove elementos da rodada de posicionamento
+		comboBoxPosicionamento.removeAllItems();
+		comboBoxQtdPosicionamento.removeAllItems();
+		labelPosicionamento.setVisible(false);
+		comboBoxPosicionamento.setVisible(false);
+		comboBoxQtdPosicionamento.setVisible(false);
+		posicButton.setVisible(false);
+
+		// Deixa visível elementos da rodada de ataque
+		labelAtacantes.setVisible(true);
+		comboBoxAtacantes.setVisible(true);
+		dadosAtacante.setVisible(true);
+		labelDefensores.setVisible(true);
+		comboBoxDefensores.setVisible(true);
+		dadosDefensores.setVisible(true);
+		dadoButton.setVisible(true);
+	}
+
+	public void mudaParaReposicionamento(){
+		// Remove elementos da rodada de ataque
+		comboBoxAtacantes.removeAllItems();
+		comboBoxDefensores.removeAllItems();
+		labelAtacantes.setVisible(false);
+		comboBoxAtacantes.setVisible(false);
+		dadosAtacante.setVisible(false);
+		labelDefensores.setVisible(false);
+		comboBoxDefensores.setVisible(false);
+		dadosDefensores.setVisible(false);
+		dadoButton.setVisible(false);
+
+		// Deixa visível elementos da rodada de reposicionamento
+		labelReposicionamento.setVisible(true);
+		comboBoxColocaExercitos.setVisible(true);
+		comboBoxDestinoExercitos.setVisible(true);
+		addExercito.setVisible(true);
+		destinoExercito.setVisible(true);
 	}
 
 	//Desenha cada território 
