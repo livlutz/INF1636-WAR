@@ -40,6 +40,7 @@ class Exercitos extends JComponent {
 		this.cor = color;
 		this.numExercitos = "1";
 		qntExercitosLabel = new JLabel(numExercitos);
+		add(qntExercitosLabel);
 		setBounds(0,0, 660, 660);
 	}
 	
@@ -57,9 +58,11 @@ class Exercitos extends JComponent {
 		// Pega nova cor para contraste
 		if (cor == Color.BLACK || cor == Color.BLUE){
 			this.g2d.setPaint(Color.WHITE);
+			qntExercitosLabel.setForeground(Color.WHITE);
 		}
 		else {
 			this.g2d.setPaint(Color.BLACK);
+			qntExercitosLabel.setForeground(Color.BLACK);
 		}
 
 		// Desenha a borda 
@@ -67,6 +70,7 @@ class Exercitos extends JComponent {
 
 		// Desenha a quantidade de exercitos
 		qntExercitosLabel.setBounds(posX+7, posY+14, 20, 20);
+		qntExercitosLabel.setText(numExercitos);
 	}
 
 	public void paintComponent(Graphics g) {
