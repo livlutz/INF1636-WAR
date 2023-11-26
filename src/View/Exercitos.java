@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 class Exercitos extends JComponent {
 	
 	//Tamanho da bolinha
@@ -25,7 +26,6 @@ class Exercitos extends JComponent {
 
 	// Quantidade de exércitos "Default" das bolinhas
 	private String qntExercitos = "0"; 
-
 	//OBS : Cor do jogador correspondente à cor do exército
 
 	//Construtor
@@ -61,6 +61,7 @@ class Exercitos extends JComponent {
 
 		// Desenha a quantidade de exercitos
 		this.g2d.drawString(qntExercitos, posX + 7, posY + 14);
+		System.out.print(qntExercitos);
 	}
 
 	public void paintComponent(Graphics g) {
