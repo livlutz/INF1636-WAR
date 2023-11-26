@@ -2,6 +2,9 @@ package Model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
 
 import Controller.Gerente;
 
@@ -14,6 +17,7 @@ import View.APIView;
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     private Jogo jogo = Jogo.getJogo();
     private APIView apiView = APIView.getAPIView();
+    private JFileChooser chooser = new JFileChooser();
 
     //Arquivo para salvar o jogo
     FileReader outputStream = null;
@@ -246,77 +250,75 @@ import View.APIView;
      * -vez do jogador
     */
     public void salvarJogo(){
-        try {
-            inputStream = new FileWriter("jogo.txt",false);
-            
-            //Escreve qtd de jogadores e vez do jogador
-            inputStream.write(String.valueOf(jogo.getJogadores().size()));
-            inputStream.write("\n");
-            inputStream.write(String.valueOf(Gerente.getGerente().getVez()));
-            inputStream.write("\n");
-            
-            //Escreve o nome dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                inputStream.write(j.getNome() + " ");
-            }
-            
-            inputStream.write("\n");
-            
-            //Escreve as cores dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                inputStream.write(j.getNome() + " ");
-                inputStream.write(String.valueOf(j.getCor().getRGB()));
+        
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                inputStream = new FileWriter(chooser.getSelectedFile(),false);
+                //Escreve qtd de jogadores e vez do jogador
+                inputStream.write(String.valueOf(jogo.getJogadores().size()));
                 inputStream.write("\n");
-            }
-
-            //Escreve a qtd de exercitos em cada territorio e o nome do jogador que o domina
-            for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                inputStream.write(t.getNome() + " ");
-                inputStream.write(String.valueOf(t.getQntExercitos()) + " " + t.getJogador().getNome());
+                inputStream.write(String.valueOf(Gerente.getGerente().getVez()));
                 inputStream.write("\n");
-            }
-
-            //Escreve os objetivos dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                inputStream.write(j.getNome() + " ");
-                switch(j.getObj().getClass().getName()){
-                    case "Model.ObjetivoContinentes":
-                        inputStream.write("1 ");
-                        break;
-                    case "Model.ObjetivoDestruir":
-                        inputStream.write("2 ");
-                        break;
-                    case "Model.ObjetivoTerritorios":
-                        inputStream.write("3 ");
-                        break;
-                }
-                inputStream.write(j.getObj().getDescricao());
-                inputStream.write("\n");
-            }
-
-            //Escreve as cartas dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                for (Cartas c: j.getCartas()) {
+                
+                //Escreve o nome dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
                     inputStream.write(j.getNome() + " ");
-                    inputStream.write(c.getTerritorio().getNome()+ " ");
-                    inputStream.write(String.valueOf(c.getF().ordinal()));
+                }
+                
+                inputStream.write("\n");
+                
+                //Escreve as cores dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
+                    inputStream.write(j.getNome() + " ");
+                    inputStream.write(String.valueOf(j.getCor().getRGB()));
                     inputStream.write("\n");
                 }
+
+                //Escreve a qtd de exercitos em cada territorio e o nome do jogador que o domina
+                for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                    inputStream.write(t.getNome() + " ");
+                    inputStream.write(String.valueOf(t.getQntExercitos()) + " " + t.getJogador().getNome());
+                    inputStream.write("\n");
+                }
+
+                //Escreve os objetivos dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
+                    inputStream.write(j.getNome() + " ");
+                    switch(j.getObj().getClass().getName()){
+                        case "Model.ObjetivoContinentes":
+                            inputStream.write("1 ");
+                            break;
+                        case "Model.ObjetivoDestruir":
+                            inputStream.write("2 ");
+                            break;
+                        case "Model.ObjetivoTerritorios":
+                            inputStream.write("3 ");
+                            break;
+                    }
+                    inputStream.write(j.getObj().getDescricao());
+                    inputStream.write("\n");
+                }
+
+                //Escreve as cartas dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
+                    for (Cartas c: j.getCartas()) {
+                        inputStream.write(j.getNome() + " ");
+                        inputStream.write(c.getTerritorio().getNome()+ " ");
+                        inputStream.write(String.valueOf(c.getF().ordinal()));
+                        inputStream.write("\n");
+                    }
+                }
+            } catch (IOException ex) {
+                System.out.println("Erro ao abrir arquivo para salvar jogo");
             }
-        } 
-
-        catch (IOException e) {
-            System.out.println("Erro ao abrir arquivo para salvar jogo");
-        }
-
-        //Fechar arquivo
-        finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } 
-                catch (IOException e) {
-                    System.out.println("Erro ao fechar arquivo para salvar jogo");
+            finally {
+                if (inputStream != null) {
+                    try {
+                        inputStream.close();
+                    } catch (IOException ex) {
+                        System.out.println("Erro ao fechar arquivo para salvar jogo");
+                    }
                 }
             }
         }
@@ -326,83 +328,87 @@ import View.APIView;
 
     // Método que carrega jogo de arquivo
     public boolean carregarJogo(){
-        try {
-            outputStream = new FileReader("jogo.txt");
-            BufferedReader br = new BufferedReader(outputStream);
-            String linha = br.readLine();
+        int option = chooser.showOpenDialog(null);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            try {
+                outputStream = new FileReader(chooser.getSelectedFile());
+                BufferedReader br = new BufferedReader(outputStream);
+                String linha = br.readLine();
 
-            //Lê a qtd de jogadores
-            int qtdJogadores = Integer.parseInt(linha);
+                //Lê a qtd de jogadores
+                int qtdJogadores = Integer.parseInt(linha);
 
-            //Lê a vez do jogador
-            linha = br.readLine();
-            Gerente.getGerente().setVez(Integer.parseInt(linha));
-
-            //Lê os nomes e cores dos jogadores
-            String[] nomes = new String[qtdJogadores];
-            Color[] cores = new Color[qtdJogadores];
-            int cont = 0;
-            while ((linha = br.readLine()) != null) {
-                String[] dados = linha.split(" ");
-                nomes[cont] = dados[0];
-                cores[cont] = new Color(Integer.parseInt(dados[1]));
-                cont++;
-            }
-
-            //Adiciona os jogadores
-            resetJogadores();
-            for (int i = 0; i < qtdJogadores; i++) {
-                addJogador(nomes[i], cores[i]);
-            }
-
-            //Lê a qtd de exercitos em cada territorio e o nome do jogador que o domina
-            for (Jogador j: jogo.getJogadores()) {
+                //Lê a vez do jogador
                 linha = br.readLine();
-                String[] dados = linha.split(" ");
-                for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                    if (t.getNome().equals(dados[0])) {
-                        t.setQntExercitos(Integer.parseInt(dados[1]));
-                        t.setJogador(j);
-                        j.addTerritorio(t);
-                    }
+                Gerente.getGerente().setVez(Integer.parseInt(linha));
+
+                //Lê os nomes e cores dos jogadores
+                String[] nomes = new String[qtdJogadores];
+                Color[] cores = new Color[qtdJogadores];
+                int cont = 0;
+                while ((linha = br.readLine()) != null) {
+                    String[] dados = linha.split(" ");
+                    nomes[cont] = dados[0];
+                    cores[cont] = new Color(Integer.parseInt(dados[1]));
+                    cont++;
                 }
-            }
 
-            //Lê os objetivos dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                linha = br.readLine();
-                String[] dados = linha.split(" ");
-                switch(Integer.parseInt(dados[1])){
-                    case 1:
-                        j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[2]), tabuleiro.getMapContinentes().get(dados[3]), true));
-                        break;
-                    case 2:
-                        j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[2])));
-                        break;
-                    case 3:
-                        j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[2])));
-                        break;
+                //Adiciona os jogadores
+                resetJogadores();
+                for (int i = 0; i < qtdJogadores; i++) {
+                    addJogador(nomes[i], cores[i]);
                 }
-            }
 
-            //Lê as cartas dos jogadores
-            for (Jogador j: jogo.getJogadores()) {
-                linha = br.readLine();
-                String[] dados = linha.split(" ");
-                for (int i = 0; i < dados.length; i+=2) {
-                    for (Cartas c: j.getCartas()) {
-                        if (c.getTerritorio().getNome().equals(dados[i])) {
-                            c.setF(Cartas.Formato.values()[Integer.parseInt(dados[i+1])]);
+                //Lê a qtd de exercitos em cada territorio e o nome do jogador que o domina
+                for (Jogador j: jogo.getJogadores()) {
+                    linha = br.readLine();
+                    String[] dados = linha.split(" ");
+                    for (Territorio t: tabuleiro.mapTerritorios.values()) {
+                        if (t.getNome().equals(dados[0])) {
+                            t.setQntExercitos(Integer.parseInt(dados[1]));
+                            t.setJogador(j);
+                            j.addTerritorio(t);
                         }
                     }
                 }
+
+                //Lê os objetivos dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
+                    linha = br.readLine();
+                    String[] dados = linha.split(" ");
+                    switch(Integer.parseInt(dados[1])){
+                        case 1:
+                            j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[2]), tabuleiro.getMapContinentes().get(dados[3]), true));
+                            break;
+                        case 2:
+                            j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[2])));
+                            break;
+                        case 3:
+                            j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[2])));
+                            break;
+                    }
+                }
+
+                //Lê as cartas dos jogadores
+                for (Jogador j: jogo.getJogadores()) {
+                    linha = br.readLine();
+                    String[] dados = linha.split(" ");
+                    for (int i = 0; i < dados.length; i+=2) {
+                        for (Cartas c: j.getCartas()) {
+                            if (c.getTerritorio().getNome().equals(dados[i])) {
+                                c.setF(Cartas.Formato.values()[Integer.parseInt(dados[i+1])]);
+                            }
+                        }
+                    }
+                }
+                return true;
+            } 
+            catch (IOException e) {
+                System.out.println("Erro ao abrir arquivo para carregar jogo");
+                return false;
             }
-            return true;
-        } 
-        catch (IOException e) {
-            System.out.println("Erro ao abrir arquivo para carregar jogo");
-            return false;
         }
+        return false;
     }
 
 }
