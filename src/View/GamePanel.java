@@ -50,7 +50,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JLabel labelAtacantes = new JLabel("Escolher atacante");
 	JComboBox<String> comboBoxDefensores;
 	JLabel labelDefensores = new JLabel("Escolher defensor");
-	JComboBox<String> comboBoxColocaExercitos;
+	JComboBox<String> comboBoxOrigemExercitos;
 	JComboBox<String> comboBoxDestinoExercitos;
 	JLabel labelReposicionamento = new JLabel("Selecione para reposicionar");
 	
@@ -124,11 +124,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(comboBoxDefensores);
 		
 		// ComboBox e label de colocar e mover exércitos
-		comboBoxColocaExercitos = new JComboBox<String>();
+		comboBoxOrigemExercitos = new JComboBox<String>();
 		labelReposicionamento.setBounds(1230,240,200,30);
 		add(labelReposicionamento);
-		comboBoxColocaExercitos.setBounds(1220,270,200,30);
-		add(comboBoxColocaExercitos); 
+		comboBoxOrigemExercitos.setBounds(1220,270,200,30);
+		add(comboBoxOrigemExercitos); 
 		addExercito = new JButton("+1");
 		addExercito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -353,8 +353,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
 	public void atualizaAtacantes(String[] atacantes){
-		// Esvazia a comboBox de atacantes e adiciona os novos territórios
-		comboBoxAtacantes.removeAllItems();
 		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
 		comboBoxAtacantes.addItem(null);
 		for (String s: atacantes){
@@ -362,7 +360,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
-	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores defensores
+	// Atualiza os territórios a serem atacados
 	public void atualizaDefensores(String[] defensores){
 		// Esvazia a comboBox de defensores e adiciona os novos territórios
 		comboBoxDefensores.removeAllItems();
@@ -371,8 +369,21 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
-	// Configura a view para primeira rodada de posicionamento
-	public void primeiraRodadaPosicionamento(){
+	// Atualiza view no início da rodada de posicionamento para atualizar os territórios para posicionamento
+	public void atualizaPosicionamento(String[] territorios){
+		for (String s: territorios){
+			comboBoxPosicionamento.addItem(s);
+		}
+	}
+
+	// Atualiza view no início da rodada de reposicionamento para atualizar os territórios para reposicionamento
+	public void atualizaReposicionamento(String[] territorios){
+		for (String s: territorios){
+			comboBoxOrigemExercitos.addItem(s);
+		}
+	}
+
+	public void mudaParaPosicionamento(){
 		// Deixa invisível elementos que não sejam de posicionamento
 		labelAtacantes.setVisible(false);
 		comboBoxAtacantes.setVisible(false);
@@ -383,22 +394,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadoButton.setVisible(false);
 
 		labelReposicionamento.setVisible(false);
-		comboBoxColocaExercitos.setVisible(false);
+		comboBoxOrigemExercitos.setVisible(false);
 		comboBoxDestinoExercitos.setVisible(false);
 		addExercito.setVisible(false);
 		destinoExercito.setVisible(false);
-	} 
-
-	public void mudaParaPosicionamento(){
-		// Remove elementos da rodada de reposicionamento
-		comboBoxColocaExercitos.removeAllItems();
-		comboBoxDestinoExercitos.removeAllItems();
-		labelReposicionamento.setVisible(false);
-		comboBoxColocaExercitos.setVisible(false);
-		comboBoxDestinoExercitos.setVisible(false);
-		addExercito.setVisible(false);
-		destinoExercito.setVisible(false);
-		dadoButton.setVisible(false);
 
 		// Deixa visível elementos da rodada de posicionamento
 		labelPosicionamento.setVisible(true);
@@ -440,7 +439,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 		// Deixa visível elementos da rodada de reposicionamento
 		labelReposicionamento.setVisible(true);
-		comboBoxColocaExercitos.setVisible(true);
+		comboBoxOrigemExercitos.setVisible(true);
 		comboBoxDestinoExercitos.setVisible(true);
 		addExercito.setVisible(true);
 		destinoExercito.setVisible(true);

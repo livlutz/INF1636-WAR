@@ -123,6 +123,10 @@ import View.APIView;
                 cont++;
             }
     	}
+        if (cont == 0) {
+            String[] lista= {null};
+            return lista;
+        }
         String[] listaTerritoriosFinal = new String[cont];
         for (int i = 0; i < cont; i++) {
             listaTerritoriosFinal[i] = listaTerritorios[i];
@@ -143,6 +147,26 @@ import View.APIView;
     // Método que retorna a descrição do objetivo do jogador da vez
     public String getDescObjJogadorVez(int i){
         return jogo.getJogadorVez(i).getObj().getDescricao();
+    }
+
+    public String[] getTerritoriosReposicionamento(int vez){
+        ArrayList<Territorio> ter = jogo.getJogadorVez(vez).getTerritorios();
+        String[] listaTerritorios = new String[ter.size()];
+        int cont = 0;
+        for (Territorio t: ter) {
+            if (t.getQntExercitos() > 1){
+                listaTerritorios[cont] = t.getNome();
+                cont++;
+            }
+        }
+        if (cont == 0){
+            return null;
+        }
+        String[] listaTerritoriosFinal = new String[cont];
+        for (int i = 0; i < cont; i++) {
+            listaTerritoriosFinal[i] = listaTerritorios[i];
+        }
+        return listaTerritoriosFinal;
     }
 
     // Método que salva jogo em arquivo

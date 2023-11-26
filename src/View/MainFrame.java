@@ -54,6 +54,6 @@ public class MainFrame extends JFrame {
 		public void goToGamePanel() {
 			csPanel.setVisible(false);
 			getContentPane().add(gamePanel);
-			gamePanel.primeiraRodadaPosicionamento();
+			gamePanel.mudaParaPosicionamento();
 		}
 }

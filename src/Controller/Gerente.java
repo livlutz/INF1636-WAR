@@ -85,26 +85,36 @@ public class Gerente {
     }
 
     public void clicouTerminarRodada(){
+        // Se estiver na etapa de posicionamento
         if (estado == 0){
             if (true){
-                // Atualiza a view
+                // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
                 estado = 1;
             }
             else{
                 apiView.mostraAviso("Não é possível terminar a rodada agora.");
             }
+            return;
         }
-        else{
-            if(estado == 1){
-                
+
+        // Se estiver na etapa de ataque
+        if(estado == 1){
+            String[] territorios = apiJogo.getTerritoriosReposicionamento(vez);
+            // Se tiver algum território com mais de 1 exército para reposicionar
+            if (territorios != null){
+                apiView.atualizaReposicionamento(territorios);
                 estado = 2;
-            }
-            else{
-                vez = (vez + 1) % apiJogo.getQtdJogadores();
-                //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
-            }
+                return;
+            }   
         }
+        // Se não retornou ainda, ou está na etapa de reposicionamento 
+        // ou não tem mais exércitos para reposicionar
+        estado = 0;
+        vez = (vez + 1) % apiJogo.getQtdJogadores();
+        //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
+        apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
+
     }
 
     public void selecionouAtacante(String atacante){

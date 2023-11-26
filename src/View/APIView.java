@@ -66,6 +66,18 @@ public class APIView{
 	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj){
 		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj);
 	}
+	
+	public void atualizaPosicionamento(String[] territorios){
+		GamePanel.getGamePanel().mudaParaPosicionamento();
+		GamePanel.getGamePanel().atualizaPosicionamento(territorios);
+	}
+
+	public void atualizaReposicionamento(String[] territorios){
+		GamePanel.getGamePanel().mudaParaReposicionamento();
+		GamePanel.getGamePanel().atualizaReposicionamento(territorios);
+	}
+
+	
 
 	
 
