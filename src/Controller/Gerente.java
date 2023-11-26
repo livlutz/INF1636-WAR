@@ -225,7 +225,7 @@ public class Gerente {
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
 
-            apiJogo.reposicionarExercitos(origem, destino, qtd);
+            //apiJogo.reposicionarExercitos(origem, destino, qtd);
 
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
             int i = 0;

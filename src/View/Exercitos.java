@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-
 class Exercitos extends JComponent {
 	
 	//Tamanho da bolinha
@@ -26,10 +24,7 @@ class Exercitos extends JComponent {
 	Graphics2D g2d;   
 
 	// Quantidade de exércitos "Default" das bolinhas
-	private String numExercitos = "0"; 
-
-	//Qnt de exercitos que a bolinha tem como JLabel
-	JLabel qntExercitosLabel;
+	private String qntExercitos = "0"; 
 
 	//OBS : Cor do jogador correspondente à cor do exército
 
@@ -38,9 +33,7 @@ class Exercitos extends JComponent {
 		this.posX = x;
 		this.posY = y;
 		this.cor = color;
-		this.numExercitos = "1";
-		qntExercitosLabel = new JLabel(numExercitos);
-		add(qntExercitosLabel);
+		this.qntExercitos = "1";
 		setBounds(0,0, 660, 660);
 	}
 	
@@ -58,22 +51,20 @@ class Exercitos extends JComponent {
 		// Pega nova cor para contraste
 		if (cor == Color.BLACK || cor == Color.BLUE){
 			this.g2d.setPaint(Color.WHITE);
-			qntExercitosLabel.setForeground(Color.WHITE);
 		}
 		else {
 			this.g2d.setPaint(Color.BLACK);
-			qntExercitosLabel.setForeground(Color.BLACK);
 		}
 
 		// Desenha a borda 
 		this.g2d.draw(player);
 
 		// Desenha a quantidade de exercitos
-		qntExercitosLabel.setBounds(posX+7, posY+14, 20, 20);
-		qntExercitosLabel.setText(numExercitos);
+		this.g2d.drawString(qntExercitos, posX + 7, posY + 14);
 	}
 
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
 		drawPlayer(g);
 	}
@@ -122,11 +113,11 @@ class Exercitos extends JComponent {
 
 	//Retorna a quantidade de exércitos
 	public String getQntExercitos() {
-		return numExercitos;
+		return qntExercitos;
 	}
 
 	//Altera a quantidade de exércitos
 	public void setQntExercitos(String qntExercitos) {
-		this.numExercitos = qntExercitos;
+		this.qntExercitos = qntExercitos;
 	}	
 }
