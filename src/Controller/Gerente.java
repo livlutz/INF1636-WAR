@@ -28,6 +28,10 @@ public class Gerente {
     private Gerente(){
     }
 
+    // Arrays para guardar os dados de reposicionamento (bloquear reposicionamento múltiplo)
+    private String[] nomesTerritoriosReposicionamento;
+    private Integer[] qtdExercitosRepos;
+
     // Singleton
     public static Gerente getGerente(){
         if(gerente == null){
@@ -72,7 +76,7 @@ public class Gerente {
             continente++;
             territorios = apiJogo.getTerritoriosJogador(0);
             apiJogo.atualizaQtdExPosicGeral(0);
-            qtd = apiJogo.getJogadorExPosic(0);
+            qtd = apiJogo.getQtdExercitosPosic(0);
 
             apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
             return true;
@@ -106,7 +110,7 @@ public class Gerente {
     public void clicouTerminarRodada(){
         // Se estiver na etapa de posicionamento
         if (estado == 0){
-            if (apiJogo.getJogadorExPosic(vez) == 0){
+            if (apiJogo.getQtdExercitosPosic(vez) == 0){
                 // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
                 estado = 1;
@@ -119,10 +123,14 @@ public class Gerente {
 
         // Se estiver na etapa de ataque
         if(estado == 1){
-            String[] territorios = apiJogo.getTerritoriosReposicionamento(vez);
+            nomesTerritoriosReposicionamento = apiJogo.getTerritoriosReposicionamento(vez);
             // Se tiver algum território com mais de 1 exército para reposicionar
-            if (territorios != null){
-                apiView.atualizaReposicionamento(territorios);
+            if (nomesTerritoriosReposicionamento != null){
+                qtdExercitosRepos = new Integer[nomesTerritoriosReposicionamento.length];
+                for (int i = 0; i < nomesTerritoriosReposicionamento.length; i++){
+                    qtdExercitosRepos[i] = (apiJogo.getQntExTerritorio(nomesTerritoriosReposicionamento[i]) - 1);
+                }
+                apiView.atualizaReposicionamento(nomesTerritoriosReposicionamento);
                 estado = 2;
                 return;
             }   
@@ -142,7 +150,7 @@ public class Gerente {
 
             // Posiciona os exércitos e atualiza a quantidade a posicionar do jogador
             apiJogo.posicionarExercitos(territorio, qtd, vez);
-            Integer qtdEx = apiJogo.getJogadorExPosic(vez);
+            Integer qtdEx = apiJogo.getQtdExercitosPosic(vez);
 
             // Se não tiver mais exércitos para posicionar
             if (qtdEx == 0){
@@ -165,7 +173,7 @@ public class Gerente {
                 if (continente == 6){
                     apiJogo.atualizaQtdExPosicGeral(vez);
                     apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
-                    apiView.atualizaQtdPosic(apiJogo.getJogadorExPosic(vez));
+                    apiView.atualizaQtdPosic(apiJogo.getQtdExercitosPosic(vez));
                     continente++;
                     return;
                 }
@@ -196,19 +204,51 @@ public class Gerente {
     }
 
     public void selecionouOrigem(String origem){
-        //TODO: METODO INCOMPLETO - N VERIFIQUEI A LOGICA
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
-            // Atualiza comboBox do destino com adjacentes e quantidade de exércitos
+            // Atualiza comboBox do destino com adjacentes
             apiView.atualizaDestinos(apiJogo.getTerritoriosAdjDominados(origem, vez));
-            apiView.atualizaQtdReposicionamento(apiJogo.getQtdExercitos(origem));
+
+            // Pega o index do território selecionado para ver quantidade que ainda pode reposicionar
+            int i = 0;
+            for (; i < nomesTerritoriosReposicionamento.length; i++) {
+                if (nomesTerritoriosReposicionamento[i].equals(origem)) {
+                    break;
+                }
+            }
+            // Atualiza a quantidade de exércitos que ainda pode reposicionar
+            apiView.atualizaQtdRepos(qtdExercitosRepos[i]);
         }
     }
 
     public void clicouReposicionar(String origem, String destino, Integer qtd){
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
-            //TODO
+
+            apiJogo.reposicionarExercitos(origem, destino, qtd);
+
+             // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
+            int i = 0;
+            for (; i < nomesTerritoriosReposicionamento.length; i++) {
+                if (nomesTerritoriosReposicionamento[i].equals(origem)) {
+                    break;
+                }
+            }
+            qtdExercitosRepos[i] -= qtd;
+
+            // Se tiver exércitos para reposicionar continua na etapa de reposicionamento
+            for (int j = 0; j < nomesTerritoriosReposicionamento.length; j++){
+                if (qtdExercitosRepos[j] > 0){
+                    return;
+                }
+            }
+            // Se não dá carta se for o caso e passa a vez
+            //TODO Dá carta se for o caso
+            estado = 0;
+            vez = (vez + 1) % apiJogo.getQtdJogadores();
+            //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
+            apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
+            
         }
     }
 

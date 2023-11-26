@@ -81,6 +81,14 @@ public class APIView{
 		GamePanel.getGamePanel().atualizaQtdPosic(qtd);
 	}
 
+	public void atualizaQtdRepos(Integer qtd){
+		GamePanel.getGamePanel().atualizaQtdRepos(qtd);
+	}
+
+	public void atualizaDestinos(String[] destinos){
+		GamePanel.getGamePanel().atualizaDestinos(destinos);
+	}
+
 	
 
 	

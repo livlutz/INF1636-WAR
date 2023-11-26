@@ -185,10 +185,6 @@ import View.APIView;
         return jogo.getJogadorVez(vez).getQtdExercitoPosic();
     }
 
-    public int getJogadorExPosic(int vez){
-        return jogo.getJogadorVez(vez).getQtdExercitoPosic();
-    }
-
     // Retorna lista de nomes dos continentes
     public String[] getContinentesLista(){
         String[] listaContinentes = new String[tabuleiro.getMapContinentes().size()];
@@ -216,6 +212,12 @@ import View.APIView;
         Integer qtd = tabuleiro.getContinente(c).getQtdExerc();
         jogo.getJogadorVez(vez).setQtdExercitoPosic(qtd);
         return qtd;
+    }
+    
+    // Retorna quantidade de exércitos que tem em um território
+    public Integer getQntExTerritorio(String territorio){
+            Territorio t = tabuleiro.mapTerritorios.get(territorio);
+            return t.getQntExercitos();
     }
 
     // Retorna se o jogador domina o continente

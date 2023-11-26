@@ -48,9 +48,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JLabel labelAtacantes = new JLabel("Escolher atacante");
 	JComboBox<String> comboBoxDefensores;
 	JLabel labelDefensores = new JLabel("Escolher defensor");
-	JComboBox<String> comboBoxOrigemExercitos;
-	JComboBox<String> comboBoxDestinoExercitos;
-	JComboBox<Integer> comboBoxReposExercitos;
+	JComboBox<String> comboBoxOrigemRepos;
+	JComboBox<String> comboBoxDestinoRepos;
+	JComboBox<Integer> comboBoxQtdRepos;
 	JLabel labelReposicionamento = new JLabel("Selecione para reposicionar");
 	
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
@@ -123,28 +123,28 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(comboBoxDefensores);
 		
 		// ComboBox e label de colocar e mover exércitos
-		comboBoxOrigemExercitos = new JComboBox<String>();
+		comboBoxOrigemRepos = new JComboBox<String>();
 		labelReposicionamento.setBounds(1230,240,200,30);
 		add(labelReposicionamento);
-		comboBoxOrigemExercitos.setBounds(1220,270,200,30);
-		add(comboBoxOrigemExercitos); 
-		comboBoxReposExercitos = new JComboBox<Integer>();
-		comboBoxReposExercitos.setBounds(1420,270,50,30);
-		add(comboBoxReposExercitos);
-		comboBoxOrigemExercitos.addActionListener(new ActionListener(){
+		comboBoxOrigemRepos.setBounds(1220,270,200,30);
+		add(comboBoxOrigemRepos); 
+		comboBoxQtdRepos = new JComboBox<Integer>();
+		comboBoxQtdRepos.setBounds(1420,270,50,30);
+		add(comboBoxQtdRepos);
+		comboBoxOrigemRepos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				gerente.selecionouOrigem((String) comboBoxOrigemExercitos.getSelectedItem());
+				gerente.selecionouOrigem((String) comboBoxOrigemRepos.getSelectedItem());
 	        }
 		}
 		); 
 		
-		comboBoxDestinoExercitos = new JComboBox<String>();
-		comboBoxDestinoExercitos.setBounds(1220,310,200,30);
-		add(comboBoxDestinoExercitos); 
+		comboBoxDestinoRepos = new JComboBox<String>();
+		comboBoxDestinoRepos.setBounds(1220,310,200,30);
+		add(comboBoxDestinoRepos); 
 		reposButton = new JButton("=>");
 		reposButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gerente.clicouReposicionar(comboBoxOrigemExercitos.getSelectedItem().toString(), comboBoxDestinoExercitos.getSelectedItem().toString(), (Integer) comboBoxReposExercitos.getSelectedItem());
+				gerente.clicouReposicionar(comboBoxOrigemRepos.getSelectedItem().toString(), comboBoxDestinoRepos.getSelectedItem().toString(), (Integer) comboBoxQtdRepos.getSelectedItem());
 			}
 		});
 		reposButton.setBounds(1420,310,60,30);
@@ -347,8 +347,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de reposicionamento para atualizar os territórios para reposicionamento
 	public void atualizaReposicionamento(String[] territorios){
+		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
+		comboBoxOrigemRepos.addItem(null);
 		for (String s: territorios){
-			comboBoxOrigemExercitos.addItem(s);
+			comboBoxOrigemRepos.addItem(s);
 		}
 	}
 
@@ -356,6 +358,20 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxQtdPosicionamento.removeAllItems();
 		for (Integer i = 0; i <= qtd; i++){
 			comboBoxQtdPosicionamento.addItem(i);
+		}
+	}
+
+	public void atualizaQtdRepos(Integer qtd){
+		comboBoxQtdRepos.removeAllItems();
+		for (Integer i = 0; i <= qtd; i++){
+			comboBoxQtdRepos.addItem(i);
+		}
+	}
+
+	public void atualizaDestinos(String[] destinos){
+		comboBoxDestinoRepos.removeAllItems();
+		for (String s: destinos){
+			comboBoxDestinoRepos.addItem(s);
 		}
 	}
 
@@ -369,9 +385,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadosDefensores.setVisible(false);
 		dadoButton.setVisible(false);
 		labelReposicionamento.setVisible(false);
-		comboBoxOrigemExercitos.setVisible(false);
-		comboBoxDestinoExercitos.setVisible(false);
-		comboBoxReposExercitos.setVisible(false);
+		comboBoxOrigemRepos.setVisible(false);
+		comboBoxDestinoRepos.setVisible(false);
+		comboBoxQtdRepos.setVisible(false);
 		reposButton.setVisible(false);
 
 		// Deixa visível elementos da rodada de posicionamento
@@ -414,9 +430,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 		// Deixa visível elementos da rodada de reposicionamento
 		labelReposicionamento.setVisible(true);
-		comboBoxOrigemExercitos.setVisible(true);
-		comboBoxDestinoExercitos.setVisible(true);
-		comboBoxReposExercitos.setVisible(true);
+		comboBoxOrigemRepos.setVisible(true);
+		comboBoxDestinoRepos.setVisible(true);
+		comboBoxQtdRepos.setVisible(true);
 		reposButton.setVisible(true);
 	}
 
