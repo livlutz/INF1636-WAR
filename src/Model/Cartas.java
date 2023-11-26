@@ -80,16 +80,16 @@ class Cartas {
 						break;
 					// América do Sul
 					case "Argentina":
-						imagem = ImageIO.read(new File("imagens/war_carta_as_argentina.png"));
+						imagem = ImageIO.read(new File("imagens/war_carta_asl_argentina.png"));
 						break;
 					case "Brasil":
-						imagem = ImageIO.read(new File("imagens/war_carta_as_brasil.png"));
+						imagem = ImageIO.read(new File("imagens/war_carta_asl_brasil.png"));
 						break;
 					case "Peru":
-						imagem = ImageIO.read(new File("imagens/war_carta_as_peru.png"));
+						imagem = ImageIO.read(new File("imagens/war_carta_asl_peru.png"));
 						break;
 					case "Venezuela":
-						imagem = ImageIO.read(new File("imagens/war_carta_as_venezuela.png"));
+						imagem = ImageIO.read(new File("imagens/war_carta_asl_venezuela.png"));
 						break;
 					// Ásia
 					case "Arabia Saudita":
