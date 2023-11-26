@@ -221,7 +221,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		//Carrega a imagem do tabuleiro
 		try {
-			tabuleiroImg = ImageIO.read(new File("images/mapaComFundo.png"));
+			tabuleiroImg = ImageIO.read(new File("imagens/mapaComFundo.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem do tabuleiro");
@@ -271,6 +271,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				for(Exercitos e: listaExercitos){
 					e.setQntExercitos(qtds.get(cont));
 					e.setCor(cores.get(cont));
+					//TODO REPAINT
 					e.drawPlayer(g2d);
 					cont++;
 				}

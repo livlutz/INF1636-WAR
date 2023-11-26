@@ -403,6 +403,13 @@ class Jogo implements ObservadoIF{
 		listaCartas.add(c);
 		c = new Cartas(1, mapTerritorios.get("Perth"));
 		listaCartas.add(c);
+
+		//Cartas Coringa
+		c = new Cartas(3, null);
+		listaCartas.add(c);
+		c = new Cartas(3, null);
+		listaCartas.add(c);
+
 	}
 	
 	//Dá uma carta a um jogador caso ele conquiste territórios

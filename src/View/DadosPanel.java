@@ -30,19 +30,19 @@ class DadosPanel extends JPanel {
 		//Carrega as imagens dos dados
 		try {
 			
-			dadoAtacante[0] =(ImageIO.read(new File("images/dado_ataque_1.png")));
-			dadoAtacante[1] =(ImageIO.read(new File("images/dado_ataque_2.png")));
-			dadoAtacante[2] =(ImageIO.read(new File("images/dado_ataque_3.png")));
-			dadoAtacante[3] =(ImageIO.read(new File("images/dado_ataque_4.png")));
-			dadoAtacante[4] =(ImageIO.read(new File("images/dado_ataque_5.png")));
-			dadoAtacante[5] =(ImageIO.read(new File("images/dado_ataque_6.png")));
+			dadoAtacante[0] =(ImageIO.read(new File("imagens/dado_ataque_1.png")));
+			dadoAtacante[1] =(ImageIO.read(new File("imagens/dado_ataque_2.png")));
+			dadoAtacante[2] =(ImageIO.read(new File("imagens/dado_ataque_3.png")));
+			dadoAtacante[3] =(ImageIO.read(new File("imagens/dado_ataque_4.png")));
+			dadoAtacante[4] =(ImageIO.read(new File("imagens/dado_ataque_5.png")));
+			dadoAtacante[5] =(ImageIO.read(new File("imagens/dado_ataque_6.png")));
 			
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_1.png")));
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_2.png")));
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_3.png")));
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_4.png")));
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_5.png")));
-			dadoDefensor.add(ImageIO.read(new File("images/dado_defesa_6.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_1.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_2.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_3.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_4.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_5.png")));
+			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_6.png")));
 				
 		}
 

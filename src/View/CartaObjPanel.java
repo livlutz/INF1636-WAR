@@ -14,7 +14,7 @@ class CartaObjPanel extends Panel {
 	public CartaObjPanel() {
 		setBackground(Color.LIGHT_GRAY);
 		try {
-			cartaObj = ImageIO.read(new File("images/war_carta_objetivo.png"));
+			cartaObj = ImageIO.read(new File("imagens/war_carta_objetivo.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");

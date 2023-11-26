@@ -95,7 +95,7 @@ class StartingPanel extends JPanel{
 		
 		//Carrega a imagem de fundo
 		try {
-			start = ImageIO.read(new File ("images/bgconfiguracao.png"));
+			start = ImageIO.read(new File ("imagens/bgconfiguracao.png"));
 		}
 		
 		catch (IOException e) {
@@ -116,6 +116,6 @@ class StartingPanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g = (Graphics2D) g;
-		this.g.drawImage(start,0,0,1500,800,null);
+		this.g.drawImage(start,500,0,500,800,null);
 	}
 }
