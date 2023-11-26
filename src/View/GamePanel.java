@@ -251,8 +251,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 		cartaObjPanel.desenhaCartas(g2d);
 	}
 
-
-
 	// Notifica o observador
 	@Override
 	public void notifica(ObservadoIF o){
@@ -272,7 +270,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 				for(Exercitos e: listaExercitos){
 					e.setQntExercitos(qtds.get(cont));
 					e.setCor(cores.get(cont));
-					//TODO REPAINT
+					//redesenhar todos os exércitos
+					e.repaint();
 					e.drawPlayer(g2d);
 					cont++;
 				}
@@ -282,8 +281,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				Exercitos e = listaExercitos.get(mod1);
 				e.setQntExercitos(qtds.get(mod1));
 				e.setCor(cores.get(mod1));
-
-				//TODO REPAINT
+				e.repaint();
 				e.drawPlayer(g2d);
 				
 				repaint();
@@ -291,7 +289,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 					e = listaExercitos.get(mod2);
 					e.setQntExercitos(qtds.get(mod2));
 					e.setCor(cores.get(mod2));
-					//TODO REPAINT
+					e.repaint();
 					e.drawPlayer(g2d);
 				}
 			}
