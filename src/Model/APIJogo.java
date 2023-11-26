@@ -49,8 +49,8 @@ import View.APIView;
     public String[] getTerritoriosLista() {
 		String [] terr = new String[51]; 
 		int cont = 0;
-		for (String t: tabuleiro.mapTerritorios.keySet()) {
-            terr[cont] = t;
+		for (Territorio t: tabuleiro.getlistaTerritorios()) {
+            terr[cont] = t.getNome();
             cont ++;
 		}
 

@@ -139,6 +139,9 @@ class Jogo implements ObservadoIF{
 	public void reposicionarExercitos(Territorio origem, Territorio destino, Integer qtd){
 		origem.alterarQndExercitos(-qtd);
 		destino.alterarQndExercitos(qtd);
+		mod1 = origem;
+		mod2 = destino;
+		this.notificaObs();
 	}
     
 	//Valida um ataque

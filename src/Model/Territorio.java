@@ -103,19 +103,19 @@ class Territorio {
 				case "Vancouver":
 				t.AddAdjacente(tabuleiro.getTerritorio("California"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Texas"));
-				t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+				t.AddAdjacente(tabuleiro.getTerritorio("Alasca"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
 				break;
 
-				case "Alaska":
+				case "Alasca":
 				t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Siberia"));
 				break;
 
 				case "Calgary":
-				t.AddAdjacente(tabuleiro.getTerritorio("Alaska"));
+				t.AddAdjacente(tabuleiro.getTerritorio("Alasca"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Vancouver"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Groelandia"));
 				break;
@@ -123,7 +123,7 @@ class Territorio {
 				case "Groelandia":
 				t.AddAdjacente(tabuleiro.getTerritorio("Calgary"));
 				t.AddAdjacente(tabuleiro.getTerritorio("Quebec"));
-				t.AddAdjacente(tabuleiro.getTerritorio("Reio Unido"));
+				t.AddAdjacente(tabuleiro.getTerritorio("Reino Unido"));
 				break;
 
 				case "Nova York":

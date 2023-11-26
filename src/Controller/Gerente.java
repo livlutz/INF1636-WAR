@@ -268,8 +268,7 @@ public class Gerente {
     public void clicouReposicionar(String origem, String destino, Integer qtd){
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
-
-            //TODO
+            // Reposiciona os exércitos
             apiJogo.reposicionarExercitos(origem, destino, qtd);
 
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
