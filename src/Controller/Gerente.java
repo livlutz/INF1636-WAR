@@ -21,6 +21,9 @@ public class Gerente {
     // Guarda o jogador da vez
 	private int vez = 0;
 
+    // Guarda identificador de continentes 
+    private int continente = 1;
+
     // Construtor privado para o singleton
     private Gerente(){
     }
@@ -81,7 +84,18 @@ public class Gerente {
     }
 
     public void clicouPosicionar(String territorio, Integer qtd){
-        //TODO
+        if (estado == 0){
+            apiJogo.posicionarExercitos(territorio, qtd, vez);
+            Integer qtdEx = apiJogo.getJogadorExPosic(vez);
+            if (qtdEx == 0){
+                
+            }
+            else{
+                apiView.atualizaQtdPosic(qtdEx);
+            }
+            return;
+        }
+        return;
     }
 
     public void clicouTerminarRodada(){

@@ -169,6 +169,27 @@ import View.APIView;
         return listaTerritoriosFinal;
     }
 
+    public void posicionarExercitos(String t, int qtd, int vez){
+        jogo.getJogadorVez(vez).posicionarExercitos(tabuleiro.mapTerritorios.get(t), qtd);
+        jogo.setMod1(tabuleiro.mapTerritorios.get(t));
+        jogo.setMod2(null);
+        jogo.notificaObs();
+    }
+
+    // Método que retorna a quantidade de exércitos que o jogador pode posicionar
+    public int getQtdExercitosPosic(int vez){
+        return jogo.getJogadorVez(vez).getQtdExercitoPosic();
+    }
+
+    public int getJogadorExPosic(int vez){
+        return jogo.getJogadorVez(vez).getQtdExercitoPosic();
+    }
+
+    // Método que retorna a quantidade de jogadores
+    public int getQtdJogadores(){
+        return jogo.getJogadores().size();
+    }
+
     // Método que salva jogo em arquivo
     /*Informacoes para salvar
      * -qtd de jogadores
@@ -257,6 +278,8 @@ import View.APIView;
         }
     }
 
+
+
     // Método que carrega jogo de arquivo
     public boolean carregarJogo(){
         try {
@@ -338,13 +361,4 @@ import View.APIView;
         }
     }
 
-    // Método que retorna a quantidade de exércitos que o jogador pode posicionar
-    public int getQtdExercitosPosic(int vez){
-        return jogo.getJogadorVez(vez).getQtdExercitoPosic();
-    }
-
-    // Método que retorna a quantidade de jogadores
-    public int getQtdJogadores(){
-        return jogo.getJogadores().size();
-    }
 }

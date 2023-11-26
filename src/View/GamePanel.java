@@ -221,8 +221,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 			}
 		});
 		
-		//territorios = getTerritoriosLista();
-		
 		//Carrega a imagem do tabuleiro
 		try {
 			tabuleiroImg = ImageIO.read(new File("images/mapaComFundo.png"));
@@ -380,6 +378,13 @@ class GamePanel extends JPanel implements ObservadorIF {
 	public void atualizaReposicionamento(String[] territorios){
 		for (String s: territorios){
 			comboBoxOrigemExercitos.addItem(s);
+		}
+	}
+
+	public void atualizaQtdPosic(Integer qtd){
+		comboBoxQtdPosicionamento.removeAllItems();
+		for (Integer i = 0; i <= qtd; i++){
+			comboBoxQtdPosicionamento.addItem(i);
 		}
 	}
 

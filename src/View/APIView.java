@@ -77,6 +77,10 @@ public class APIView{
 		GamePanel.getGamePanel().atualizaReposicionamento(territorios);
 	}
 
+	public void atualizaQtdPosic(Integer qtd){
+		GamePanel.getGamePanel().atualizaQtdPosic(qtd);
+	}
+
 	
 
 	

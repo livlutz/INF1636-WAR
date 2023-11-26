@@ -105,6 +105,7 @@ class Jogador {
 	// Cabe a função que chamou verificar se pode
 	public void posicionarExercitos(Territorio t, int qtdExercitos){
 		t.alterarQndExercitos(qtdExercitos);
+		this.qtdExercitoPosic -= qtdExercitos;
 	}
 
 	// Executa todos os passos para a rodada de posicionamento de um jogador
