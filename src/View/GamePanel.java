@@ -507,7 +507,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				case "Reino Unido":
 					exercitos = new Exercitos(540,192,gerente.getCorTerritorio(t));
 					break;
-				case "Romania":
+				case "Romenia":
 					exercitos = new Exercitos(678,278,gerente.getCorTerritorio(t));
 					break;
 				case "Ucrania":

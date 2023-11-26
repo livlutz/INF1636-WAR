@@ -152,7 +152,7 @@ class Tabuleiro{
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
-				t = new Territorio("Romania");
+				t = new Territorio("Romenia");
 				mapTerritorios.put(t.getNome(), t);
 				listaTerritorios.add(t);
 				
@@ -469,7 +469,7 @@ class Tabuleiro{
 		t = mapTerritorios.get("Nova Zelandia");
 		c.territorios.add(t);
 
-		t = mapTerritorios.get("Indoneia");
+		t = mapTerritorios.get("Indonesia");
 		c.territorios.add(t);
 
 		t = mapTerritorios.get("Perth");
