@@ -204,6 +204,9 @@ import View.APIView;
         jogo.notificaObs();
     }
 
+    public void reposicionarExercitos(String origem, String destino, Integer qtd){
+        jogo.reposicionarExercitos(tabuleiro.mapTerritorios.get(origem), tabuleiro.mapTerritorios.get(destino), qtd);
+    }
     // Método que retorna a quantidade de exércitos que o jogador pode posicionar
     public int getQtdExercitosPosic(int vez){
         return jogo.getJogadorVez(vez).getQtdExercitoPosic();

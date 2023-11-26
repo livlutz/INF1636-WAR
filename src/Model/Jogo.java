@@ -134,6 +134,12 @@ class Jogo implements ObservadoIF{
         return true;
 
     }
+
+	// Método para reposicionar exércitos
+	public void reposicionarExercitos(Territorio origem, Territorio destino, Integer qtd){
+		origem.alterarQndExercitos(-qtd);
+		destino.alterarQndExercitos(qtd);
+	}
     
 	//Valida um ataque
 	public boolean VerificarAtaque(Territorio tAtacante) {
