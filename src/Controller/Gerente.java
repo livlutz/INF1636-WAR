@@ -190,8 +190,25 @@ public class Gerente {
             if(atacante != null){
             // Atualiza comboBox dos defensores com os adjacentes 
 
-            apiView.atualizaDefensores(apiJogo.getTerritoriosDefensores(atacante, vez));
+            apiView.atualizaDefensores(apiJogo.getTerritoriosAdjDominados(atacante, vez));
             }
+        }
+    }
+
+    public void selecionouOrigem(String origem){
+        //TODO: METODO INCOMPLETO - N VERIFIQUEI A LOGICA
+        // Se estiver na etapa de reposicionamento
+        if (estado == 2){
+            // Atualiza comboBox do destino com adjacentes e quantidade de exércitos
+            apiView.atualizaDestinos(apiJogo.getTerritoriosAdjDominados(origem, vez));
+            apiView.atualizaQtdReposicionamento(apiJogo.getQtdExercitos(origem));
+        }
+    }
+
+    public void clicouReposicionar(String origem, String destino, Integer qtd){
+        // Se estiver na etapa de reposicionamento
+        if (estado == 2){
+            //TODO
         }
     }
 

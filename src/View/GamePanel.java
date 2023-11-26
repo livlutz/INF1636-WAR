@@ -25,7 +25,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Graphics2D g2d; 
 	
 	//Botões e comboboxes
-	JButton salvarButton, dadoButton, nextButton, trocarCartasButton, posicButton, addExercito, destinoExercito;
+	JButton salvarButton, dadoButton, nextButton, trocarCartasButton, posicButton, reposButton;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territórios no jogo
@@ -50,6 +50,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JLabel labelDefensores = new JLabel("Escolher defensor");
 	JComboBox<String> comboBoxOrigemExercitos;
 	JComboBox<String> comboBoxDestinoExercitos;
+	JComboBox<Integer> comboBoxReposExercitos;
 	JLabel labelReposicionamento = new JLabel("Selecione para reposicionar");
 	
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
@@ -127,26 +128,27 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(labelReposicionamento);
 		comboBoxOrigemExercitos.setBounds(1220,270,200,30);
 		add(comboBoxOrigemExercitos); 
-		addExercito = new JButton("+1");
-		addExercito.addActionListener(new ActionListener() {
+		comboBoxReposExercitos = new JComboBox<Integer>();
+		comboBoxReposExercitos.setBounds(1420,270,50,30);
+		add(comboBoxReposExercitos);
+		comboBoxOrigemExercitos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		addExercito.setBounds(1420,270,60,30);
-		add(addExercito);
+				gerente.selecionouOrigem((String) comboBoxOrigemExercitos.getSelectedItem());
+	        }
+		}
+		); 
 		
 		comboBoxDestinoExercitos = new JComboBox<String>();
 		comboBoxDestinoExercitos.setBounds(1220,310,200,30);
 		add(comboBoxDestinoExercitos); 
-		destinoExercito = new JButton("->");
-		destinoExercito.addActionListener(new ActionListener() {
+		reposButton = new JButton("=>");
+		reposButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				gerente.clicouReposicionar(comboBoxOrigemExercitos.getSelectedItem().toString(), comboBoxDestinoExercitos.getSelectedItem().toString(), (Integer) comboBoxReposExercitos.getSelectedItem());
 			}
 		});
-		destinoExercito.setBounds(1420,310,60,30);
-		add(destinoExercito);
+		reposButton.setBounds(1420,310,60,30);
+		add(reposButton);
 	
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
@@ -157,7 +159,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(cartaObjPanel);
 		
 		//Cria e adiciona os botões
-		String filePath = new File("").getAbsolutePath();
 		salvarButton = new JButton("Salvar o jogo");
 		dadoButton = new JButton("Jogar os dados");
 		nextButton = new JButton("Passar rodada");
@@ -369,12 +370,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxDefensores.setVisible(false);
 		dadosDefensores.setVisible(false);
 		dadoButton.setVisible(false);
-
 		labelReposicionamento.setVisible(false);
 		comboBoxOrigemExercitos.setVisible(false);
 		comboBoxDestinoExercitos.setVisible(false);
-		addExercito.setVisible(false);
-		destinoExercito.setVisible(false);
+		comboBoxReposExercitos.setVisible(false);
+		reposButton.setVisible(false);
 
 		// Deixa visível elementos da rodada de posicionamento
 		labelPosicionamento.setVisible(true);
@@ -418,8 +418,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		labelReposicionamento.setVisible(true);
 		comboBoxOrigemExercitos.setVisible(true);
 		comboBoxDestinoExercitos.setVisible(true);
-		addExercito.setVisible(true);
-		destinoExercito.setVisible(true);
+		comboBoxReposExercitos.setVisible(true);
+		reposButton.setVisible(true);
 	}
 
 	//Desenha cada território 

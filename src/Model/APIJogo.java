@@ -116,7 +116,7 @@ import View.APIView;
     }
 
     // Método que retorna adjacentes não dominados de um território por string
-    public String[] getTerritoriosDefensores(String t, int vez) {
+    public String[] getTerritoriosAdjDominados(String t, int vez) {
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
