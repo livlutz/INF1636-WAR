@@ -27,7 +27,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Graphics2D g2d; 
 	
 	//Botões e comboboxes
-	JButton salvarButton,dadoButton, nextButton, trocarCartasButton,addExercito,destinoExercito;
+	JButton salvarButton, dadoButton, nextButton, trocarCartasButton, posicButton, addExercito, destinoExercito;
 	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territórios no jogo
@@ -42,11 +42,17 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Gerente
 	Gerente gerente = Gerente.getGerente();
 
-	//ComboBoxes
+	//ComboBoxes e labels
+	JComboBox<String> comboBoxPosicionamento;
+	JLabel labelPosicionamento = new JLabel("Posicionar exercitos em");
+	JComboBox<Integer> comboBoxQtdPosicionamento;
 	JComboBox<String> comboBoxAtacantes;
+	JLabel labelAtacantes = new JLabel("Escolher atacante");
 	JComboBox<String> comboBoxDefensores;
+	JLabel labelDefensores = new JLabel("Escolher defensor");
 	JComboBox<String> comboBoxColocaExercitos;
 	JComboBox<String> comboBoxDestinoExercitos;
+	JLabel labelReposicionamento = new JLabel("Selecione para reposicionar");
 	
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
@@ -68,14 +74,39 @@ class GamePanel extends JPanel implements ObservadorIF {
 		setLayout(null);
 
 		//Cria e adiciona os comboBoxes
+
+		// ComboBox e label de posicionamento
+		comboBoxPosicionamento = new JComboBox<String>();
+		comboBoxPosicionamento.setBounds(1220,40,150,30);
+
+		comboBoxQtdPosicionamento = new JComboBox<Integer>();
+		comboBoxQtdPosicionamento.setBounds(1370,40,50,30);
+
+		posicButton = new JButton("Add");
+		posicButton.setBounds(1420,40,60,30);
+
+		labelPosicionamento.setBounds(1230,10,200,30);
+		add(labelPosicionamento);
+		add(comboBoxPosicionamento);
+		add(comboBoxQtdPosicionamento);
+		add(posicButton);
+
+		// Adiciona ação ao botão de posicionar
+		posicButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gerente.clicouPosicionar(comboBoxPosicionamento.getSelectedItem().toString(), (Integer) comboBoxQtdPosicionamento.getSelectedItem());
+			}
+		});
+
+		// ComboBox e label de atacantes
 		comboBoxAtacantes = new JComboBox<String>();
-		JLabel atacantes = new JLabel("Atacantes");
-		atacantes.setBounds(1250,90,200,30);
-		add(atacantes);
-		comboBoxAtacantes.setBounds(1220,120,200,30);
-		dadosAtacante.setBounds(1420,120,50,30);
+		labelAtacantes.setBounds(1230,70,200,30);
+		comboBoxAtacantes.setBounds(1220,100,200,30);
+		dadosAtacante.setBounds(1420,100,50,30);
+		add(labelAtacantes);
 		add(dadosAtacante);    
 		add(comboBoxAtacantes);
+		// Adiciona ação ao selecionar um atacante
 		comboBoxAtacantes.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				gerente.selecionouAtacante((String) comboBoxAtacantes.getSelectedItem());
@@ -83,20 +114,20 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 		); 
 
+		// ComboBox e label de defensores
 		comboBoxDefensores = new JComboBox<String>();
-		JLabel defensores = new JLabel("Defensores");
-		defensores.setBounds(1250,140,200,30);
-		add(defensores);
-		comboBoxDefensores.setBounds(1220,170,200,30);
-		dadosDefensores.setBounds(1420,170,50,30);
+		labelDefensores.setBounds(1230,130,200,30);
+		comboBoxDefensores.setBounds(1220,160,200,30);
+		dadosDefensores.setBounds(1420,160,50,30);
+		add(labelDefensores);
 		add(dadosDefensores);
 		add(comboBoxDefensores);
 		
+		// ComboBox e label de colocar e mover exércitos
 		comboBoxColocaExercitos = new JComboBox<String>();
-		JLabel selecionaPais = new JLabel("Colocar exercitos");
-		selecionaPais.setBounds(1250,200,200,30);
-		add(selecionaPais);
-		comboBoxColocaExercitos.setBounds(1220,230,200,30);
+		labelReposicionamento.setBounds(1230,240,200,30);
+		add(labelReposicionamento);
+		comboBoxColocaExercitos.setBounds(1220,270,200,30);
 		add(comboBoxColocaExercitos); 
 		addExercito = new JButton("+1");
 		addExercito.addActionListener(new ActionListener() {
@@ -104,11 +135,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 				
 			}
 		});
-		addExercito.setBounds(1420,230,60,30);
+		addExercito.setBounds(1420,270,60,30);
 		add(addExercito);
 		
 		comboBoxDestinoExercitos = new JComboBox<String>();
-		comboBoxDestinoExercitos.setBounds(1220,270,200,30);
+		comboBoxDestinoExercitos.setBounds(1220,310,200,30);
 		add(comboBoxDestinoExercitos); 
 		destinoExercito = new JButton("->");
 		destinoExercito.addActionListener(new ActionListener() {
@@ -116,7 +147,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				
 			}
 		});
-		destinoExercito.setBounds(1420,270,60,30);
+		destinoExercito.setBounds(1420,310,60,30);
 		add(destinoExercito);
 	
 		//Cria e adiciona o painel dos dados
@@ -135,9 +166,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		trocarCartasButton = new JButton("Trocar cartas");
 		
 		salvarButton.setBounds(50,20,200,30);
-		dadoButton.setBounds(1250,310,200,30);
-		nextButton.setBounds(1250,530,200,30);
-		trocarCartasButton.setBounds(1250,20,200,30);
+		dadoButton.setBounds(1250,200,200,30);
+		nextButton.setBounds(980,730,200,30);
+		trocarCartasButton.setBounds(1250,535,200,30);
 		
 		add(trocarCartasButton);
 		add(salvarButton);
@@ -253,7 +284,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		g2d.setColor(corDoJogador);
 		g2d.fillOval(580, 650, 50, 50);
-		jogadorDaVezLabel.setText("Vez de " + jogadorDaVez);
+		jogadorDaVezLabel.setText(jogadorDaVez);
 		desenhaExercitos(this.g2d);
 		cartaObjPanel.desenhaCartas(g2d);
 	}

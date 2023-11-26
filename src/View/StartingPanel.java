@@ -56,7 +56,7 @@ class StartingPanel extends JPanel{
 					selected++;
 				}
 				if(selected == 0) {
-					JOptionPane.showMessageDialog(null, "Selecione o número de jogadores");
+					JOptionPane.showMessageDialog(null, "Selecione o número de jogadores", "Erro", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				CharacterSelectionPanel.getCharacterSelectionPanel().drawJogadores();

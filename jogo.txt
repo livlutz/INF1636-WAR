@@ -1,59 +1,60 @@
 3
-c b a 
-c -16711936
-b -65536
-a -16776961
-Groelandia 1 a
-Angola 1 b
-Turquia 1 b
-Iraque 1 a
-Mongolia 1 b
-Siria 1 a
-Paquistao 1 a
-Coreia do Sul 1 a
-Arabia Saudita 1 b
-Argentina 1 c
-Calgary 1 b
-Japao 1 c
-Perth 1 a
-California 1 b
-Cazaquistao 1 a
-India 1 b
-Nova Zelandia 1 c
-Tailandia 1 a
-Texas 1 c
-Ira 1 a
-Peru 1 c
-Africa do Sul 1 b
-Vancouver 1 c
-Somalia 1 a
-Nova York 1 a
-Russia 1 b
-Franca 1 a
-Brasil 1 a
-Alasca 1 c
-China 1 c
-Siberia 1 a
-Ucrania 1 a
-Nigeria 1 c
-Egito 1 a
-Romania 1 c
-Polonia 1 c
-Quebec 1 c
-Espanha 1 b
-Italia 1 c
-Argelia 1 b
-Reino Unido 1 c
-Coreia do Norte 1 b
-Venezuela 1 b
-Bangladesh 1 b
-Mexico 1 c
-Suecia 1 c
-Letonia 1 b
-Australia 1 b
-Jordania 1 b
-Estonia 1 a
-Indonesia 1 c
-c 1 Conquistar os continentes America do Norte e Oceania
-b 1 Conquistar os continentes America do Norte e Africa
-a 3 Conquistar 18 TERRITÃ“RIOS e ocupar cada um deles com pelo menos dois exÃ©rcitos
+0
+Crisxto Betinha Joao 
+Crisxto -65536
+Betinha -16711936
+Joao -16776961
+Groelandia 1 Crisxto
+Angola 1 Betinha
+Turquia 1 Betinha
+Iraque 1 Betinha
+Mongolia 1 Crisxto
+Siria 1 Betinha
+Paquistao 1 Crisxto
+Coreia do Sul 1 Crisxto
+Arabia Saudita 1 Crisxto
+Argentina 1 Joao
+Calgary 1 Joao
+Japao 1 Joao
+Perth 1 Betinha
+California 1 Crisxto
+Cazaquistao 1 Betinha
+India 1 Crisxto
+Nova Zelandia 1 Joao
+Tailandia 1 Crisxto
+Texas 1 Joao
+Ira 1 Crisxto
+Peru 1 Betinha
+Africa do Sul 1 Joao
+Vancouver 1 Joao
+Somalia 1 Betinha
+Nova York 1 Crisxto
+Russia 1 Crisxto
+Franca 1 Joao
+Brasil 1 Joao
+Alasca 1 Betinha
+China 1 Crisxto
+Siberia 1 Crisxto
+Ucrania 1 Betinha
+Nigeria 1 Joao
+Egito 1 Betinha
+Romania 1 Betinha
+Polonia 1 Joao
+Quebec 1 Joao
+Espanha 1 Betinha
+Italia 1 Joao
+Argelia 1 Betinha
+Reino Unido 1 Joao
+Coreia do Norte 1 Crisxto
+Venezuela 1 Joao
+Bangladesh 1 Betinha
+Mexico 1 Crisxto
+Suecia 1 Joao
+Letonia 1 Crisxto
+Australia 1 Betinha
+Jordania 1 Joao
+Estonia 1 Betinha
+Indonesia 1 Crisxto
+Crisxto 2 Destruir totalmente os EXÉRCITOS se é você quem possui os exércitos  ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS
+Betinha 1 Conquistar os continentes America do Norte e Africa
+Joao 1 Conquistar os continentes Europa, America do Sul e mais um continente à sua escolha

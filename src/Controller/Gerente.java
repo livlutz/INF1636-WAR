@@ -80,6 +80,10 @@ public class Gerente {
         }
     }
 
+    public void clicouPosicionar(String territorio, Integer qtd){
+        //TODO
+    }
+
     public void clicouTerminarRodada(){
         if (estado == 0){
             if (true){

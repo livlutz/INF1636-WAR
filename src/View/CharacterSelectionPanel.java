@@ -42,7 +42,7 @@ class CharacterSelectionPanel extends JPanel {
 					// Se não puder começar, limpa os arrays e mostra mensagem
 					nomesJogadores.clear();
 					coresJogadores.clear();
-					JOptionPane.showMessageDialog(null, "Nomes ou cores inválidos ou repetidos");
+					JOptionPane.showMessageDialog(null, "Nomes ou cores inválidos ou repetidos", "Erro", JOptionPane.ERROR_MESSAGE);
 				}
 	        }
 		}
