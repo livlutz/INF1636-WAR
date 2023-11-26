@@ -185,9 +185,53 @@ import View.APIView;
         return jogo.getJogadorVez(vez).getQtdExercitoPosic();
     }
 
+    // Retorna lista de nomes dos continentes
+    public String[] getContinentesLista(){
+        String[] listaContinentes = new String[tabuleiro.getMapContinentes().size()];
+        int cont = 0;
+        for (Continente c: tabuleiro.getMapContinentes().values()) {
+            listaContinentes[cont] = c.getNome();
+            cont++;
+        }
+        return listaContinentes;
+    }
+
+    // Retorna lista de nomes dos territórios de um continente
+    public String[] getTerritoriosCont(String c){
+        String[] listaTerritorios = new String[tabuleiro.getMapContinentes().get(c).getTerritorios().size()];
+        int cont = 0;
+        for (Territorio t: tabuleiro.getMapContinentes().get(c).getTerritorios()) {
+            listaTerritorios[cont] = t.getNome();
+            cont++;
+        }
+        return listaTerritorios;
+    }
+
+    // Retorna quantidade de exércitos a posicionar no continente e atualiza a variável de exércitos a posicionar no jogador
+    public Integer getExCont(int vez, String c){
+        Integer qtd = tabuleiro.getContinente(c).getQtdExerc();
+        jogo.getJogadorVez(vez).setQtdExercitoPosic(qtd);
+        return qtd;
+    }
+
+    // Retorna se o jogador domina o continente
+    public boolean dominaCont(int vez, String c){
+        return tabuleiro.getContinente(c).dominado(jogo.getJogadorVez(vez));
+    }
+
+    // Atualiza a variável de exércitos a posicionar no jogador
+    public void atualizaQtdExPosicGeral(int vez){
+        jogo.getJogadorVez(vez).atualizaQtdExPosicGeral();
+    }
+
     // Método que retorna a quantidade de jogadores
     public int getQtdJogadores(){
         return jogo.getJogadores().size();
+    }
+
+    // Notifica observadores de jogo
+    public void notificaObsJogo(){
+        jogo.notificaObs();
     }
 
     // Método que salva jogo em arquivo

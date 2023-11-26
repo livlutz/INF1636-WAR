@@ -63,6 +63,11 @@ class Exercitos extends JComponent {
 		// Desenha a quantidade de exercitos
 		this.g2d.drawString(qntExercitos, posX + 7, posY + 14);
 	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		drawPlayer(g);
+	}
 	
 	//----------------------------- getters & setters -----------------//
 	

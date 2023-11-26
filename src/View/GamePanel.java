@@ -5,8 +5,6 @@ import Model.APIJogo;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -229,41 +227,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 			System.out.println("Nao foi possivel carregar a imagem do tabuleiro");
 			
 		}
-		//System.out.println(filePath);
-		/*addMouseListener(new MouseListener() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	int x=e.getX();
-		        int y=e.getY();
-		        System.out.println(x+","+y);//these co-ords are relative to the component
-		    }
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		*/
 		
 	}
 	
@@ -317,11 +280,16 @@ class GamePanel extends JPanel implements ObservadorIF {
 				Exercitos e = listaExercitos.get(mod1);
 				e.setQntExercitos(qtds.get(mod1));
 				e.setCor(cores.get(mod1));
+
+				//TODO REPAINT
 				e.drawPlayer(g2d);
+				
+				repaint();
 				if (mod2 != -1){
 					e = listaExercitos.get(mod2);
 					e.setQntExercitos(qtds.get(mod2));
 					e.setCor(cores.get(mod2));
+					//TODO REPAINT
 					e.drawPlayer(g2d);
 				}
 			}

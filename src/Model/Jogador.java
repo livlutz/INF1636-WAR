@@ -253,6 +253,10 @@ class Jogador {
 		this.qtdTerritorios--;
 	}
 
+	public void atualizaQtdExPosicGeral(){
+		this.qtdExercitoPosic = this.qtdTerritorios/2;
+	}
+
 	// --------------------------- getters & setters ---------------------------
 
 	//Retorna a cor do jogador

@@ -22,7 +22,7 @@ public class Gerente {
 	private int vez = 0;
 
     // Guarda identificador de continentes 
-    private int continente = 1;
+    private int continente;
 
     // Construtor privado para o singleton
     private Gerente(){
@@ -60,17 +60,20 @@ public class Gerente {
         if (apiJogo.comecaJogo()){
             String[] territorios;
             Integer qtd;
-            for (String c: apiJogo.getContinentesLista()){
-                if (apiJogo.dominaCont(0, c)){
-                    territorios = apiJogo.getTerritoriosCont(c);
-                    qtd = apiJogo.getExCont(0, c);
-                    continente++;
+            for (continente = 0; continente < 6; continente++){
+                if (apiJogo.dominaCont(0, apiJogo.getContinentesLista()[continente])){
+                    territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
+                    qtd = apiJogo.getExCont(0, apiJogo.getContinentesLista()[continente]);
+                    apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
+                    return true;
                 }
             }
-            if (continente == 6){
-                territorios = apiJogo.getTerritoriosJogador(0);
-                qtd = apiJogo.getJogadorExPosic(0);
-            }
+            // Atualiza identificador de continentes, para indicar que já testou todos
+            continente++;
+            territorios = apiJogo.getTerritoriosJogador(0);
+            apiJogo.atualizaQtdExPosicGeral(0);
+            qtd = apiJogo.getJogadorExPosic(0);
+
             apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
             return true;
         }
@@ -92,7 +95,11 @@ public class Gerente {
             apiView.mostraAviso("Não foi encontrado nenhum jogo salvo.");
         }
         else{
-            apiView.mostraAviso("Jogo carregado com sucesso!");
+            // Abre game panel
+            MainFrame.getMainFrame().goToGamePanel();
+            // Notifica obs de jogo para redesenhar exércitos
+            apiJogo.notificaObsJogo();
+            //TODO
         }
     }
 
@@ -164,7 +171,7 @@ public class Gerente {
                 }
                 // Se não tiver mais exércitos para posicionar
                 // Zera contador de continentes
-                continente = 1;
+                continente = 0;
                 // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
                 estado = 1;
