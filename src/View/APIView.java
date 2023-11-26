@@ -91,7 +91,7 @@ public class APIView{
 	}
 
 	public void mudaJogador(String jogador, Color cor, String descricaoObj, Image[] cartas){
-		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
+		GamePanel.getGamePanel().mudaJogador(jogador, cor, descricaoObj, cartas);
 	}
 
 	

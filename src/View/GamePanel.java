@@ -317,13 +317,13 @@ class GamePanel extends JPanel implements ObservadorIF {
 	}
 
 	// Muda o jogador da vez na view
-	public void mudaJogador(String nome, String cor, String descricaoObj, Image[] cartas){
+	public void mudaJogador(String nome, Color cor, String descricaoObj, Image[] cartas){
 		//mudar a cor do jogador da vez na view
 		//escrever o objetivo na carta
 		//mudar as cartas pro jogador da vez
 		
 		this.jogadorDaVez = nome;
-		this.corDoJogador = Color.getColor(cor);
+		this.corDoJogador = cor;
 		this.descricaoObjetivo = descricaoObj;
 		//this.cartaObjPanel.setCartas(cartas);
 		repaint();
