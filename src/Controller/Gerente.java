@@ -302,6 +302,10 @@ public class Gerente {
         return apiJogo.getCorTerritorio(t);
     }
 
+    public Integer getQtdExercitos(String t){
+        return apiJogo.getQntExTerritorio(t);
+    }
+
     // Método que retorna a lista de territórios do jogo
     public String[] getTerritoriosLista(){
         return apiJogo.getTerritoriosLista();

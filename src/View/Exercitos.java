@@ -29,11 +29,11 @@ class Exercitos extends JComponent {
 	//OBS : Cor do jogador correspondente à cor do exército
 
 	//Construtor
-	public Exercitos(int x, int y,Color color) {
+	public Exercitos(int x, int y,Color color, String qntExercitos) {
 		this.posX = x;
 		this.posY = y;
 		this.cor = color;
-		this.qntExercitos = "1";
+		this.qntExercitos = qntExercitos;
 		setBounds(0,0, 660, 660);
 	}
 	

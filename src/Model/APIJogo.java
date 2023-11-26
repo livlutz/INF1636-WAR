@@ -252,6 +252,7 @@ import View.APIView;
         }
         return imgCartas;
     }
+    
     // Retorna quantidade de exércitos que tem em um território
     public Integer getQntExTerritorio(String territorio){
             Territorio t = tabuleiro.mapTerritorios.get(territorio);
