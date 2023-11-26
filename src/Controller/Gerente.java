@@ -139,9 +139,35 @@ public class Gerente {
         // ou não tem mais exércitos para reposicionar
         estado = 0;
         vez = (vez + 1) % apiJogo.getQtdJogadores();
-        //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
-        apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
+        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+        primeiroPosicionamento();
+    }
 
+    private void primeiroPosicionamento(){
+        String[] territorios;
+        Integer qtd;
+        // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro
+        for (continente = 0; continente < 6; continente++){
+            if (apiJogo.dominaCont(vez, apiJogo.getContinentesLista()[continente])){
+                territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
+                qtd = apiJogo.getExCont(vez, apiJogo.getContinentesLista()[continente]);
+                // Atualiza a view para posicionar no continente dominado
+                apiView.atualizaPosicionamento(territorios);
+                apiView.atualizaQtdPosic(qtd);
+                return;
+            }
+        }
+        // Atualiza identificador de continentes, para indicar que já testou todos
+        continente++;
+        // Se não tiver nenhum continente dominado, posiciona no resto dos territórios
+        territorios = apiJogo.getTerritoriosJogador(vez);
+        apiJogo.atualizaQtdExPosicGeral(vez);
+        qtd = apiJogo.getQtdExercitosPosic(vez);
+        
+        // Atualiza a view para posicionar no resto dos territórios
+        apiView.atualizaPosicionamento(territorios);
+        apiView.atualizaQtdPosic(qtd);
+        return;
     }
 
     public void clicouPosicionar(String territorio, Integer qtd){
@@ -198,12 +224,16 @@ public class Gerente {
             if(atacante != null){
             // Atualiza comboBox dos defensores com os adjacentes 
 
-            apiView.atualizaDefensores(apiJogo.getTerritoriosAdjDominados(atacante, vez));
+            apiView.atualizaDefensores(apiJogo.getTerritoriosAdjNaoDominados(atacante, vez));
             }
         }
     }
 
     public void selecionouOrigem(String origem){
+        // Se selecionado for nulo não faz nada
+        if (origem == null){
+            return;
+        }
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
             // Atualiza comboBox do destino com adjacentes
@@ -225,7 +255,8 @@ public class Gerente {
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
 
-            apiJogo.reposicionarExercitos(origem, destino, qtd);
+            //TODO
+            //apiJogo.reposicionarExercitos(origem, destino, qtd);
 
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
             int i = 0;
@@ -234,11 +265,16 @@ public class Gerente {
                     break;
                 }
             }
+            System.out.println(qtdExercitosRepos[i]);
+            System.out.println( origem + destino + qtd);
             qtdExercitosRepos[i] -= qtd;
+            System.out.println(qtdExercitosRepos[i]);
 
             // Se tiver exércitos para reposicionar continua na etapa de reposicionamento
             for (int j = 0; j < nomesTerritoriosReposicionamento.length; j++){
                 if (qtdExercitosRepos[j] > 0){
+                    apiView.atualizaReposicionamento(nomesTerritoriosReposicionamento);
+                    apiView.atualizaQtdRepos(0);
                     return;
                 }
             }
@@ -246,9 +282,8 @@ public class Gerente {
             //TODO Dá carta se for o caso
             estado = 0;
             vez = (vez + 1) % apiJogo.getQtdJogadores();
-            //apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getCartasJogador(vez));
-            apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
-            
+            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+            primeiroPosicionamento();
         }
     }
 

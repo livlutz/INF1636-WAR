@@ -1,6 +1,7 @@
 package Model;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -116,13 +117,36 @@ import View.APIView;
     }
 
     // Método que retorna adjacentes não dominados de um território por string
-    public String[] getTerritoriosAdjDominados(String t, int vez) {
+    public String[] getTerritoriosAdjNaoDominados(String t, int vez) {
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
     	for (Territorio ter: adjacentes) {
     		// Se o jogador não dominar o adjacente, adiciona na lista
             if (ter.getJogador().getNome() != jogo.getJogadorVez(vez).getNome()){
+                listaTerritorios[cont] = ter.getNome();
+                cont++;
+            }
+    	}
+        if (cont == 0) {
+            String[] lista= {null};
+            return lista;
+        }
+        String[] listaTerritoriosFinal = new String[cont];
+        for (int i = 0; i < cont; i++) {
+            listaTerritoriosFinal[i] = listaTerritorios[i];
+        }
+    	return listaTerritoriosFinal;
+    }
+
+    // Método que retorna adjacentes dominados de um território por string
+    public String[] getTerritoriosAdjDominados(String t, int vez) {
+        ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
+    	String[] listaTerritorios = new String[adjacentes.size()];
+    	int cont = 0;
+    	for (Territorio ter: adjacentes) {
+    		// Se o jogador dominar o adjacente, adiciona na lista
+            if (ter.getJogador().getNome() == jogo.getJogadorVez(vez).getNome()){
                 listaTerritorios[cont] = ter.getNome();
                 cont++;
             }
@@ -214,6 +238,17 @@ import View.APIView;
         return qtd;
     }
     
+
+    public Image[] getImgCartasJogador(int vez){
+        ArrayList<Cartas> cartas = jogo.getJogadorVez(vez).getCartas();
+        Image[] imgCartas = new Image[cartas.size()];
+        int cont = 0;
+        for (Cartas c: cartas) {
+            imgCartas[cont] = c.getImagem();
+            cont++;
+        }
+        return imgCartas;
+    }
     // Retorna quantidade de exércitos que tem em um território
     public Integer getQntExTerritorio(String territorio){
             Territorio t = tabuleiro.mapTerritorios.get(territorio);

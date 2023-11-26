@@ -144,7 +144,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		reposButton = new JButton("=>");
 		reposButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gerente.clicouReposicionar(comboBoxOrigemRepos.getSelectedItem().toString(), comboBoxDestinoRepos.getSelectedItem().toString(), (Integer) comboBoxQtdRepos.getSelectedItem());
+				if(comboBoxOrigemRepos.getSelectedItem() != null && comboBoxDestinoRepos.getSelectedItem() != null){
+					gerente.clicouReposicionar(comboBoxOrigemRepos.getSelectedItem().toString(), comboBoxDestinoRepos.getSelectedItem().toString(), (Integer) comboBoxQtdRepos.getSelectedItem());
+				}
 			}
 		});
 		reposButton.setBounds(1420,310,60,30);
@@ -310,7 +312,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	}
 
 	// Atualiza view no início da rodada de posicionamento para mudar jogador
-	//public void mudaJogador(String nome, String cor, String descricaoObj, Cartas[] cartas){
+	public void mudaJogador(String nome, String cor, String descricaoObj, Image[] cartas){
 		//TODO: muda jogador
 		// Tira frase, descrição e cartas do jogador anterior 
 		// Coloca frase de "Vez de NOME - COR"
@@ -318,7 +320,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		//
 		// Imprime as cartas do jogador
 		
-	//}
+	}
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
 	public void atualizaAtacantes(String[] atacantes){
@@ -347,6 +349,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de reposicionamento para atualizar os territórios para reposicionamento
 	public void atualizaReposicionamento(String[] territorios){
+		// Esvazia a comboBox de origem e adiciona os novos territórios
+		comboBoxOrigemRepos.removeAllItems();
 		// Adiciona um item nulo para não ocupar o default e o jogador ter que selecionar um território
 		comboBoxOrigemRepos.addItem(null);
 		for (String s: territorios){

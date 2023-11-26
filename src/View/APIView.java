@@ -2,6 +2,7 @@ package View;
 
 
 import java.awt.Color;
+import java.awt.Image;
 
 import javax.swing.JOptionPane;
 
@@ -89,7 +90,9 @@ public class APIView{
 		GamePanel.getGamePanel().atualizaDestinos(destinos);
 	}
 
-	
+	public void mudaJogador(String jogador, Color cor, String descricaoObj, Image[] cartas){
+		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
+	}
 
 	
 

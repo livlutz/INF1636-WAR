@@ -228,4 +228,8 @@ class Cartas {
 	public void setTerritorio(Territorio territorio) {
 		this.territorio = territorio;
 	}
+
+	public Image getImagem() {
+		return imagem;
+	}
 }
