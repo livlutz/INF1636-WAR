@@ -158,4 +158,37 @@ public class TesteJogador {
 		j.addCarta(c);
 		assertEquals(j.getCartas().size(),1);
 	}
+
+	@Test
+	public void testaGetQtdTrocaCartas() {
+		Jogador j = new Jogador ("Jooj",null);
+		Cartas c = new Cartas(1, null);
+		j.addCarta(c);
+		assertEquals(j.getQtdTrocaCartas(),0);
+	}
+
+	@Test
+	public void testaGetQtdExercitoPosic() {
+		Jogador j = new Jogador ("Jooj",null);
+		Cartas c = new Cartas(1, null);
+		j.addCarta(c);
+		assertEquals(j.getQtdExercitoPosic(),0);
+	}
+
+	@Test
+	public void testaSetQtdExercitoPosic() {
+		Jogador j = new Jogador ("Jooj",null);
+		Cartas c = new Cartas(1, null);
+		j.addCarta(c);
+		j.setQtdExercitoPosic(1);
+		assertEquals(j.getQtdExercitoPosic(),1);
+	}
+
+	@Test
+	public void testaGetQtdTerritorios() {
+		Jogador j = new Jogador ("Jooj",null);
+		Territorio t = new Territorio("A");
+		j.addTerritorio(t);
+		assertEquals(j.getQtdTerritorios(),1);
+	}
 }

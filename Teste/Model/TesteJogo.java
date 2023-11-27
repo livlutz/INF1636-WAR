@@ -8,6 +8,10 @@ import java.util.HashMap;
 import org.junit.Test;
 
 public class TesteJogo {
+	@Test
+	public void testeConstrutor() {
+		Jogo j = Jogo.getJogo();
+		assertNotNull(j);
+	}
 	
-	//TODO
 }
