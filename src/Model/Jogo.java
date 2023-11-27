@@ -194,7 +194,11 @@ class Jogo implements ObservadoIF{
 			//Atualiza os territórios modificados
 			mod1 = atacante;
 			mod2 = defensor;
-
+			if (defensor.getQntExercitos()==0) {
+				defensor.setJogador(atacante.getJogador());
+				atacante.setQntExercitos(atacante.getQntExercitos()-1);
+				defensor.setQntExercitos(1);
+			}
 			//Notifica os observadores
 			this.notificaObs();
 			
@@ -241,7 +245,11 @@ class Jogo implements ObservadoIF{
 			//Atualiza os exércitos
 			tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
 			tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
-			
+			if (tdefensor.getQntExercitos()==0) {
+				tdefensor.setJogador(tatacante.getJogador());
+				tatacante.setQntExercitos(tatacante.getQntExercitos()-1);
+				tdefensor.setQntExercitos(1);
+			}
 			
 			//Atualiza os territórios modificados
 			mod1 = tatacante;
