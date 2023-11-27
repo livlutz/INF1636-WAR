@@ -72,6 +72,8 @@ public class Gerente {
                     territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
                     qtd = apiJogo.getExCont(0, apiJogo.getContinentesLista()[continente]);
                     apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
+                    // Atualiza continente para não testar o mesmo
+                    continente++;
                     return true;
                 }
             }
@@ -160,6 +162,8 @@ public class Gerente {
                 // Atualiza a view para posicionar no continente dominado
                 apiView.atualizaPosicionamento(territorios);
                 apiView.atualizaQtdPosic(qtd);
+                // Atualiza identificador de continentes, para não testar o mesmo
+                continente++;
                 return;
             }
         }
