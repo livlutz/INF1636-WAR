@@ -28,5 +28,12 @@ class CartaObjPanel extends Panel {
 		super.paint(g);
 		g.drawImage(cartaObj, 410, 490, 160, 220, null);
 	}
+
+	//Escreve o objetivo da carta
+	public void escreveObjetivo(Graphics g, String objetivo) {
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Arial", Font.BOLD, 12));
+		g.drawString(objetivo, 422, 550);
+	}
 			
 }

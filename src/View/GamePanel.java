@@ -70,9 +70,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Boolean para saber se os exércitos já foram criados
 	Boolean ExercitosNaoCriados = true;
 
-	//Label do objetivo
-	JLabel objetivoLabel = new JLabel();
-
 	//Array de cartas
 	Image[] cartas; 
 
@@ -191,12 +188,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 		jogadorDaVezLabel.setBounds(640,660,200,30);
 		add(jogadorDaVezLabel);
 
-		//Cria e adiciona o label do objetivo
-		objetivoLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		objetivoLabel.setForeground(Color.BLACK);
-		objetivoLabel.setBounds(640,690,200,30);
-		objetivoLabel.setText(descricaoObjetivo);
-		add(objetivoLabel);
 		
 		trocarCartasButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -271,6 +262,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 		desenhaExercitos(this.g2d);
 		cartaObjPanel.desenhaCartas(g2d);
+		//escrever o objetivo na carta usando drawString
+		cartaObjPanel.escreveObjetivo(g2d, descricaoObjetivo);
+		
 	}
 
 	// Notifica o observador
