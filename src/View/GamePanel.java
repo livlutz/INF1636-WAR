@@ -311,15 +311,18 @@ class GamePanel extends JPanel implements ObservadorIF {
 		this.atualizaQtdPosic(qtd);
 	}
 
-	// Atualiza view no início da rodada de posicionamento para mudar jogador
+	// Muda o jogador da vez na view
 	public void mudaJogador(String nome, String cor, String descricaoObj, Image[] cartas){
-		//TODO: muda jogador
-		// Tira frase, descrição e cartas do jogador anterior 
-		// Coloca frase de "Vez de NOME - COR"
-		// Coloca descrição do objetivo em cima da carta
-		//
-		// Imprime as cartas do jogador
+		//mudar a cor do jogador da vez na view
+		//escrever o objetivo na carta
+		//mudar as cartas pro jogador da vez
 		
+		this.jogadorDaVez = nome;
+		this.corDoJogador = Color.getColor(cor);
+		this.descricaoObjetivo = descricaoObj;
+		//this.cartaObjPanel.setCartas(cartas);
+		repaint();
+
 	}
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
