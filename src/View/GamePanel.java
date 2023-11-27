@@ -67,6 +67,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Array list de exércitos 
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
+	Boolean ExercitosNaoCriados = true;
 	//Construtor
 	private GamePanel() {
 		//Define o layout como null para poder posicionar os componentes
@@ -249,6 +250,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 		g2d.setColor(corDoJogador);
 		g2d.fillOval(580, 650, 50, 50);
 		jogadorDaVezLabel.setText(jogadorDaVez);
+		if(ExercitosNaoCriados) {
+			criaExercitos(g2d);
+			ExercitosNaoCriados = false;
+		}
 		desenhaExercitos(this.g2d);
 		cartaObjPanel.desenhaCartas(g2d);
 	}
@@ -447,11 +452,20 @@ class GamePanel extends JPanel implements ObservadorIF {
 		reposButton.setVisible(true);
 	}
 
-	//Desenha cada território 
+		
+	//Desenha cada território
+	
 	void desenhaExercitos(Graphics2D g2d) {
+		for (Exercitos e : listaExercitos) {
+			e.drawPlayer(g2d);
+		}
+	}
+	
+	void criaExercitos(Graphics2D g2d) {
 		//Pega a lista de territórios
 		this.territorios = gerente.getTerritoriosLista();
 		Exercitos exercitos;
+		
 		//Verifica qual o território e desenha o exército na posição correta
 		for (String t: territorios) { 
 			switch(t){
