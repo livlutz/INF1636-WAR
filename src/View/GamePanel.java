@@ -67,9 +67,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Array list de exércitos 
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
+	//Boolean para saber se os exércitos já foram criados
 	Boolean ExercitosNaoCriados = true;
 
+	//Label do objetivo
 	JLabel objetivoLabel = new JLabel();
+
+	//Array de cartas
+	Image[] cartas; 
+
 	//Construtor
 	private GamePanel() {
 		//Define o layout como null para poder posicionar os componentes
@@ -327,16 +333,14 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Muda o jogador da vez na view
 	public void mudaJogador(String nome, Color cor, String descricaoObj, Image[] cartas){
-		//mudar a cor do jogador da vez na view
-		//escrever o objetivo na carta
-		//mudar as cartas pro jogador da vez
 		
 		this.jogadorDaVez = nome;
 		this.corDoJogador = cor;
 		this.descricaoObjetivo = descricaoObj;
-		//this.cartaObjPanel.setCartas(cartas);
+		//escrever o objetivo na carta
+		//mudar as cartas pro jogador da vez
+		this.cartas = cartas;
 		repaint();
-
 	}
 
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
