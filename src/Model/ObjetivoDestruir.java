@@ -12,32 +12,36 @@ class ObjetivoDestruir extends Objetivo{
         String descricao = "Destruir totalmente os EXÉRCITOS ";
         String cor = "";
         //cores : branco, preto, azul, verde, vermelho, amarelo
-        if(jAlvo.getCor() == new Color(255,255,255)){
+        if (jAlvo.getCor().equals(new Color(255, 255, 255))) {
             cor = "BRANCOS";
-        }
+        } 
 
-        else if (jAlvo.getCor() == new Color(0,0,0)){
+        else if (jAlvo.getCor().equals(new Color(0, 0, 0))) {
             cor = "PRETOS";
-        }
+        } 
 
-        else if (jAlvo.getCor() == new Color(255,255,0)){
+        else if (jAlvo.getCor().equals(new Color(255, 255, 0))) {
             cor = "AMARELOS";
-        }
+        } 
 
-        else if (jAlvo.getCor() == new Color(0,0,255)){
+        else if (jAlvo.getCor().equals(new Color(0, 0, 255))) {
             cor = "AZUIS";
-        }
+        } 
 
-        else if (jAlvo.getCor() == new Color(0,255,0)){
+        else if (jAlvo.getCor().equals(new Color(0, 255, 0))) {
             cor = "VERDES";
-        }
+        } 
 
-        else if (jAlvo.getCor() == new Color(255,0,0)){
+        else if (jAlvo.getCor().equals(new Color(255, 0, 0))) {
             cor = "VERMELHOS";
         }
         
-        descricao += cor + "se é você quem possui os exércitos " + cor 
+       //Adiciona a cor do jogador alvo ao objetivo
+        descricao += cor + " se é você quem possui os exércitos " + cor 
             + " ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS";
+
+        /* descricao += cor + "se é você quem possui os exércitos " + cor 
+            + " ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS"; */
         this.descricao = descricao;
     }
 
