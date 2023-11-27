@@ -59,9 +59,12 @@ class Exercitos extends JComponent {
 		// Desenha a borda 
 		this.g2d.draw(player);
 
-		// Desenha a quantidade de exercitos
-		this.g2d.drawString(qntExercitos, posX + 7, posY + 14);
-		System.out.print(qntExercitos);
+		//ajustar posição do texto
+		if(qntExercitos.length() == 1)
+			this.g2d.drawString(qntExercitos, posX + 7, posY + 14);
+		else{
+			this.g2d.drawString(qntExercitos, posX + 3, posY + 14);
+		}
 	}
 
 	public void paintComponent(Graphics g) {
