@@ -45,6 +45,17 @@ import View.APIView;
     	return r;
     }
 
+    public void comecaJogoCarregado(){
+		//Inicializa o tabuleiro
+    	tabuleiro.Inicializa();
+    	
+        // Instancia cartas
+        jogo.InstanciaCartas(tabuleiro.getMapTerritorios());
+
+        // Associando observador GamePanel ao observado Jogo
+        jogo.add(apiView.getObs());
+    }
+
     // Retorna lista de nomes de territórios
     public String[] getTerritoriosLista() {
 		String [] terr = new String[51]; 
@@ -384,9 +395,6 @@ import View.APIView;
         int option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
-                Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
-                tabuleiro.Inicializa();
-
                 outputStream = new FileReader(chooser.getSelectedFile());
                 BufferedReader br = new BufferedReader(outputStream);
 
@@ -441,6 +449,9 @@ import View.APIView;
                     addJogador(nomes[i], cor);
                     ;
                 }
+
+                // Inicializar objetos necessários para carregar o jogo
+                this.comecaJogoCarregado();
 
                 //Lê os territórios, a quantidade de exércitos e o jogador que domina
                 for (int i = 0; i < 51; i++) {

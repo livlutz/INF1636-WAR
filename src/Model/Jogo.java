@@ -295,7 +295,7 @@ class Jogo implements ObservadoIF{
     }
 
 	// Instancia as cartas
-	private void InstanciaCartas(HashMap<String,Territorio> mapTerritorios){
+	void InstanciaCartas(HashMap<String,Territorio> mapTerritorios){
 		Cartas c;
 		//Cartas de Território
 
