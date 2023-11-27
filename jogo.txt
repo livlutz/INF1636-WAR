@@ -1,60 +1,57 @@
 3
 0
-d a f 
-d -65536
-a -16776961
-f -16711936
-Groelandia 1 a
-Angola 1 d
-Turquia 1 f
-Iraque 1 a
-Mongolia 1 f
-Siria 1 f
+Nosador asr f 
+java.awt.Color[r=255,g=0,b=0] java.awt.Color[r=0,g=0,b=255] java.awt.Color[r=255,g=255,b=255] Groelandia 1 f
+Angola 1 Nosador
+Turquia 1 Nosador
+Iraque 1 asr
+Mongolia 1 asr
+Siria 1 asr
 Paquistao 1 f
-Coreia do Sul 1 d
-Arabia Saudita 1 d
-Argentina 1 d
-Calgary 1 a
+Coreia do Sul 1 Nosador
+Arabia Saudita 1 Nosador
+Argentina 1 f
+Calgary 1 Nosador
 Japao 1 f
-Perth 1 d
-California 1 a
-Cazaquistao 1 a
-India 1 a
-Nova Zelandia 1 d
-Tailandia 1 a
-Texas 1 d
-Ira 1 d
-Peru 1 a
-Africa do Sul 1 a
-Vancouver 1 d
-Somalia 1 f
-Nova York 1 a
-Russia 1 d
-Franca 1 a
-Brasil 1 d
-Alasca 1 d
-China 1 f
-Siberia 1 d
-Ucrania 1 d
-Nigeria 1 f
-Egito 1 a
-Romania 1 d
-Polonia 1 f
-Quebec 1 a
-Espanha 1 f
+Perth 1 f
+California 1 asr
+Cazaquistao 1 asr
+India 1 Nosador
+Nova Zelandia 1 asr
+Tailandia 1 asr
+Texas 1 f
+Ira 1 asr
+Peru 1 Nosador
+Africa do Sul 1 asr
+Vancouver 1 Nosador
+Somalia 1 asr
+Nova York 1 Nosador
+Russia 1 f
+Franca 1 Nosador
+Brasil 1 f
+Alasca 1 f
+China 1 Nosador
+Siberia 1 asr
+Ucrania 1 asr
+Nigeria 1 Nosador
+Egito 1 f
+Polonia 1 Nosador
+Quebec 1 asr
+Romenia 1 f
+Espanha 1 Nosador
 Italia 1 f
-Argelia 1 a
-Reino Unido 1 f
-Coreia do Norte 1 a
+Argelia 1 f
+Reino Unido 1 Nosador
+Coreia do Norte 1 asr
 Venezuela 1 f
-Bangladesh 1 a
-Mexico 1 d
-Suecia 1 f
-Letonia 1 d
-Australia 1 a
+Bangladesh 1 f
+Mexico 1 Nosador
+Suecia 1 asr
+Letonia 1 asr
+Australia 1 asr
 Jordania 1 f
 Estonia 1 f
-Indonesia 1 f
-d 1 Conquistar os continentes Europa, Oceania e mais um continente à sua escolha
-a 1 Conquistar os continentes Europa, America do Sul e mais um continente à sua escolha
-f 3 Conquistar 24 TERRITÓRIOS
+Indonesia 1 Nosador
+Nosador 2 f
+asr 2 Nosador
+f 1 America do Norte Africa 

@@ -311,9 +311,7 @@ import View.APIView;
                 
                 //Escreve as cores dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
-                    inputStream.write(j.getNome() + " ");
-                    inputStream.write(String.valueOf(j.getCor().getRGB()));
-                    inputStream.write("\n");
+                    inputStream.write(String.valueOf(j.getCor()) + " ");
                 }
 
                 //Escreve a qtd de exercitos em cada territorio e o nome do jogador que o domina
@@ -388,20 +386,18 @@ import View.APIView;
                 Gerente.getGerente().setVez(Integer.parseInt(linha));
 
                 //Lê os nomes e cores dos jogadores
-                String[] nomes = new String[qtdJogadores];
-                Color[] cores = new Color[qtdJogadores];
-                int cont = 0;
-                while ((linha = br.readLine()) != null) {
-                    String[] dados = linha.split(" ");
-                    nomes[cont] = dados[0];
-                    cores[cont] = new Color(Integer.parseInt(dados[1]));
-                    cont++;
-                }
+                String[] nomes;
+                linha = br.readLine();
+                nomes = linha.split(" ");
+
+                String[] cores;
+                linha = br.readLine();
+                cores = linha.split(" ");
 
                 //Adiciona os jogadores
                 resetJogadores();
                 for (int i = 0; i < qtdJogadores; i++) {
-                    addJogador(nomes[i], cores[i]);
+                    addJogador(nomes[i], Color.decode(cores[i]));
                 }
 
                 //Lê a qtd de exercitos em cada territorio e o nome do jogador que o domina
