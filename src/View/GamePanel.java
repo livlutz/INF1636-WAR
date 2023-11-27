@@ -68,6 +68,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 	ArrayList<Exercitos> listaExercitos = new ArrayList<Exercitos>();
 
 	Boolean ExercitosNaoCriados = true;
+
+	JLabel objetivoLabel = new JLabel();
 	//Construtor
 	private GamePanel() {
 		//Define o layout como null para poder posicionar os componentes
@@ -182,6 +184,13 @@ class GamePanel extends JPanel implements ObservadorIF {
 		jogadorDaVezLabel.setForeground(Color.WHITE);
 		jogadorDaVezLabel.setBounds(640,660,200,30);
 		add(jogadorDaVezLabel);
+
+		//Cria e adiciona o label do objetivo
+		objetivoLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		objetivoLabel.setForeground(Color.BLACK);
+		objetivoLabel.setBounds(640,690,200,30);
+		objetivoLabel.setText(descricaoObjetivo);
+		add(objetivoLabel);
 		
 		trocarCartasButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
