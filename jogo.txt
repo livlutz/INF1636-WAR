@@ -1,57 +1,59 @@
+false
 3
-0
-Nosador asr f 
-java.awt.Color[r=255,g=0,b=0] java.awt.Color[r=0,g=0,b=255] java.awt.Color[r=255,g=255,b=255] Groelandia 1 f
-Angola 1 Nosador
-Turquia 1 Nosador
-Iraque 1 asr
-Mongolia 1 asr
-Siria 1 asr
-Paquistao 1 f
-Coreia do Sul 1 Nosador
-Arabia Saudita 1 Nosador
-Argentina 1 f
-Calgary 1 Nosador
-Japao 1 f
-Perth 1 f
-California 1 asr
-Cazaquistao 1 asr
-India 1 Nosador
-Nova Zelandia 1 asr
-Tailandia 1 asr
-Texas 1 f
-Ira 1 asr
-Peru 1 Nosador
-Africa do Sul 1 asr
-Vancouver 1 Nosador
-Somalia 1 asr
-Nova York 1 Nosador
-Russia 1 f
-Franca 1 Nosador
-Brasil 1 f
-Alasca 1 f
-China 1 Nosador
-Siberia 1 asr
-Ucrania 1 asr
-Nigeria 1 Nosador
-Egito 1 f
-Polonia 1 Nosador
-Quebec 1 asr
-Romenia 1 f
-Espanha 1 Nosador
-Italia 1 f
-Argelia 1 f
-Reino Unido 1 Nosador
-Coreia do Norte 1 asr
-Venezuela 1 f
-Bangladesh 1 f
-Mexico 1 Nosador
-Suecia 1 asr
-Letonia 1 asr
-Australia 1 asr
-Jordania 1 f
-Estonia 1 f
-Indonesia 1 Nosador
-Nosador 2 f
-asr 2 Nosador
-f 1 America do Norte Africa 
+1
+b;c;a
+-65536;-256;-16776961
+Groelandia;1;a
+Angola;1;b
+Turquia;1;c
+Iraque;1;c
+Mongolia;1;a
+Siria;1;c
+Paquistao;1;c
+Coreia do Sul;1;c
+Arabia Saudita;1;a
+Argentina;1;a
+Calgary;1;a
+Japao;9;b
+Perth;9;b
+California;1;c
+Cazaquistao;1;a
+India;9;a
+Nova Zelandia;1;b
+Tailandia;1;a
+Texas;1;c
+Ira;1;b
+Peru;1;c
+Africa do Sul;1;b
+Vancouver;1;a
+Somalia;1;b
+Nova York;1;a
+Russia;1;b
+Franca;9;c
+Brasil;1;b
+Alasca;1;c
+China;1;b
+Siberia;1;c
+Ucrania;1;c
+Nigeria;1;b
+Egito;1;a
+Polonia;1;a
+Quebec;1;c
+Romenia;1;b
+Espanha;1;b
+Italia;1;a
+Argelia;1;c
+Reino Unido;1;c
+Coreia do Norte;1;c
+Venezuela;1;a
+Bangladesh;1;a
+Mexico;1;b
+Suecia;1;b
+Letonia;1;c
+Australia;1;a
+Jordania;1;a
+Estonia;1;b
+Indonesia;1;b
+1;Europa;America do Sul;3
+2;c
+2;a

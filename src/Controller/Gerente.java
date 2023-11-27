@@ -106,7 +106,9 @@ public class Gerente {
             MainFrame.getMainFrame().goToGamePanel();
             // Notifica obs de jogo para redesenhar exércitos
             apiJogo.notificaObsJogo();
-            //TODO
+            // Atualiza a view para posicionamento do jogador da vez
+            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+            primeiroPosicionamento();
         }
     }
 
@@ -324,5 +326,13 @@ public class Gerente {
     //set vez
     public void setVez(int vez){
         this.vez = vez;
+    }
+
+    public boolean getPrimeiraRodada(){
+        return primeiraRodada;
+    }
+
+    public void setPrimeiraRodada(boolean primeiraRodada){
+        this.primeiraRodada = primeiraRodada;
     }
 }

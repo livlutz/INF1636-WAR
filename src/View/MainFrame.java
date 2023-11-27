@@ -52,6 +52,7 @@ public class MainFrame extends JFrame {
 		
 		//Direcionamento entre os frames (início do jogo)
 		public void goToGamePanel() {
+			startingPanel.setVisible(false);
 			csPanel.setVisible(false);
 			getContentPane().add(gamePanel);
 			gamePanel.mudaParaPosicionamento();

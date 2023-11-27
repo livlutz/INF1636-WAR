@@ -453,7 +453,7 @@ class Jogo implements ObservadoIF{
 	
 	public Jogador getJogador(String jogadorNome) {
 		for(Jogador jogador:jogadores) {
-			if (jogador.getNome() == jogadorNome) {
+			if (jogador.getNome().equals(jogadorNome)) {
 				return jogador;
 			}
 		}

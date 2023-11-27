@@ -296,6 +296,10 @@ import View.APIView;
         if (retrival == JFileChooser.APPROVE_OPTION) {
             try {
                 inputStream = new FileWriter(chooser.getSelectedFile(),false);
+                //Escreve se está na primeira rodada
+                inputStream.write(String.valueOf(Gerente.getGerente().getPrimeiraRodada()));
+                inputStream.write("\n");
+
                 //Escreve qtd de jogadores e vez do jogador
                 inputStream.write(String.valueOf(jogo.getJogadores().size()));
                 inputStream.write("\n");
@@ -304,39 +308,45 @@ import View.APIView;
                 
                 //Escreve o nome dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
-                    inputStream.write(j.getNome() + " ");
+                    inputStream.write(j.getNome());
+                    //Se não for o último jogador, escreve um espaço
+                    if (j != jogo.getJogadores().get(jogo.getJogadores().size()-1))
+                        inputStream.write(";");
                 }
                 
                 inputStream.write("\n");
                 
                 //Escreve as cores dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
-                    inputStream.write(String.valueOf(j.getCor()) + " ");
+                    inputStream.write(String.valueOf(j.getCor().getRGB()));
+                    // Se não for o último jogador, escreve um espaço
+                    if (j != jogo.getJogadores().get(jogo.getJogadores().size()-1))
+                        inputStream.write(";");
                 }
+                inputStream.write("\n");
 
                 //Escreve a qtd de exercitos em cada territorio e o nome do jogador que o domina
                 for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                    inputStream.write(t.getNome() + " ");
-                    inputStream.write(String.valueOf(t.getQntExercitos()) + " " + t.getJogador().getNome());
+                    inputStream.write(t.getNome() + ";");
+                    inputStream.write(String.valueOf(t.getQntExercitos()) + ";" + t.getJogador().getNome());
                     inputStream.write("\n");
                 }
 
                 //Escreve os objetivos dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
-                    inputStream.write(j.getNome() + " ");
                     switch(j.getObj().getClass().getName()){
                         case "Model.ObjetivoContinentes":
-                            inputStream.write("1 ");
-                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont1().getNome() + " ");
-                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont2().getNome() + " ");
-                            inputStream.write(((ObjetivoContinentes)j.getObj()).getQtdContinentes());
+                            inputStream.write("1;");
+                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont1().getNome() + ";");
+                            inputStream.write(((ObjetivoContinentes)j.getObj()).getCont2().getNome() + ";");
+                            inputStream.write(String.valueOf(((ObjetivoContinentes)j.getObj()).getQtdContinentes()));
                             break;
-                        case "Model.ObjetivoDestruir":
-                            inputStream.write("2 ");
+                            case "Model.ObjetivoDestruir":
+                            inputStream.write("2;");
                             inputStream.write(((ObjetivoDestruir)j.getObj()).getJAlvo().getNome());
                             break;
-                        case "Model.ObjetivoTerritorios":
-                            inputStream.write("3 ");
+                            case "Model.ObjetivoTerritorios":
+                            inputStream.write("3;");
                             inputStream.write(String.valueOf(((ObjetivoTerritorios)j.getObj()).getQtdTerritorios()));
                             break;
                     }
@@ -374,11 +384,18 @@ import View.APIView;
         int option = chooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
+                Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
+                tabuleiro.Inicializa();
+
                 outputStream = new FileReader(chooser.getSelectedFile());
                 BufferedReader br = new BufferedReader(outputStream);
+
+                //Lê se está na primeira rodada
                 String linha = br.readLine();
+                Gerente.getGerente().setPrimeiraRodada(Boolean.parseBoolean(linha));
 
                 //Lê a qtd de jogadores
+                linha = br.readLine();
                 int qtdJogadores = Integer.parseInt(linha);
 
                 //Lê a vez do jogador
@@ -388,35 +405,58 @@ import View.APIView;
                 //Lê os nomes e cores dos jogadores
                 String[] nomes;
                 linha = br.readLine();
-                nomes = linha.split(" ");
+                nomes = linha.split(";");
 
                 String[] cores;
                 linha = br.readLine();
-                cores = linha.split(" ");
+                cores = linha.split(";");
 
                 //Adiciona os jogadores
                 resetJogadores();
                 for (int i = 0; i < qtdJogadores; i++) {
-                    addJogador(nomes[i], Color.decode(cores[i]));
+                    Color cor;
+                    switch(Integer.parseInt(cores[i])){
+                        case -16777216:
+                            cor = Color.BLACK;
+                            break;
+                        case -16776961:
+                            cor = Color.BLUE;
+                            break;
+                        case -16711681:
+                            cor = Color.CYAN;
+                            break;
+                        case -16711936:
+                            cor = Color.GREEN;
+                            break;
+                        case -65536:
+                            cor = Color.RED;
+                            break;
+                        case -256:
+                            cor = Color.YELLOW;
+                            break;
+                        default:
+                            cor = Color.WHITE;
+                            break;
+                    }
+                    addJogador(nomes[i], cor);
+                    ;
                 }
 
-                //Lê a qtd de exercitos em cada territorio e o nome do jogador que o domina
-                for (Jogador j: jogo.getJogadores()) {
+                //Lê os territórios, a quantidade de exércitos e o jogador que domina
+                for (int i = 0; i < 51; i++) {
                     linha = br.readLine();
-                    String[] dados = linha.split(" ");
-                    for (Territorio t: tabuleiro.mapTerritorios.values()) {
-                        if (t.getNome().equals(dados[0])) {
-                            t.setQntExercitos(Integer.parseInt(dados[1]));
-                            t.setJogador(j);
-                            j.addTerritorio(t);
-                        }
-                    }
+                    String[] dados = linha.split(";");
+                    int qtdEx = Integer.parseInt(dados[1]);
+                    Jogador j = jogo.getJogador(dados[2]);
+                    tabuleiro.mapTerritorios.get(dados[0]).setQntExercitos(qtdEx);
+                    tabuleiro.mapTerritorios.get(dados[0]).setJogador(j);
+                    j.addTerritorio(tabuleiro.mapTerritorios.get(dados[0]));
                 }
 
                 //Lê os objetivos dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
                     linha = br.readLine();
-                    String[] dados = linha.split(" ");
+                    String[] dados = linha.split(";");
                     switch(Integer.parseInt(dados[0])){
                         case 1:
                             if(Integer.parseInt(dados[3]) == 3){
@@ -434,11 +474,11 @@ import View.APIView;
                             break;
                     }
                 }
-
+                /*
                 //Lê as cartas dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
                     linha = br.readLine();
-                    String[] dados = linha.split(" ");
+                    String[] dados = linha.split(";");
                     for (int i = 0; i < dados.length; i+=2) {
                         for (Cartas c: j.getCartas()) {
                             if (c.getTerritorio().getNome().equals(dados[i])) {
@@ -446,7 +486,7 @@ import View.APIView;
                             }
                         }
                     }
-                }
+                } */
                 return true;
             } 
             catch (IOException e) {
