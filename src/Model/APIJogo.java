@@ -258,16 +258,25 @@ import View.APIView;
 
     // Retorna array com as imagens das cartas do jogador
     public Image[] getImgCartasJogador(int vez){
-        ArrayList<Cartas> cartas = jogo.getJogadorVez(vez).getCartas();
+        ArrayList<Carta> cartas = jogo.getJogadorVez(vez).getCartas();
         Image[] imgCartas = new Image[cartas.size()];
         int cont = 0;
-        for (Cartas c: cartas) {
+        for (Carta c: cartas) {
             imgCartas[cont] = c.getImagem();
             cont++;
         }
         return imgCartas;
     }
     
+    public boolean analisarDarCarta(int vez){
+        // Verifica se conquistou nessa rodada para dar carta
+    	if (jogo.getJogadorVez(vez).getConquistouNessaRodada()){
+            jogo.DaCartas(jogo.getJogadorVez(vez));
+            return true;
+        }
+        return false;
+    }
+
     // Retorna quantidade de exércitos que tem em um território
     public Integer getQntExTerritorio(String territorio){
             Territorio t = tabuleiro.mapTerritorios.get(territorio);
@@ -370,7 +379,7 @@ import View.APIView;
 
                 //Escreve as cartas dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
-                    for (Cartas c: j.getCartas()) {
+                    for (Carta c: j.getCartas()) {
                         inputStream.write(j.getNome() + " ");
                         inputStream.write(c.getTerritorio().getNome()+ " ");
                         inputStream.write(String.valueOf(c.getF().ordinal()));
@@ -487,6 +496,7 @@ import View.APIView;
                             break;
                     }
                 }
+                //TODO
                 /*
                 //Lê as cartas dos jogadores
                 for (Jogador j: jogo.getJogadores()) {

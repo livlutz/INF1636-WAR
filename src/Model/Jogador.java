@@ -23,7 +23,7 @@ class Jogador {
 	private int qtdTerritorios = 0;  
 
 	//Guarda as cartas que um jogador possui
-	private ArrayList <Cartas> cartas = new ArrayList <Cartas> ();  
+	private ArrayList <Carta> cartas = new ArrayList<Carta>();  
 	
 	//Guarda seu objetivo no jogo
 	private Objetivo obj;  
@@ -46,7 +46,7 @@ class Jogador {
 	
 	//Permite ver todas as cartas na posse do jogador
 	public void verCartas() {
-		for(Cartas c : cartas) {
+		for(Carta c : cartas) {
 			System.out.printf("Carta: %s - territorio : %s\n", c.getF(),c.getTerritorio().getNome());	
 		}
 	}
@@ -61,10 +61,10 @@ class Jogador {
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, triangulos = 0;
-		for (Cartas c: cartas){
-			if (c.f == Cartas.Formato.circulo)
+		for (Carta c: cartas){
+			if (c.f == Carta.Formato.circulo)
 				circulos++;
-			else if (c.f == Cartas.Formato.Quadrado)
+			else if (c.f == Carta.Formato.Quadrado)
 				quadrados++;
 			else
 				triangulos++;
@@ -75,7 +75,7 @@ class Jogador {
 	}
 
 	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
-	public boolean trocarCartas (Cartas a, Cartas b, Cartas c) {
+	public boolean trocarCartas (Carta a, Carta b, Carta c) {
 		if(temTroca()) {
 			int primTrocaExerc = 4;
 			
@@ -112,7 +112,7 @@ class Jogador {
 	}
 
 	//Adiciona uma carta ao jogador
-	public void addCarta(Cartas c) {
+	public void addCarta(Carta c) {
 		cartas.add(c);
 	}
 
@@ -172,7 +172,7 @@ class Jogador {
 	}
 	
 	//Retorna as cartas que o jogador possui (o ArrayList de cartas)
-	public ArrayList<Cartas> getCartas() {
+	public ArrayList<Carta> getCartas() {
 		return cartas;
 	}
 

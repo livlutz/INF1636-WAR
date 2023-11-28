@@ -26,7 +26,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 	
 	//Botões e comboboxes
 	JButton salvarButton, dadoButton, nextButton, trocarCartasButton, posicButton, reposButton;
-	JComboBox comboBoxAtacante,comboBoxDefensor;
 	
 	//Lista de territórios no jogo
 	String[] territorios;

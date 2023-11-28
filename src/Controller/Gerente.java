@@ -120,7 +120,7 @@ public class Gerente {
     }
 
     public void clicouTerminarRodada(){
-        // Se estiver na etapa de posicionamento
+        // Se estiver na etapa de posicionamento, passa para ataque
         if (estado == 0){
             if (apiJogo.getQtdExercitosPosic(vez) == 0){
                 // Atualiza a view para ataque
@@ -133,8 +133,14 @@ public class Gerente {
             return;
         }
 
-        // Se estiver na etapa de ataque
+        // Se estiver na etapa de ataque, passa para reposicionamento
         if(estado == 1){
+            // Verifica se pode dar uma carta após ataque
+            if (apiJogo.analisarDarCarta(vez)){
+                //TODO REPAINT CARTA NA VIEW
+            }
+
+            // Atualiza a view para reposicionamento
             nomesTerritoriosReposicionamento = apiJogo.getTerritoriosMaisDeUm(vez);
             // Se tiver algum território com mais de 1 exército para reposicionar
             if (nomesTerritoriosReposicionamento != null){
@@ -151,6 +157,13 @@ public class Gerente {
         // ou não tem mais exércitos para reposicionar
         estado = 0;
         vez = (vez + 1) % apiJogo.getQtdJogadores();
+
+        // Não deixa um jogador que já perdeu jogar
+        while (apiJogo.getTerritoriosJogador(vez) == null){
+            vez = (vez + 1) % apiJogo.getQtdJogadores();
+        }
+
+        // Atualiza a view para posicionamento do jogador da vez
         apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
         primeiroPosicionamento();
     }

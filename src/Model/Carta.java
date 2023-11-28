@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-class Cartas {
+class Carta {
 	
 	//enum com a forma geométrica presente em cada carta
 	public enum Formato{
@@ -22,7 +22,7 @@ class Cartas {
 	Image imagem;
 	
 	//Construtor
-	public Cartas(int i, Territorio t) {
+	public Carta(int i, Territorio t) {
 		f = Formato.values()[i];
 		this.territorio = t;
 		try {
