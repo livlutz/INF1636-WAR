@@ -111,6 +111,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(labelAtacantes);
 		add(dadosAtacante);    
 		add(comboBoxAtacantes);
+
 		// Adiciona ação ao selecionar um atacante
 		comboBoxAtacantes.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -137,6 +138,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxQtdRepos = new JComboBox<Integer>();
 		comboBoxQtdRepos.setBounds(1420,270,50,30);
 		add(comboBoxQtdRepos);
+
 		// Adiciona ação ao selecionar um território de origem
 		comboBoxOrigemRepos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -149,6 +151,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxDestinoRepos.setBounds(1220,310,200,30);
 		add(comboBoxDestinoRepos); 
 		reposButton = new JButton("=>");
+		reposButton.setBounds(1420,310,60,30);
+		add(reposButton);
+
 		// Adiciona ação ao clicar no botão de reposicionar
 		reposButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,8 +162,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				}
 			}
 		});
-		reposButton.setBounds(1420,310,60,30);
-		add(reposButton);
+		
 	
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
@@ -193,7 +197,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		
 		trocarCartasButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				gerente.clicouTrocar();
 			}
 		});
 		
