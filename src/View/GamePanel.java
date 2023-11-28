@@ -128,7 +128,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		add(dadosDefensores);
 		add(comboBoxDefensores);
 		
-		// ComboBox e label de colocar e mover exércitos
+		// ComboBox e label de reposicionar exércitos
 		comboBoxOrigemRepos = new JComboBox<String>();
 		labelReposicionamento.setBounds(1230,240,200,30);
 		add(labelReposicionamento);
@@ -137,6 +137,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxQtdRepos = new JComboBox<Integer>();
 		comboBoxQtdRepos.setBounds(1420,270,50,30);
 		add(comboBoxQtdRepos);
+		// Adiciona ação ao selecionar um território de origem
 		comboBoxOrigemRepos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				gerente.selecionouOrigem((String) comboBoxOrigemRepos.getSelectedItem());
@@ -148,6 +149,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxDestinoRepos.setBounds(1220,310,200,30);
 		add(comboBoxDestinoRepos); 
 		reposButton = new JButton("=>");
+		// Adiciona ação ao clicar no botão de reposicionar
 		reposButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxOrigemRepos.getSelectedItem() != null && comboBoxDestinoRepos.getSelectedItem() != null){
@@ -300,13 +302,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 			}
 			// Se tiver específicos, redesenha apenas eles
 			else{
+				// Redesenha o primeiro modificado
 				Exercitos e = listaExercitos.get(mod1);
 				e.setQntExercitos(qtds.get(mod1));
 				e.setCor(cores.get(mod1));
 				e.repaint();
 				e.drawPlayer(g2d);
-				
 				repaint();
+
+				// Se tiver um segundo modificado, redesenha ele também
 				if (mod2 != -1){
 					e = listaExercitos.get(mod2);
 					e.setQntExercitos(qtds.get(mod2));
@@ -321,9 +325,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Atualiza view no início da rodada de posicionamento para determinar o primeiro jogador
 	public void determinaPrimeiroJogador(String jogadorDaVez, Color corDoJogador, String descricaoObj, String[] territorios, Integer qtd){
-		// Adicionar frase "Primeiro jogador: NOME - COR"
-		// Adicionar descrição do objetivo em cima da carta
-		// NÃO IMPRIMIR AINDA, SÓ ADD PARA IMPRIMIR AO CHAMAR O DRAWCOMPONENT DO MAINFRAME
+		// Muda informações da view relacionadas ao jogador da vez (para o primeiro jogador)
 		this.jogadorDaVez = jogadorDaVez;
 		this.corDoJogador = corDoJogador;
 		this.descricaoObjetivo = descricaoObj;
@@ -333,12 +335,10 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	// Muda o jogador da vez na view
 	public void mudaJogador(String nome, Color cor, String descricaoObj, Image[] cartas){
-		
+		// Muda informações da view relacionadas ao jogador da vez
 		this.jogadorDaVez = nome;
 		this.corDoJogador = cor;
 		this.descricaoObjetivo = descricaoObj;
-		//escrever o objetivo na carta
-		//mudar as cartas pro jogador da vez
 		this.cartas = cartas;
 		repaint();
 	}
@@ -354,7 +354,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
-	// Atualiza os territórios a serem atacados
+	// Atualiza os territórios a serem atacados a partir do território selecionado
 	public void atualizaDefensores(String[] defensores){
 		// Esvazia a comboBox de defensores e adiciona os novos territórios
 		comboBoxDefensores.removeAllItems();
@@ -383,6 +383,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
+	// Atualiza a quantidade de exércitos a serem posicionados
 	public void atualizaQtdPosic(Integer qtd){
 		comboBoxQtdPosicionamento.removeAllItems();
 		for (Integer i = 0; i <= qtd; i++){
@@ -390,6 +391,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
+	// Atualiza a quantidade de exércitos a serem reposicionados a partir do território selecionado
 	public void atualizaQtdRepos(Integer qtd){
 		comboBoxQtdRepos.removeAllItems();
 		for (Integer i = 0; i <= qtd; i++){
@@ -397,6 +399,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
+	// Atualiza a comboBox de destinos de reposicionamento a partir do território selecionado
 	public void atualizaDestinos(String[] destinos){
 		comboBoxDestinoRepos.removeAllItems();
 		for (String s: destinos){
@@ -404,6 +407,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		}
 	}
 
+	// Muda a view para a rodada de posicionamento
 	public void mudaParaPosicionamento(){
 		// Deixa invisível elementos que não sejam de posicionamento
 		labelAtacantes.setVisible(false);
@@ -426,6 +430,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		posicButton.setVisible(true);
 	}
 
+	// Muda a view para a rodada de ataque
 	public void mudaParaAtaque(){
 		// Remove elementos da rodada de posicionamento
 		comboBoxPosicionamento.removeAllItems();
@@ -445,6 +450,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadoButton.setVisible(true);
 	}
 
+	// Muda a view para a rodada de reposicionamento
 	public void mudaParaReposicionamento(){
 		// Remove elementos da rodada de ataque
 		comboBoxAtacantes.removeAllItems();
@@ -464,16 +470,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxQtdRepos.setVisible(true);
 		reposButton.setVisible(true);
 	}
-
 		
-	//Desenha cada território
-	
+	// Desenha cada bolinha nos territórios
 	void desenhaExercitos(Graphics2D g2d) {
 		for (Exercitos e : listaExercitos) {
 			e.drawPlayer(g2d);
 		}
 	}
 	
+	// Instancia os objetos dos exércitos
 	void criaExercitos(Graphics2D g2d) {
 		//Pega a lista de territórios
 		this.territorios = gerente.getTerritoriosLista();

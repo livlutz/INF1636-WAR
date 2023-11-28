@@ -115,6 +115,10 @@ public class Gerente {
         }
     }
 
+    public void clicouTrocar(){
+        //TODO Trocar cartas
+    }
+
     public void clicouTerminarRodada(){
         // Se estiver na etapa de posicionamento
         if (estado == 0){
