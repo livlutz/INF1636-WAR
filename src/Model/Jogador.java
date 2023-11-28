@@ -37,8 +37,6 @@ class Jogador {
 	//Guarda se o jogador conquistou um território nessa rodada
 	private boolean conquistouNessaRodada = false; 
 	
-	// Guarda a instancia de tabuleiro
-	private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro(); 
 	
 	//Construtor da classe
 	public Jogador(String nome, Color cor) {
@@ -53,132 +51,11 @@ class Jogador {
 		}
 	}
 
-	// Posicionar exércitos em continente dominado
-	// Deve ser chamado no início da jogada se o jogador dominar um continente
-	public void posicionarExercCont(Continente cont){
-		// Objeto para pegar input de nome
-		Scanner input = new Scanner(System.in);
-
-		this.qtdExercitoPosic = cont.getQtdExerc();
-		while (this.qtdExercitoPosic > 0){
-			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar em " + cont.getNome() + ".");
-			
-			// Pede ao usuário o nome do território
-			System.out.println("Digite o nome do território: ");
-			String nomeTerritorio = input.nextLine();
-
-			// Procura o território no hashmap do tabuleiro 
-			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
-			
-			// Verifica se o território existe
-			if (t == null){
-				System.out.println("Território não encontrado.");
-				continue;
-			}
-
-			// Verifica se o território pertence ao continente
-			if (cont.noContinente(t)){
-
-				// Pede ao usuário a quantidade de exércitos a serem posicionados
-				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
-				int qtdExercitos = input.nextInt();
-				input.nextLine();
-
-				// Verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
-				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
-
-					// Posiciona os exércitos no território
-					this.posicionarExercitos(t, qtdExercitos);
-
-					// Subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
-					this.qtdExercitoPosic -= qtdExercitos;
-				}
-				else
-					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
-				
-			}
-		}
-		input.close();
-	}
-
 	// Posicionar exércitos em território do jogador
 	// Cabe a função que chamou verificar se pode
 	public void posicionarExercitos(Territorio t, int qtdExercitos){
 		t.alterarQndExercitos(qtdExercitos);
 		this.qtdExercitoPosic -= qtdExercitos;
-	}
-
-	// Executa todos os passos para a rodada de posicionamento de um jogador
-	public void rodadaDePosicionamento(){
-		HashMap <String, Continente> continentes = tabuleiro.getMapContinentes();
-		
-		// Para cada continente, se o jogador dominar, posiciona os exércitos
-		for (Map.Entry<String, Continente> e: continentes.entrySet()){
-			if (e.getValue().dominado(this))
-				this.posicionarExercCont(e.getValue());
-		}
-
-		this.qtdExercitoPosic = this.qtdTerritorios/2;
-
-		// Objeto para pegar input
-		Scanner input = new Scanner(System.in);
-
-		if (this.temTroca()){
-			this.verCartas();
-			System.out.println("Você quer trocar cartas? (S/N)");
-			String resp = input.nextLine();
-
-			if (resp.equals("S") || resp.equals("s")){
-				System.out.println("Digite os três formatos das cartas que deseja trocar (C/Q/T): ");
-				String a = input.nextLine();
-				String b = input.nextLine();
-				String c = input.nextLine();
-				// implementar achar as cartas para usar no método trocarCartas
-			}
-		}
-		
-		// Posiciona os exércitos em territórios do jogador
-		while (this.qtdExercitoPosic > 0){
-			System.out.println("Você tem " + this.qtdExercitoPosic + " exércitos para posicionar.");
-			
-			// Pede ao usuário o nome do território
-			System.out.println("Digite o nome do território: ");
-			String nomeTerritorio = input.nextLine();
-
-			// Procura o território no hashmap do tabuleiro 
-			Territorio t = tabuleiro.getTerritorio(nomeTerritorio);
-			
-			// Verifica se o território existe
-			if (t == null){
-				System.out.println("Território não encontrado.");
-				continue;
-			}
-
-			// Verifica se o território pertence ao jogador
-			if (t.getJogador() == this){
-
-				// Pede ao usuário a quantidade de exércitos a serem posicionados
-				System.out.println("Digite a quantidade de exércitos a serem posicionados: ");
-				int qtdExercitos = input.nextInt();
-				input.nextLine();
-
-				// Verifica se a quantidade de exércitos é menor ou igual a quantidade de exércitos que o jogador pode posicionar
-				if (qtdExercitos <= this.qtdExercitoPosic && qtdExercitos > 0){
-
-					// Posiciona os exércitos no território
-					this.posicionarExercitos(t, qtdExercitos);
-
-					// Subtrai a quantidade de exércitos posicionados da quantidade de exércitos que o jogador pode posicionar
-					this.qtdExercitoPosic -= qtdExercitos;
-				}
-				
-				// Exibe mensagem de erro caso a quantidade de exércitos seja maior que a quantidade de exércitos que o jogador pode posicionar
-				else {
-					System.out.println("Você não pode posicionar essa quantidade de exércitos.");
-				}
-			}
-		}
-		input.close();
 	}
 	
 	//Verifica se o jogador pode trocar cartas

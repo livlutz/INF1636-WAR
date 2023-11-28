@@ -3,7 +3,6 @@ package Model;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
@@ -185,6 +184,7 @@ import View.APIView;
         Jogador j = jogo.getJogadorVez(vez);
         return j.getObj().alcancou(j);
     }
+
     // Método que retorna lista com os territórios do jogador que têm mais de um exército
     public String[] getTerritoriosMaisDeUm(int vez){
         ArrayList<Territorio> ter = jogo.getJogadorVez(vez).getTerritorios();

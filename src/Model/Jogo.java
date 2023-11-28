@@ -260,7 +260,6 @@ class Jogo implements ObservadoIF{
 				}
 			}
 
-			System.out.println("Dados: " + dados[0] + " " + dados[1] + " " + dados[2] + " " + dados[3] + " " + dados[4] + " " + dados[5]);
 			return dados;
 		}
 	
