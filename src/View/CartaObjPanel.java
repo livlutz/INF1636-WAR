@@ -33,26 +33,27 @@ class CartaObjPanel extends Panel {
 	public void escreveObjetivo(Graphics g, String objetivo) {
 		g.setColor(Color.BLACK);
 		String linha[]; //vetor de strings para armazenar as linhas do objetivo
-
+		
 		//se o objetivo for de destruir, diminui o tamanho da fonte
 		if(objetivo.contains("Destruir")) {
 			g.setFont(new Font("Arial", Font.BOLD, 10));
 			//cabe 20 caracteres por linha
-			linha = new String[objetivo.length()/20 + 1];
+			linha = new String[objetivo.length()/23 + 1];
 			int i = 0;
 			int j = 0;
 			while (i < objetivo.length()) {
-				if (i+20 < objetivo.length()) {
-					linha[j] = objetivo.substring(i, i+20);
+				if (i+23 < objetivo.length()) {
+					linha[j] = objetivo.substring(i, i+23);
 				}
 				else {
 					linha[j] = objetivo.substring(i);
 				}
-				i += 30;
+				i += 23;
 				j++;
 			}
+
 			//Escreve as linhas
-			for (int k = 0; k < linha.length; k++) {
+			for (int k = 0; k < j; k++) {
 				g.drawString(linha[k], 422, 545 + 10*k);
 			}
 
@@ -76,7 +77,7 @@ class CartaObjPanel extends Panel {
 				j++;
 			}
 			//Escreve as linhas
-			for (int k = 0; k < linha.length; k++) {
+			for (int k = 0; k < j; k++) {
 				g.drawString(linha[k], 422, 545 + 15*k);
 			}
 		}

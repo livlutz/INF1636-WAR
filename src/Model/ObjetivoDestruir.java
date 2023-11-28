@@ -37,7 +37,7 @@ class ObjetivoDestruir extends Objetivo{
         }
         
        //Adiciona a cor do jogador alvo ao objetivo
-        descricao += cor + " se é você quem possui os exércitos " + cor 
+        descricao += cor + ", se é você quem possui os exércitos " + cor 
             + " ou se o jogador que os possui for elimidado por um outro jogador, o seu objetivo passa a ser automaticamente conquistar 24 TERRITÓRIOS";
 
         /* descricao += cor + "se é você quem possui os exércitos " + cor 

@@ -1,59 +1,62 @@
-false
-3
-1
-b;c;a
--65536;-256;-16776961
-Groelandia;1;a
-Angola;1;b
-Turquia;1;c
-Iraque;1;c
+true
+6
+0
+b;d;f;c;a;e
+-16777216;-16711936;-1;-65536;-16776961;-256
+Groelandia;1;d
+Angola;1;f
+Turquia;1;e
+Iraque;1;e
 Mongolia;1;a
-Siria;1;c
+Siria;1;b
 Paquistao;1;c
-Coreia do Sul;1;c
-Arabia Saudita;1;a
-Argentina;1;a
-Calgary;1;a
-Japao;9;b
-Perth;9;b
-California;1;c
-Cazaquistao;1;a
-India;9;a
-Nova Zelandia;1;b
-Tailandia;1;a
-Texas;1;c
-Ira;1;b
-Peru;1;c
-Africa do Sul;1;b
-Vancouver;1;a
-Somalia;1;b
-Nova York;1;a
+Coreia do Sul;1;e
+Arabia Saudita;1;c
+Argentina;1;d
+Calgary;1;e
+Japao;1;c
+Perth;1;a
+California;1;f
+Cazaquistao;1;b
+India;1;e
+Nova Zelandia;1;a
+Tailandia;1;b
+Texas;1;b
+Ira;1;c
+Peru;1;b
+Africa do Sul;1;d
+Vancouver;1;e
+Somalia;1;a
+Nova York;1;f
 Russia;1;b
-Franca;9;c
-Brasil;1;b
-Alasca;1;c
-China;1;b
-Siberia;1;c
+Franca;1;f
+Brasil;1;d
+Alasca;1;d
+China;1;a
+Siberia;1;e
 Ucrania;1;c
-Nigeria;1;b
-Egito;1;a
-Polonia;1;a
-Quebec;1;c
-Romenia;1;b
-Espanha;1;b
-Italia;1;a
-Argelia;1;c
-Reino Unido;1;c
-Coreia do Norte;1;c
-Venezuela;1;a
+Nigeria;1;f
+Egito;1;c
+Polonia;1;b
+Quebec;1;a
+Romenia;1;f
+Espanha;1;d
+Italia;1;c
+Argelia;1;d
+Reino Unido;1;a
+Coreia do Norte;1;b
+Venezuela;1;b
 Bangladesh;1;a
-Mexico;1;b
-Suecia;1;b
-Letonia;1;c
-Australia;1;a
-Jordania;1;a
-Estonia;1;b
-Indonesia;1;b
-1;Europa;America do Sul;3
-2;c
-2;a
+Mexico;1;f
+Suecia;1;d
+Letonia;1;f
+Australia;1;c
+Jordania;1;d
+Estonia;1;f
+Indonesia;1;e
+2;e
+1;America do Norte;Africa;2
+1;America do Norte;Oceania;2
+2;d
+2;b
+1;Asia;Africa;2
