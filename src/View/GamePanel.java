@@ -57,10 +57,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 	JComboBox dadosDefensor = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
-	//Jogador da vez e cor do jogador
+	//Informações do jogador da vez
 	String jogadorDaVez;
 	Color corDoJogador;
 	String descricaoObjetivo;
+	String[] cartas; 
 	JLabel jogadorDaVezLabel = new JLabel();
 
 	//Array list de exércitos 
@@ -69,8 +70,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Boolean para saber se os exércitos já foram criados
 	Boolean ExercitosNaoCriados = true;
 
-	//Array de cartas
-	Image[] cartas; 
+	
 
 	//Construtor
 	private GamePanel() {
@@ -326,7 +326,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	}
 
 	// Muda o jogador da vez na view
-	public void mudaJogador(String nome, Color cor, String descricaoObj, Image[] cartas){
+	public void mudaJogador(String nome, Color cor, String descricaoObj, String[] cartas){
 		// Muda informações da view relacionadas ao jogador da vez
 		this.jogadorDaVez = nome;
 		this.corDoJogador = cor;

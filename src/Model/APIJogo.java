@@ -256,16 +256,22 @@ import View.APIView;
         return qtd;
     }
 
-    // Retorna array com as imagens das cartas do jogador
-    public Image[] getImgCartasJogador(int vez){
+    // Retorna array com os nomes dos territórios das cartas do jogador
+    public String[] getNomesCartasJogador(int vez){
         ArrayList<Carta> cartas = jogo.getJogadorVez(vez).getCartas();
-        Image[] imgCartas = new Image[cartas.size()];
+        String[] arrayCartas = new String[cartas.size()];
         int cont = 0;
         for (Carta c: cartas) {
-            imgCartas[cont] = c.getImagem();
+            Territorio t = c.getTerritorio();
+            if (t == null){
+                arrayCartas[cont] = null;
+            }
+            else{
+                arrayCartas[cont] = t.getNome();
+            }
             cont++;
         }
-        return imgCartas;
+        return arrayCartas;
     }
     
     public boolean analisarDarCarta(int vez){

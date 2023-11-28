@@ -110,7 +110,7 @@ public class Gerente {
             // Notifica obs de jogo para redesenhar exércitos
             apiJogo.notificaObsJogo();
             // Atualiza a view para posicionamento do jogador da vez
-            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
             primeiroPosicionamento();
         }
     }
@@ -164,7 +164,7 @@ public class Gerente {
         }
 
         // Atualiza a view para posicionamento do jogador da vez
-        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
         primeiroPosicionamento();
     }
 
@@ -242,7 +242,7 @@ public class Gerente {
                 // Se for a primeira rodada, só pode posicionamento para todos
                 if (primeiraRodada){
                     vez = (vez + 1) % apiJogo.getQtdJogadores();
-                    apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+                    apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
                     primeiroPosicionamento();
                     if (vez == 0){
                         primeiraRodada = false;
@@ -324,7 +324,7 @@ public class Gerente {
             //TODO Dá carta se for o caso
             estado = 0;
             vez = (vez + 1) % apiJogo.getQtdJogadores();
-            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+            apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
             primeiroPosicionamento();
         }
     }
@@ -347,7 +347,7 @@ public class Gerente {
         this.podeSalvar = true;
         this.primeiraRodada = true;
 
-        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
         primeiroPosicionamento();
     }
 

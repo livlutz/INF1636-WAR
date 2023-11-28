@@ -84,7 +84,7 @@ public class APIView{
 		GamePanel.getGamePanel().atualizaDestinos(destinos);
 	}
 
-	public void mudaJogador(String jogador, Color cor, String descricaoObj, Image[] cartas){
+	public void mudaJogador(String jogador, Color cor, String descricaoObj, String[] cartas){
 		GamePanel.getGamePanel().mudaJogador(jogador, cor, descricaoObj, cartas);
 	}
 
