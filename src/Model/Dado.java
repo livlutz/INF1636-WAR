@@ -1,6 +1,5 @@
 package Model;
 import java.util.Random;
-import java.util.Scanner;
 
 class Dado {
 	
@@ -12,8 +11,8 @@ class Dado {
 		
 		//Roda dado aleatoriamente
 		Random rand = new Random();
-		return rand.nextInt(6);
-	
-			
+		//Retorna um número aleatório entre 1 e 6
+		return rand.nextInt(6) + 1;
+		
 	}
 }

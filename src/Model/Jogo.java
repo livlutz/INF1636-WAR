@@ -156,16 +156,24 @@ class Jogo implements ObservadoIF{
 	public int[] RealizaAtaque(Territorio atacante,Territorio defensor, Integer numAtaque, Integer numDefesa) {
 		
 		if(VerificarAtaque(atacante, defensor)){
+			//Verifica se o atacante tem mais de 3 exércitos
 			int qtdAtaque = atacante.getQntExercitos() - 1;
 			if  (qtdAtaque > 3) {qtdAtaque = 3;}
+
+			//Verifica se o defensor tem mais de 3 exércitos
 			int qtdDefesa = defensor.getQntExercitos();
 			if  (qtdDefesa > 3) {qtdDefesa = 3;}
+
+			//Cria os arrays de dados
 			int[] dadosAtaque = new int[qtdAtaque];
 			int[] dadosDefesa = new int[qtdDefesa];
+			//Cria um dado
 			Dado dado = new Dado();
+			//Variáveis para contar quantos exércitos foram perdidos
 			int qtdAtaquePerdidos = 0;
 			int qtdDefesaPerdidos = 0;
 			
+			//Verifica se o jogador escolheu um número forçado
 			if (numAtaque != 0){
 				for (int i = 0;i < qtdAtaque;i++) {
 				dadosAtaque[i] = numAtaque;
@@ -252,6 +260,7 @@ class Jogo implements ObservadoIF{
 				}
 			}
 
+			System.out.println("Dados: " + dados[0] + " " + dados[1] + " " + dados[2] + " " + dados[3] + " " + dados[4] + " " + dados[5]);
 			return dados;
 		}
 	

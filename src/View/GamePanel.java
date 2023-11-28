@@ -55,7 +55,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	
 	String valoresDados[] = {"0","1","2","3","4","5","6"};
 	JComboBox dadosAtacante = new JComboBox(valoresDados);
-	JComboBox dadosDefensores = new JComboBox(valoresDados);
+	JComboBox dadosDefensor = new JComboBox(valoresDados);
 	APIJogo apiJogo = APIJogo.getAPIJogo();
 
 	//Jogador da vez e cor do jogador
@@ -124,9 +124,9 @@ class GamePanel extends JPanel implements ObservadorIF {
 		comboBoxDefensores = new JComboBox<String>();
 		labelDefensores.setBounds(1230,130,200,30);
 		comboBoxDefensores.setBounds(1220,160,200,30);
-		dadosDefensores.setBounds(1420,160,50,30);
+		dadosDefensor.setBounds(1420,160,50,30);
 		add(labelDefensores);
-		add(dadosDefensores);
+		add(dadosDefensor);
 		add(comboBoxDefensores);
 		
 		// ComboBox e label de reposicionar exércitos
@@ -212,7 +212,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 				int [] dadosAtaque = new int [3];
 				int [] dadosDefesa = new int [3];
 
-				int[] valoresDado = apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(),Integer.valueOf((String)dadosAtacante.getSelectedItem()), Integer.valueOf((String)dadosDefensores.getSelectedItem()));
+				int[] valoresDado = apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(),Integer.valueOf((String)dadosAtacante.getSelectedItem()), Integer.valueOf((String)dadosDefensor.getSelectedItem()));
 				dadosAtaque[0] = valoresDado[0];
 				dadosAtaque[1] = valoresDado[1];
 				dadosAtaque[2] = valoresDado[2];
@@ -408,7 +408,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadosAtacante.setVisible(false);
 		labelDefensores.setVisible(false);
 		comboBoxDefensores.setVisible(false);
-		dadosDefensores.setVisible(false);
+		dadosDefensor.setVisible(false);
 		dadoButton.setVisible(false);
 		labelReposicionamento.setVisible(false);
 		comboBoxOrigemRepos.setVisible(false);
@@ -439,7 +439,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadosAtacante.setVisible(true);
 		labelDefensores.setVisible(true);
 		comboBoxDefensores.setVisible(true);
-		dadosDefensores.setVisible(true);
+		dadosDefensor.setVisible(true);
 		dadoButton.setVisible(true);
 	}
 
@@ -453,7 +453,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		dadosAtacante.setVisible(false);
 		labelDefensores.setVisible(false);
 		comboBoxDefensores.setVisible(false);
-		dadosDefensores.setVisible(false);
+		dadosDefensor.setVisible(false);
 		dadoButton.setVisible(false);
 
 		// Deixa visível elementos da rodada de reposicionamento
