@@ -71,8 +71,10 @@ import View.APIView;
     public int[] realizaAtaque(String atacante,String defensor, Integer numAtaque, Integer numDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	return jogo.RealizaAtaque(Tatacante, Tdefensor, numAtaque, numDefesa);
-    	
+        int[] array = jogo.RealizaAtaque(Tatacante, Tdefensor, numAtaque, numDefesa);
+        // Verifica se jogador ganhou após essa rodada
+		Gerente.getGerente().verificaGanhou();
+        return array;
     }
 
     // Retorna cor do jogador que domina aquele território
@@ -281,6 +283,10 @@ import View.APIView;
             return true;
         }
         return false;
+    }
+
+    public void retiraEliminado(String jogador){
+        jogo.getJogador(jogador).setEliminadoNessaRodada(false);
     }
 
     // Retorna quantidade de exércitos que tem em um território
