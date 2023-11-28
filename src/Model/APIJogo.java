@@ -69,18 +69,11 @@ import View.APIView;
 	}
     
     //Método de realizar ataque
-    public int[] realizaAtaque(String atacante,String defensor, int[]dadosAtaque, int[]dadosDefesa) {
+    public int[] realizaAtaque(String atacante,String defensor, Integer numAtaque, Integer numDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	return jogo.RealizaAtaque(Tatacante, Tdefensor,dadosAtaque, dadosDefesa);
+    	return jogo.RealizaAtaque(Tatacante, Tdefensor, numAtaque, numDefesa);
     	
-    }
-    
-    //Método de realizar ataque forcado
-    public void realizaAtaqueForcado(String atacante, String defensor, int dadoAtaque, int dadoDefesa) {
-    	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
-    	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
-    	jogo.RealizaAtaqueForcado(Tatacante, Tdefensor, dadoAtaque, dadoDefesa);
     }
 
     // Retorna cor do jogador que domina aquele território

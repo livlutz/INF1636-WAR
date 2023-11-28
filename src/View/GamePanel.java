@@ -211,26 +211,15 @@ class GamePanel extends JPanel implements ObservadorIF {
 			public void actionPerformed(ActionEvent e) {
 				int [] dadosAtaque = new int [3];
 				int [] dadosDefesa = new int [3];
-				if (dadosAtacante.getSelectedItem() == "0" && dadosDefensores.getSelectedItem() == "0") {
-					int [] valoresDado = apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(), dadosAtaque, dadosDefesa);
-					dadosAtaque[0] = valoresDado[0];
-					dadosAtaque[1] = valoresDado[1];
-					dadosAtaque[2] = valoresDado[2];
-					dadosDefesa[0] = valoresDado[3];
-					dadosDefesa[1] = valoresDado[4];
-					dadosDefesa[2] = valoresDado[5];
-				}
-				else {
-					apiJogo.realizaAtaqueForcado(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(),Integer.valueOf((String)dadosAtacante.getSelectedItem()), Integer.valueOf((String)dadosDefensores.getSelectedItem()));
-					int dadoAtaque = Integer.valueOf((String) dadosAtacante.getSelectedItem());
-					dadosAtaque[0] = dadoAtaque;
-					dadosAtaque[1] = dadoAtaque;
-					dadosAtaque[2] = dadoAtaque;
-					int dadoDefesa = Integer.valueOf((String) dadosDefensores.getSelectedItem());
-					dadosDefesa[0] = dadoDefesa;
-					dadosDefesa[1] = dadoDefesa;
-					dadosDefesa[2] = dadoDefesa;
-				}
+
+				int[] valoresDado = apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(),Integer.valueOf((String)dadosAtacante.getSelectedItem()), Integer.valueOf((String)dadosDefensores.getSelectedItem()));
+				dadosAtaque[0] = valoresDado[0];
+				dadosAtaque[1] = valoresDado[1];
+				dadosAtaque[2] = valoresDado[2];
+				dadosDefesa[0] = valoresDado[3];
+				dadosDefesa[1] = valoresDado[4];
+				dadosDefesa[2] = valoresDado[5];
+				
 				dadosPanel.mostrarDados(dadosAtaque, dadosDefesa);
 			}
 		});

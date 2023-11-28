@@ -152,30 +152,43 @@ class Jogo implements ObservadoIF{
 	}
 	
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
-	public int[] RealizaAtaque(Territorio atacante,Territorio defensor, int[]dadosAtaque, int[]dadosDefesa) {
+	public int[] RealizaAtaque(Territorio atacante,Territorio defensor, Integer numAtaque, Integer numDefesa) {
 		
 		if(VerificarAtaque(atacante)){
 			int qtdAtaque = atacante.getQntExercitos() - 1;
 			if  (qtdAtaque > 3) {qtdAtaque = 3;}
 			int qtdDefesa = defensor.getQntExercitos();
 			if  (qtdDefesa > 3) {qtdDefesa = 3;}
-			dadosAtaque = new int[qtdAtaque];
-			dadosDefesa = new int[qtdDefesa];
+			int[] dadosAtaque = new int[qtdAtaque];
+			int[] dadosDefesa = new int[qtdDefesa];
 			Dado dado = new Dado();
 			int qtdAtaquePerdidos = 0;
 			int qtdDefesaPerdidos = 0;
 			
-			for (int i = 0;i < qtdAtaque;i++) {
-				dadosAtaque[i] = dado.rodarDado();
+			if (numAtaque != 0){
+				for (int i = 0;i < qtdAtaque;i++) {
+				dadosAtaque[i] = numAtaque;
 			}
-			
-			for (int i = 0;i < qtdDefesa;i++) {
-				dadosDefesa[i] = dado.rodarDado();
 			}
-			
-			//Ordena os dados
-			Arrays.sort(dadosAtaque);
-			Arrays.sort(dadosDefesa);
+			else{
+				for (int i = 0;i < qtdAtaque;i++) {
+					dadosAtaque[i] = dado.rodarDado();
+				}
+				//Ordena os dados se for aleatório
+				Arrays.sort(dadosAtaque);
+			}
+			if (numDefesa != 0){
+				for (int i = 0;i < qtdDefesa;i++) {
+				dadosDefesa[i] = numDefesa;
+				}
+			}
+			else{
+				for (int i = 0;i < qtdDefesa;i++) {
+					dadosDefesa[i] = dado.rodarDado();
+				}
+				//Ordena os dados se for aleatório
+				Arrays.sort(dadosDefesa);
+			}
 			
 			//Compara os dados
 			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
@@ -194,81 +207,43 @@ class Jogo implements ObservadoIF{
 			//Atualiza os territórios modificados
 			mod1 = atacante;
 			mod2 = defensor;
+			// Se conquistou
 			if (defensor.getQntExercitos()==0) {
-				//TODO passar maximo 
+				// Atualiza defensor
 				defensor.getJogador().removeTerritorio(defensor);
 				defensor.setJogador(atacante.getJogador());
+
+				// Adiciona território conquistado ao jogador que conquistou
 				atacante.getJogador().addTerritorio(defensor);
-				atacante.setQntExercitos(atacante.getQntExercitos()-1);
-				defensor.setQntExercitos(1);
+
+				// Calcula quantos exércitos o jogador pode colocar no território conquistado (sempre máximo possível)
+				int qtdPassada = atacante.getQntExercitos() - 1;
+				if (qtdPassada > 3) {qtdPassada = 3;}
+
+				// Altera a quantidade de exércitos dos territórios
+				atacante.alterarQndExercitos(-qtdPassada);
+				defensor.setQntExercitos(qtdPassada);
 			}
 			//Notifica os observadores
 			this.notificaObs();
 			
-			return new int [] {dadosAtaque[0],dadosAtaque[1],dadosAtaque[2],dadosDefesa[0],dadosDefesa[1],dadosDefesa[2]};
+			// Retorna os dados em um array único 
+			
+			int[] dados = new int[dadosAtaque.length + dadosDefesa.length];
+			int i;
+			for (i = 0;i < dadosAtaque.length;i++) {
+				dados[i] = dadosAtaque[i];
+			}
+			for (int j = 0;j < dadosDefesa.length;j++) {
+				dados[i] = dadosDefesa[j];
+				i++;
+			}
+
+			return dados;
 		}
 	
 		System.out.println("Nao foi possivel realizar o ataque");
 		return new int [] {0,0,0,0,0,0};
-	}
-
-	public void RealizaAtaqueForcado(Territorio tatacante, Territorio tdefensor, int dadoAtaque,int dadoDefesa) {
-		if(VerificarAtaque(tatacante)){
-			int qtdAtaque = tatacante.getQntExercitos() - 1;
-			if  (qtdAtaque > 3) {qtdAtaque = 3;}
-			int qtdDefesa = tdefensor.getQntExercitos();
-			if  (qtdDefesa > 3) {qtdDefesa = 3;}
-			int dadosAtaque[] = new int[3];
-			int dadosDefesa [] = new int[3];
-			int qtdAtaquePerdidos = 0;
-			int qtdDefesaPerdidos = 0;
-			
-			for (int i = 0;i < qtdAtaque;i++) {
-				dadosAtaque[i] = dadoAtaque;
-			}
-			
-			for (int i = 0;i < qtdDefesa;i++) {
-				dadosDefesa[i] = dadoDefesa;
-			}
-			
-			//Ordena os dados
-			Arrays.sort(dadosAtaque);
-			Arrays.sort(dadosDefesa);
-			
-			//Compara os dados
-			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
-				if (dadosAtaque[i] > dadosDefesa[i]) {
-					qtdDefesaPerdidos++;
-				}
-				else {
-					qtdAtaquePerdidos++;
-				}
-			}
-			
-			//Atualiza os exércitos
-			tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
-			tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
-			if (tdefensor.getQntExercitos()==0) {
-				//TODO passar maximo
-				tdefensor.getJogador().removeTerritorio(tdefensor);
-				tdefensor.setJogador(tatacante.getJogador());
-				tatacante.getJogador().addTerritorio(tdefensor);
-				tatacante.setQntExercitos(tatacante.getQntExercitos()-1);
-				tdefensor.setQntExercitos(1);
-			}
-			
-			//Atualiza os territórios modificados
-			mod1 = tatacante;
-			mod2 = tdefensor;
-
-			//Notifica os observadores
-			this.notificaObs();
-
-			return;
-		}
-
-		System.out.println("Nao foi possivel realizar o ataque");
-		return;
 	}
 	
 	//Instancia os objetivos de cada jogador
