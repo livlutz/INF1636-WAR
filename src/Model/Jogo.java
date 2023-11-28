@@ -195,7 +195,10 @@ class Jogo implements ObservadoIF{
 			mod1 = atacante;
 			mod2 = defensor;
 			if (defensor.getQntExercitos()==0) {
+				//TODO passar maximo 
+				defensor.getJogador().removeTerritorio(defensor);
 				defensor.setJogador(atacante.getJogador());
+				atacante.getJogador().addTerritorio(defensor);
 				atacante.setQntExercitos(atacante.getQntExercitos()-1);
 				defensor.setQntExercitos(1);
 			}
@@ -246,7 +249,10 @@ class Jogo implements ObservadoIF{
 			tatacante.setQntExercitos(tatacante.getQntExercitos() - qtdAtaquePerdidos);
 			tdefensor.setQntExercitos(tdefensor.getQntExercitos() - qtdDefesaPerdidos);
 			if (tdefensor.getQntExercitos()==0) {
+				//TODO passar maximo
+				tdefensor.getJogador().removeTerritorio(tdefensor);
 				tdefensor.setJogador(tatacante.getJogador());
+				tatacante.getJogador().addTerritorio(tdefensor);
 				tatacante.setQntExercitos(tatacante.getQntExercitos()-1);
 				tdefensor.setQntExercitos(1);
 			}
