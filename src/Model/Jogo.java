@@ -503,4 +503,27 @@ class Jogo implements ObservadoIF{
 		mod2 = t;
 	}
 
+	public Carta getCartaNome(String nome){
+		Territorio t;
+		if(nome == null){
+			t = null;
+		}
+
+		else{
+			t = tabuleiro.getTerritorio(nome);
+		}
+
+		for(Carta c : listaCartas){
+				if(c.getTerritorio() == t){
+					return c;
+				}
+		}
+
+		return null;
+	}
+
+	public ArrayList<Carta> getListaCartas(){
+		return listaCartas;
+	}
+
 }

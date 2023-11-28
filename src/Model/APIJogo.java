@@ -383,35 +383,44 @@ import View.APIView;
 
                 //Escreve as cartas dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
+
                     if(j.getCartas().size() == 0) {
+                        inputStream.write("0");
                         continue;
                     }
+
+                    inputStream.write(String.valueOf(j.getCartas().size()) + ";");
+
                     for (Carta c: j.getCartas()) {
-                        inputStream.write(j.getNome() + " ");
                         // Carta de coringa
                         if(c.getTerritorio() == null){
-                            inputStream.write("Coringa ");
-                        }
-                        else{
-                            inputStream.write(c.getTerritorio().getNome()+ " ");
+                            inputStream.write("Coringa");
                         }
 
-                        inputStream.write(String.valueOf(c.getF().ordinal()));
-                        inputStream.write("\n");
+                        else{
+                            inputStream.write(c.getTerritorio().getNome());
+                        }
+
+                        if( c != j.getCartas().get(j.getCartas().size()-1)){
+                            inputStream.write(";");
+                        }
             
                     }
+                    inputStream.write("\n");
                 }
             } 
 
             catch (IOException ex) {
                 System.out.println("Erro ao abrir arquivo para salvar jogo");
             }
-            
+
             finally {
                 if (inputStream != null) {
                     try {
                         inputStream.close();
-                    } catch (IOException ex) {
+                    } 
+                    
+                    catch (IOException ex) {
                         System.out.println("Erro ao fechar arquivo para salvar jogo");
                     }
                 }
@@ -514,24 +523,35 @@ import View.APIView;
                             break;
                     }
                 }
-                //TODO
-                /*
+
                 //Lê as cartas dos jogadores
-                //Colocar um boolean - se tiver carta pode ler, senao so retorna 
                 for (Jogador j: jogo.getJogadores()) {
-                    if(j.getCartas().size() == 0) {
+                    linha = br.readLine();
+
+                    String[] dados = linha.split(";");
+
+                    int qtdCartas = Integer.parseInt(dados[1]);
+
+                    if(qtdCartas == 0){
                         continue;
                     }
-                    linha = br.readLine();
-                    String[] dados = linha.split(";");
-                    for (int i = 0; i < dados.length; i+=2) {
-                        for (Cartas c: j.getCartas()) {
-                            if (c.getTerritorio().getNome().equals(dados[i])) {
-                                c.setF(Cartas.Formato.values()[Integer.parseInt(dados[i+1])]);
-                            }
+
+                    for (int i = 0; i < qtdCartas; i++) {
+                        String[] dadosCarta = dados[i+2].split(";");
+                        Carta c;
+                        if(dadosCarta[0].equals("Coringa")){
+                            c = jogo.getCartaNome(null);
                         }
+                        else{
+                           c = jogo.getCartaNome(dadosCarta[0]);
+                        }
+
+                        j.addCarta(c);
+                        jogo.getListaCartas().remove(c);
                     }
-                } */
+                }
+
+                
                 return true;
             } 
             catch (IOException e) {
