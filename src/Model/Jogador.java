@@ -134,6 +134,18 @@ class Jogador {
 		this.qtdExercitoPosic = this.qtdTerritorios/2;
 	}
 
+	// Apaga todos os dados do jogador menos nome e cor
+	public void resetJogador(){
+		this.qtdExercitoPosic = 0;
+		this.qtdTrocaCartas = 0;
+		this.qtdTerritorios = 0;
+		this.cartas.clear();
+		this.territorios.clear();
+		this.obj = null;
+		this.eliminadoNessaRodada = false;
+		this.conquistouNessaRodada = false;
+	}
+
 	// --------------------------- getters & setters ---------------------------
 
 	//Retorna a cor do jogador

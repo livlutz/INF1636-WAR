@@ -439,7 +439,7 @@ class Jogo implements ObservadoIF{
 		Collections.shuffle(listaCartas);
 		Carta carta = listaCartas.get(0);
 		j.addCarta(carta);
-		
+
 		//Remove a carta da lista de cartas
 		listaCartas.remove(0);
 
@@ -458,6 +458,32 @@ class Jogo implements ObservadoIF{
 			}
 		}
 		return null;
+	}
+
+	public void reiniciarJogo(){
+
+		for (Jogador j: jogadores){
+			// Devolve objetivo do jogador para lista
+			objetivos.add(j.getObj());
+			// Devolve cartas do jogador para lista
+			for (Carta c: j.getCartas()){
+				listaCartas.add(c);
+			}
+			j.resetJogador();
+		}
+		
+		// Embaralha os jogadores
+        Collections.shuffle(jogadores);
+
+		// Redistribui territórios
+		tabuleiro.distribuiTerritorios(jogadores);
+
+		// Redistribui objetivos
+		Collections.shuffle(objetivos);
+		for (int i = 0;i < jogadores.size();i++){
+			jogadores.get(i).setObj(objetivos.get(i));
+		}
+
 	}
 
 	// Método para pegar o jogador da vez

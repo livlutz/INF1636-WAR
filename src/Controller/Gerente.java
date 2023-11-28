@@ -337,7 +337,18 @@ public class Gerente {
     }
 
     public void reiniciarJogo(){
-        //TODO Reiniciar jogo
+        // Reinicia dados de model
+        apiJogo.reiniciarJogo();
+        
+        // Reinicia dados do controller
+        this.vez = 0;
+        this.estado = 0;
+        this.continente = 0;
+        this.podeSalvar = true;
+        this.primeiraRodada = true;
+
+        apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
+        primeiroPosicionamento();
     }
 
     // Método que retorna a cor de um território

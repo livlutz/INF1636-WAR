@@ -303,6 +303,10 @@ import View.APIView;
         jogo.notificaObs();
     }
 
+    public void reiniciarJogo(){
+        jogo.reiniciarJogo();
+    }
+
     // Método que salva jogo em arquivo
     /*Informacoes para salvar
      * -qtd de jogadores
