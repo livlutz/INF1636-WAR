@@ -383,16 +383,30 @@ import View.APIView;
 
                 //Escreve as cartas dos jogadores
                 for (Jogador j: jogo.getJogadores()) {
+                    if(j.getCartas().size() == 0) {
+                        continue;
+                    }
                     for (Carta c: j.getCartas()) {
                         inputStream.write(j.getNome() + " ");
-                        inputStream.write(c.getTerritorio().getNome()+ " ");
+                        // Carta de coringa
+                        if(c.getTerritorio() == null){
+                            inputStream.write("Coringa ");
+                        }
+                        else{
+                            inputStream.write(c.getTerritorio().getNome()+ " ");
+                        }
+
                         inputStream.write(String.valueOf(c.getF().ordinal()));
                         inputStream.write("\n");
+            
                     }
                 }
-            } catch (IOException ex) {
+            } 
+
+            catch (IOException ex) {
                 System.out.println("Erro ao abrir arquivo para salvar jogo");
             }
+            
             finally {
                 if (inputStream != null) {
                     try {
@@ -503,7 +517,11 @@ import View.APIView;
                 //TODO
                 /*
                 //Lê as cartas dos jogadores
+                //Colocar um boolean - se tiver carta pode ler, senao so retorna 
                 for (Jogador j: jogo.getJogadores()) {
+                    if(j.getCartas().size() == 0) {
+                        continue;
+                    }
                     linha = br.readLine();
                     String[] dados = linha.split(";");
                     for (int i = 0; i < dados.length; i+=2) {
