@@ -188,19 +188,27 @@ import View.APIView;
         return jogo.getJogadorVez(i).getObj().getDescricao();
     }
 
-    public String[] getTerritoriosReposicionamento(int vez){
+    public boolean verificaGanhou(int vez){
+        Jogador j = jogo.getJogadorVez(vez);
+        return j.getObj().alcancou(j);
+    }
+    // Método que retorna lista com os territórios do jogador que têm mais de um exército
+    public String[] getTerritoriosMaisDeUm(int vez){
         ArrayList<Territorio> ter = jogo.getJogadorVez(vez).getTerritorios();
         String[] listaTerritorios = new String[ter.size()];
         int cont = 0;
+        // Adiciona na lista os territórios que têm mais de um exército
         for (Territorio t: ter) {
             if (t.getQntExercitos() > 1){
                 listaTerritorios[cont] = t.getNome();
                 cont++;
             }
         }
+        // Se não tiver nenhum território com mais de um exército, retorna null
         if (cont == 0){
             return null;
         }
+        // Copia a lista para uma lista final, para não ficar nenhum espaço vazio
         String[] listaTerritoriosFinal = new String[cont];
         for (int i = 0; i < cont; i++) {
             listaTerritoriosFinal[i] = listaTerritorios[i];
@@ -208,6 +216,7 @@ import View.APIView;
         return listaTerritoriosFinal;
     }
 
+    // Posiciona exércitos no território e chama método para atualizar view pelos observadores
     public void posicionarExercitos(String t, int qtd, int vez){
         jogo.getJogadorVez(vez).posicionarExercitos(tabuleiro.mapTerritorios.get(t), qtd);
         jogo.setMod1(tabuleiro.mapTerritorios.get(t));
@@ -215,9 +224,11 @@ import View.APIView;
         jogo.notificaObs();
     }
 
+    // Chama reposicionarExercitos de Jogo
     public void reposicionarExercitos(String origem, String destino, Integer qtd){
         jogo.reposicionarExercitos(tabuleiro.mapTerritorios.get(origem), tabuleiro.mapTerritorios.get(destino), qtd);
     }
+
     // Método que retorna a quantidade de exércitos que o jogador pode posicionar
     public int getQtdExercitosPosic(int vez){
         return jogo.getJogadorVez(vez).getQtdExercitoPosic();
@@ -251,8 +262,8 @@ import View.APIView;
         jogo.getJogadorVez(vez).setQtdExercitoPosic(qtd);
         return qtd;
     }
-    
 
+    // Retorna array com as imagens das cartas do jogador
     public Image[] getImgCartasJogador(int vez){
         ArrayList<Cartas> cartas = jogo.getJogadorVez(vez).getCartas();
         Image[] imgCartas = new Image[cartas.size()];
@@ -387,8 +398,6 @@ import View.APIView;
             }
         }
     }
-
-
 
     // Método que carrega jogo de arquivo
     public boolean carregarJogo(){

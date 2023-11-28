@@ -67,6 +67,7 @@ public class Gerente {
         if (apiJogo.comecaJogo()){
             String[] territorios;
             Integer qtd;
+            // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro
             for (continente = 0; continente < 6; continente++){
                 if (apiJogo.dominaCont(0, apiJogo.getContinentesLista()[continente])){
                     territorios = apiJogo.getTerritoriosCont(apiJogo.getContinentesLista()[continente]);
@@ -119,7 +120,7 @@ public class Gerente {
         if (estado == 0){
             if (apiJogo.getQtdExercitosPosic(vez) == 0){
                 // Atualiza a view para ataque
-                apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
+                apiView.atualizaAtacantes(apiJogo.getTerritoriosMaisDeUm(vez));
                 estado = 1;
             }
             else{
@@ -130,7 +131,7 @@ public class Gerente {
 
         // Se estiver na etapa de ataque
         if(estado == 1){
-            nomesTerritoriosReposicionamento = apiJogo.getTerritoriosReposicionamento(vez);
+            nomesTerritoriosReposicionamento = apiJogo.getTerritoriosMaisDeUm(vez);
             // Se tiver algum território com mais de 1 exército para reposicionar
             if (nomesTerritoriosReposicionamento != null){
                 qtdExercitosRepos = new Integer[nomesTerritoriosReposicionamento.length];
@@ -227,7 +228,7 @@ public class Gerente {
                     return;
                 }
                 // Atualiza a view para ataque
-                apiView.atualizaAtacantes(apiJogo.getTerritoriosJogador(vez));
+                apiView.atualizaAtacantes(apiJogo.getTerritoriosMaisDeUm(vez));
                 estado = 1;
                 return;
             }
@@ -300,6 +301,13 @@ public class Gerente {
             vez = (vez + 1) % apiJogo.getQtdJogadores();
             apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getImgCartasJogador(vez));
             primeiroPosicionamento();
+        }
+    }
+
+    // Método que verifica se jogador ganhou e lida com o resultado
+    public void verificaGanhou(){
+        if (apiJogo.verificaGanhou(vez)){
+            apiView.jogadorGanhou();
         }
     }
 
