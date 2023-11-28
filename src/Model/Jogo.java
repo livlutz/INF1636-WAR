@@ -145,8 +145,9 @@ class Jogo implements ObservadoIF{
 	}
     
 	//Valida um ataque
-	public boolean VerificarAtaque(Territorio tAtacante) {
-		if(tAtacante.getQntExercitos() > 1)
+	public boolean VerificarAtaque(Territorio tAtacante, Territorio tDefensor) {
+		// Verifica se o atacante tem mais de um exército e se o defensor não é dele
+		if(tAtacante.getQntExercitos() > 1 && tAtacante.getJogador() != tDefensor.getJogador())
 			return true;	
 		return false;
 	}
@@ -154,7 +155,7 @@ class Jogo implements ObservadoIF{
 	//Realiza um ataque -> colocar na API jogo (ou classe jogo)
 	public int[] RealizaAtaque(Territorio atacante,Territorio defensor, Integer numAtaque, Integer numDefesa) {
 		
-		if(VerificarAtaque(atacante)){
+		if(VerificarAtaque(atacante, defensor)){
 			int qtdAtaque = atacante.getQntExercitos() - 1;
 			if  (qtdAtaque > 3) {qtdAtaque = 3;}
 			int qtdDefesa = defensor.getQntExercitos();
@@ -228,15 +229,27 @@ class Jogo implements ObservadoIF{
 			this.notificaObs();
 			
 			// Retorna os dados em um array único 
-			
-			int[] dados = new int[dadosAtaque.length + dadosDefesa.length];
+
+			int[] dados = new int[6];
 			int i;
 			for (i = 0;i < dadosAtaque.length;i++) {
 				dados[i] = dadosAtaque[i];
 			}
+			// Completa com zeros caso o atacante tenha menos de 3 dados
+			if (i < 3) {
+				for (;i < 3;i++) {
+					dados[i] = 0;
+				}
+			}
 			for (int j = 0;j < dadosDefesa.length;j++) {
 				dados[i] = dadosDefesa[j];
 				i++;
+			}
+			// Completa com zeros caso o defensor tenha menos de 3 dados
+			if (i < 6) {
+				for (;i < 6;i++) {
+					dados[i] = 0;
+				}
 			}
 
 			return dados;

@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 
 class DadosPanel extends JPanel {
 
-	Image [] dadoAtacante = new Image[6];
+	Image[] dadoAtacante = new Image[7];
 
 	//Array de imagens dos dados de defesa
-	ArrayList<Image> dadoDefensor = new ArrayList<Image>();
+	Image[] dadoDefensor = new Image[7];
 	Image ataque1;
 	Image ataque2;
 	Image ataque3;
@@ -29,20 +29,21 @@ class DadosPanel extends JPanel {
 		
 		//Carrega as imagens dos dados
 		try {
+			dadoAtacante[0] = (ImageIO.read(new File("imagens/dado_desativado.png")));
+			dadoAtacante[1] =(ImageIO.read(new File("imagens/dado_ataque_1.png")));
+			dadoAtacante[2] =(ImageIO.read(new File("imagens/dado_ataque_2.png")));
+			dadoAtacante[3] =(ImageIO.read(new File("imagens/dado_ataque_3.png")));
+			dadoAtacante[4] =(ImageIO.read(new File("imagens/dado_ataque_4.png")));
+			dadoAtacante[5] =(ImageIO.read(new File("imagens/dado_ataque_5.png")));
+			dadoAtacante[6] =(ImageIO.read(new File("imagens/dado_ataque_6.png")));
 			
-			dadoAtacante[0] =(ImageIO.read(new File("imagens/dado_ataque_1.png")));
-			dadoAtacante[1] =(ImageIO.read(new File("imagens/dado_ataque_2.png")));
-			dadoAtacante[2] =(ImageIO.read(new File("imagens/dado_ataque_3.png")));
-			dadoAtacante[3] =(ImageIO.read(new File("imagens/dado_ataque_4.png")));
-			dadoAtacante[4] =(ImageIO.read(new File("imagens/dado_ataque_5.png")));
-			dadoAtacante[5] =(ImageIO.read(new File("imagens/dado_ataque_6.png")));
-			
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_1.png")));
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_2.png")));
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_3.png")));
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_4.png")));
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_5.png")));
-			dadoDefensor.add(ImageIO.read(new File("imagens/dado_defesa_6.png")));
+			dadoDefensor[0] = (ImageIO.read(new File("imagens/dado_desativado.png")));
+			dadoDefensor[1] =(ImageIO.read(new File("imagens/dado_defesa_1.png")));
+			dadoDefensor[2] =(ImageIO.read(new File("imagens/dado_defesa_2.png")));
+			dadoDefensor[3] =(ImageIO.read(new File("imagens/dado_defesa_3.png")));
+			dadoDefensor[4] =(ImageIO.read(new File("imagens/dado_defesa_4.png")));
+			dadoDefensor[5] =(ImageIO.read(new File("imagens/dado_defesa_5.png")));
+			dadoDefensor[6] =(ImageIO.read(new File("imagens/dado_defesa_6.png")));
 				
 		}
 
@@ -65,13 +66,11 @@ class DadosPanel extends JPanel {
 
 	//Mostra os dados de ataque e defesa na tela
 	public void mostrarDados(int[] dadosAtaque, int[] dadosDefesa) {
-		ataque1 = dadoAtacante[dadosAtaque[0]-1];
-		ataque2 = dadoAtacante[dadosAtaque[1]-1];
-		ataque3 = dadoAtacante[dadosAtaque[2]-1];
-		defesa1 = dadoDefensor.get(dadosDefesa[0]-1);
-		defesa2 = dadoDefensor.get(dadosDefesa[1]-1);
-		defesa3 = dadoDefensor.get(dadosDefesa[2]-1);
-		repaint();
-		System.out.println("Dados  mostrados");
+		ataque1 = dadoAtacante[dadosAtaque[0]];
+		ataque2 = dadoAtacante[dadosAtaque[1]];
+		ataque3 = dadoAtacante[dadosAtaque[2]];
+		defesa1 = dadoDefensor[dadosDefesa[0]];
+		defesa2 = dadoDefensor[dadosDefesa[1]];
+		defesa3 = dadoDefensor[dadosDefesa[2]];
 	}
 }
