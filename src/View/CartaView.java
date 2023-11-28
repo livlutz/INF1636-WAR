@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +12,14 @@ import javax.imageio.ImageIO;
 public class CartaView {
 
 	HashMap<String,Image> cartas = new HashMap<String,Image>();
+
+	//Componente gráfico
+	Graphics2D g2d;
+
+
  	public CartaView() {
 		try {
-			cartas.put("AfricaDoSul",ImageIO.read(new File("war_carta_af_africadosul.png")));
+			cartas.put("Africa Do Sul",ImageIO.read(new File("war_carta_af_africadosul.png")));
 			cartas.put("Angola",ImageIO.read(new File("war_carta_af_angola.png")));
 			cartas.put("Argelia",ImageIO.read(new File("war_carta_af_argelia.png")));
 			cartas.put("Egito",ImageIO.read(new File("war_carta_af_egito.png")));
@@ -24,17 +31,17 @@ public class CartaView {
 			cartas.put("California",ImageIO.read(new File("war_carta_an_california.png")));
 			cartas.put("Groelandia",ImageIO.read(new File("war_carta_an_groelandia.png")));
 			cartas.put("Mexico",ImageIO.read(new File("war_carta_an_mexico.png")));
-			cartas.put("NovaYork",ImageIO.read(new File("war_carta_an_novayork.png")));
+			cartas.put("Nova York",ImageIO.read(new File("war_carta_an_novayork.png")));
 			cartas.put("Quebec",ImageIO.read(new File("war_carta_an_quebec.png")));
 			cartas.put("Texas",ImageIO.read(new File("war_carta_an_texas.png")));
 			cartas.put("Vancouver",ImageIO.read(new File("war_carta_an_vancouver.png")));
 			
-			cartas.put("ArabiaSaudita",ImageIO.read(new File("war_carta_as_arabiasaudita.png")));
+			cartas.put("Arabia Saudita",ImageIO.read(new File("war_carta_as_arabiasaudita.png")));
 			cartas.put("Bangladesh",ImageIO.read(new File("war_carta_as_bangladesh.png")));
 			cartas.put("Cazaquistao",ImageIO.read(new File("war_carta_as_cazaquistao.png")));
 			cartas.put("China",ImageIO.read(new File("war_carta_as_china.png")));
-			cartas.put("CoreiaDoNorte",ImageIO.read(new File("war_carta_as_coreiadonorte.png")));
-			cartas.put("CoreiaDoSul",ImageIO.read(new File("war_carta_as_coreiadosul.png")));
+			cartas.put("Coreia Do Norte",ImageIO.read(new File("war_carta_as_coreiadonorte.png")));
+			cartas.put("Coreia Do Sul",ImageIO.read(new File("war_carta_as_coreiadosul.png")));
 			cartas.put("Estonia",ImageIO.read(new File("war_carta_as_estonia.png")));
 			cartas.put("India",ImageIO.read(new File("war_carta_as_india.png")));
 			cartas.put("Ira",ImageIO.read(new File("war_carta_as_ira.png")));
@@ -72,5 +79,11 @@ public class CartaView {
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem das cartas");
 		}
+	}
+
+	//Desenha as cartas
+	public void drawCarta(String nome, int x, int y, int width, int height, Graphics2D g) {
+		this.g2d = (Graphics2D) g;
+		this.g2d.drawImage(cartas.get(nome), x, y, width, height, null);
 	}
 }
