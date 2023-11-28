@@ -187,6 +187,11 @@ public class Gerente {
 
             // Posiciona os exércitos e atualiza a quantidade a posicionar do jogador
             apiJogo.posicionarExercitos(territorio, qtd, vez);
+
+            // Verifica se ganhou após posicionar
+            verificaGanhou();
+
+            // Pega a quantidade de exércitos que ainda pode posicionar
             Integer qtdEx = apiJogo.getQtdExercitosPosic(vez);
 
             // Se não tiver mais exércitos para posicionar
@@ -278,6 +283,9 @@ public class Gerente {
             // Reposiciona os exércitos
             apiJogo.reposicionarExercitos(origem, destino, qtd);
 
+            // Verifica se ganhou após reposicionar
+            verificaGanhou();
+
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
             int i = 0;
             for (; i < nomesTerritoriosReposicionamento.length; i++) {
@@ -307,8 +315,12 @@ public class Gerente {
     // Método que verifica se jogador ganhou e lida com o resultado
     public void verificaGanhou(){
         if (apiJogo.verificaGanhou(vez)){
-            apiView.jogadorGanhou();
+            apiView.jogadorGanhou(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez));
         }
+    }
+
+    public void reiniciarJogo(){
+        //TODO Reiniciar jogo
     }
 
     // Método que retorna a cor de um território

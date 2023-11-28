@@ -6,6 +6,8 @@ import java.awt.Image;
 
 import javax.swing.JOptionPane;
 
+import Controller.Gerente;
+
 public class APIView{
 	private static APIView APIView = null;
 	CharacterSelectionPanel characterSelectionPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
@@ -59,14 +61,6 @@ public class APIView{
 	public void atualizaDefensores(String[] defensores){
 		GamePanel.getGamePanel().atualizaDefensores(defensores);
 	}
-
-	/*public void mudaJogador(String jogador, Color cor, String descricaoObj, Cartas[] cartas){
-		GamePanel.getGamePanel().mudaJogador(jogador, cor.toString(), descricaoObj, cartas);
-	}*/
-
-	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj, String[] territorios, Integer qtd){
-		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj, territorios, qtd);
-	}
 	
 	public void atualizaPosicionamento(String[] territorios){
 		GamePanel.getGamePanel().mudaParaPosicionamento();
@@ -94,7 +88,44 @@ public class APIView{
 		GamePanel.getGamePanel().mudaJogador(jogador, cor, descricaoObj, cartas);
 	}
 
-	
+	public void determinaPrimeiroJogador(String nome, Color cor, String descricaoObj, String[] territorios, Integer qtd){
+		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj, territorios, qtd);
+	}
+
+	public void jogadorGanhou(String nome, Color cor){
+		String nomeCor;
+
+		switch (cor.getRGB()) {
+			case -16776961:
+				nomeCor = "Azul";
+				break;
+			case -16777216:
+				nomeCor = "Preto";
+				break;
+			case -65536:
+				nomeCor = "Vermelho";
+				break;
+			case -16711936:
+				nomeCor = "Verde";
+				break;
+			case -256:
+				nomeCor = "Amarelo";
+				break;
+			default:
+				nomeCor = "Branco";
+				break;
+		}
+		
+		JOptionPane.showMessageDialog(null, nome + " - " + nomeCor + " ganhou o jogo!", "Fim de jogo", JOptionPane.INFORMATION_MESSAGE);
+		if (JOptionPane.showConfirmDialog(null, "Deseja continuar jogando?", "Fim de jogo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+			Gerente.getGerente().reiniciarJogo();
+		} else {
+			System.exit(0);
+		}
+		
+		
+		
+	}
 
 	// ---------------------- getters & setters ----------------------
 	
