@@ -1,62 +1,63 @@
 false
 3
+1
+Nome dxgador;zor;Nome dc
+-65536;-16776961;-256
+Groelandia;10;zor
+Angola;10;zor
+Turquia;1;Nome dxgador
+Iraque;10;zor
+Mongolia;10;zor
+Siria;1;Nome dc
+Paquistao;1;Nome dc
+Coreia do Sul;10;zor
+Arabia Saudita;10;zor
+Argentina;10;zor
+Calgary;10;zor
+Japao;10;zor
+Perth;10;zor
+California;10;zor
+Cazaquistao;1;Nome dc
+India;1;Nome dc
+Nova Zelandia;1;Nome dc
+Tailandia;10;zor
+Texas;1;Nome dc
+Ira;1;Nome dc
+Peru;1;Nome dc
+Africa do Sul;1;Nome dc
+Vancouver;10;zor
+Somalia;10;zor
+Nova York;10;zor
+Russia;1;Nome dc
+Franca;10;zor
+Brasil;10;zor
+Alasca;10;zor
+China;10;zor
+Siberia;10;zor
+Ucrania;1;Nome dc
+Nigeria;1;Nome dc
+Egito;1;Nome dc
+Polonia;10;zor
+Quebec;10;zor
+Romenia;10;zor
+Espanha;10;zor
+Italia;10;zor
+Argelia;10;zor
+Reino Unido;1;Nome dc
+Coreia do Norte;1;Nome dc
+Venezuela;1;Nome dc
+Bangladesh;10;zor
+Mexico;10;zor
+Suecia;10;zor
+Letonia;10;zor
+Australia;10;zor
+Jordania;10;zor
+Estonia;1;Nome dc
+Indonesia;10;zor
+2;zor
+2;Nome dxgador
+2;Nome dc
 0
-d;a;s
--16711936;-16776961;-1
-Groelandia;1;d
-Angola;1;s
-Turquia;1;s
-Iraque;1;s
-Mongolia;1;s
-Siria;1;s
-Paquistao;1;a
-Coreia do Sul;1;s
-Arabia Saudita;1;a
-Argentina;1;d
-Calgary;1;a
-Japao;1;d
-Perth;1;a
-California;1;d
-Cazaquistao;1;a
-India;1;a
-Nova Zelandia;1;a
-Tailandia;1;a
-Texas;1;d
-Ira;1;d
-Peru;1;d
-Africa do Sul;1;a
-Vancouver;1;s
-Somalia;1;s
-Nova York;1;a
-Russia;1;d
-Franca;1;a
-Brasil;1;a
-Alasca;1;d
-China;1;a
-Siberia;1;s
-Ucrania;1;s
-Nigeria;1;a
-Egito;1;d
-Polonia;1;s
-Quebec;1;s
-Romenia;1;d
-Espanha;1;d
-Italia;1;a
-Argelia;1;d
-Reino Unido;1;a
-Coreia do Norte;1;s
-Venezuela;1;s
-Bangladesh;1;d
-Mexico;1;d
-Suecia;1;s
-Letonia;1;s
-Australia;1;d
-Jordania;1;a
-Estonia;1;d
-Indonesia;1;s
-3;18
-2;d
-1;America do Norte;Oceania;2
-5;Ira;Indonesia;Jordania;Australia;Coringa
-1;Coringa
+0
+0
 0

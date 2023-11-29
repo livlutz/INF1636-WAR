@@ -124,7 +124,8 @@ class Jogo implements ObservadoIF{
 
         // Define o objetivo de cada jogador
         for (int i = 0;i < jogadores.size();i++){
-            jogadores.get(i).setObj(objetivos.get(i));
+            jogadores.get(i).setObj(objetivos.get(0));
+			objetivos.remove(0);
         }
 
         // Embaralha os jogadores
@@ -496,7 +497,9 @@ class Jogo implements ObservadoIF{
 		// Redistribui objetivos
 		Collections.shuffle(objetivos);
 		for (int i = 0;i < jogadores.size();i++){
-			jogadores.get(i).setObj(objetivos.get(i));
+			Objetivo obj = objetivos.get(0);
+			jogadores.get(i).setObj(obj);
+			objetivos.remove(obj);
 		}
 
 	}

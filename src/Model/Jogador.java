@@ -218,8 +218,7 @@ class Jogador {
 		int qtd = this.qtdTerritorios/2;
 		if (qtd < 3)
 			qtd = 3;
-		else
-			this.qtdExercitoPosic = qtd + bonusTroca;
+		this.qtdExercitoPosic = qtd + bonusTroca;
 	}
 
 	// Apaga todos os dados do jogador menos nome e cor

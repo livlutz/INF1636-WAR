@@ -279,14 +279,16 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 			// Se nenhum território em específico foi modificado, então redesenha todos
 			if (mod1 == -1 && mod2 == -1){
+				System.out.println("Redesenhando todos os exércitos");
 				int cont = 0;
 				for(Exercitos e: listaExercitos){
 					e.setQntExercitos(qtds.get(cont));
 					e.setCor(cores.get(cont));
+					cont++;
 					//redesenhar todos os exércitos
 					e.repaint();
 					e.drawPlayer(g2d);
-					cont++;
+					e.repaint();
 				}
 			}
 			// Se tiver específicos, redesenha apenas eles

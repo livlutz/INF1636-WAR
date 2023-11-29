@@ -201,7 +201,8 @@ import View.APIView;
         }
         // Se não tiver nenhum território com mais de um exército, retorna null
         if (cont == 0){
-            return null;
+            String[] lista = {};
+            return lista;
         }
         // Copia a lista para uma lista final, para não ficar nenhum espaço vazio
         String[] listaTerritoriosFinal = new String[cont];
@@ -434,11 +435,11 @@ import View.APIView;
                         }
             
                     }
-
-                    //Escreve a quantidade de trocas de cartas que o jogador fez
-                    inputStream.write(Gerente.getGerente().getNumDeTrocas());
-                    inputStream.write("\n");
+                    
                 }
+                //Escreve a quantidade de trocas de cartas que o jogador fez
+                inputStream.write(Gerente.getGerente().getNumDeTrocas().toString());
+                    
             } 
 
             catch (IOException ex) {
@@ -580,9 +581,10 @@ import View.APIView;
                         jogo.getListaCartas().remove(c);
                     }
 
-                    //Lê a quantidade de trocas de cartas que o jogador fez
-                    Gerente.getGerente().setNumDeTrocas(Integer.parseInt(infos[qtdCartas + 1]));
                 }
+                //Lê a quantidade de trocas de cartas do jogo
+                linha = br.readLine();
+                Gerente.getGerente().setNumDeTrocas(Integer.parseInt(linha));
                 // Indica que todos os exércitos foram modificados
                 jogo.setMod1(null);
                 jogo.setMod2(null);
