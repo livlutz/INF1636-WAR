@@ -535,4 +535,8 @@ class Jogo implements ObservadoIF{
 		return listaCartas;
 	}
 
+	public void addCarta(Carta c){
+		listaCartas.add(c);
+	}
+
 }

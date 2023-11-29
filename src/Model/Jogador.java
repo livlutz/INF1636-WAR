@@ -1,9 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Map;
 import java.awt.Color;
 class Jogador {
 
@@ -15,9 +12,7 @@ class Jogador {
 	
 	//Guarda a quantidade de Exércitos que pode posicionar
 	private int qtdExercitoPosic; 
-	
-	//Guarda a quantidade de cartas que pode trocar
-	private int qtdTrocaCartas = 0; 
+
 	
 	//Guarda a quantidade de territórios em sua posse
 	private int qtdTerritorios = 0;  
@@ -62,53 +57,143 @@ class Jogador {
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, triangulos = 0;
 		for (Carta c: cartas){
-			if (c.f == Carta.Formato.circulo)
+			if (c.f.equals(Carta.Formato.circulo))
 				circulos++;
-			else if (c.f == Carta.Formato.Quadrado)
+			else if (c.f.equals(Carta.Formato.quadrado))
 				quadrados++;
-			else
+			else if (c.f.equals(Carta.Formato.triangulo))
 				triangulos++;
+			else{
+				circulos++;
+				quadrados++;
+				triangulos++;
+			}
 		}
 		if (circulos >= 3 || quadrados >= 3 || triangulos >= 3 || (circulos >= 1 && quadrados >= 1 && triangulos >= 1))
 			return true;
 		return false;
 	}
 
-	//Concede exércitos ao jogador apos trocar cartas e conta a qtd de trocas
-	public boolean trocarCartas (Carta a, Carta b, Carta c) {
-		if(temTroca()) {
-			int primTrocaExerc = 4;
-			
-			//Primeira vez trocando
-			if(qtdTrocaCartas == 0) {
-				qtdExercitoPosic += primTrocaExerc;
-			}
-			
-			//Quando temos 2 até 5 trocas já efetuadas
-			else if (qtdTrocaCartas < 5) {
-				qtdExercitoPosic += (primTrocaExerc + 2 * qtdTrocaCartas);
-			}
-			
-			//Temos mais de 5 trocas já efetuadas
-			else {
-				int diferenca = qtdTrocaCartas - 5;
-				qtdExercitoPosic += ((diferenca + 3) * 5);
-			}
-			
-			//Aumenta a quantidade de trocas de cartas
-			qtdTrocaCartas++;
+	//Retorna a quantidade de bonus de exércitos que o jogador recebe de bonus na troca
+	// Só é chamado se pode trocar
+	public Integer trocarCartas (int numDeTrocas) {
+		
+		ArrayList<Carta> circulos = new ArrayList<Carta>();
+		ArrayList<Carta> quadrados = new ArrayList<Carta>();
+		ArrayList<Carta> triangulos = new ArrayList<Carta>();
+		ArrayList<Carta> coringas = new ArrayList<Carta>();
+		Carta c; 
 
-			//Remove as cartas do jogador
-			cartas.remove(a);
-			cartas.remove(b);
-			cartas.remove(c);
-			return true;
+		for (Carta carta: cartas){
+			if (carta.f.equals(Carta.Formato.circulo))
+				circulos.add(carta);
+			else if (carta.f.equals(Carta.Formato.quadrado))
+				quadrados.add(carta);
+			else if (carta.f.equals(Carta.Formato.triangulo))
+				triangulos.add(carta);
+			else
+				coringas.add(carta);
 		}
 		
+
+		if (circulos.size() >= 3){
+			// Troca três cartas de círculo e devolve elas para o baralho
+			for (int i = 0; i < 3; i++){
+				usaCarta(circulos);
+			}
+		}
+		else if (quadrados.size() >= 3){
+			// Troca três cartas de quadrado e devolve elas para o baralho
+			for (int i = 0; i < 3; i++){
+				usaCarta(quadrados);
+			}
+		}
+		else if (triangulos.size() >= 3){
+			// Troca três cartas de triângulo e devolve elas para o baralho
+			for (int i = 0; i < 3; i++){
+				usaCarta(triangulos);
+			}
+		}
 		else {
-			return false;
+			int cont = coringas.size();
+			switch (cont){
+				case 0:
+					// Troca uma de cada e devolve elas para o baralho
+					usaCarta(circulos);
+					usaCarta(quadrados);
+					usaCarta(triangulos);
+					break;
+				case 1:
+					usaCarta(coringas);
+					if (circulos.size() == 0){
+						// Remove um coringa, um quadrado e um triângulo
+						usaCarta(quadrados);
+						usaCarta(triangulos);
+					}
+					else if (quadrados.size() == 0){
+						// Remove um coringa, um círculo e um triângulo
+						usaCarta(circulos);
+						usaCarta(triangulos);
+					}
+					else{
+						// Remove um coringa, um círculo e um quadrado
+						usaCarta(circulos);
+						usaCarta(quadrados);
+					}
+					break;
+				case 2:
+					// Remove dois coringas e uma carta de qualquer formato
+					usaCarta(coringas);
+					usaCarta(coringas);
+					if (circulos.size() == 0 && quadrados.size() == 0){
+						usaCarta(triangulos);
+					}
+					else if (quadrados.size() == 0 && triangulos.size() == 0){
+						usaCarta(circulos);
+					}
+					else if (circulos.size() == 0 && triangulos.size() == 0){
+						usaCarta(quadrados);
+					}
+					else if (circulos.size() == 1){
+						usaCarta(circulos);
+					}
+					else if (quadrados.size() == 1){
+						usaCarta(quadrados);
+					}
+					else{
+						usaCarta(triangulos);
+					}
+			}
 		}
-		
+
+		Integer qtd;
+		//Quando temos até 5 trocas já efetuadas
+		if (numDeTrocas <= 5) {
+			qtd = 4 + (2 * (numDeTrocas - 1));
+		}
+		else if (numDeTrocas == 6) {
+			qtd = 15;
+		}
+		//Temos mais de 6 trocas já efetuadas
+		else {
+			int diferenca = numDeTrocas - 6;
+			qtd = 15 + (diferenca * 5);
+		}
+
+		return qtd;
+
+	}
+
+	private void usaCarta(ArrayList<Carta> lista){
+		Carta c = lista.get(0);
+		cartas.remove(c);
+		Jogo.getJogo().addCarta(c);
+		// Se o território da carta pertence ao jogador, aumenta em 2 a quantidade de exércitos
+		if (c.getTerritorio() != null){
+			if (c.getTerritorio().getJogador() == this){
+				c.getTerritorio().alterarQndExercitos(2);
+			}
+		}
 	}
 
 	//Adiciona uma carta ao jogador
@@ -130,14 +215,17 @@ class Jogador {
 		this.qtdTerritorios--;
 	}
 
-	public void atualizaQtdExPosicGeral(){
-		this.qtdExercitoPosic = this.qtdTerritorios/2;
+	public void atualizaQtdExPosicGeral(Integer bonusTroca){
+		int qtd = this.qtdTerritorios/2;
+		if (qtd < 3)
+			qtd = 3;
+		else
+			this.qtdExercitoPosic = qtd + bonusTroca;
 	}
 
 	// Apaga todos os dados do jogador menos nome e cor
 	public void resetJogador(){
 		this.qtdExercitoPosic = 0;
-		this.qtdTrocaCartas = 0;
 		this.qtdTerritorios = 0;
 		this.cartas.clear();
 		this.territorios.clear();
@@ -176,11 +264,6 @@ class Jogador {
 	//Retorna o objetivo do jogador
 	public Objetivo getObj() {
 		return obj;
-	}
-
-	//Retorna a quantidade de trocas de cartas que o jogador fez
-	public int getQtdTrocaCartas() {
-		return qtdTrocaCartas;
 	}
 	
 	//Retorna as cartas que o jogador possui (o ArrayList de cartas)

@@ -1,62 +1,62 @@
-true
-6
+false
+3
 0
-b;d;f;c;a;e
--16777216;-16711936;-1;-65536;-16776961;-256
-Groelandia;1;d
-Angola;1;f
-Turquia;1;e
-Iraque;1;e
-Mongolia;1;a
-Siria;1;b
-Paquistao;1;c
-Coreia do Sul;1;e
-Arabia Saudita;1;c
-Argentina;1;d
-Calgary;1;e
-Japao;1;c
-Perth;1;a
-California;1;f
-Cazaquistao;1;b
-India;1;e
-Nova Zelandia;1;a
-Tailandia;1;b
-Texas;1;b
-Ira;1;c
-Peru;1;b
-Africa do Sul;1;d
-Vancouver;1;e
-Somalia;1;a
-Nova York;1;f
-Russia;1;b
-Franca;1;f
-Brasil;1;d
-Alasca;1;d
-China;1;a
-Siberia;1;e
-Ucrania;1;c
-Nigeria;1;f
-Egito;1;c
-Polonia;1;b
-Quebec;1;a
-Romenia;1;f
-Espanha;1;d
-Italia;1;c
-Argelia;1;d
-Reino Unido;1;a
-Coreia do Norte;1;b
-Venezuela;1;b
-Bangladesh;1;a
-Mexico;1;f
-Suecia;1;d
-Letonia;1;f
-Australia;1;c
-Jordania;1;d
-Estonia;1;f
-Indonesia;1;e
-2;e
-1;America do Norte;Africa;2
-1;America do Norte;Oceania;2
-2;d
-2;b
-1;Asia;Africa;2
+Nome do jogadord;Nome do jogadora;Nome do jogadors
+-1;-16776961;-16711936
+Groelandia;5;Nome do jogadora
+Angola;5;Nome do jogadora
+Turquia;5;Nome do jogadors
+Iraque;5;Nome do jogadord
+Mongolia;5;Nome do jogadora
+Siria;5;Nome do jogadora
+Paquistao;5;Nome do jogadora
+Coreia do Sul;5;Nome do jogadora
+Arabia Saudita;5;Nome do jogadora
+Argentina;5;Nome do jogadora
+Calgary;5;Nome do jogadora
+Japao;5;Nome do jogadora
+Perth;5;Nome do jogadora
+California;5;Nome do jogadora
+Cazaquistao;5;Nome do jogadora
+India;5;Nome do jogadora
+Nova Zelandia;5;Nome do jogadora
+Tailandia;5;Nome do jogadora
+Texas;5;Nome do jogadora
+Ira;5;Nome do jogadora
+Peru;5;Nome do jogadora
+Africa do Sul;5;Nome do jogadora
+Vancouver;5;Nome do jogadora
+Somalia;5;Nome do jogadora
+Nova York;5;Nome do jogadora
+Russia;5;Nome do jogadora
+Franca;5;Nome do jogadora
+Brasil;5;Nome do jogadora
+Alasca;5;Nome do jogadora
+China;5;Nome do jogadora
+Siberia;5;Nome do jogadora
+Ucrania;5;Nome do jogadora
+Nigeria;5;Nome do jogadora
+Egito;5;Nome do jogadora
+Polonia;5;Nome do jogadora
+Quebec;5;Nome do jogadora
+Romenia;5;Nome do jogadora
+Espanha;5;Nome do jogadora
+Italia;5;Nome do jogadora
+Argelia;5;Nome do jogadora
+Reino Unido;5;Nome do jogadora
+Coreia do Norte;5;Nome do jogadora
+Venezuela;5;Nome do jogadora
+Bangladesh;5;Nome do jogadora
+Mexico;5;Nome do jogadora
+Suecia;5;Nome do jogadora
+Letonia;5;Nome do jogadora
+Australia;5;Nome do jogadora
+Jordania;5;Nome do jogadora
+Estonia;5;Nome do jogadora
+Indonesia;5;Nome do jogadora
+1;Europa;Oceania;3
+1;Europa;America do Sul;3
+2;Nome do jogadora
+0
+0
+0

@@ -285,6 +285,14 @@ import View.APIView;
         return false;
     }
 
+    public Integer trocarCartas(int vez, int numDeTrocas){
+        Jogador j = jogo.getJogadorVez(vez);
+        if (j.temTroca()){
+            return j.trocarCartas(numDeTrocas);
+        }
+        return 0;
+    }
+
     public void retiraEliminado(String jogador){
         jogo.getJogador(jogador).setEliminadoNessaRodada(false);
     }
@@ -301,8 +309,8 @@ import View.APIView;
     }
 
     // Atualiza a variável de exércitos a posicionar no jogador
-    public void atualizaQtdExPosicGeral(int vez){
-        jogo.getJogadorVez(vez).atualizaQtdExPosicGeral();
+    public void atualizaQtdExPosicGeral(int vez, Integer bonusTroca){
+        jogo.getJogadorVez(vez).atualizaQtdExPosicGeral(bonusTroca);
     }
 
     // Método que retorna a quantidade de jogadores
@@ -542,7 +550,7 @@ import View.APIView;
 
                     String[] dados = linha.split(";");
 
-                    int qtdCartas = Integer.parseInt(dados[1]);
+                    int qtdCartas = Integer.parseInt(dados[0]);
 
                     if(qtdCartas == 0){
                         continue;
@@ -562,7 +570,9 @@ import View.APIView;
                         jogo.getListaCartas().remove(c);
                     }
                 }
-
+                // Indica que todos os exércitos foram modificados
+                jogo.setMod1(null);
+                jogo.setMod2(null);
                 
                 return true;
             } 

@@ -35,6 +35,12 @@ public class Gerente {
     private String[] nomesTerritoriosReposicionamento;
     private Integer[] qtdExercitosRepos;
 
+    // Guarda o bônus de troca de cartas
+    private Integer bonusTroca = 0;
+    // Guarda o número de trocas de cartas
+    private Integer numDeTrocas = 0;
+
+    // Guarda os nomes dos jogadores eliminados nessa rodada
     ArrayList<String> eliminadosNessaRodada = new ArrayList<String>();
 
     // Singleton
@@ -83,7 +89,7 @@ public class Gerente {
             // Atualiza identificador de continentes, para indicar que já testou todos
             continente++;
             territorios = apiJogo.getTerritoriosJogador(0);
-            apiJogo.atualizaQtdExPosicGeral(0);
+            apiJogo.atualizaQtdExPosicGeral(0, 0);
             qtd = apiJogo.getQtdExercitosPosic(0);
 
             apiView.determinaPrimeiroJogador(apiJogo.getNomeJogadorVez(0), apiJogo.getCorJogadorVez(0), apiJogo.getDescObjJogadorVez(0), territorios, qtd);
@@ -118,7 +124,16 @@ public class Gerente {
     }
 
     public void clicouTrocar(){
-        //TODO Trocar cartas
+        // Só pode trocar antes de posicionar algo
+        if (podeSalvar){
+            // Guarda bonus na variável para adicionar só no posicionamento geral e não no momento de posicionar em continentes dominados
+            this.bonusTroca = apiJogo.trocarCartas(vez, numDeTrocas);
+            if (bonusTroca != 0){
+                numDeTrocas++;
+            }
+            else{
+            }
+        }
     }
 
     public void clicouTerminarRodada(){
@@ -180,6 +195,7 @@ public class Gerente {
 
     // Método chamado quando é o primeiro posicionamento do jogador naquela rodada, para verificar se tem algum continente dominado por ele
     private void primeiroPosicionamento(){
+        this.podeSalvar = true;
         String[] territorios;
         Integer qtd;
         // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro
@@ -199,7 +215,8 @@ public class Gerente {
         continente++;
         // Se não tiver nenhum continente dominado, posiciona no resto dos territórios
         territorios = apiJogo.getTerritoriosJogador(vez);
-        apiJogo.atualizaQtdExPosicGeral(vez);
+        apiJogo.atualizaQtdExPosicGeral(vez, bonusTroca); 
+        this.bonusTroca = 0;
         qtd = apiJogo.getQtdExercitosPosic(vez);
         
         // Atualiza a view para posicionar no resto dos territórios
@@ -211,6 +228,8 @@ public class Gerente {
     public void clicouPosicionar(String territorio, Integer qtd){
         // Verifica se está na rodada de posicionamento para agir
         if (estado == 0){
+
+            this.podeSalvar = false;
 
             // Posiciona os exércitos e atualiza a quantidade a posicionar do jogador
             apiJogo.posicionarExercitos(territorio, qtd, vez);
@@ -240,7 +259,8 @@ public class Gerente {
 
                 // Se já posicionou em todos os continentes, posiciona no resto dos territórios
                 if (continente == 6){
-                    apiJogo.atualizaQtdExPosicGeral(vez);
+                    apiJogo.atualizaQtdExPosicGeral(vez, bonusTroca); 
+                    this.bonusTroca = 0;
                     apiView.atualizaPosicionamento(apiJogo.getTerritoriosJogador(vez));
                     apiView.atualizaQtdPosic(apiJogo.getQtdExercitosPosic(vez));
                     continente++;
@@ -399,5 +419,13 @@ public class Gerente {
 
     public void setPrimeiraRodada(boolean primeiraRodada){
         this.primeiraRodada = primeiraRodada;
+    }
+
+    public Integer getNumDeTrocas(){
+        return numDeTrocas;
+    }
+
+    public void setNumDeTrocas(Integer numDeTrocas){
+        this.numDeTrocas = numDeTrocas;
     }
 }
