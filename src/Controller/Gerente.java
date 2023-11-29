@@ -202,6 +202,7 @@ public class Gerente {
     private void primeiroPosicionamento(){
         this.podeSalvar = true;
         if (apiJogo.maxCartas(vez)){
+            apiView.mostraAviso("Você tinha 6 cartas, a troca era obrigatória.");
             this.bonusTroca = apiJogo.trocarCartas(vez, numDeTrocas);
             apiView.atualizaCartas(apiJogo.getNomesCartasJogador(vez));
         }
