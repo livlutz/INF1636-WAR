@@ -8,6 +8,7 @@ import java.awt.Color;
 
 public class Gerente {
     public static Gerente gerente = null;
+
     // Instâncias de APIJogo e APIView
     private APIJogo apiJogo = APIJogo.getAPIJogo();
     private APIView apiView = APIView.getAPIView();
@@ -70,11 +71,16 @@ public class Gerente {
                 apiJogo.resetJogadores();
                 return false;
             };
+
+            // Adiciona a contagem de jogadores
             cont++;
         }
+        
+        //Se o jogo pode comecar
         if (apiJogo.comecaJogo()){
             String[] territorios;
             Integer qtd;
+
             // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro
             for (continente = 0; continente < 6; continente++){
                 if (apiJogo.dominaCont(0, apiJogo.getContinentesLista()[continente])){
@@ -86,6 +92,7 @@ public class Gerente {
                     return true;
                 }
             }
+
             // Atualiza identificador de continentes, para indicar que já testou todos
             continente++;
             territorios = apiJogo.getTerritoriosJogador(0);
@@ -98,7 +105,9 @@ public class Gerente {
         return false;
     }
 
+    // Método para salvar o jogo atual em um arquivo
     public void clicouSalvar(){
+        // Só pode salvar se estiver na etapa de posicionamento e não tiver posicionado nada
         if (estado == 0 && podeSalvar){
             apiJogo.salvarJogo();
             apiView.mostraAviso("Jogo salvo com sucesso!");
@@ -108,10 +117,14 @@ public class Gerente {
         }
     }
 
+    // Método para carregar um jogo salvo
     public void clicouCarregar(){
+        //Se houver falhas ao carregar o jogo
         if (!apiJogo.carregarJogo()){
             apiView.mostraAviso("Não foi encontrado nenhum jogo salvo.");
         }
+
+        // Se não houver falhas ao carregar o jogo
         else{
             // Abre game panel
             MainFrame.getMainFrame().goToGamePanel();
@@ -123,6 +136,7 @@ public class Gerente {
         }
     }
 
+    // Método para trocar cartas
     public void clicouTrocar(){
         // Só pode trocar antes de posicionar algo
         if (podeSalvar){
@@ -141,6 +155,7 @@ public class Gerente {
         }
     }
 
+    // Método para clicar em terminar rodada
     public void clicouTerminarRodada(){
         // Se estiver na etapa de posicionamento, passa para ataque
         if (estado == 0){
@@ -149,6 +164,7 @@ public class Gerente {
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosMaisDeUm(vez));
                 estado = 1;
             }
+            //Se ainda tiver exércitos para posicionar, não deixa terminar a rodada
             else{
                 apiView.mostraAviso("Não é possível terminar a rodada agora.");
             }
@@ -162,27 +178,33 @@ public class Gerente {
                 apiView.atualizaCartas(apiJogo.getNomesCartasJogador(vez));
             }
 
+            // Verifica se tem algum jogador eliminado nessa rodada
             if (eliminadosNessaRodada.size() != 0){
                 for (String j: eliminadosNessaRodada){
+                    // Retira o jogador eliminado
                     apiJogo.retiraEliminado(j);
                     eliminadosNessaRodada.remove(j);
                 }
             }
             
-
             // Atualiza a view para reposicionamento
             nomesTerritoriosReposicionamento = apiJogo.getTerritoriosMaisDeUm(vez);
             // Se tiver algum território com mais de 1 exército para reposicionar
             if (nomesTerritoriosReposicionamento != null){
                 qtdExercitosRepos = new Integer[nomesTerritoriosReposicionamento.length];
+
+                // Pega a quantidade de exércitos que pode reposicionar em cada território
                 for (int i = 0; i < nomesTerritoriosReposicionamento.length; i++){
                     qtdExercitosRepos[i] = (apiJogo.getQntExTerritorio(nomesTerritoriosReposicionamento[i]) - 1);
                 }
+
+                // Atualiza a view para reposicionamento
                 apiView.atualizaReposicionamento(nomesTerritoriosReposicionamento);
                 estado = 2;
                 return;
             }   
         }
+
         // Se não retornou ainda, ou está na etapa de reposicionamento 
         // ou não tem mais exércitos para reposicionar
         estado = 0;
@@ -200,14 +222,19 @@ public class Gerente {
 
     // Método chamado quando é o primeiro posicionamento do jogador naquela rodada, para verificar se tem algum continente dominado por ele
     private void primeiroPosicionamento(){
+        //Deixa o jogador salvar
         this.podeSalvar = true;
+
+        // Verifica se tem alguma carta para trocar e forca a troca se tiver 6 cartas
         if (apiJogo.maxCartas(vez)){
             apiView.mostraAviso("Você tinha 6 cartas, a troca era obrigatória.");
             this.bonusTroca = apiJogo.trocarCartas(vez, numDeTrocas);
             apiView.atualizaCartas(apiJogo.getNomesCartasJogador(vez));
         }
+
         String[] territorios;
         Integer qtd;
+
         // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro
         for (continente = 0; continente < 6; continente++){
             if (apiJogo.dominaCont(vez, apiJogo.getContinentesLista()[continente])){
@@ -221,6 +248,7 @@ public class Gerente {
                 return;
             }
         }
+
         // Atualiza identificador de continentes, para indicar que já testou todos
         continente++;
         // Se não tiver nenhum continente dominado, posiciona no resto dos territórios
@@ -235,10 +263,12 @@ public class Gerente {
         return;
     }
 
+    // Método chamado quando o jogador seleciona um território para posicionar
     public void clicouPosicionar(String territorio, Integer qtd){
         // Verifica se está na rodada de posicionamento para agir
         if (estado == 0){
 
+            // Nao deixa o jogador salvar o jogo
             this.podeSalvar = false;
 
             // Posiciona os exércitos e atualiza a quantidade a posicionar do jogador
@@ -276,9 +306,11 @@ public class Gerente {
                     continente++;
                     return;
                 }
+
                 // Se não tiver mais exércitos para posicionar
                 // Zera contador de continentes
                 continente = 0;
+
                 // Se for a primeira rodada, só pode posicionamento para todos
                 if (primeiraRodada){
                     vez = (vez + 1) % apiJogo.getQtdJogadores();
@@ -289,11 +321,13 @@ public class Gerente {
                     }
                     return;
                 }
+
                 // Atualiza a view para ataque
                 apiView.atualizaAtacantes(apiJogo.getTerritoriosMaisDeUm(vez));
                 estado = 1;
                 return;
             }
+
             // Se ainda tiver exércitos para posicionar
             apiView.atualizaQtdPosic(qtdEx);
             return;
@@ -301,17 +335,18 @@ public class Gerente {
         return;
     }
 
+    // Método chamado quando o jogador seleciona um território para atacar
     public void selecionouAtacante(String atacante){
         // Se estiver na etapa de ataque
         if (estado == 1){
             if(atacante != null){
             // Atualiza comboBox dos defensores com os adjacentes 
-
             apiView.atualizaDefensores(apiJogo.getTerritoriosAdjNaoDominados(atacante, vez));
             }
         }
     }
 
+    // Método chamado quando o jogador seleciona um território para defender
     public void selecionouOrigem(String origem){
         // Se selecionado for nulo não faz nada
         if (origem == null){
@@ -329,11 +364,13 @@ public class Gerente {
                     break;
                 }
             }
+
             // Atualiza a quantidade de exércitos que ainda pode reposicionar
             apiView.atualizaQtdRepos(qtdExercitosRepos[i]);
         }
     }
 
+    // Método chamado quando o jogador seleciona um território para reposicionar
     public void clicouReposicionar(String origem, String destino, Integer qtd){
         // Se estiver na etapa de reposicionamento
         if (estado == 2){
@@ -345,11 +382,14 @@ public class Gerente {
 
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
             int i = 0;
+
             for (; i < nomesTerritoriosReposicionamento.length; i++) {
                 if (nomesTerritoriosReposicionamento[i].equals(origem)) {
                     break;
                 }
             }
+
+            // Diminui a quantidade que ainda pode reposicionar
             qtdExercitosRepos[i] -= qtd;
 
             // Se tiver exércitos para reposicionar continua na etapa de reposicionamento
@@ -360,6 +400,8 @@ public class Gerente {
                     return;
                 }
             }
+
+            // Se não tiver mais exércitos para reposicionar, passa para o próximo jogador
             estado = 0;
             vez = (vez + 1) % apiJogo.getQtdJogadores();
             apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
@@ -385,6 +427,7 @@ public class Gerente {
         this.podeSalvar = true;
         this.primeiraRodada = true;
 
+        // Reinicia dados da view
         apiJogo.notificaObsJogo();
 
         apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
@@ -415,28 +458,32 @@ public class Gerente {
         return apiJogo.getNomesJogadores();
     }
 
-    //get vez
+    //get vez do jogador
     public int getVez(){
         return vez;
     }
 
-    //set vez
+    //set vez do jogador
     public void setVez(int vez){
         this.vez = vez;
     }
 
+    // retorna se e a primeira rodada
     public boolean getPrimeiraRodada(){
         return primeiraRodada;
     }
 
+    //determina se e a primeira rodada
     public void setPrimeiraRodada(boolean primeiraRodada){
         this.primeiraRodada = primeiraRodada;
     }
 
+    // retorna o numero de troca de cartas feitas na partida
     public Integer getNumDeTrocas(){
         return numDeTrocas;
     }
 
+    //determina o numero de troca de cartas feitas na partida
     public void setNumDeTrocas(Integer numDeTrocas){
         this.numDeTrocas = numDeTrocas;
     }
