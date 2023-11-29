@@ -35,6 +35,8 @@ public class Gerente {
     private String[] nomesTerritoriosReposicionamento;
     private Integer[] qtdExercitosRepos;
 
+    ArrayList<String> eliminadosNessaRodada = new ArrayList<String>();
+
     // Singleton
     public static Gerente getGerente(){
         if(gerente == null){
@@ -139,6 +141,14 @@ public class Gerente {
             if (apiJogo.analisarDarCarta(vez)){
                 //TODO REPAINT CARTA NA VIEW
             }
+
+            if (eliminadosNessaRodada.size() != 0){
+                for (String j: eliminadosNessaRodada){
+                    apiJogo.retiraEliminado(j);
+                    eliminadosNessaRodada.remove(j);
+                }
+            }
+            
 
             // Atualiza a view para reposicionamento
             nomesTerritoriosReposicionamento = apiJogo.getTerritoriosMaisDeUm(vez);
@@ -320,8 +330,6 @@ public class Gerente {
                     return;
                 }
             }
-            // Se não dá carta se for o caso e passa a vez
-            //TODO Dá carta se for o caso
             estado = 0;
             vez = (vez + 1) % apiJogo.getQtdJogadores();
             apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
@@ -349,6 +357,11 @@ public class Gerente {
 
         apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
         primeiroPosicionamento();
+    }
+
+    // Adiciona um nome à lista de eliminados nessa rodada
+    public void addEliminado(String nome){
+        eliminadosNessaRodada.add(nome);
     }
 
     // Método que retorna a cor de um território

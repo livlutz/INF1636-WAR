@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.awt.Color;
 
+import Controller.Gerente;
+
 import View.ObservadoIF;
 import View.ObservadorIF;
 
@@ -220,6 +222,11 @@ class Jogo implements ObservadoIF{
 			if (defensor.getQntExercitos()==0) {
 				// Atualiza defensor
 				defensor.getJogador().removeTerritorio(defensor);
+				if (defensor.getJogador().getQtdTerritorios() == 0){
+					// Jogador foi eliminado nessa rodada
+					defensor.getJogador().setEliminadoNessaRodada(true);
+					Gerente.getGerente().addEliminado(defensor.getJogador().getNome());
+				}
 				defensor.setJogador(atacante.getJogador());
 
 				// Adiciona território conquistado ao jogador que conquistou
@@ -232,9 +239,11 @@ class Jogo implements ObservadoIF{
 				// Altera a quantidade de exércitos dos territórios
 				atacante.alterarQndExercitos(-qtdPassada);
 				defensor.setQntExercitos(qtdPassada);
+
 			}
 			//Notifica os observadores
 			this.notificaObs();
+
 			
 			// Retorna os dados em um array único 
 
