@@ -15,7 +15,7 @@ public class CartaView {
 			cartas.put("AfricaDoSul",ImageIO.read(new File("war_carta_af_africadosul.png")));
 			cartas.put("Angola",ImageIO.read(new File("war_carta_af_angola.png")));
 			cartas.put("Argelia",ImageIO.read(new File("war_carta_af_argelia.png")));
-			cartas.put(ImageIO.read(new File("war_carta_af_egito.png")));
+			cartas.put("Egito",ImageIO.read(new File("war_carta_af_egito.png")));
 			cartas.put(ImageIO.read(new File("war_carta_af_nigeria.png")));
 			cartas.put(ImageIO.read(new File("war_carta_af_somalia.png")));
 			
@@ -29,44 +29,44 @@ public class CartaView {
 			cartas.put(ImageIO.read(new File("war_carta_an_texas.png")));
 			cartas.put(ImageIO.read(new File("war_carta_an_vancouver.png")));
 			
-			cartas.add(ImageIO.read(new File("war_carta_as_arabiasaudita.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_bangladesh.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_cazaquista.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_china.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_coreiadonorte.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_coreiadosul.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_estonia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_india.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_ira.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_iraque.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_japao.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_jordania.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_letonia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_mongolia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_paquistao.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_russia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_siberia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_siria.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_tailandia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_as_turquia.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_arabiasaudita.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_bangladesh.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_cazaquista.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_china.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_coreiadonorte.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_coreiadosul.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_estonia.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_india.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_ira.png")));
+			cartas.put(ImageIO.read(new File("war_carta_as_iraque.png")));
+			cartas.put("Japao",ImageIO.read(new File("war_carta_as_japao.png")));
+			cartas.put("Jordania",ImageIO.read(new File("war_carta_as_jordania.png")));
+			cartas.put("Letonia",ImageIO.read(new File("war_carta_as_letonia.png")));
+			cartas.put("Mongolia",ImageIO.read(new File("war_carta_as_mongolia.png")));
+			cartas.put("Paquistao",ImageIO.read(new File("war_carta_as_paquistao.png")));
+			cartas.put("Russia",ImageIO.read(new File("war_carta_as_russia.png")));
+			cartas.put("Siberia",ImageIO.read(new File("war_carta_as_siberia.png")));
+			cartas.put("Siria",ImageIO.read(new File("war_carta_as_siria.png")));
+			cartas.put("Tailandia",ImageIO.read(new File("war_carta_as_tailandia.png")));
+			cartas.put("Turquia",ImageIO.read(new File("war_carta_as_turquia.png")));
 			
-			cartas.add(ImageIO.read(new File("war_carta_asl_argentina_.png")));
-			cartas.add(ImageIO.read(new File("war_carta_asl_brasil.png")));
-			cartas.add(ImageIO.read(new File("war_carta_asl_peru.png")));
-			cartas.add(ImageIO.read(new File("war_carta_asl_venezuela.png")));
+			cartas.put("Argentina",ImageIO.read(new File("war_carta_asl_argentina_.png")));
+			cartas.put("Brasil",ImageIO.read(new File("war_carta_asl_brasil.png")));
+			cartas.put("Peru",ImageIO.read(new File("war_carta_asl_peru.png")));
+			cartas.put("Venezuela",ImageIO.read(new File("war_carta_asl_venezuela.png")));
 			
-			cartas.add(ImageIO.read(new File("war_carta_eu_espanha.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_franca.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_italia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_polonia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_romenia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_suecia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_eu_ucrania.png")));
+			cartas.put("Espanha",ImageIO.read(new File("war_carta_eu_espanha.png")));
+			cartas.put("Franca",ImageIO.read(new File("war_carta_eu_franca.png")));
+			cartas.put("Italia",ImageIO.read(new File("war_carta_eu_italia.png")));
+			cartas.put("Polonia",ImageIO.read(new File("war_carta_eu_polonia.png")));
+			cartas.put("Romenia",ImageIO.read(new File("war_carta_eu_romenia.png")));
+			cartas.put("Suecia",ImageIO.read(new File("war_carta_eu_suecia.png")));
+			cartas.put("Ucrania",ImageIO.read(new File("war_carta_eu_ucrania.png")));
 			
-			cartas.add(ImageIO.read(new File("war_carta_oc_australia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_oc_indonesia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_oc_novazelandia.png")));
-			cartas.add(ImageIO.read(new File("war_carta_oc_perth.png")));
+			cartas.put("Australia",ImageIO.read(new File("war_carta_oc_australia.png")));
+			cartas.put("Indonesia",ImageIO.read(new File("war_carta_oc_indonesia.png")));
+			cartas.put("Nova Zelandia",ImageIO.read(new File("war_carta_oc_novazelandia.png")));
+			cartas.put("Perth",ImageIO.read(new File("war_carta_oc_perth.png")));
 			
 		}
 		catch (IOException e) {
