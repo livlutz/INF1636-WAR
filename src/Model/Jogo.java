@@ -222,6 +222,7 @@ class Jogo implements ObservadoIF{
 			if (defensor.getQntExercitos()==0) {
 				// Atualiza defensor
 				defensor.getJogador().removeTerritorio(defensor);
+
 				if (defensor.getJogador().getQtdTerritorios() == 0){
 					// Jogador foi eliminado nessa rodada
 					defensor.getJogador().setEliminadoNessaRodada(true);
@@ -231,6 +232,9 @@ class Jogo implements ObservadoIF{
 
 				// Adiciona território conquistado ao jogador que conquistou
 				atacante.getJogador().addTerritorio(defensor);
+
+				// Conquistou nessa rodada ao jogador que conquistou
+				atacante.getJogador().setConquistouNessaRodada(true);
 
 				// Calcula quantos exércitos o jogador pode colocar no território conquistado (sempre máximo possível)
 				int qtdPassada = atacante.getQntExercitos() - 1;
@@ -442,7 +446,7 @@ class Jogo implements ObservadoIF{
 	
 	//Dá uma carta a um jogador
 	//Só é chamado quando o jogador conquista um território na rodada
-	public void DaCartas(Jogador j){
+	public void DaCarta(Jogador j){
 
 		//Da uma carta aleatoria ao jogador
 		Collections.shuffle(listaCartas);

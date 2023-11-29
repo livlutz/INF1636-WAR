@@ -6,13 +6,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-class CartaObjPanel extends Panel {
+class CartaObj extends Panel {
 	
 	Image cartaObj;
 	
 	// Construtor
-	public CartaObjPanel() {
-		setBackground(Color.LIGHT_GRAY);
+	public CartaObj() {
 		try {
 			cartaObj = ImageIO.read(new File("imagens/war_carta_objetivo.png"));
 		}

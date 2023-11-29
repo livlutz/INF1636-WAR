@@ -279,7 +279,7 @@ import View.APIView;
     public boolean analisarDarCarta(int vez){
         // Verifica se conquistou nessa rodada para dar carta
     	if (jogo.getJogadorVez(vez).getConquistouNessaRodada()){
-            jogo.DaCartas(jogo.getJogadorVez(vez));
+            jogo.DaCarta(jogo.getJogadorVez(vez));
             return true;
         }
         return false;

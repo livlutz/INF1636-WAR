@@ -19,7 +19,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 	Image tabuleiroImg = null;
 	Image background = null;
 	Image cartaObj = null;
-	Image cartaObjGrande = null;
 
 	//Componente gráfica
 	Graphics2D g2d; 
@@ -34,7 +33,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	DadosPanel dadosPanel = new DadosPanel();
 	
 	//Painel das Cartas
-	CartaObjPanel cartaObjPanel = new CartaObjPanel();
+	CartaObj cartaObjPanel = new CartaObj();
 	CartaView cartaView = new CartaView();
 
 	//Gerente
@@ -167,10 +166,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 		//Cria e adiciona o painel dos dados
 		dadosPanel.setBounds(1250,350,200,200);
 		add(dadosPanel);
-
-		//Cria e adiciona o painel das cartas
-		cartaObjPanel.setBounds(1250,580,200,200);
-		add(cartaObjPanel);
 		
 		//Cria e adiciona os botões
 		salvarButton = new JButton("Salvar o jogo");
@@ -474,19 +469,27 @@ class GamePanel extends JPanel implements ObservadorIF {
 
 	//Desenha as cartas do jogador da vez
 	public void desenhaCartasJogador(Graphics2D g2d) {
-		int x = 1250;
+		int x = 1210;
 		int y = 580;
-		int width = 100;
-		int height = 100;
-		//Falta pegar o jogador da vez
+		int width = 70;
+		int height = 110;
 
+		if (cartas == null) {
+			return;
+		}
 		if(cartas.length == 0) {
 			return;
 		}
-		
+		int cont = 0;
 		for (String c : cartas) {
 			cartaView.drawCarta(c, x, y, width, height, g2d);
-			x+=10;
+			x+=75;
+			cont++;
+			if (cont == 3){
+				// Reinicia o x e aumenta o y
+				x = 1210;
+				y += 115;
+			}
 		}
 	}
 	

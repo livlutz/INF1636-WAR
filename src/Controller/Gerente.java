@@ -154,6 +154,7 @@ public class Gerente {
         if(estado == 1){
             // Verifica se pode dar uma carta após ataque
             if (apiJogo.analisarDarCarta(vez)){
+                apiView.mostraAviso("Você (DEVE GANHAR) ganhou uma carta!");
                 //TODO REPAINT CARTA NA VIEW
             }
 
