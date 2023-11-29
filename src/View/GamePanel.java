@@ -470,7 +470,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Desenha as cartas do jogador da vez
 	public void desenhaCartasJogador(Graphics2D g2d) {
 		int x = 1210;
-		int y = 580;
+		int y = 575;
 		int width = 70;
 		int height = 110;
 
@@ -483,7 +483,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		int cont = 0;
 		for (String c : cartas) {
 			cartaView.drawCarta(c, x, y, width, height, g2d);
-			x+=75;
+			x+=85;
 			cont++;
 			if (cont == 3){
 				// Reinicia o x e aumenta o y

@@ -266,7 +266,7 @@ import View.APIView;
         for (Carta c: cartas) {
             Territorio t = c.getTerritorio();
             if (t == null){
-                arrayCartas[cont] = null;
+                arrayCartas[cont] = "Coringa";
             }
             else{
                 arrayCartas[cont] = t.getNome();
@@ -406,6 +406,7 @@ import View.APIView;
 
                     if(j.getCartas().size() == 0) {
                         inputStream.write("0");
+                        inputStream.write("\n");
                         continue;
                     }
 
@@ -548,22 +549,21 @@ import View.APIView;
                 for (Jogador j: jogo.getJogadores()) {
                     linha = br.readLine();
 
-                    String[] dados = linha.split(";");
+                    String[] infos = linha.split(";");
 
-                    int qtdCartas = Integer.parseInt(dados[0]);
+                    int qtdCartas = Integer.parseInt(infos[0]);
 
                     if(qtdCartas == 0){
                         continue;
                     }
 
-                    for (int i = 0; i < qtdCartas; i++) {
-                        String[] dadosCarta = dados[i+2].split(";");
+                    for (int i = 1; i < qtdCartas + 1; i++) {
                         Carta c;
-                        if(dadosCarta[0].equals("Coringa")){
+                        if(infos[i].equals("Coringa")){
                             c = jogo.getCartaNome(null);
                         }
                         else{
-                           c = jogo.getCartaNome(dadosCarta[0]);
+                           c = jogo.getCartaNome(infos[i]);
                         }
 
                         j.addCarta(c);
