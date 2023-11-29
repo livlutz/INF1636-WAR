@@ -167,47 +167,62 @@ class Jogo implements ObservadoIF{
 			if  (qtdDefesa > 3) {qtdDefesa = 3;}
 
 			//Cria os arrays de dados
-			int[] dadosAtaque = new int[qtdAtaque];
-			int[] dadosDefesa = new int[qtdDefesa];
+			int[] dadosAtaque = new int[3];
+			int[] dadosDefesa = new int[3];
 			//Cria um dado
 			Dado dado = new Dado();
 			//Variáveis para contar quantos exércitos foram perdidos
 			int qtdAtaquePerdidos = 0;
 			int qtdDefesaPerdidos = 0;
 			
+			int i;
 			//Verifica se o jogador escolheu um número forçado
 			if (numAtaque != 0){
-				for (int i = 0;i < qtdAtaque;i++) {
-				dadosAtaque[i] = numAtaque;
-			}
+				for (i = 0;i < 3;i++) {
+					if (i < qtdAtaque)
+						dadosAtaque[i] = numAtaque;
+					else
+						dadosAtaque[i] = 0;
+				}
 			}
 			else{
-				for (int i = 0;i < qtdAtaque;i++) {
-					dadosAtaque[i] = dado.rodarDado();
+				for (i = 0;i < 3;i++) {
+					if (i < qtdAtaque)
+						dadosAtaque[i] = dado.rodarDado();
+					else
+						dadosAtaque[i] = 0;
 				}
 				//Ordena os dados se for aleatório
 				Arrays.sort(dadosAtaque);
 			}
 			if (numDefesa != 0){
-				for (int i = 0;i < qtdDefesa;i++) {
-				dadosDefesa[i] = numDefesa;
+				for (i = 0;i < 3;i++) {
+					if (i < qtdDefesa)
+						dadosDefesa[i] = numDefesa;
+					else
+						dadosDefesa[i] = 0;
 				}
 			}
 			else{
-				for (int i = 0;i < qtdDefesa;i++) {
-					dadosDefesa[i] = dado.rodarDado();
+				for (i = 0;i < 3;i++) {
+					if (i < qtdDefesa)
+						dadosDefesa[i] = dado.rodarDado();
+					else
+						dadosDefesa[i] = 0;
 				}
 				//Ordena os dados se for aleatório
 				Arrays.sort(dadosDefesa);
 			}
 			
 			//Compara os dados
-			for (int i = 0;i < Math.min(qtdAtaque, qtdDefesa);i++) {
-				if (dadosAtaque[i] > dadosDefesa[i]) {
-					qtdDefesaPerdidos++;
-				}
-				else {
-					qtdAtaquePerdidos++;
+			for (i = 0;i < 3;i++) {
+				if (dadosAtaque[i] != 0 && dadosDefesa[i] != 0){
+					if (dadosAtaque[i] > dadosDefesa[i]) {
+						qtdDefesaPerdidos++;
+					}
+					else {
+						qtdAtaquePerdidos++;
+					}
 				}
 			}
 			
@@ -252,25 +267,12 @@ class Jogo implements ObservadoIF{
 			// Retorna os dados em um array único 
 
 			int[] dados = new int[6];
-			int i;
-			for (i = 0;i < dadosAtaque.length;i++) {
+			for (i = 0;i < 3;i++) {
 				dados[i] = dadosAtaque[i];
 			}
-			// Completa com zeros caso o atacante tenha menos de 3 dados
-			if (i < 3) {
-				for (;i < 3;i++) {
-					dados[i] = 0;
-				}
-			}
-			for (int j = 0;j < dadosDefesa.length;j++) {
+			for (int j = 0;j < 3;j++) {
 				dados[i] = dadosDefesa[j];
 				i++;
-			}
-			// Completa com zeros caso o defensor tenha menos de 3 dados
-			if (i < 6) {
-				for (;i < 6;i++) {
-					dados[i] = 0;
-				}
 			}
 
 			return dados;
