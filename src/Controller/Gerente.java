@@ -130,8 +130,13 @@ public class Gerente {
             this.bonusTroca = apiJogo.trocarCartas(vez, numDeTrocas);
             if (bonusTroca != 0){
                 numDeTrocas++;
+                apiView.atualizaCartas(apiJogo.getNomesCartasJogador(vez));
+                if (continente == 7){
+                apiJogo.atualizaQtdExPosicGeral(vez, bonusTroca); 
+                this.bonusTroca = 0;
+                apiView.atualizaQtdPosic(apiJogo.getQtdExercitosPosic(vez));
+                return;
             }
-            else{
             }
         }
     }
@@ -196,6 +201,10 @@ public class Gerente {
     // Método chamado quando é o primeiro posicionamento do jogador naquela rodada, para verificar se tem algum continente dominado por ele
     private void primeiroPosicionamento(){
         this.podeSalvar = true;
+        if (apiJogo.maxCartas(vez)){
+            this.bonusTroca = apiJogo.trocarCartas(vez, numDeTrocas);
+            apiView.atualizaCartas(apiJogo.getNomesCartasJogador(vez));
+        }
         String[] territorios;
         Integer qtd;
         // Verifica se tem algum continente dominado para posicionar exércitos nele primeiro

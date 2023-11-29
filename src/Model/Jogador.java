@@ -82,7 +82,6 @@ class Jogador {
 		ArrayList<Carta> quadrados = new ArrayList<Carta>();
 		ArrayList<Carta> triangulos = new ArrayList<Carta>();
 		ArrayList<Carta> coringas = new ArrayList<Carta>();
-		Carta c; 
 
 		for (Carta carta: cartas){
 			if (carta.f.equals(Carta.Formato.circulo))
@@ -169,7 +168,7 @@ class Jogador {
 		Integer qtd;
 		//Quando temos até 5 trocas já efetuadas
 		if (numDeTrocas <= 5) {
-			qtd = 4 + (2 * (numDeTrocas - 1));
+			qtd = 4 + (2 * (numDeTrocas));
 		}
 		else if (numDeTrocas == 6) {
 			qtd = 15;

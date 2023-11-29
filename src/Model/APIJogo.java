@@ -275,15 +275,20 @@ import View.APIView;
         }
         return arrayCartas;
     }
-    
+
+    // Verifica se conquistou nessa rodada para dar carta
     public boolean analisarDarCarta(int vez){
-        // Verifica se conquistou nessa rodada para dar carta
     	if (jogo.getJogadorVez(vez).getConquistouNessaRodada()){
             jogo.DaCarta(jogo.getJogadorVez(vez));
             jogo.getJogadorVez(vez).setConquistouNessaRodada(false);
             return true;
         }
         return false;
+    }
+
+    // Retorna se o jogador atingiu o máximo de cartas permitido
+    public boolean maxCartas(int vez){
+        return jogo.getJogadorVez(vez).getCartas().size() == 6;
     }
 
     public Integer trocarCartas(int vez, int numDeTrocas){
