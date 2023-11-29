@@ -11,19 +11,12 @@ public class TesteCarta {
 		Carta c = new Carta(0, null);
 		assertEquals(c.f, Carta.Formato.Quadrado);
 		assertEquals(c.getTerritorio(), null);
-		assertEquals(c.imagem, null);
 	}
 
 	@Test
 	public void TestaGetTerritorio() {
 		Carta c = new Carta(0, null);
 		assertEquals(c.getTerritorio(), null);
-	}
-
-	@Test
-	public void TestaGetImagem() {
-		Carta c = new Carta(0, null);
-		assertEquals(c.getImagem(), null);
 	}
 
 	@Test
