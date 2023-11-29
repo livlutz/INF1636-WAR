@@ -35,6 +35,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 	
 	//Painel das Cartas
 	CartaObjPanel cartaObjPanel = new CartaObjPanel();
+	CartaView cartaView = new CartaView();
 
 	//Gerente
 	Gerente gerente = Gerente.getGerente();
@@ -468,6 +469,18 @@ class GamePanel extends JPanel implements ObservadorIF {
 		for (Exercitos e : listaExercitos) {
 			e.drawPlayer(g2d);
 		}
+	}
+
+	//Desenha as cartas do jogador da vez
+	public void desenhaCartas(Graphics2D g2d) {
+		int x = 1250;
+		int y = 580;
+		//Falta pegar o jogador da vez
+		for (String c : cartas) {
+			cartaView.drawCarta(c, x, y, x, y, g2d);
+			x+=10;
+		}
+
 	}
 	
 	// Instancia os objetos dos exércitos
