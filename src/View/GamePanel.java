@@ -265,6 +265,7 @@ class GamePanel extends JPanel implements ObservadorIF {
 		cartaObjPanel.desenhaCartas(g2d);
 		//escrever o objetivo na carta usando drawString
 		cartaObjPanel.escreveObjetivo(g2d, descricaoObjetivo);
+		desenhaCartasJogador(g2d);
 		
 	}
 
@@ -478,6 +479,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 		int width = 100;
 		int height = 100;
 		//Falta pegar o jogador da vez
+
+		if(cartas.length == 0) {
+			return;
+		}
+		
 		for (String c : cartas) {
 			cartaView.drawCarta(c, x, y, width, height, g2d);
 			x+=10;
