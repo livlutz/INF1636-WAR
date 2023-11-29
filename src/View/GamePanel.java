@@ -332,6 +332,11 @@ class GamePanel extends JPanel implements ObservadorIF {
 		repaint();
 	}
 
+	public void atualizaCartas(String[] cartas){
+		this.cartas = cartas;
+		repaint();
+	}
+
 	// Atualiza view no início da rodada de posicionamento para atualizar os jogadores atacantes
 	public void atualizaAtacantes(String[] atacantes){
 		// Esvazia a comboBox de atacantes e adiciona os novos territórios

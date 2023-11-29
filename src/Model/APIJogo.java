@@ -280,6 +280,7 @@ import View.APIView;
         // Verifica se conquistou nessa rodada para dar carta
     	if (jogo.getJogadorVez(vez).getConquistouNessaRodada()){
             jogo.DaCarta(jogo.getJogadorVez(vez));
+            jogo.getJogadorVez(vez).setConquistouNessaRodada(false);
             return true;
         }
         return false;

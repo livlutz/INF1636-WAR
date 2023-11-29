@@ -92,6 +92,10 @@ public class APIView{
 		GamePanel.getGamePanel().determinaPrimeiroJogador(nome, cor, descricaoObj, territorios, qtd);
 	}
 
+	public void atualizaCartas(String[] cartas){
+		GamePanel.getGamePanel().atualizaCartas(cartas);
+	}
+
 	public void jogadorGanhou(String nome, Color cor){
 		String nomeCor;
 
