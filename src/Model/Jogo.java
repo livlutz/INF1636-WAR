@@ -548,4 +548,8 @@ class Jogo implements ObservadoIF{
 		listaCartas.add(c);
 	}
 
+	public ArrayList<Objetivo> getObjetivos(){
+		return objetivos;
+	}
+
 }

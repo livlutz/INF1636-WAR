@@ -535,24 +535,39 @@ import View.APIView;
                 }
 
                 //Lê os objetivos dos jogadores
+                jogo.InstanciaObjetivos();
                 for (Jogador j: jogo.getJogadores()) {
                     linha = br.readLine();
                     String[] dados = linha.split(";");
+                    Objetivo obj;
                     switch(Integer.parseInt(dados[0])){
                         case 1:
                             if(Integer.parseInt(dados[3]) == 3){
-                                j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), true));
+                                obj = new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), true);
+                                j.setObj(obj);
                             }
                             else{
-                                j.setObj(new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), false));
+                                obj = new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), false);
+                                j.setObj(obj);
                             }
                             break;
                         case 2:
-                            j.setObj(new ObjetivoDestruir(jogo.getJogador(dados[1])));
+                            obj = new ObjetivoDestruir(jogo.getJogador(dados[1]));
+                            j.setObj(obj);
                             break;
                         case 3:
-                            j.setObj(new ObjetivoTerritorios(Integer.parseInt(dados[1])));
+                            obj = new ObjetivoTerritorios(Integer.parseInt(dados[1]));
+                            j.setObj(obj);
                             break;
+                        default:
+                            obj = null;
+                    }
+                    for (Objetivo o: jogo.getObjetivos()){
+                        if (obj.getDescricao().equals(o.getDescricao())){
+                            jogo.getObjetivos().remove(o);
+                            jogo.getObjetivos().add(obj);
+                            break;
+                        }
                     }
                 }
 
