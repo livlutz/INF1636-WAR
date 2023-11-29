@@ -20,16 +20,6 @@ class Carta {
 		this.territorio = t;
 		
 	}
-	
-	//Verifica se o território da carta pertence ao jogador
-	public boolean terrPertenceJogador(Jogador j) {
-		for (Territorio t : j.getTerritorios()) {
-			if(this.territorio == t) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	//----------------- Getters & Setters -----------------
 

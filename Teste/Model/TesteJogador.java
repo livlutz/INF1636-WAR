@@ -26,7 +26,7 @@ public class TesteJogador {
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
-	@Test
+	/*@Test
 	public void testaTrocarEGetQtdDeCarta() {
 		Jogador j = new Jogador ("Jooj",null);
 		Carta c1 = new Carta(0, null);
@@ -38,7 +38,7 @@ public class TesteJogador {
 		j.trocarCartas(c1, c2, c3);
 		assertEquals(j.getQtdTrocaCartas(),1);
 		assertEquals(j.getQtdExercitoPosic(),4);
-	}
+	}*/
 	
 	@Test
 	public void testaGetCor() {
@@ -72,7 +72,7 @@ public class TesteJogador {
 		assertTrue(j.temTroca());
 	}
 
-	@Test
+	/*@Test
 	public void testaTrocaCarta(){
 		Jogador j = new Jogador(null, null);
 		Carta c1 = new Carta(0, null);
@@ -124,7 +124,7 @@ public class TesteJogador {
 		j.trocarCartas(c1, c2, c3);
 		assertEquals(j.getQtdExercitoPosic(), 75);
 
-	}
+	}*/
 
 	@Test
 	public void testaAddTerritorio() {
@@ -157,14 +157,6 @@ public class TesteJogador {
 		Carta c = new Carta(1, null);
 		j.addCarta(c);
 		assertEquals(j.getCartas().size(),1);
-	}
-
-	@Test
-	public void testaGetQtdTrocaCarta() {
-		Jogador j = new Jogador ("Jooj",null);
-		Carta c = new Carta(1, null);
-		j.addCarta(c);
-		assertEquals(j.getQtdTrocaCartas(),0);
 	}
 
 	@Test

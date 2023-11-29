@@ -9,7 +9,7 @@ public class TesteCarta {
 	@Test
 	public void TestaCarta() {
 		Carta c = new Carta(0, null);
-		assertEquals(c.f, Carta.Formato.Quadrado);
+		assertEquals(c.f, Carta.Formato.quadrado);
 		assertEquals(c.getTerritorio(), null);
 	}
 
@@ -17,12 +17,6 @@ public class TesteCarta {
 	public void TestaGetTerritorio() {
 		Carta c = new Carta(0, null);
 		assertEquals(c.getTerritorio(), null);
-	}
-
-	@Test
-	public void TestaTerrPertence() {
-		Carta c = new Carta(0, null);
-		assertEquals(c.terrPertenceJogador(null), false);
 	}
 
 }
