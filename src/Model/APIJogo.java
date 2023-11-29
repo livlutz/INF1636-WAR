@@ -332,6 +332,8 @@ import View.APIView;
 
     public void reiniciarJogo(){
         jogo.reiniciarJogo();
+        jogo.setMod1(null);
+        jogo.setMod2(null);
     }
 
     // Método que salva jogo em arquivo

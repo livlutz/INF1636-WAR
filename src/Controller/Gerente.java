@@ -385,6 +385,8 @@ public class Gerente {
         this.podeSalvar = true;
         this.primeiraRodada = true;
 
+        apiJogo.notificaObsJogo();
+
         apiView.mudaJogador(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez), apiJogo.getDescObjJogadorVez(vez), apiJogo.getNomesCartasJogador(vez));
         primeiroPosicionamento();
     }
