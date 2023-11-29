@@ -27,11 +27,9 @@ public class TesteCarta {
 	}
 
 	@Test
-	public void Testa
-
-
-
-	
-	
+	public void TestaTerrPertence() {
+		Carta c = new Carta(0, null);
+		assertEquals(c.terrPertenceJogador(null), false);
+	}
 
 }

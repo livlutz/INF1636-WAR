@@ -27,11 +27,11 @@ public class TesteJogador {
 	}
 	
 	@Test
-	public void testaTrocarEGetQtdDeCartas() {
+	public void testaTrocarEGetQtdDeCarta() {
 		Jogador j = new Jogador ("Jooj",null);
-		Cartas c1 = new Cartas(0, null);
-		Cartas c2 = new Cartas(1, null);
-		Cartas c3 = new Cartas(2, null);
+		Carta c1 = new Carta(0, null);
+		Carta c2 = new Carta(1, null);
+		Carta c3 = new Carta(2, null);
 		j.getCartas().add(c1);
 		j.getCartas().add(c2);
 		j.getCartas().add(c3);
@@ -56,16 +56,16 @@ public class TesteJogador {
 	@Test
 	public void testaAddCarta() {
 		Jogador j = new Jogador ("Jooj",null);
-		j.addCarta(new Cartas(1, null));
+		j.addCarta(new Carta(1, null));
 		assertEquals(j.getCartas().size(),1);
 	}
 	
 	@Test
 	public void testaTemTroca() {
 		Jogador j = new Jogador(null,null);
-		Cartas c1 = new Cartas(0, null);
-		Cartas c2 = new Cartas(1, null);
-		Cartas c3 = new Cartas(2, null);
+		Carta c1 = new Carta(0, null);
+		Carta c2 = new Carta(1, null);
+		Carta c3 = new Carta(2, null);
 		j.getCartas().add(c1);
 		j.getCartas().add(c2);
 		j.getCartas().add(c3);
@@ -73,11 +73,11 @@ public class TesteJogador {
 	}
 
 	@Test
-	public void testaTrocaCartas(){
+	public void testaTrocaCarta(){
 		Jogador j = new Jogador(null, null);
-		Cartas c1 = new Cartas(0, null);
-		Cartas c2 = new Cartas(1, null);
-		Cartas c3 = new Cartas(2, null);
+		Carta c1 = new Carta(0, null);
+		Carta c2 = new Carta(1, null);
+		Carta c3 = new Carta(2, null);
 		j.getCartas().add(c1);
 		j.getCartas().add(c2);
 		j.getCartas().add(c3);
@@ -154,15 +154,15 @@ public class TesteJogador {
 	@Test
 	public void testaGetCartas() {
 		Jogador j = new Jogador ("Jooj",null);
-		Cartas c = new Cartas(1, null);
+		Carta c = new Carta(1, null);
 		j.addCarta(c);
 		assertEquals(j.getCartas().size(),1);
 	}
 
 	@Test
-	public void testaGetQtdTrocaCartas() {
+	public void testaGetQtdTrocaCarta() {
 		Jogador j = new Jogador ("Jooj",null);
-		Cartas c = new Cartas(1, null);
+		Carta c = new Carta(1, null);
 		j.addCarta(c);
 		assertEquals(j.getQtdTrocaCartas(),0);
 	}
@@ -170,7 +170,7 @@ public class TesteJogador {
 	@Test
 	public void testaGetQtdExercitoPosic() {
 		Jogador j = new Jogador ("Jooj",null);
-		Cartas c = new Cartas(1, null);
+		Carta c = new Carta(1, null);
 		j.addCarta(c);
 		assertEquals(j.getQtdExercitoPosic(),0);
 	}
@@ -178,7 +178,7 @@ public class TesteJogador {
 	@Test
 	public void testaSetQtdExercitoPosic() {
 		Jogador j = new Jogador ("Jooj",null);
-		Cartas c = new Cartas(1, null);
+		Carta c = new Carta(1, null);
 		j.addCarta(c);
 		j.setQtdExercitoPosic(1);
 		assertEquals(j.getQtdExercitoPosic(),1);
