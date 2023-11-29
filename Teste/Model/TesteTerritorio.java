@@ -100,7 +100,13 @@ public class TesteTerritorio {
 		assertTrue(t.getAdjacentes().size() != 0);
 	}
 	
-	
+	@Test
+	public void testaGetCor(){
+		Territorio t = new Territorio("Brasil");
+		Jogador j = new Jogador("Jooj", null);
+		t.setJogador(j);
+		assertEquals(t.getCor(), j.getCor());
+	}
 	
 
 }

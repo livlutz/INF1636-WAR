@@ -26,20 +26,6 @@ public class TesteJogador {
 		assertEquals(j.getQtdExercitoPosic(),4);
 	}
 	
-	/*@Test
-	public void testaTrocarEGetQtdDeCarta() {
-		Jogador j = new Jogador ("Jooj",null);
-		Carta c1 = new Carta(0, null);
-		Carta c2 = new Carta(1, null);
-		Carta c3 = new Carta(2, null);
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-		assertEquals(j.getQtdTrocaCartas(),1);
-		assertEquals(j.getQtdExercitoPosic(),4);
-	}*/
-	
 	@Test
 	public void testaGetCor() {
 		Color c = new Color (255,213,45);
@@ -54,13 +40,6 @@ public class TesteJogador {
 	}
 	
 	@Test
-	public void testaAddCarta() {
-		Jogador j = new Jogador ("Jooj",null);
-		j.addCarta(new Carta(1, null));
-		assertEquals(j.getCartas().size(),1);
-	}
-	
-	@Test
 	public void testaTemTroca() {
 		Jogador j = new Jogador(null,null);
 		Carta c1 = new Carta(0, null);
@@ -72,59 +51,6 @@ public class TesteJogador {
 		assertTrue(j.temTroca());
 	}
 
-	/*@Test
-	public void testaTrocaCarta(){
-		Jogador j = new Jogador(null, null);
-		Carta c1 = new Carta(0, null);
-		Carta c2 = new Carta(1, null);
-		Carta c3 = new Carta(2, null);
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-
-		//primeira troca
-		j.trocarCartas(c1, c2, c3);
-		assertEquals(j.getQtdExercitoPosic(), 4);
-
-		//segunda troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-
-		//terceira troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-
-		//quarta troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-
-		//quinta troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-
-		//sexta troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-		assertEquals(j.getQtdExercitoPosic(), 55);
-
-		//setima troca
-		j.getCartas().add(c1);
-		j.getCartas().add(c2);
-		j.getCartas().add(c3);
-		j.trocarCartas(c1, c2, c3);
-		assertEquals(j.getQtdExercitoPosic(), 75);
-
-	}*/
 
 	@Test
 	public void testaAddTerritorio() {
@@ -183,4 +109,22 @@ public class TesteJogador {
 		j.addTerritorio(t);
 		assertEquals(j.getQtdTerritorios(),1);
 	}
+
+	@Test
+	public void testaAddCarta(){
+		Jogador j = new Jogador ("Jooj",null);
+		Carta c = new Carta(1, null);
+		j.addCarta(c);
+		assertEquals(j.getCartas().size(),1);
+	}
+
+	@Test
+	public void testaAtualizaQtdExecPosicGeral(){
+		Jogador j = new Jogador ("Jooj",null);
+		Carta c = new Carta(1, null);
+		j.addCarta(c);
+		j.atualizaQtdExPosicGeral(4);
+		assertEquals(j.getQtdExercitoPosic(),7);
+	}
+
 }

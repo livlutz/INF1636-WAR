@@ -39,12 +39,6 @@ class Jogador {
 		this.cor = cor;
 	}
 	
-	//Permite ver todas as cartas na posse do jogador
-	public void verCartas() {
-		for(Carta c : cartas) {
-			System.out.printf("Carta: %s - territorio : %s\n", c.getF(),c.getTerritorio().getNome());	
-		}
-	}
 
 	// Posicionar exércitos em território do jogador
 	// Cabe a função que chamou verificar se pode
