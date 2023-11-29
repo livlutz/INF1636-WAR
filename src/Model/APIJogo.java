@@ -343,6 +343,7 @@ import View.APIView;
      * -cores dos jogadores
      * -cartas dos jogadores
      * -vez do jogador
+     * -qtd de troca de cartas que o jogador fez
     */
     public void salvarJogo(){
         
@@ -433,6 +434,9 @@ import View.APIView;
                         }
             
                     }
+
+                    //Escreve a quantidade de trocas de cartas que o jogador fez
+                    inputStream.write(Gerente.getGerente().getNumDeTrocas());
                     inputStream.write("\n");
                 }
             } 
@@ -575,6 +579,9 @@ import View.APIView;
                         j.addCarta(c);
                         jogo.getListaCartas().remove(c);
                     }
+
+                    //Lê a quantidade de trocas de cartas que o jogador fez
+                    Gerente.getGerente().setNumDeTrocas(Integer.parseInt(infos[qtdCartas + 1]));
                 }
                 // Indica que todos os exércitos foram modificados
                 jogo.setMod1(null);
