@@ -226,9 +226,9 @@ class Jogo implements ObservadoIF{
 				atacante.getJogador().addTerritorio(defensor);
 
 				// Calcula quantos exércitos o jogador pode colocar no território conquistado (sempre máximo possível)
-				int qtdPassada = atacante.getQntExercitos() - 1;
-				if (qtdPassada > 3) {qtdPassada = 3;}
-
+				//int qtdPassada = atacante.getQntExercitos() - 1;
+				//if (qtdPassada > 3) {qtdPassada = 3;}
+				int qtdPassada = 1;
 				// Altera a quantidade de exércitos dos territórios
 				atacante.alterarQndExercitos(-qtdPassada);
 				defensor.setQntExercitos(qtdPassada);
