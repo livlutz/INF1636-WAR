@@ -472,15 +472,16 @@ class GamePanel extends JPanel implements ObservadorIF {
 	}
 
 	//Desenha as cartas do jogador da vez
-	public void desenhaCartas(Graphics2D g2d) {
+	public void desenhaCartasJogador(Graphics2D g2d) {
 		int x = 1250;
 		int y = 580;
+		int width = 100;
+		int height = 100;
 		//Falta pegar o jogador da vez
 		for (String c : cartas) {
-			cartaView.drawCarta(c, x, y, x, y, g2d);
+			cartaView.drawCarta(c, x, y, width, height, g2d);
 			x+=10;
 		}
-
 	}
 	
 	// Instancia os objetos dos exércitos
