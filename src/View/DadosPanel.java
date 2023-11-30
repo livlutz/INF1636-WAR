@@ -46,7 +46,8 @@ class DadosPanel extends JPanel {
 			dadoDefensor[6] =(ImageIO.read(new File("imagens/dado_defesa_6.png")));
 				
 		}
-
+		
+		//Caso não consiga carregar as imagens, mostra uma mensagem de erro
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem dos dados");
 				

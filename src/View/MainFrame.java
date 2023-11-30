@@ -18,10 +18,6 @@ public class MainFrame extends JFrame {
 		private GamePanel gamePanel = GamePanel.getGamePanel();
 		private CharacterSelectionPanel csPanel = CharacterSelectionPanel.getCharacterSelectionPanel();
 		
-		/* TODO
-		Metodo em jogador de pegar exercitos
-		private int qtdJogadores = csPanel.getJogadores();*/
-		
 		//Construtor
 		private MainFrame() {
 			setSize(LARGURA, ALTURA);
@@ -29,11 +25,6 @@ public class MainFrame extends JFrame {
 			setTitle("War");
 			setVisible(true);
 			getContentPane().add(startingPanel);
-
-			//getContentPane().add(csPanel);
-		
-			//getContentPane().add(gamePanel);
-			
 		}
 		
 		//Singleton

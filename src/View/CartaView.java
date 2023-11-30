@@ -16,8 +16,9 @@ public class CartaView {
 	//Componente gráfico
 	Graphics2D g2d;
 
-
+	//Construtor
  	public CartaView() {
+		// Carrega as imagens das cartas
 		try {
 			// África 
 			cartas.put("Africa Do Sul",ImageIO.read(new File("imagens/war_carta_af_africadosul.png")));
@@ -85,6 +86,8 @@ public class CartaView {
 			cartas.put("Coringa",ImageIO.read(new File("imagens/war_carta_coringa.png")));
 			
 		}
+		
+		// Caso nao consiga carregar a imagem, imprime uma mensagem de erro
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem das cartas");
 		}

@@ -33,34 +33,50 @@ class StartingPanel extends JPanel{
 	
 	//Construtor
 	private StartingPanel() {
-
+		//Adiciona ações aos botões
 		iniciar.addActionListener(new ActionListener(){
 			//Adiciona ação ao botão
+
 			@Override
 	        public void actionPerformed(ActionEvent e) {
+				//Seleciona o número de jogadores
 				int selected = 0;
+
+				//Seleciona o número de jogadores
+				//3
 				if (radioButton3.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(3);
 					selected++;
 				}
+
+				//4
 				if (radioButton4.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(4);
 					selected++;
 				}
+
+				//5
 				if (radioButton5.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(5);
 					selected++;
 				}
+
+				//6
 				if (radioButton6.isSelected()) {
 					CharacterSelectionPanel.getCharacterSelectionPanel().setNumJogadores(6);
 					selected++;
 				}
+
+				//Se não selecionou nenhum, mostra mensagem de erro
 				if(selected == 0) {
 					JOptionPane.showMessageDialog(null, "Selecione o número de jogadores", "Erro", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+
+				//Desenha os jogadores
 				CharacterSelectionPanel.getCharacterSelectionPanel().drawJogadores();
 				
+				//Vai para o painel de seleção de personagens
 				MainFrame.getMainFrame().goToCsPanel();
 	            
 			}
@@ -98,6 +114,7 @@ class StartingPanel extends JPanel{
 			start = ImageIO.read(new File ("imagens/bgconfiguracao.png"));
 		}
 		
+		//Caso não consiga carregar a imagem, mostra mensagem de erro
 		catch (IOException e) {
 			System.out.println("Erro na leitura do plano de fundo\n");
 		}

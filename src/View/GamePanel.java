@@ -70,8 +70,6 @@ class GamePanel extends JPanel implements ObservadorIF {
 	//Boolean para saber se os exércitos já foram criados
 	Boolean ExercitosNaoCriados = true;
 
-	
-
 	//Construtor
 	private GamePanel() {
 		//Define o layout como null para poder posicionar os componentes
@@ -189,24 +187,27 @@ class GamePanel extends JPanel implements ObservadorIF {
 		jogadorDaVezLabel.setBounds(640,660,200,30);
 		add(jogadorDaVezLabel);
 
-		
+		//Adiciona ação ao clicar no botão de trocar cartas
 		trocarCartasButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gerente.clicouTrocar();
 			}
 		});
 		
+		//Adiciona ação ao clicar no botão de salvar
 		salvarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gerente.clicouSalvar();
 			}
 		});
 		
+		//Adiciona ação ao clicar no botão de jogar os dados
 		dadoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int [] dadosAtaque = new int [3];
 				int [] dadosDefesa = new int [3];
 
+				//Chama a função de jogar os dados
 				int[] valoresDado = apiJogo.realizaAtaque(comboBoxAtacantes.getSelectedItem().toString(), comboBoxDefensores.getSelectedItem().toString(),Integer.valueOf((String)dadosAtacante.getSelectedItem()), Integer.valueOf((String)dadosDefensor.getSelectedItem()));
 				dadosAtaque[0] = valoresDado[0];
 				dadosAtaque[1] = valoresDado[1];
@@ -215,10 +216,12 @@ class GamePanel extends JPanel implements ObservadorIF {
 				dadosDefesa[1] = valoresDado[4];
 				dadosDefesa[2] = valoresDado[5];
 				
+				//Mostra os dados na tela
 				dadosPanel.mostrarDados(dadosAtaque, dadosDefesa);
 			}
 		});
 		
+		//Adiciona ação ao clicar no botão de passar rodada
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gerente.clicouTerminarRodada();
@@ -229,6 +232,8 @@ class GamePanel extends JPanel implements ObservadorIF {
 		try {
 			tabuleiroImg = ImageIO.read(new File("imagens/mapaComFundo.png"));
 		}
+
+		//Caso não consiga carregar a imagem, mostra uma mensagem de erro
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem do tabuleiro");
 			
@@ -248,18 +253,26 @@ class GamePanel extends JPanel implements ObservadorIF {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
+
+		//Desenha o fundo
 		this.g2d.drawImage(tabuleiroImg, 0,0,1200,800,null);
 		g2d.setColor(corDoJogador);
 		g2d.fillOval(580, 650, 50, 50);
+
+		//Desenha os exércitos
 		jogadorDaVezLabel.setText(jogadorDaVez);
 		if(ExercitosNaoCriados) {
 			criaExercitos(g2d);
 			ExercitosNaoCriados = false;
 		}
 		desenhaExercitos(this.g2d);
+
+		//Desenha as cartas
 		cartaObjPanel.desenhaCartas(g2d);
 		//escrever o objetivo na carta usando drawString
 		cartaObjPanel.escreveObjetivo(g2d, descricaoObjetivo);
+
+		//Desenha as cartas do jogador da vez
 		desenhaCartasJogador(g2d);
 		
 	}
@@ -480,19 +493,24 @@ class GamePanel extends JPanel implements ObservadorIF {
 		int width = 70;
 		int height = 110;
 
+		//Se o jogador não tiver cartas, não desenha nada
 		if (cartas == null) {
 			return;
 		}
+
 		if(cartas.length == 0) {
 			return;
 		}
+
 		int cont = 0;
+
+		//Desenha as cartas
 		for (String c : cartas) {
 			cartaView.drawCarta(c, x, y, width, height, g2d);
 			x+=85;
 			cont++;
 			if (cont == 3){
-				// Reinicia o x e aumenta o y
+				// Reinicia o x e aumenta o y para desenhar as cartas lado a lado
 				x = 1210;
 				y += 115;
 			}

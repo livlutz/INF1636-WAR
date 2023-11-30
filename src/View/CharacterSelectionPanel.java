@@ -29,15 +29,20 @@ class CharacterSelectionPanel extends JPanel {
 	
 	//Constrói o painel se puder começar o jogo
 	private CharacterSelectionPanel() {	
+		//Adiciona o botão de iniciar jogo
 		btn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				//Seleciona os nomes e cores dos jogadores
 				for (SelectionComponent s : selectionComponents) {
 					nomesJogadores.add(s.getNome());
 					coresJogadores.add(s.getCor());
 				}
+
+				//Se puder começar o jogo, vai para o painel do jogo
 				if (Gerente.getGerente().comecaJogo(nomesJogadores, coresJogadores)) {
 					MainFrame.getMainFrame().goToGamePanel();
 				}
+
 				else {
 					// Se não puder começar, limpa os arrays e mostra mensagem
 					nomesJogadores.clear();
@@ -47,10 +52,13 @@ class CharacterSelectionPanel extends JPanel {
 	        }
 		}
 		);
+
+		//Adiciona o botão de iniciar jogo
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(btn);
 	}
 	
+	//Singleton
 	public static CharacterSelectionPanel getCharacterSelectionPanel() {
 		if (csPanel==null) {
 			csPanel = new CharacterSelectionPanel();

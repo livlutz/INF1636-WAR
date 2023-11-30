@@ -8,13 +8,17 @@ import javax.imageio.ImageIO;
 
 class CartaObj extends Panel {
 	
+	// Imagem da carta objetivo
 	Image cartaObj;
 	
 	// Construtor
 	public CartaObj() {
+		// Carrega a imagem da carta objetivo
 		try {
 			cartaObj = ImageIO.read(new File("imagens/war_carta_objetivo.png"));
 		}
+
+		// Caso nao consiga carregar a imagem, imprime uma mensagem de erro
 		catch (IOException e) {
 			System.out.println("Nao foi possivel carregar a imagem da carta objetivo");
 			

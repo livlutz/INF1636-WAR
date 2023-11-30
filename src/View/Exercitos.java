@@ -67,6 +67,7 @@ class Exercitos extends JComponent {
 		}
 	}
 
+	//Desenha a bolinha
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.g2d = (Graphics2D) g;
