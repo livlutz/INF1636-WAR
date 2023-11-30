@@ -180,10 +180,13 @@ public class Gerente {
 
             // Verifica se tem algum jogador eliminado nessa rodada
             if (eliminadosNessaRodada.size() != 0){
-                for (String j: eliminadosNessaRodada){
-                    // Retira o jogador eliminado
-                    apiJogo.retiraEliminado(j);
-                    eliminadosNessaRodada.remove(j);
+                // Verifica se algum jogador ganhou após eliminação de outro
+                // Ex: Se jogador A tem o objetivo de eliminar B e A já tem 24 territórios, se C eliminar B, A ganha
+                verificaGanhou(-1);
+                for (int i = 0; i < eliminadosNessaRodada.size();i++){
+                    // Retira marcação de eliminado nessa rodada
+                    apiJogo.retiraEliminado(eliminadosNessaRodada.get(i));
+                    eliminadosNessaRodada.remove(0);
                 }
             }
             
@@ -275,7 +278,7 @@ public class Gerente {
             apiJogo.posicionarExercitos(territorio, qtd, vez);
 
             // Verifica se ganhou após posicionar
-            verificaGanhou();
+            verificaGanhou(vez);
 
             // Pega a quantidade de exércitos que ainda pode posicionar
             Integer qtdEx = apiJogo.getQtdExercitosPosic(vez);
@@ -378,7 +381,7 @@ public class Gerente {
             apiJogo.reposicionarExercitos(origem, destino, qtd);
 
             // Verifica se ganhou após reposicionar
-            verificaGanhou();
+            verificaGanhou(vez);
 
              // Pega o index do território selecionado para diminuir a quantidade que ainda pode reposicionar
             int i = 0;
@@ -410,8 +413,9 @@ public class Gerente {
     }
 
     // Método que verifica se jogador ganhou e lida com o resultado
-    public void verificaGanhou(){
-        if (apiJogo.verificaGanhou(vez)){
+    public void verificaGanhou(int pos){
+        // Se vez = -1, verifica todos os jogadores
+        if (apiJogo.verificaGanhou(pos)){
             apiView.jogadorGanhou(apiJogo.getNomeJogadorVez(vez), apiJogo.getCorJogadorVez(vez));
         }
     }

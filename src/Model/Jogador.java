@@ -27,6 +27,7 @@ class Jogador {
 	
 	//Guarda se o jogador foi eliminado nessa rodada
 	private boolean eliminadoNessaRodada = false; 
+	private Jogador jMatou;
 
 	//Guarda se o jogador conquistou um território nessa rodada
 	private boolean conquistouNessaRodada = false; 
@@ -314,6 +315,14 @@ class Jogador {
 	//Altera se o jogador conquistou um território nessa rodada para recepção de cartas
 	public void setConquistouNessaRodada(boolean conquistouNessaRodada) {
 		this.conquistouNessaRodada = conquistouNessaRodada;
+	}
+
+	public Jogador getJMatou() {
+		return jMatou;
+	}
+
+	public void setJMatou(Jogador jMatou) {
+		this.jMatou = jMatou;
 	}
 
 }

@@ -55,7 +55,7 @@ class ObjetivoDestruir extends Objetivo{
                 return false;
 
             // Se o alvo foi eliminado nessa rodada
-             if (jAlvo.getEliminadoNessaRodada() == true)
+             if (jAlvo.getEliminadoNessaRodada() == true && jAlvo.getJMatou() == j)
              // Objetivo alcançado
                 return true;
         }

@@ -83,7 +83,7 @@ import View.APIView;
         int[] array = jogo.RealizaAtaque(Tatacante, Tdefensor, numAtaque, numDefesa);
 
         // Verifica se jogador ganhou após essa rodada
-		Gerente.getGerente().verificaGanhou();
+		Gerente.getGerente().verificaGanhou(Gerente.getGerente().getVez());
         return array;
     }
 
@@ -213,9 +213,19 @@ import View.APIView;
 
     //Verifica se o jogador da vez ganhou o jogo
     public boolean verificaGanhou(int vez){
+        // Se a vez for -1, verifica todos os jogadores
+        if (vez == -1){
+            for (Jogador j: jogo.getJogadores()) {
+                if (j.getObj().alcancou(j)){
+                    // Se algum jogador ganhou, atualiza a vez
+                    Gerente.getGerente().setVez(jogo.getJogadores().indexOf(j));
+                    return true;
+                }
+            }
+            return false;
+        }
+        // Se não, verifica se o jogador da vez cumpriu seu objetivo, condicao para ganhar o jogo
         Jogador j = jogo.getJogadorVez(vez);
-
-        //Verifica se o jogador da vez cumpriu seu objetivo, condicao para ganhar o jogo
         return j.getObj().alcancou(j);
     }
 

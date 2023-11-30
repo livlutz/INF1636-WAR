@@ -241,6 +241,7 @@ class Jogo implements ObservadoIF{
 				if (defensor.getJogador().getQtdTerritorios() == 0){
 					// Jogador foi eliminado nessa rodada
 					defensor.getJogador().setEliminadoNessaRodada(true);
+					defensor.getJogador().setJMatou(atacante.getJogador());
 					Gerente.getGerente().addEliminado(defensor.getJogador().getNome());
 				}
 				defensor.setJogador(atacante.getJogador());
