@@ -510,6 +510,7 @@ import View.APIView;
                         }
             
                     }
+		    inputStream.write("\n");
                     
                 }
                 //Escreve a quantidade de trocas de cartas que o jogador fez
