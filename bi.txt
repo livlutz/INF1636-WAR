@@ -1,0 +1,63 @@
+false
+3
+1
+c;a;b
+-16711936;-16776961;-65536
+Groelandia;1;c
+Angola;1;a
+Turquia;14;a
+Iraque;1;a
+Mongolia;1;a
+Siria;1;a
+Paquistao;1;a
+Coreia do Sul;1;a
+Arabia Saudita;1;a
+Argentina;1;b
+Calgary;17;a
+Japao;1;a
+Perth;1;b
+California;1;a
+Cazaquistao;1;a
+India;1;a
+Nova Zelandia;1;b
+Tailandia;1;a
+Texas;1;b
+Ira;1;a
+Peru;4;b
+Africa do Sul;1;a
+Vancouver;1;a
+Somalia;1;a
+Nova York;1;b
+Russia;1;a
+Franca;1;a
+Brasil;1;a
+Alasca;1;b
+China;1;b
+Siberia;1;a
+Ucrania;1;a
+Nigeria;2;a
+Egito;1;a
+Polonia;1;b
+Quebec;4;b
+Romenia;2;b
+Espanha;1;a
+Italia;1;a
+Argelia;1;a
+Reino Unido;1;b
+Coreia do Norte;1;a
+Venezuela;1;a
+Bangladesh;1;a
+Mexico;1;a
+Suecia;1;a
+Letonia;1;a
+Australia;1;a
+Jordania;9;a
+Estonia;1;a
+Indonesia;1;a
+2;a
+1;Africa;Asia;2
+3;18
+0
+0
+0
+0
