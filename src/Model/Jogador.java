@@ -13,7 +13,6 @@ class Jogador {
 	//Guarda a quantidade de Exércitos que pode posicionar
 	private int qtdExercitoPosic; 
 
-	
 	//Guarda a quantidade de territórios em sua posse
 	private int qtdTerritorios = 0;  
 
@@ -32,14 +31,12 @@ class Jogador {
 	//Guarda se o jogador conquistou um território nessa rodada
 	private boolean conquistouNessaRodada = false; 
 	
-	
 	//Construtor da classe
 	public Jogador(String nome, Color cor) {
 		this.nome = nome;
 		this.cor = cor;
 	}
 	
-
 	// Posicionar exércitos em território do jogador
 	// Cabe a função que chamou verificar se pode
 	public void posicionarExercitos(Territorio t, int qtdExercitos){
@@ -50,6 +47,8 @@ class Jogador {
 	//Verifica se o jogador pode trocar cartas
 	public boolean temTroca(){
 		int circulos = 0, quadrados = 0, triangulos = 0;
+
+		// Conta quantas cartas de cada formato o jogador possui
 		for (Carta c: cartas){
 			if (c.f.equals(Carta.Formato.circulo))
 				circulos++;
@@ -63,9 +62,12 @@ class Jogador {
 				triangulos++;
 			}
 		}
+
+		// Se o jogador possui 3 cartas de um formato ou 1 de cada formato, pode trocar
 		if (circulos >= 3 || quadrados >= 3 || triangulos >= 3 || (circulos >= 1 && quadrados >= 1 && triangulos >= 1))
 			return true;
-		return false;
+		
+			return false;
 	}
 
 	//Retorna a quantidade de bonus de exércitos que o jogador recebe de bonus na troca
@@ -77,6 +79,7 @@ class Jogador {
 		ArrayList<Carta> triangulos = new ArrayList<Carta>();
 		ArrayList<Carta> coringas = new ArrayList<Carta>();
 
+		// Separa as cartas por formato
 		for (Carta carta: cartas){
 			if (carta.f.equals(Carta.Formato.circulo))
 				circulos.add(carta);
@@ -95,18 +98,21 @@ class Jogador {
 				usaCarta(circulos);
 			}
 		}
+
 		else if (quadrados.size() >= 3){
 			// Troca três cartas de quadrado e devolve elas para o baralho
 			for (int i = 0; i < 3; i++){
 				usaCarta(quadrados);
 			}
 		}
+
 		else if (triangulos.size() >= 3){
 			// Troca três cartas de triângulo e devolve elas para o baralho
 			for (int i = 0; i < 3; i++){
 				usaCarta(triangulos);
 			}
 		}
+
 		else {
 			int cont = coringas.size();
 			switch (cont){
@@ -123,17 +129,21 @@ class Jogador {
 						usaCarta(quadrados);
 						usaCarta(triangulos);
 					}
+
 					else if (quadrados.size() == 0){
 						// Remove um coringa, um círculo e um triângulo
 						usaCarta(circulos);
 						usaCarta(triangulos);
 					}
+
 					else{
 						// Remove um coringa, um círculo e um quadrado
 						usaCarta(circulos);
 						usaCarta(quadrados);
 					}
+
 					break;
+
 				case 2:
 					// Remove dois coringas e uma carta de qualquer formato
 					usaCarta(coringas);
@@ -141,18 +151,23 @@ class Jogador {
 					if (circulos.size() == 0 && quadrados.size() == 0){
 						usaCarta(triangulos);
 					}
+
 					else if (quadrados.size() == 0 && triangulos.size() == 0){
 						usaCarta(circulos);
 					}
+
 					else if (circulos.size() == 0 && triangulos.size() == 0){
 						usaCarta(quadrados);
 					}
+
 					else if (circulos.size() == 1){
 						usaCarta(circulos);
 					}
+
 					else if (quadrados.size() == 1){
 						usaCarta(quadrados);
 					}
+
 					else{
 						usaCarta(triangulos);
 					}
@@ -164,9 +179,11 @@ class Jogador {
 		if (numDeTrocas <= 5) {
 			qtd = 4 + (2 * (numDeTrocas));
 		}
+
 		else if (numDeTrocas == 6) {
 			qtd = 15;
 		}
+
 		//Temos mais de 6 trocas já efetuadas
 		else {
 			int diferenca = numDeTrocas - 6;
@@ -174,9 +191,9 @@ class Jogador {
 		}
 
 		return qtd;
-
 	}
 
+	// Remove a carta do topo do baralho e adiciona ao jogador
 	private void usaCarta(ArrayList<Carta> lista){
 		Carta c = lista.get(0);
 		cartas.remove(c);
@@ -208,6 +225,7 @@ class Jogador {
 		this.qtdTerritorios--;
 	}
 
+	//Atualiza a quantidade de exércitos que o jogador pode posicionar
 	public void atualizaQtdExPosicGeral(Integer bonusTroca){
 		int qtd = this.qtdTerritorios/2;
 		if (qtd < 3)

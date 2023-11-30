@@ -68,6 +68,7 @@ class ObjetivoDestruir extends Objetivo{
            
     }
 
+    //Retorna o jogador que deve ser destruído
     public Jogador getJAlvo(){
         return this.jAlvo;
     }

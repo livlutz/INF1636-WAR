@@ -56,7 +56,6 @@ class Jogo implements ObservadoIF{
         observadores.remove(o);
     }
 
-	
     // Método para passar informações observadores
     public Object get(){
         // Array de informações
@@ -461,12 +460,14 @@ class Jogo implements ObservadoIF{
 
 	}
 
+	// Notifica os observadores
 	public void notificaObs(){
 		for (ObservadorIF o: observadores){
 			o.notifica(this);
 		}
 	}
 	
+	//Retorna o jogador pelo nome
 	public Jogador getJogador(String jogadorNome) {
 		for(Jogador jogador:jogadores) {
 			if (jogador.getNome().equals(jogadorNome)) {
@@ -476,6 +477,7 @@ class Jogo implements ObservadoIF{
 		return null;
 	}
 
+	// Método para reiniciar o jogo
 	public void reiniciarJogo(){
 
 		for (Jogador j: jogadores){
@@ -513,6 +515,7 @@ class Jogo implements ObservadoIF{
 		return jogadores;
 	}
 
+	//Altera o mod1 e o mod2
 	public void setMod1(Territorio t){
 		mod1 = t;
 	}
@@ -521,6 +524,7 @@ class Jogo implements ObservadoIF{
 		mod2 = t;
 	}
 
+	//Retorna a carta pelo nome do território
 	public Carta getCartaNome(String nome){
 		Territorio t;
 		if(nome == null){
@@ -540,14 +544,17 @@ class Jogo implements ObservadoIF{
 		return null;
 	}
 
+	//Retorna a lista de cartas
 	public ArrayList<Carta> getListaCartas(){
 		return listaCartas;
 	}
 
+	//Adiciona uma carta à lista de cartas
 	public void addCarta(Carta c){
 		listaCartas.add(c);
 	}
 
+	//Retorna a lista de objetivos
 	public ArrayList<Objetivo> getObjetivos(){
 		return objetivos;
 	}

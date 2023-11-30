@@ -49,6 +49,7 @@ class ObjetivoContinentes extends Objetivo{
 
     }
 
+    //Retorna os continentes que o jogador deve dominar
     public Continente getCont1(){
         return this.cont1;
     }
@@ -57,6 +58,7 @@ class ObjetivoContinentes extends Objetivo{
         return this.cont2;
     }
 
+    //Retorna a quantidade de continentes que o jogador deve dominar
     public int getQtdContinentes(){
         return this.qtdContinentes;
     }

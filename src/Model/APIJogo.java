@@ -13,10 +13,16 @@ import java.io.*;
 import View.APIView;
 
  public class APIJogo{
+    // Atributos
+
+    // Singleton
     private static APIJogo APIJogo = null;
+
     private Tabuleiro tabuleiro = Tabuleiro.getTabuleiro();
     private Jogo jogo = Jogo.getJogo();
     private APIView apiView = APIView.getAPIView();
+
+    // JFileChooser para salvar e carregar jogo
     private JFileChooser chooser = new JFileChooser();
 
     //Arquivo para salvar o jogo
@@ -34,7 +40,6 @@ import View.APIView;
         }
         return APIJogo;
     }
-
 
     //Método de inicializar jogo
     public boolean comecaJogo() {
@@ -59,6 +64,8 @@ import View.APIView;
     public String[] getTerritoriosLista() {
 		String [] terr = new String[51]; 
 		int cont = 0;
+
+        // Adiciona na lista os nomes dos territórios
 		for (Territorio t: tabuleiro.getlistaTerritorios()) {
             terr[cont] = t.getNome();
             cont ++;
@@ -71,7 +78,10 @@ import View.APIView;
     public int[] realizaAtaque(String atacante,String defensor, Integer numAtaque, Integer numDefesa) {
     	Territorio Tatacante = tabuleiro.mapTerritorios.get(atacante);
     	Territorio Tdefensor = tabuleiro.mapTerritorios.get(defensor);
+
+        // Realiza ataque e retorna array com os resultados
         int[] array = jogo.RealizaAtaque(Tatacante, Tdefensor, numAtaque, numDefesa);
+
         // Verifica se jogador ganhou após essa rodada
 		Gerente.getGerente().verificaGanhou();
         return array;
@@ -102,6 +112,8 @@ import View.APIView;
     public String[] getNomesJogadores() {
     	String[] nomes = new String[jogo.getJogadores().size()];
     	int cont = 0;
+
+        // Adiciona na lista os nomes dos jogadores
     	for (Jogador j: jogo.getJogadores()) {
     		nomes[cont] = j.getNome();
     		cont++;
@@ -114,6 +126,8 @@ import View.APIView;
         ArrayList<Territorio> ter = jogo.getJogadores().get(i).getTerritorios();
     	String[] listaTerritorios = new String[ter.size()];
     	int cont = 0;
+
+        // Adiciona na lista os nomes dos territórios
     	for (Territorio t: ter) {
     		listaTerritorios[cont] = t.getNome();
     		cont++;
@@ -126,6 +140,8 @@ import View.APIView;
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
+
+        // Adiciona na lista os territórios que não são dominados pelo jogador
     	for (Territorio ter: adjacentes) {
     		// Se o jogador não dominar o adjacente, adiciona na lista
             if (ter.getJogador().getNome() != jogo.getJogadorVez(vez).getNome()){
@@ -133,14 +149,20 @@ import View.APIView;
                 cont++;
             }
     	}
+
+        // Se não tiver nenhum território não dominado, retorna null
         if (cont == 0) {
             String[] lista= {null};
             return lista;
         }
+
+        // Copia a lista para uma lista final, para não ficar nenhum espaço vazio
         String[] listaTerritoriosFinal = new String[cont];
+
         for (int i = 0; i < cont; i++) {
             listaTerritoriosFinal[i] = listaTerritorios[i];
         }
+
     	return listaTerritoriosFinal;
     }
 
@@ -149,6 +171,8 @@ import View.APIView;
         ArrayList<Territorio> adjacentes = tabuleiro.mapTerritorios.get(t).getAdjacentes();
     	String[] listaTerritorios = new String[adjacentes.size()];
     	int cont = 0;
+
+        // Adiciona na lista os territórios que são dominados pelo jogador
     	for (Territorio ter: adjacentes) {
     		// Se o jogador dominar o adjacente, adiciona na lista
             if (ter.getJogador().getNome() == jogo.getJogadorVez(vez).getNome()){
@@ -156,14 +180,19 @@ import View.APIView;
                 cont++;
             }
     	}
+
+        // Se não tiver nenhum território dominado, retorna null
         if (cont == 0) {
             String[] lista= {null};
             return lista;
         }
+
+        // Copia a lista para uma lista final, para não ficar nenhum espaço vazio
         String[] listaTerritoriosFinal = new String[cont];
         for (int i = 0; i < cont; i++) {
             listaTerritoriosFinal[i] = listaTerritorios[i];
         }
+
     	return listaTerritoriosFinal;
     }
 
@@ -182,8 +211,11 @@ import View.APIView;
         return jogo.getJogadorVez(i).getObj().getDescricao();
     }
 
+    //Verifica se o jogador da vez ganhou o jogo
     public boolean verificaGanhou(int vez){
         Jogador j = jogo.getJogadorVez(vez);
+
+        //Verifica se o jogador da vez cumpriu seu objetivo, condicao para ganhar o jogo
         return j.getObj().alcancou(j);
     }
 
@@ -192,6 +224,7 @@ import View.APIView;
         ArrayList<Territorio> ter = jogo.getJogadorVez(vez).getTerritorios();
         String[] listaTerritorios = new String[ter.size()];
         int cont = 0;
+
         // Adiciona na lista os territórios que têm mais de um exército
         for (Territorio t: ter) {
             if (t.getQntExercitos() > 1){
@@ -199,11 +232,13 @@ import View.APIView;
                 cont++;
             }
         }
+
         // Se não tiver nenhum território com mais de um exército, retorna null
         if (cont == 0){
             String[] lista = {};
             return lista;
         }
+
         // Copia a lista para uma lista final, para não ficar nenhum espaço vazio
         String[] listaTerritoriosFinal = new String[cont];
         for (int i = 0; i < cont; i++) {
@@ -214,9 +249,14 @@ import View.APIView;
 
     // Posiciona exércitos no território e chama método para atualizar view pelos observadores
     public void posicionarExercitos(String t, int qtd, int vez){
+        // Chama método de posicionar exércitos de Jogo
         jogo.getJogadorVez(vez).posicionarExercitos(tabuleiro.mapTerritorios.get(t), qtd);
+
+        // Atualiza variável de exércitos a posicionar no jogador
         jogo.setMod1(tabuleiro.mapTerritorios.get(t));
         jogo.setMod2(null);
+
+        // Notifica observadores de jogo
         jogo.notificaObs();
     }
 
@@ -234,10 +274,13 @@ import View.APIView;
     public String[] getContinentesLista(){
         String[] listaContinentes = new String[tabuleiro.getMapContinentes().size()];
         int cont = 0;
+
+        // Adiciona na lista os nomes dos continentes
         for (Continente c: tabuleiro.getMapContinentes().values()) {
             listaContinentes[cont] = c.getNome();
             cont++;
         }
+
         return listaContinentes;
     }
 
@@ -245,17 +288,24 @@ import View.APIView;
     public String[] getTerritoriosCont(String c){
         String[] listaTerritorios = new String[tabuleiro.getMapContinentes().get(c).getTerritorios().size()];
         int cont = 0;
+
+        // Adiciona na lista os nomes dos territórios
         for (Territorio t: tabuleiro.getMapContinentes().get(c).getTerritorios()) {
             listaTerritorios[cont] = t.getNome();
             cont++;
         }
+
         return listaTerritorios;
     }
 
     // Retorna quantidade de exércitos a posicionar no continente e atualiza a variável de exércitos a posicionar no jogador
     public Integer getExCont(int vez, String c){
+        // Atualiza variável de exércitos a posicionar no jogador
         Integer qtd = tabuleiro.getContinente(c).getQtdExerc();
+
+        // Atualiza variável de exércitos a posicionar no jogador
         jogo.getJogadorVez(vez).setQtdExercitoPosic(qtd);
+
         return qtd;
     }
 
@@ -264,42 +314,60 @@ import View.APIView;
         ArrayList<Carta> cartas = jogo.getJogadorVez(vez).getCartas();
         String[] arrayCartas = new String[cartas.size()];
         int cont = 0;
+
+        // Adiciona na lista os nomes dos territórios das cartas
         for (Carta c: cartas) {
             Territorio t = c.getTerritorio();
+
+            // Se a carta for de coringa, adiciona "Coringa" na lista
             if (t == null){
                 arrayCartas[cont] = "Coringa";
             }
+
+            // Se não, adiciona o nome do território na lista
             else{
                 arrayCartas[cont] = t.getNome();
             }
+
             cont++;
         }
+
         return arrayCartas;
     }
 
     // Verifica se conquistou nessa rodada para dar carta
     public boolean analisarDarCarta(int vez){
+
+        // Se o jogador conquistou nessa rodada, dá carta
     	if (jogo.getJogadorVez(vez).getConquistouNessaRodada()){
             jogo.DaCarta(jogo.getJogadorVez(vez));
+
+            // Atualiza variável de conquistou nessa rodada
             jogo.getJogadorVez(vez).setConquistouNessaRodada(false);
             return true;
         }
+
         return false;
     }
 
-    // Retorna se o jogador atingiu o máximo de cartas permitido
+    // Retorna se o jogador atingiu o máximo de cartas permitido (6 cartas)
     public boolean maxCartas(int vez){
         return jogo.getJogadorVez(vez).getCartas().size() == 6;
     }
 
+    // Troca cartas do jogador da vez
     public Integer trocarCartas(int vez, int numDeTrocas){
         Jogador j = jogo.getJogadorVez(vez);
+
+        // Se o jogador puder trocar cartas, chama o método de trocar cartas de Jogo
         if (j.temTroca()){
             return j.trocarCartas(numDeTrocas);
         }
+
         return 0;
     }
 
+    // Altera o estado de eliminação do jogador
     public void retiraEliminado(String jogador){
         jogo.getJogador(jogador).setEliminadoNessaRodada(false);
     }
@@ -330,6 +398,7 @@ import View.APIView;
         jogo.notificaObs();
     }
 
+    // Método para reiniciar o jogo
     public void reiniciarJogo(){
         jogo.reiniciarJogo();
         jogo.setMod1(null);
@@ -399,14 +468,16 @@ import View.APIView;
                             inputStream.write(((ObjetivoContinentes)j.getObj()).getCont2().getNome() + ";");
                             inputStream.write(String.valueOf(((ObjetivoContinentes)j.getObj()).getQtdContinentes()));
                             break;
-                            case "Model.ObjetivoDestruir":
-                            inputStream.write("2;");
-                            inputStream.write(((ObjetivoDestruir)j.getObj()).getJAlvo().getNome());
-                            break;
-                            case "Model.ObjetivoTerritorios":
-                            inputStream.write("3;");
-                            inputStream.write(String.valueOf(((ObjetivoTerritorios)j.getObj()).getQtdTerritorios()));
-                            break;
+
+                        case "Model.ObjetivoDestruir":
+                        inputStream.write("2;");
+                        inputStream.write(((ObjetivoDestruir)j.getObj()).getJAlvo().getNome());
+                        break;
+
+                        case "Model.ObjetivoTerritorios":
+                        inputStream.write("3;");
+                        inputStream.write(String.valueOf(((ObjetivoTerritorios)j.getObj()).getQtdTerritorios()));
+                        break;
                     }
                     inputStream.write("\n");
                 }
@@ -428,10 +499,12 @@ import View.APIView;
                             inputStream.write("Coringa");
                         }
 
+                        // Carta de território
                         else{
                             inputStream.write(c.getTerritorio().getNome());
                         }
 
+                        // Se não for a última carta, escreve um ;
                         if( c != j.getCartas().get(j.getCartas().size()-1)){
                             inputStream.write(";");
                         }
@@ -444,16 +517,20 @@ import View.APIView;
                     
             } 
 
+            //Caso ocorra algum erro
             catch (IOException ex) {
                 System.out.println("Erro ao abrir arquivo para salvar jogo");
             }
 
+            //No fim da leitura, fecha o arquivo
             finally {
                 if (inputStream != null) {
+
                     try {
                         inputStream.close();
                     } 
-                    
+
+                    //Caso ocorra algum erro
                     catch (IOException ex) {
                         System.out.println("Erro ao fechar arquivo para salvar jogo");
                     }
@@ -548,22 +625,29 @@ import View.APIView;
                                 obj = new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), true);
                                 j.setObj(obj);
                             }
+
                             else{
                                 obj = new ObjetivoContinentes(tabuleiro.getMapContinentes().get(dados[1]), tabuleiro.getMapContinentes().get(dados[2]), false);
                                 j.setObj(obj);
                             }
+
                             break;
+                        
                         case 2:
                             obj = new ObjetivoDestruir(jogo.getJogador(dados[1]));
                             j.setObj(obj);
                             break;
+
                         case 3:
                             obj = new ObjetivoTerritorios(Integer.parseInt(dados[1]));
                             j.setObj(obj);
                             break;
+
                         default:
                             obj = null;
                     }
+
+                    // Substitui o objetivo do jogador pelo objetivo lido
                     for (Objetivo o: jogo.getObjetivos()){
                         if (obj.getDescricao().equals(o.getDescricao())){
                             jogo.getObjetivos().remove(o);
@@ -599,6 +683,7 @@ import View.APIView;
                     }
 
                 }
+
                 //Lê a quantidade de trocas de cartas do jogo
                 linha = br.readLine();
                 Gerente.getGerente().setNumDeTrocas(Integer.parseInt(linha));
@@ -608,11 +693,14 @@ import View.APIView;
                 
                 return true;
             } 
+
+            //Caso ocorra algum erro ao abrir o arquivo
             catch (IOException e) {
                 System.out.println("Erro ao abrir arquivo para carregar jogo");
                 return false;
             }
         }
+        
         return false;
     }
 

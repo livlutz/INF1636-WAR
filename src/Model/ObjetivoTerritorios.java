@@ -39,6 +39,7 @@ class ObjetivoTerritorios extends Objetivo{
             
         }  
 
+        //Retorna a quantidade de territórios que o jogador deve conquistar
         public int getQtdTerritorios(){
             return this.qtdTerritorios;
         }
